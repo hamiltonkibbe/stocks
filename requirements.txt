@@ -1,4 +1,6 @@
 MySQL-python==1.2.4b3
+PyBrain==0.3
+SQLAlchemy==0.7.9
 argparse==1.2.1
 numpy==1.6.2
 wsgiref==0.1.2
