@@ -56,5 +56,13 @@ def _get_quotes(ticker, start_date, end_date):
     return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5]) for val in data]
 
 def update_quotes(ticker):
+    """
+    Get all missing quotes through current day for the given stock
+    """
     pass
 
+def sync_quotes():
+    """
+    Updates quotes for all stocks through current day.
+    """
+    pass
