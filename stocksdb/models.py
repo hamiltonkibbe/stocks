@@ -26,7 +26,8 @@ class Symbol(Base):
         self.Industry = Industry
 
     def __repr__(self):
-        return "<Symbol('%s','%s','%s','%s','%s')>" % (self.Ticker, self.Name, self.Exchange, self.Sector, self.Industry)
+        return "<Symbol('%s','%s','%s','%s','%s')>" % \
+            (self.Ticker, self.Name, self.Exchange, self.Sector, self.Industry)
 
 
 
@@ -55,7 +56,9 @@ class Quote(Base):
         self.Volume = Volume
 
     def __repr__(self):
-        return "<Quote('%s','%s','%f','%f','%f','%f','%f')>" % (self.Date, self.Ticker, self.Open, self.High, self.Low, self.Close, self.Volume)
+        return "<Quote('%s','%s','%f','%f','%f','%f','%f')>" % \
+            (self.Date, self.Ticker, self.Open, self.High, self.Low,
+            self.Close, self.Volume)
 
 
 
