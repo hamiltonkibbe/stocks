@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
-from database import StocksDBManager
+from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
+from sqlalchemy.orm import relationship
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 class Symbol(Base):
     """

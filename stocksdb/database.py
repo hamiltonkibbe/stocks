@@ -6,35 +6,36 @@ from datetime import date
 from models  import Symbol, Quote
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql import and_, or_, not_
 from sqlalchemy.ext.declarative import declarative_base
 
 
-class Database(Object):
+class Database(object):
 
     def __init__(self):
-    """
-    Set up database access
-    """
-    self.Base = declarative_base()
-    if config.sql_password == '':
-        engine_config = 'mysql://%s@%s/%s' % (config.sql_user, config.sql_hostname, config.sql_database)
-    else:
-        engine_config = 'mysql://%s:%s@%s/%s' % (config.sql_user, config.sql_password, config.sql_hostname, config.sql_database)
-    self.Engine = create_engine(engine_config)
-    Session = sessionmaker()
-    self.Session = Session.configure(bind=Engine)
+        """
+        Set up database access
+        """
+        self.Base = declarative_base()
+        if config.sql_password == '':
+            engine_config = 'mysql://%s@%s/%s' % (config.sql_user, config.sql_hostname, config.sql_database)
+        else:
+            engine_config = 'mysql://%s:%s@%s/%s' % (config.sql_user, config.sql_password, config.sql_hostname, config.sql_database)
+        self.Engine = create_engine(engine_config)
+        self.Session = sessionmaker()
+        self.Session.configure(bind=self.Engine)
 
 
-class StockDBManager(Object):
+class StockDBManager(object):
     """
     Stock database management class
     """
 
     def __init__(self):
-    """
-    Get access to database
-    """
-    self.db = Database()
+        """
+        Get access to database
+        """
+        self.db = Database()
     
 
     def create_database(self):
@@ -57,12 +58,12 @@ class StockDBManager(Object):
         else:
             print "Adding %s to database" % (ticker.upper())
             session.add(stock)
-            session.add_all(get_quotes(ticker, date(1900,01,01), date.today()))
+            session.add_all(download_quotes(ticker, date(1900,01,01), date.today()))
         
         session.commit()
         session.close()
 
-    def get_quotes(self, ticker, start_date, end_date):
+    def download_quotes(self, ticker, start_date, end_date):
         """
         Get quotes from Yahoo Finance
         """
@@ -104,12 +105,28 @@ class StockDBManager(Object):
             session.close()
         return exists
         
-        
-class IntradayAPI(Object):
+    def get_quotes(self, ticker, quote_date, end_date=None):
+        ticker = ticker.lower()
+        session = self.db.Session()
+        if end_date is not None:
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, Quote.Date >= quote_date, Quote.Date <= end_date)).order_by(Quote.Date)
+        else:
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, Quote.Date == quote_date))    
+        session.close()
+        return [quote for quote in query.all()]
+    
+class IntradayAPI(object):
     """
     API for accessing intraday quote data. Uses StockDBManager to get quotes that aren't yet stored locally
     """
+    def __init__(self):
+        self.DBManager = StockDBManager() 
     
-    
+    def get_close(self, ticker, date, end_date=None):
+        """
+        Return the closing price for the stock on the selected date(s)
+        """
+        ticker = ticker.lower()
+        
     
     
