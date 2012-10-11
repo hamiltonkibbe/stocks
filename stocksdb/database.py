@@ -2,9 +2,9 @@
 
 import ystockquote as quotes
 import config
-from datetime import date
+from datetime import date, timedelta
 from models  import Symbol, Quote
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import and_, or_, not_
 from sqlalchemy.ext.declarative import declarative_base
@@ -53,12 +53,12 @@ class StockDBManager(object):
         stock = Symbol(ticker, name, sector, industry)
         session = self.db.Session()
         
-        if check_stock_exists(ticker,session):
+        if self.check_stock_exists(ticker,session):
             print "Stock %s already exists!" % (ticker.upper())
         else:
             print "Adding %s to database" % (ticker.upper())
             session.add(stock)
-            session.add_all(download_quotes(ticker, date(1900,01,01), date.today()))
+            session.add_all(self.download_quotes(ticker, date(1900,01,01), date.today()))
         
         session.commit()
         session.close()
@@ -68,23 +68,42 @@ class StockDBManager(object):
         Get quotes from Yahoo Finance
         """
         ticker = ticker.lower()
+        if start_date == end_date:
+            return 
         start = start_date.strftime("%Y%m%d")
         end = end_date.strftime("%Y%m%d")
         data = quotes.get_historical_prices(ticker, start, end)
         data = data[len(data)-1:0:-1]
-        return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5]) for val in data]
+        if len(data):
+            return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5]) for val in data]
+        else:
+            return
 
     def update_quotes(self, ticker):
         """
         Get all missing quotes through current day for the given stock
         """
-        pass
+        ticker = ticker.lower()
+        quotes = None
+        session = self.db.Session()
+        last = session.query(Quote).filter_by(Ticker=ticker).order_by(desc(Quote.Date)).first().Date
+        start_date = last + timedelta(days=1)
+        end_date = date.today()
+        if end_date > start_date:
+            quotes = self.download_quotes(ticker, start_date, end_date)
+        if quotes is not None:
+            session.add_all(quotes)
+        session.commit()
+        session.close()
 
     def sync_quotes(self):
         """
         Updates quotes for all stocks through current day.
         """
-        pass
+        session = self.db.Session()
+        for symbol in session.query(Symbol).all():
+            self.update_quotes(symbol.Ticker)
+        session.close()        
     
     def check_stock_exists(self,ticker,session=None):
         """
@@ -115,18 +134,8 @@ class StockDBManager(object):
         session.close()
         return [quote for quote in query.all()]
     
-class IntradayAPI(object):
-    """
-    API for accessing intraday quote data. Uses StockDBManager to get quotes that aren't yet stored locally
-    """
-    def __init__(self):
-        self.DBManager = StockDBManager() 
-    
-    def get_close(self, ticker, date, end_date=None):
-        """
-        Return the closing price for the stock on the selected date(s)
-        """
-        ticker = ticker.lower()
-        
+if __name__ == '__main__':
+    db = StockDBManager()
+    db.sync_quotes()   
     
     

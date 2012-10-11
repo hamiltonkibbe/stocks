@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from database import IntradayAPI
+from database import StockDBManager 
 
 
 class IntradayQuotes(self):
