@@ -114,7 +114,7 @@ class StockDBManager(object):
             self.update_quotes(symbol.Ticker)
             print 'Updated quotes for %s' % symbol.Ticker
         session.close()        
-    
+
     def check_stock_exists(self,ticker,session=None):
         """
         Return true if stock is already in database
@@ -125,7 +125,7 @@ class StockDBManager(object):
         if session is None:
             session.close()
         return exists
- 
+
     def check_quote_exists(self,ticker,date,session=None):
         """
         Return true if a quote for the given symbol and date exists in the database
@@ -137,7 +137,7 @@ class StockDBManager(object):
         if session is None:
             session.close()
         return exists
-        
+
     def get_quotes(self, ticker, quote_date, end_date=None):
         """
         Return a list of quotes between the start date and (optional) end date.
@@ -154,8 +154,6 @@ class StockDBManager(object):
                             Quote.Date == quote_date))    
         session.close()
         return [quote for quote in query.all()]
-    
-
 
     
 if __name__ == '__main__':
