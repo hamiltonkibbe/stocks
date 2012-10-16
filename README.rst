@@ -9,6 +9,6 @@ Local stock quote storage for backtesting and algorithm training.
 
 Analysis Tools
 --------------
-Common indicator calculationrs as wella as Machine-learning predictors
+Common indicator calculations as well as Machine-learning predictors
 
 
