@@ -79,8 +79,8 @@ class StockDBManager(object):
         ticker = ticker.lower()
         if start_date == end_date:
             return 
-        start = start_date.strftime("%Y%m%d")
-        end = end_date.strftime("%Y%m%d")
+        start = start_date
+        end = end_date
         data = quotes.get_historical_prices(ticker, start, end)
         data = data[len(data)-1:0:-1]
         if len(data):
@@ -127,20 +127,31 @@ class StockDBManager(object):
         return exists
  
     def check_quote_exists(self,ticker,date,session=None):
+        """
+        Return true if a quote for the given symbol and date exists in the database
+        """
         if session is None:
             session = self.db.Session()
-        exists = bool(session.query(Symbol).filter_by(Ticker=ticker.lower(),Date=date).count())
+        exists = bool(session.query(Symbol).filter_by(Ticker=ticker.lower(),
+                        Date=date).count())
         if session is None:
             session.close()
         return exists
         
     def get_quotes(self, ticker, quote_date, end_date=None):
+        """
+        Return a list of quotes between the start date and (optional) end date.
+        if no end date is specified, return a list containing the quote for the start date
+        """
         ticker = ticker.lower()
         session = self.db.Session()
         if end_date is not None:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, Quote.Date >= quote_date, Quote.Date <= end_date)).order_by(Quote.Date)
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, 
+                            Quote.Date >= quote_date, 
+                            Quote.Date <= end_date)).order_by(Quote.Date)
         else:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, Quote.Date == quote_date))    
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, 
+                            Quote.Date == quote_date))    
         session.close()
         return [quote for quote in query.all()]
     

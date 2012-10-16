@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 #
-#  Copyright (c) 2007-2008, Corey Goldberg (corey@goldb.org)
+#  This is based on Corey Goldberg's (corey@goldb.org) ystockquote module, with 
+#  additional api methods exposed
+# 
+#
+#  Copyright 2012 Hamilton Kibbe (hamilton.kibbe@gmail.com)
 #
 #  license: GNU LGPL
 #
@@ -11,6 +15,7 @@
 
 
 import urllib
+from datetime import date
 from bs4 import BeautifulSoup
 
 """
@@ -145,8 +150,11 @@ def get_short_ratio(symbol):
 
 def get_name(symbol):
     return __request(symbol,'n')
-    
+
 def get_sector(symbol):
+    '''
+    Uses BeautifulSoup to scrape the stock sector from the Yahoo! Finance website
+    '''
     url = 'http://finance.yahoo.com/q/pr?s=%s+Profile' % symbol
     soup = BeautifulSoup(urllib.urlopen(url).read())
     sector = ''
@@ -157,6 +165,9 @@ def get_sector(symbol):
     return sector
 
 def get_industry(symbol):
+    '''
+    Uses BeautifulSoup to scrape the stock industry from the Yahoo! Finance website
+    '''
     url = 'http://finance.yahoo.com/q/pr?s=%s+Profile' % symbol
     soup = BeautifulSoup(urllib.urlopen(url).read())
     industry = ''
@@ -167,23 +178,44 @@ def get_industry(symbol):
     return industry
 
 
-
-
 def get_historical_prices(symbol, start_date, end_date):
     """
     Get historical prices for the given ticker symbol.
-    Date format is 'YYYYMMDD'
+    Dates may either be a date object or a string with the following format:
+    'YYYYMMDD'
     
     Returns a nested list.
     """
+    if type(start_date) is date:
+        # Months are zero-based
+        start_m = str(start_date.month - 1)
+        start_d = str(start_date.day)
+        start_y = str(start_date.year)
+    else:
+        # Months are zero-based
+        start_m = str(int(start_date[4:6]) - 1)
+        start_d = str(int(start_date[6:8]))
+        start_y = str(int(start_date[0:4]))
+        
+    if type(end_date) is date:
+        # Months are zero-based
+        end_m = str(end_date.month - 1)
+        end_d = str(end_date.day)
+        end_y = str(end_date.year)
+    else:
+        # Months are zero-based
+        end_m = str(int(end_date[4:6]) - 1)
+        end_d = str(int(end_date[6:8]))
+        end_y = str(int(end_date[0:4]))
+        
     url = 'http://ichart.yahoo.com/table.csv?s=%s&' % symbol + \
-          'd=%s&' % str(int(end_date[4:6]) - 1) + \
-          'e=%s&' % str(int(end_date[6:8])) + \
-          'f=%s&' % str(int(end_date[0:4])) + \
+          'd=%s&' % end_m + \
+          'e=%s&' % end_d + \
+          'f=%s&' % end_y + \
           'g=d&' + \
-          'a=%s&' % str(int(start_date[4:6]) - 1) + \
-          'b=%s&' % str(int(start_date[6:8])) + \
-          'c=%s&' % str(int(start_date[0:4])) + \
+          'a=%s&' % start_m + \
+          'b=%s&' % start_d + \
+          'c=%s&' % start_y + \
           'ignore=.csv'
     days = urllib.urlopen(url).readlines()
     data = [day[:-2].split(',') for day in days]
