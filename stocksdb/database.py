@@ -2,6 +2,7 @@
 
 import ystockquote as quotes
 import config
+from sys import argv
 from datetime import date, timedelta
 from models  import Symbol, Quote
 from sqlalchemy import create_engine, desc
@@ -45,12 +46,20 @@ class StockDBManager(object):
         self.db.Base.metadata.create_all(Engine)
 
 
-    def add_stock(self, ticker, name, sector=None, industry=None):
+    def add_stock(self, ticker, name=None, exchange=None, sector=None, industry=None):
         """
         Add a stock to the stock database
         """
         ticker = ticker.lower()
-        stock = Symbol(ticker, name, sector, industry)
+        if name is None:
+            name = quotes.get_name(ticker) 
+        if exchange is None:
+            exchange = quotes.get_stock_exchange(ticker)
+        if sector is None:
+            sector = quotes.get_sector(ticker)
+        if industry is None:
+            industry = quotes.get_industry(ticker)
+        stock = Symbol(ticker, name, exchange, sector, industry)
         session = self.db.Session()
         
         if self.check_stock_exists(ticker,session):
@@ -75,7 +84,7 @@ class StockDBManager(object):
         data = quotes.get_historical_prices(ticker, start, end)
         data = data[len(data)-1:0:-1]
         if len(data):
-            return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5]) for val in data]
+            return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5],val[6]) for val in data]
         else:
             return
 
@@ -103,6 +112,7 @@ class StockDBManager(object):
         session = self.db.Session()
         for symbol in session.query(Symbol).all():
             self.update_quotes(symbol.Ticker)
+            print 'Updated quotes for %s' % symbol.Ticker
         session.close()        
     
     def check_stock_exists(self,ticker,session=None):
@@ -134,8 +144,12 @@ class StockDBManager(object):
         session.close()
         return [quote for quote in query.all()]
     
+
+
+    
 if __name__ == '__main__':
     db = StockDBManager()
-    db.sync_quotes()   
+    if str(argv[1]) == 'sync':
+        db.sync_quotes()   
     
     

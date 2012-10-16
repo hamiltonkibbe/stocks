@@ -46,8 +46,9 @@ class Quote(Base):
     Low = Column(Float)
     Close = Column(Float)
     Volume = Column(Float)
+    AdjClose = Column(Float)
 
-    def __init__(self, Ticker, Date, Open, High, Low, Close, Volume):
+    def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
         self.Date = Date
         self.Open = Open
@@ -55,11 +56,13 @@ class Quote(Base):
         self.Low = Low
         self.Close = Close
         self.Volume = Volume
+        self.AdjClose = AdjClose
 
     def __repr__(self):
-        return "<Quote('%s','%s','%f','%f','%f','%f','%f')>" % \
+        return "<Quote(Date: %s,Symbol: %s, Open: %f, High: %f, Low: %f,\
+            Close: %f, Volume: %d, Adjusted Close: %f)>" % \
             (self.Date, self.Ticker, self.Open, self.High, self.Low,
-            self.Close, self.Volume)
+            self.Close, self.Volume, self.AdjClose)
 
 
 

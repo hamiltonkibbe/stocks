@@ -11,7 +11,7 @@
 
 
 import urllib
-
+from bs4 import BeautifulSoup
 
 """
 This is the "ystockquote" module.
@@ -78,8 +78,10 @@ def get_avg_daily_volume(symbol):
     
     
 def get_stock_exchange(symbol): 
-    return __request(symbol, 'x')
-    
+    name = __request(symbol, 'x')
+    if name == 'NasdaqNM':
+        name = 'NASDAQ'
+    return name
     
 def get_market_cap(symbol):
     return __request(symbol, 'j1')
@@ -140,7 +142,33 @@ def get_price_book_ratio(symbol):
 def get_short_ratio(symbol): 
     return __request(symbol, 's7')
     
+
+def get_name(symbol):
+    return __request(symbol,'n')
     
+def get_sector(symbol):
+    url = 'http://finance.yahoo.com/q/pr?s=%s+Profile' % symbol
+    soup = BeautifulSoup(urllib.urlopen(url).read())
+    sector = ''
+    try:
+        sector = soup.find('td', text='Sector:').find_next_sibling().string.encode('utf-8')
+    except:
+        pass
+    return sector
+
+def get_industry(symbol):
+    url = 'http://finance.yahoo.com/q/pr?s=%s+Profile' % symbol
+    soup = BeautifulSoup(urllib.urlopen(url).read())
+    industry = ''
+    try:
+        industry = soup.find('td', text='Industry:').find_next_sibling().string.encode('utf-8')
+    except:
+        pass
+    return industry
+
+
+
+
 def get_historical_prices(symbol, start_date, end_date):
     """
     Get historical prices for the given ticker symbol.
