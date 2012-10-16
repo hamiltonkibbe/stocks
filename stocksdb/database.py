@@ -19,9 +19,9 @@ class Database(object):
         """
         self.Base = declarative_base()
         if config.sql_password == '':
-            engine_config = 'mysql://%s@%s/%s' % (config.sql_user, config.sql_hostname, config.sql_database)
+            engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER, config.SQL_HOSTNAME, config.SQL_DATABASE)
         else:
-            engine_config = 'mysql://%s:%s@%s/%s' % (config.sql_user, config.sql_password, config.sql_hostname, config.sql_database)
+            engine_config = 'mysql://%s:%s@%s/%s' % (config.SQL_USER, config.SQL_PASSWORD, config.SQL_HOSTNAME, config.SQL_DATABASE)
         self.Engine = create_engine(engine_config)
         self.Session = sessionmaker()
         self.Session.configure(bind=self.Engine)
