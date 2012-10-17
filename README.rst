@@ -42,10 +42,12 @@ Getting started:
   convenience, ``python database.py sync`` will bring all quotes up to date.
 * Quotes are retreived through the interfaces in ``datafeed.py``.
 
-datafeed
-========
-The datafeed objects are used to retreive quote data. As of right now it only
-handles historical intraday quotes.
+datafeed.py
+===========
+The objects in datafeed  are used to retreive quote data. As of right now it
+only handles historical intraday quotes.
+
+
 
 **************
 Analysis Tools
