@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from sqlalchemy import Column, Integer, String, Float, Date, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -59,8 +59,7 @@ class Quote(Base):
         self.AdjClose = AdjClose
 
     def __repr__(self):
-        return "<Quote(Date: %s,Symbol: %s, Open: %f, High: %f, Low: %f,\
-            Close: %f, Volume: %d, Adjusted Close: %f)>" % \
+        return "<Quote(Date: %s,Symbol: %s, Open: %f, High: %f, Low: %f, Close: %f, Volume: %d, Adjusted Close: %f)>" % \
             (self.Date, self.Ticker, self.Open, self.High, self.Low,
             self.Close, self.Volume, self.AdjClose)
 

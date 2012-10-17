@@ -18,10 +18,12 @@ class Database(object):
         Set up database access
         """
         self.Base = declarative_base()
-        if config.sql_password == '':
-            engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER, config.SQL_HOSTNAME, config.SQL_DATABASE)
+        if config.SQL_PASSWORD == '':
+            engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER,
+                config.SQL_HOSTNAME, config.SQL_DATABASE)
         else:
-            engine_config = 'mysql://%s:%s@%s/%s' % (config.SQL_USER, config.SQL_PASSWORD, config.SQL_HOSTNAME, config.SQL_DATABASE)
+            engine_config = 'mysql://%s:%s@%s/%s' % (config.SQL_USER,
+                config.SQL_PASSWORD, config.SQL_HOSTNAME, config.SQL_DATABASE)
         self.Engine = create_engine(engine_config)
         self.Session = sessionmaker()
         self.Session.configure(bind=self.Engine)
@@ -67,12 +69,12 @@ class StockDBManager(object):
         else:
             print "Adding %s to database" % (ticker.upper())
             session.add(stock)
-            session.add_all(self.download_quotes(ticker, date(1900,01,01), date.today()))
+            session.add_all(self._download_quotes(ticker, date(1900,01,01), date.today()))
         
         session.commit()
         session.close()
 
-    def download_quotes(self, ticker, start_date, end_date):
+    def _download_quotes(self, ticker, start_date, end_date):
         """
         Get quotes from Yahoo Finance
         """
@@ -99,7 +101,7 @@ class StockDBManager(object):
         start_date = last + timedelta(days=1)
         end_date = date.today()
         if end_date > start_date:
-            quotes = self.download_quotes(ticker, start_date, end_date)
+            quotes = self._download_quotes(ticker, start_date, end_date)
         if quotes is not None:
             session.add_all(quotes)
         session.commit()
@@ -145,20 +147,26 @@ class StockDBManager(object):
         """
         ticker = ticker.lower()
         session = self.db.Session()
+        quotes = []
+        if not self.check_stock_exists(ticker,session):
+            self.add_stock(ticker)
+
         if end_date is not None:
             query = session.query(Quote).filter(and_(Quote.Ticker == ticker, 
-                            Quote.Date >= quote_date, 
-                            Quote.Date <= end_date)).order_by(Quote.Date)
+                Quote.Date >= quote_date, Quote.Date <= end_date)).order_by(Quote.Date)
         else:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, 
-                            Quote.Date == quote_date))    
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker,  
+                Quote.Date == quote_date))    
+    
+        quotes = [quote for quote in query.all()]
         session.close()
-        return [quote for quote in query.all()]
+        return quotes
 
     
 if __name__ == '__main__':
     db = StockDBManager()
     if str(argv[1]) == 'sync':
         db.sync_quotes()   
-    
+    if str(argv[1]) == 'add':
+        db.add_stock(str(argv[2]))
     
