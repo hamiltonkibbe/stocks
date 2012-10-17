@@ -16,11 +16,18 @@ faster retreval with subsequent requests.
 **Getting started:**
 
 * Configure database settings in config.py
-* use ``StockDBManager.create_database()`` to create the database on local machine
-* Add stocks to the database with ``StockDBManager.add_stock()``
-  The quotes database will be populated with historical quotes for the stock and subsequent calls to
-  ``StockDBManager.update_quotes()`` will update that symbol's quotes in the database
-* get quotes with ``
+* Use ``StockDBManager.create_database()`` to create the database on local 
+  machine
+* Add stocks to the database with ``StockDBManager.add_stock(*symbol*)``. Once 
+  a stock  is added,The quotes database is populated with historical quotes for 
+  the stock. For convenience, ``python database.py add *symbol*`` adds the
+  specified symbol to the stock database.
+* ``StockDBManager.update_quotes(*symbol*)`` will update te given symbol's 
+  quotes in the database. 
+* ``StockDBManager.sync_quotes()`` updates quotess for all stocks in the 
+  database and should be used daily to keep the database up to date. For 
+  convenience, ``python database.py sync`` will bring all quotes up to date.
+* Quotes are retreived through the interfaces in ``datafeed.py``.
 
 Analysis Tools
 --------------
