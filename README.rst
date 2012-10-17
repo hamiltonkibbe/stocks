@@ -1,19 +1,24 @@
+#############################
 Quant Trading R&D Environment
-========================
+#############################
 
+**************
 Stock Data DB
---------------
+**************
 Local stock quote storage for backtesting and algorithm training. 
 
-StockDBManager
-^^^^^^^^^^^
+database.py
+===========
+
 The StockDBManager manages the stock database. It retreives data from external 
 sources and caches it locally in the database. When data is requested from the 
 StockDBManager it will be served from the local database if it is cached, or 
 from an external source otherwise.  All requested data is stored locally for 
-faster retreval with subsequent requests.
+faster retreval with subsequent requests. The manager also provides 
+administrative tools for working with the database.
 
-**Getting started:**
+Getting started:
+----------------
 
 * Configure database settings in config.py
 * Use ``StockDBManager.create_database()`` to create the database on local 
@@ -29,8 +34,14 @@ faster retreval with subsequent requests.
   convenience, ``python database.py sync`` will bring all quotes up to date.
 * Quotes are retreived through the interfaces in ``datafeed.py``.
 
+datafeed
+========
+The datafeed objects are used to retreive quote data. As of right now it only
+handles historical intraday quotes.
+
+**************
 Analysis Tools
---------------
+**************
 Common indicator calculations as well as Machine-learning predictors
 
 
