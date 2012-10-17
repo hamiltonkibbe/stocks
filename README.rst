@@ -9,7 +9,15 @@ Local stock quote storage for backtesting and algorithm training.
 
 database.py
 ===========
+database.py contains the objects used for interacting with the local stock database
 
+Database
+--------
+Direct database access
+
+
+StockDBManager
+--------------
 The StockDBManager manages the stock database. It retreives data from external 
 sources and caches it locally in the database. When data is requested from the 
 StockDBManager it will be served from the local database if it is cached, or 
@@ -18,7 +26,7 @@ faster retreval with subsequent requests. The manager also provides
 administrative tools for working with the database.
 
 Getting started:
-----------------
+""""""""""""""""
 
 * Configure database settings in config.py
 * Use ``StockDBManager.create_database()`` to create the database on local 
