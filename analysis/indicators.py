@@ -62,9 +62,11 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
     :param fast_ewma: (optional) 12-day EWMA for use in MACD calculation
     :param slow_ewma: (optional) 26-day EWMA for use in MACD calculation
     :returns: MACD as a numpy array
-    ..note:
+    .. note::
+
         Either raw data or the 12 and 26 day EWMAs must be provided, all three
         are not necessary.
+
     """
     pass
 
@@ -79,9 +81,11 @@ def macd_hist(data=None, macd=None, macd_signal=None):
     :param macd_signal: (optional) MACD signal to use in MACD histogram
     calculation
     :returns: MACD histogram as a numpy array
-    ..note:
+    .. note::
+
         Either raw data or the MACD and MACD signal must be provided, all three
         are not necessary.
+
     """
     pass
 
@@ -93,8 +97,10 @@ def macd_signal(data=None, macd=None):
     :param data: (Optional) Raw data to analyze
     :param macd: (Optional) MACD to use in MACD signal calculation
     :returns: MACD signal as a numpy array
-    ..note:
+    .. note::
+
         Either raw data or the MACD must be provided, both ar not necessary
+
     """
     pass
 
