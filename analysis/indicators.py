@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from numpy import array, zeros, append, empty
+from numpy import array, zeros, append, subtract, empty
 from pandas import Series, stats, concat
 
 
@@ -66,9 +66,18 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
 
         Either raw data or the 12 and 26 day EWMAs must be provided, all three
         are not necessary.
-
     """
-    pass
+    if data is not None:
+        slow_ewma = exp_weighted_moving_average(data, 26)
+        fast_ewma = exp_weighted_moving_average(data, 12)
+
+    elif fast_ewma is None or slow_ewma is None:
+        pass
+
+    slow_ewma = array(slow_ewma[26:])
+    fast_ewma = array(fast_ewma[26:])
+    return empty(26).fill(None).append(subtract(fast_ewma, slow_ewma))
+
 
 def macd_hist(data=None, macd=None, macd_signal=None):
     """ Calculate MACD histogram
@@ -85,9 +94,13 @@ def macd_hist(data=None, macd=None, macd_signal=None):
 
         Either raw data or the MACD and MACD signal must be provided, all three
         are not necessary.
-
     """
-    pass
+    if data is not None:
+       macd = macd(data)
+       macd_signal = macd_signal(macd=macd)
+    elif macd is None or macd_signal is None:
+        pass
+    return subtract(macd, macd_signal)
 
 def macd_signal(data=None, macd=None):
     """ Calculate MACD signal
@@ -100,9 +113,13 @@ def macd_signal(data=None, macd=None):
     .. note::
 
         Either raw data or the MACD must be provided, both ar not necessary
-
     """
-    pass
+    if data is not None:
+        macd = macd(data)
+    elif macd is None:
+        pass
+    return exp_weighted_moving_average(macd, 9)
+
 
 def momentum(data, span):
     """ Calculate Momentum
