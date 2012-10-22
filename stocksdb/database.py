@@ -39,7 +39,7 @@ class StockDBManager(object):
         Get access to database
         """
         self.db = Database()
-    
+
 
     def create_database(self):
         """
@@ -54,7 +54,7 @@ class StockDBManager(object):
         """
         ticker = ticker.lower()
         if name is None:
-            name = quotes.get_name(ticker) 
+            name = quotes.get_name(ticker)
         if exchange is None:
             exchange = quotes.get_stock_exchange(ticker)
         if sector is None:
@@ -63,14 +63,14 @@ class StockDBManager(object):
             industry = quotes.get_industry(ticker)
         stock = Symbol(ticker, name, exchange, sector, industry)
         session = self.db.Session()
-        
+
         if self.check_stock_exists(ticker,session):
             print "Stock %s already exists!" % (ticker.upper())
         else:
             print "Adding %s to database" % (ticker.upper())
             session.add(stock)
             session.add_all(self._download_quotes(ticker, date(1900,01,01), date.today()))
-        
+
         session.commit()
         session.close()
 
@@ -80,7 +80,7 @@ class StockDBManager(object):
         """
         ticker = ticker.lower()
         if start_date == end_date:
-            return 
+            return
         start = start_date
         end = end_date
         data = quotes.get_historical_prices(ticker, start, end)
@@ -115,7 +115,7 @@ class StockDBManager(object):
         for symbol in session.query(Symbol).all():
             self.update_quotes(symbol.Ticker)
             print 'Updated quotes for %s' % symbol.Ticker
-        session.close()        
+        session.close()
 
     def check_stock_exists(self,ticker,session=None):
         """
@@ -152,21 +152,28 @@ class StockDBManager(object):
             self.add_stock(ticker)
 
         if end_date is not None:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker, 
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
                 Quote.Date >= quote_date, Quote.Date <= end_date)).order_by(Quote.Date)
         else:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker,  
-                Quote.Date == quote_date))    
-    
+            query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
+                Quote.Date == quote_date))
+
         quotes = [quote for quote in query.all()]
         session.close()
         return quotes
 
-    
+
 if __name__ == '__main__':
+
     db = StockDBManager()
-    if str(argv[1]) == 'sync':
-        db.sync_quotes()   
-    if str(argv[1]) == 'add':
+    opt = str(argv[1])
+
+    if opt == 'create':
+        db.create_database()
+
+    if opt == 'sync':
+        db.sync_quotes()
+
+    if opt  == 'add':
         db.add_stock(str(argv[2]))
-    
+

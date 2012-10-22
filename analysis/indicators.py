@@ -17,6 +17,7 @@ def moving_average(data, span):
     data = Series(data)
     return stats.moments.rolling_mean(data, span).values
 
+
 def exp_weighted_moving_average(data, span):
     """ Calculate n-point exponentially weighted moving average
     :param data: Data to average
@@ -29,6 +30,7 @@ def exp_weighted_moving_average(data, span):
 # ------------------------------------------------
 # Moving Statistics
 # ------------------------------------------------
+
 def moving_stdev(data, span):
     """ Calculate n-point moving standard deviation
     :param data: Data to analyze
@@ -37,6 +39,7 @@ def moving_stdev(data, span):
     """
     data = Series(data)
     return stats.moments.rolling_std(data, span).values
+
 
 def moving_var(data, span):
     """ Calculate n-point moving variance
@@ -51,6 +54,22 @@ def moving_var(data, span):
 # ------------------------------------------------
 # Momentum Indicators
 # ------------------------------------------------
+
+
+def momentum(data, span):
+    """ Calculate Momentum
+
+    Momentum is defined as 100 times the ratio of the current value to the
+    value *span* days ago
+
+    :param data: Raw data to analyze
+    :param span: number of days before to use in the calculation of the
+    momentum ratio.
+    :returns: Momentum as a numpy array.
+    """
+    momentum = [100 * (cur / prev) for cur, prev in zip(data[span:], data)]
+    return empty(span).fill(None).append(momentum)
+
 
 def macd(data=None, fast_ewma=None, slow_ewma=None):
     """ Calculate Moving Average Convergence Divergence
@@ -70,13 +89,30 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
     if data is not None:
         slow_ewma = exp_weighted_moving_average(data, 26)
         fast_ewma = exp_weighted_moving_average(data, 12)
-
     elif fast_ewma is None or slow_ewma is None:
         pass
-
     slow_ewma = array(slow_ewma[26:])
     fast_ewma = array(fast_ewma[26:])
     return empty(26).fill(None).append(subtract(fast_ewma, slow_ewma))
+
+
+def macd_signal(data=None, macd=None):
+    """ Calculate MACD signal
+
+    The MACD signal is defined as the 9-day EWMA of the MACD.
+
+    :param data: (Optional) Raw data to analyze
+    :param macd: (Optional) MACD to use in MACD signal calculation
+    :returns: MACD signal as a numpy array
+    .. note::
+
+        Either raw data or the MACD must be provided, both ar not necessary
+    """
+    if data is not None:
+        macd = macd(data)
+    elif macd is None:
+        pass
+    return exp_weighted_moving_average(macd, 9)
 
 
 def macd_hist(data=None, macd=None, macd_signal=None):
@@ -101,40 +137,5 @@ def macd_hist(data=None, macd=None, macd_signal=None):
     elif macd is None or macd_signal is None:
         pass
     return subtract(macd, macd_signal)
-
-def macd_signal(data=None, macd=None):
-    """ Calculate MACD signal
-
-    The MACD signal is defined as the 9-day EWMA of the MACD.
-
-    :param data: (Optional) Raw data to analyze
-    :param macd: (Optional) MACD to use in MACD signal calculation
-    :returns: MACD signal as a numpy array
-    .. note::
-
-        Either raw data or the MACD must be provided, both ar not necessary
-    """
-    if data is not None:
-        macd = macd(data)
-    elif macd is None:
-        pass
-    return exp_weighted_moving_average(macd, 9)
-
-
-def momentum(data, span):
-    """ Calculate Momentum
-
-    Momentum is defined as 100 times the ratio of the current value to the
-    value *span* days ago
-
-    :param data: Raw data to analyze
-    :param span: number of days before to use in the calculation of the
-    momentum ratio.
-    :returns: Momentum as a numpy array.
-    """
-    momentum = [100 * (cur / prev) for cur, prev in zip(data[span:], data)]
-    return empty(span).fill(None).append(momentum)
-
-
 
 
