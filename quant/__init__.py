@@ -1,4 +1,2 @@
 #!/usr/bin/env python
-
-__VERSION__ = 0.1
-
+import analysis

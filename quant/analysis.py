@@ -14,8 +14,7 @@ def moving_average(data, span):
     :param span: Length of moving average window
     :returns: Moving average as a numpy array
     """
-    data = Series(data)
-    return stats.moments.rolling_mean(data, span).values
+    return stats.moments.rolling_mean(data, span)
 
 
 def exp_weighted_moving_average(data, span):
@@ -24,7 +23,7 @@ def exp_weighted_moving_average(data, span):
     :param span: Length of moving average window
     :returns: Exponentially weighted moving average as a numpy array
     """
-    return stats.moments.ewma(data, span=span).values
+    return stats.moments.ewma(data, span=span)
 
 
 # ------------------------------------------------
@@ -37,8 +36,7 @@ def moving_stdev(data, span):
     :param span: Length of moving window
     :returns: Moving standard deviation as a numpy array
     """
-    data = Series(data)
-    return stats.moments.rolling_std(data, span).values
+    return stats.moments.rolling_std(data, span)
 
 
 def moving_var(data, span):
@@ -47,8 +45,7 @@ def moving_var(data, span):
     :param span: Length of moving window
     :returns: moving variance as a numpy array
     """
-    data = Series(data)
-    return stats.moments.rolling_var(data, span).values
+    return stats.moments.rolling_var(data, span)
 
 
 # ------------------------------------------------

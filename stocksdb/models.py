@@ -47,7 +47,7 @@ class Quote(Base):
     Close = Column(Float)
     Volume = Column(Float)
     AdjClose = Column(Float)
-    Features = Relationship('Indicator', uselist=False, backref('Quotes'))
+    Features = relationship('Indicator', uselist=False, backref='Quotes')
 
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
@@ -71,14 +71,14 @@ class Indicator(Base):
     """
     __tablename__ = 'Indicators'
 
-    Id = Column(Integer,primary_key=True, ForeignKey('Quotes.Id'))
+    Id = Column(Integer, ForeignKey('Quotes.Id'), primary_key=True)
 
     # --------------------------------------------
     # Averages
     # --------------------------------------------
 
     # Moving Averages
-    ma_5_day = Columnn(Float)
+    ma_5_day = Column(Float)
     ma_10_day = Column(Float)
     ma_20_day = Column(Float)
     ma_50_day = Column(Float)
@@ -139,8 +139,13 @@ class Indicator(Base):
     momentum_200_day = Column(Float)
 
     # MACD
-    macd = Columnn(Float)
+    macd = Column(Float)
     macd_signal = Column(Float)
     macd_histogram = Column(Float)
+
+    def __init__(self, Id, ma_5_day=None, ewma_5_day=None):
+        self.Id = Id
+        self.ma_5_day = ma_5_day
+        self.ewma_5_day = ewma_5_day
 
 

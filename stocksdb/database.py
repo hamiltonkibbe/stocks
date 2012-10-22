@@ -2,13 +2,13 @@
 
 import ystockquote as quotes
 import config
-from sys import argv
+import indicators
 from datetime import date, timedelta
-from models  import Symbol, Quote
+from models  import Base, Symbol, Quote, Indicator
+from numpy import asarray
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import and_, or_, not_
-from sqlalchemy.ext.declarative import declarative_base
 
 
 class Database(object):
@@ -17,7 +17,7 @@ class Database(object):
         """
         Set up database access
         """
-        self.Base = declarative_base()
+        self.Base = Base
         if config.SQL_PASSWORD == '':
             engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER,
                 config.SQL_HOSTNAME, config.SQL_DATABASE)
@@ -30,27 +30,32 @@ class Database(object):
 
 
 class StockDBManager(object):
-    """
-    Stock database management class
+    """ Stock database management class
     """
 
     def __init__(self):
-        """
-        Get access to database
-        """
         self.db = Database()
 
 
     def create_database(self):
+        """ Create stock database tables if they do not exist already
         """
-        Create stock database tables if they do not exist already
-        """
-        self.db.Base.metadata.create_all(Engine)
+        self.db.Base.metadata.create_all(self.db.Engine)
 
 
     def add_stock(self, ticker, name=None, exchange=None, sector=None, industry=None):
-        """
-        Add a stock to the stock database
+        """ Add a stock to the stock database
+
+        Add the stock to the symbols table and populate quotes table with all
+        available historical quotes. If any of the optional parameters are left
+        out, the corresponding information will be obtained from Yahoo!
+        Finance.
+
+        :param ticker: Stock ticker symbol
+        :param name: (optional) Company/security name
+        :param exchange: (optional) Exchange on which the security is traded
+        :param sector: (optional) Company/security sector
+        :param Industry (optional) Company/security industry
         """
         ticker = ticker.lower()
         if name is None:
@@ -75,8 +80,7 @@ class StockDBManager(object):
         session.close()
 
     def _download_quotes(self, ticker, start_date, end_date):
-        """
-        Get quotes from Yahoo Finance
+        """ Get quotes from Yahoo Finance
         """
         ticker = ticker.lower()
         if start_date == end_date:
@@ -89,6 +93,18 @@ class StockDBManager(object):
             return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5],val[6]) for val in data]
         else:
             return
+
+    def _calculate_indicators(self, ticker):
+        """ Calculate indicators and add to indicators table
+        """
+        ticker = ticker.lower()
+        session = self.db.Session()
+        data = asarray(zip(*[(int(quote.Id), quote.AdjClose) for quote in session.query(Quote).filter_by(Ticker=ticker).order_by(Quote.Date).all()]))
+        for ind in indicators.calculate_all(data):
+            if not self.check_indicator_exists(ind.Id, session):
+                session.add(ind)
+        session.commit()
+        session.close()
 
     def update_quotes(self, ticker):
         """
@@ -121,10 +137,12 @@ class StockDBManager(object):
         """
         Return true if stock is already in database
         """
+        newsession = False
         if session is None:
+            newsession = True
             session = self.db.Session()
         exists = bool(session.query(Symbol).filter_by(Ticker=ticker.lower()).count())
-        if session is None:
+        if newsession:
             session.close()
         return exists
 
@@ -132,11 +150,25 @@ class StockDBManager(object):
         """
         Return true if a quote for the given symbol and date exists in the database
         """
+        newsession = False
         if session is None:
+            newsession = True
             session = self.db.Session()
         exists = bool(session.query(Symbol).filter_by(Ticker=ticker.lower(),
                         Date=date).count())
+        if newsession:
+            session.close()
+        return exists
+
+    def check_indicator_exists(self, qid, session=None):
+        """ Return True if indicator is already in database
+        """
+        newsession = False
         if session is None:
+            newsession = True
+            session = self.db.Session()
+        exists = bool(session.query(Indicator).filter_by(Id=qid).count())
+        if newsession:
             session.close()
         return exists
 
@@ -162,11 +194,20 @@ class StockDBManager(object):
         session.close()
         return quotes
 
+    def stocks(self):
+        session = self.db.Session()
+        stocks = [stock.Ticker for stock in session.query(Symbol).all()]
+        session.close()
+        return stocks
 
 if __name__ == '__main__':
+    from sys import argv, exit
 
     db = StockDBManager()
-    opt = str(argv[1])
+    try:
+        opt = str(argv[1])
+    except:
+        exit('No option specified, exiting.')
 
     if opt == 'create':
         db.create_database()
