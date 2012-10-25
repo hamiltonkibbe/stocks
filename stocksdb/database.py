@@ -134,6 +134,7 @@ class StockDBManager(object):
         for symbol in self.stocks(session):
             self.update_quotes(symbol)
             indicators.update_ma_5_day(symbol, session)
+            indicators.update_ma_10_day(symbol, session)
             print 'Updated quotes for %s' % symbol
         session.close()
 
