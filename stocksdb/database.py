@@ -5,7 +5,7 @@ import config
 import indicators
 from datetime import date, timedelta
 from models  import Base, Symbol, Quote, Indicator
-from numpy import asarray
+from numpy import array, asarray
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.sql import and_, or_, not_
@@ -119,7 +119,10 @@ class StockDBManager(object):
         if end_date > start_date:
             quotes = self._download_quotes(ticker, start_date, end_date)
         if quotes is not None:
+            for quote in quotes:
+                quote.Features.append(Indicator(quote.Id))
             session.add_all(quotes)
+
         session.commit()
         session.close()
 
@@ -128,9 +131,10 @@ class StockDBManager(object):
         Updates quotes for all stocks through current day.
         """
         session = self.db.Session()
-        for symbol in session.query(Symbol).all():
-            self.update_quotes(symbol.Ticker)
-            print 'Updated quotes for %s' % symbol.Ticker
+        for symbol in self.stocks(session):
+            self.update_quotes(symbol)
+            indicators.update_ma_5_day(symbol, session)
+            print 'Updated quotes for %s' % symbol
         session.close()
 
     def check_stock_exists(self,ticker,session=None):
@@ -194,10 +198,14 @@ class StockDBManager(object):
         session.close()
         return quotes
 
-    def stocks(self):
-        session = self.db.Session()
-        stocks = [stock.Ticker for stock in session.query(Symbol).all()]
-        session.close()
+    def stocks(self, session=None):
+        newsession = False
+        if session is None:
+            newsession = True
+            session = self.db.Session()
+        stocks = array([stock.Ticker for stock in session.query(Symbol).all()])
+        if newsession:
+            session.close()
         return stocks
 
 if __name__ == '__main__':
@@ -206,15 +214,16 @@ if __name__ == '__main__':
     db = StockDBManager()
     try:
         opt = str(argv[1])
+        if opt == 'create':
+            db.create_database()
+
+        elif opt == 'sync':
+            db.sync_quotes()
+
+        elif opt  == 'add':
+            db.add_stock(str(argv[2]))
+
     except:
-        exit('No option specified, exiting.')
+        exit('No command specified. Exiting.')
 
-    if opt == 'create':
-        db.create_database()
-
-    if opt == 'sync':
-        db.sync_quotes()
-
-    if opt  == 'add':
-        db.add_stock(str(argv[2]))
 
