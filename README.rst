@@ -5,42 +5,32 @@ Quant Trading R&D Environment
 **************
 Stock Data DB
 **************
-Local stock quote storage for backtesting and algorithm training. 
+Local stock quote storage for backtesting and algorithm training. The database
+serves as a local cache for stock data.  When data is requested from the 
+``StockDBManager`` it will be served from the local database if available, or
+rom an external source otherwise. All requested data is stored locally for 
+faster retrieval during subsequent requests. 
+database.py
+
 
 database.py
 ===========
-database.py contains the objects used for interacting with the local stock database
+database.py contains definitions for all database-access related functionality
+it may be run as a script to perform several database administration functions
 
-Database
---------
-Direct database access
-
-
-StockDBManager
---------------
-The StockDBManager manages the stock database. It retreives data from external 
-sources and caches it locally in the database. When data is requested from the 
-StockDBManager it will be served from the local database if it is cached, or 
-from an external source otherwise.  All requested data is stored locally for 
-faster retreval with subsequent requests. The manager also provides 
-administrative tools for working with the database.
 
 Getting started:
-""""""""""""""""
+----------------
 
 * Configure database settings in config.py
-* Use ``StockDBManager.create_database()`` to create the database on local 
+* Use ``python database.py create`` to create the database on local 
   machine
-* Add stocks to the database with ``StockDBManager.add_stock(symbol)``. Once 
+* Add stocks to the database with ``python database.py add <symbol>``. Once 
   a stock  is added,The quotes database is populated with historical quotes for 
-  the stock. For convenience, ``python database.py add symbol`` adds the
-  specified symbol to the stock database.
-* ``StockDBManager.update_quotes(symbol)`` will update te given symbol's 
-  quotes in the database. 
-* ``StockDBManager.sync_quotes()`` updates quotess for all stocks in the 
-  database and should be used daily to keep the database up to date. For 
-  convenience, ``python database.py sync`` will bring all quotes up to date.
-* Quotes are retreived through the interfaces in ``datafeed.py``.
+  the stock. 
+* ``python database.py sync`` updates quotess for all stocks in the 
+  database and should be used daily to keep the database up to date. 
+* Quotes are retreived through the interfaces in ``datafeed.py``
 
 datafeed.py
 ===========
