@@ -88,6 +88,42 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
             session.commit()
 
 
+def update_momentum(ticker, length, session, commit=True, check_all=False):
+    """ Update momentum columns in database
+
+    :param ticker: Ticker symbol of stock to update.
+    :type ticker: str
+    :param length: Length of exponentially weighted moving average to update.
+    :type length: int
+    :param session: SQLAlchemy database session to use.
+    :type session: session
+    :param commit: (Optional) Whether or not database changes should be committed
+    :type commit: bool
+    :param check_all: (Optional) Whether or not to check for and update holes in the data
+    :type check_all: bool
+    """
+    ticker=ticker.lower()
+    col_name = 'momentum_' + str(length) + '_day'
+    if not check_all:
+        last = session.query(Quote).filter_by(Ticker=ticker).order_by(Quote.Date.desc()).first()
+        if getattr(last.Features, col_name) is not None:
+            return
+    data = asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name)) for q in session.query(Quote).filter_by(Ticker=ticker).all()]))
+    ids = data[0]
+    adj_close = data[1].astype(float)
+    mom = data[2].astype(float)
+    to_update = array([x for x in where(isnan(mom))[0] if x >= length])
+    if len(to_update) > 0:
+        _min = min(to_update)
+        _max = max(to_update)
+        calc = analysis.momentum(adj_close[_min - length:_max + 1], length)
+        for idx in to_update:
+            val = calc[idx - length]
+            session.query(Indicator).filter_by(Id=ids[idx]).update({col_name: val})
+        if commit:
+            session.commit()
+
+
 
 def update_macd(ticker, session, commit=True, check_all=False):
     """ Update MACD for given stock in database
@@ -145,6 +181,7 @@ def update_all(ticker, session, commit=True, check_all=False):
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
         update_ma(ticker, length, session, False, check_all)
+        update_momentum(ticker, length, session, False, check_all)
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
     update_macd(ticker, session, False, check_all)

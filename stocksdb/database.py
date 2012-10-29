@@ -122,7 +122,7 @@ class StockDBManager(object):
                 for quote in quotes:
                     quote.Features = Indicator(quote.Id)
                 session.add_all(quotes)
-        indicators.update_all(ticker, session, False, check_all)
+            indicators.update_all(ticker, session, False, check_all)
         session.commit()
         session.close()
 
