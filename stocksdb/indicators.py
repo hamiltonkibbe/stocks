@@ -93,7 +93,7 @@ def update_macd(ticker, session, commit=True, check_all=False):
         if commit:
             session.commit()
 
-def update_all(ticker, session, commit=True, check_all=False)
+def update_all(ticker, session, commit=True, check_all=False):
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
         update_ma(ticker, length, session, False, check_all)
@@ -101,5 +101,5 @@ def update_all(ticker, session, commit=True, check_all=False)
         update_ewma(ticker, length, session, False, check_all)
     update_macd(ticker, session, False, check_all)
     if commit:
-        session.commit())
+        session.commit()
 
