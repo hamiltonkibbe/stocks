@@ -1,4 +1,4 @@
-MySQL-python==1.2.4b3
+MySQL-python==1.2.4b5
 PyBrain==0.3
 SQLAlchemy==0.7.9
 argparse==1.2.1
@@ -6,6 +6,6 @@ beautifulsoup4==4.1.3
 numpy==1.6.2
 pandas==0.9.0
 python-dateutil==2.1
-pytz==2012f
+pytz==2012g
 six==1.2.0
 wsgiref==0.1.2
