@@ -20,9 +20,9 @@ it may be run as a script to perform several database administration functions
 
 
 **Getting started:**
+
 * Configure database settings in config.py
-* Use ``python database.py create`` to create the database on local 
-  machine
+* Use ``python database.py create`` to create the database on local machine
 * Add stocks to the database with ``python database.py add <symbol>``. Once 
   a stock  is added,The quotes database is populated with historical quotes for 
   the stock. 
