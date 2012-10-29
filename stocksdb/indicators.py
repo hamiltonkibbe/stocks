@@ -18,6 +18,17 @@ def get_dataset(ticker, session, *columns):
 
 def update_ma(ticker, length, session, commit=True, check_all=False):
     """ Update moving average columns in database
+
+    :param ticker: Ticker symbol of stock to update.
+    :type ticker: str
+    :param length: Length of moving average to update.
+    :type length: int
+    :param session: SQLAlchemy database session to use.
+    :type session: session
+    :param commit: (Optional) Whether or not database changes should be committed
+    :type commit: bool
+    :param check_all: (Optional) Whether or not to check for and update holes in the data
+    :type check_all: bool
     """
     ticker=ticker.lower()
     col_name = 'ma_' + str(length) + '_day'
@@ -43,6 +54,17 @@ def update_ma(ticker, length, session, commit=True, check_all=False):
 
 def update_ewma(ticker, length, session, commit=True, check_all=False):
     """ Update exponentially weighted moving average columns in database
+
+    :param ticker: Ticker symbol of stock to update.
+    :type ticker: str
+    :param length: Length of exponentially weighted moving average to update.
+    :type length: int
+    :param session: SQLAlchemy database session to use.
+    :type session: session
+    :param commit: (Optional) Whether or not database changes should be committed
+    :type commit: bool
+    :param check_all: (Optional) Whether or not to check for and update holes in the data
+    :type check_all: bool
     """
     ticker=ticker.lower()
     col_name = 'ewma_' + str(length) + '_day'
@@ -68,6 +90,17 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
 
 
 def update_macd(ticker, session, commit=True, check_all=False):
+    """ Update MACD for given stock in database
+
+    :param ticker: Ticker symbol of stock to update.
+    :type ticker: str
+    :param session: SQLAlchemy database session to use.
+    :type session: session
+    :param commit: (Optional) Whether or not database changes should be committed
+    :type commit: bool
+    :param check_all: (Optional) Whether or not to check for and update holes in the data
+    :type check_all: bool
+    """
     ticker = ticker.lower()
     if not check_all:
         last = session.query(Quote).filter_by(Ticker=ticker).order_by(Quote.Date.desc()).first()
@@ -93,7 +126,21 @@ def update_macd(ticker, session, commit=True, check_all=False):
         if commit:
             session.commit()
 
+
+
+
 def update_all(ticker, session, commit=True, check_all=False):
+    """ Update all columns in the Indicators table
+
+    :param ticker: Ticker symbol of stock to update.
+    :type ticker: str
+    :param session: SQLAlchemy database session to use.
+    :type session: session
+    :param commit: (Optional) Whether or not database changes should be committed
+    :type commit: bool
+    :param check_all: (Optional) Whether or not to check for and update holes in the data
+    :type check_all: bool
+    """
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
         update_ma(ticker, length, session, False, check_all)
