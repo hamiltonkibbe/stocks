@@ -126,7 +126,7 @@ class StockDBManager(object):
         session.commit()
         session.close()
 
-    def sync_quotes(self):
+    def sync_quotes(self, check_all=False):
         """
         Updates quotes for all stocks through current day.
         """
@@ -135,10 +135,10 @@ class StockDBManager(object):
             session = self.db.Session()
 
             for length in [5, 10, 20, 50, 100, 200]:
-                indicators.update_ma(symbol, length, session, False)
+                indicators.update_ma(symbol, length, session, False, check_all)
             for length in [5, 10, 12, 20, 26, 50, 100, 200]:
-                indicators.update_ewma(symbol, length, session, False)
-            indicators.update_macd(symbol, session, False, True)
+                indicators.update_ewma(symbol, length, session, False, check_all)
+            indicators.update_macd(symbol, session, False, check_all)
 
             session.commit()
             session.close()
