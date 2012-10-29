@@ -106,7 +106,7 @@ class StockDBManager(object):
         session.commit()
         session.close()
 
-    def update_quotes(self, ticker):
+    def update_quotes(self, ticker, check_all=False):
         """
         Get all missing quotes through current day for the given stock
         """
@@ -122,7 +122,7 @@ class StockDBManager(object):
                 for quote in quotes:
                     quote.Features = Indicator(quote.Id)
                 session.add_all(quotes)
-
+                indicators.update_all(ticker, session, False, check_all)
         session.commit()
         session.close()
 
@@ -131,17 +131,7 @@ class StockDBManager(object):
         Updates quotes for all stocks through current day.
         """
         for symbol in self.stocks():
-            self.update_quotes(symbol)
-            session = self.db.Session()
-
-            for length in [5, 10, 20, 50, 100, 200]:
-                indicators.update_ma(symbol, length, session, False, check_all)
-            for length in [5, 10, 12, 20, 26, 50, 100, 200]:
-                indicators.update_ewma(symbol, length, session, False, check_all)
-            indicators.update_macd(symbol, session, False, check_all)
-
-            session.commit()
-            session.close()
+            self.update_quotes(symbol, check_all)
             print 'Updated quotes for %s' % symbol
 
     def check_stock_exists(self,ticker,session=None):
