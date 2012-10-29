@@ -122,7 +122,7 @@ class StockDBManager(object):
                 for quote in quotes:
                     quote.Features = Indicator(quote.Id)
                 session.add_all(quotes)
-                indicators.update_all(ticker, session, False, check_all)
+        indicators.update_all(ticker, session, False, check_all)
         session.commit()
         session.close()
 
@@ -207,10 +207,10 @@ class StockDBManager(object):
 
 if __name__ == '__main__':
     from sys import argv, exit
-
-    db = StockDBManager()
-    try:
+    if len(argv) > 1:
+        db = StockDBManager()
         opt = str(argv[1])
+
         if opt == 'create':
             db.create_database()
 
@@ -220,7 +220,7 @@ if __name__ == '__main__':
         elif opt  == 'add':
             db.add_stock(str(argv[2]))
 
-    except:
+    else:
         exit('No command specified. Exiting.')
 
 

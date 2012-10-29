@@ -111,6 +111,7 @@ def update_macd(ticker, session, commit=True, check_all=False):
     fast_ewma = data[1].astype(float)
     slow_ewma = data[2].astype(float)
     macd = data[3].astype(float)
+
     to_update = array([x for x in where(isnan(macd))[0] if x >= 25])
     if len(to_update) > 0:
         _min = min(to_update)

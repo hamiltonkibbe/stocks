@@ -88,11 +88,7 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
         fast_ewma = exp_weighted_moving_average(data, 12)
     elif fast_ewma is None or slow_ewma is None:
         pass
-    slow_ewma = array(slow_ewma[26:])
-    fast_ewma = array(fast_ewma[26:])
-    macd = empty(26)
-    macd[:] = None
-    return append(macd, subtract(fast_ewma, slow_ewma)).astype(float)
+    return subtract(fast_ewma, slow_ewma).astype(float)
 
 
 def macd_signal(data=None, macd=None):
