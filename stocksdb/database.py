@@ -118,10 +118,10 @@ class StockDBManager(object):
         end_date = date.today()
         if end_date > start_date:
             quotes = self._download_quotes(ticker, start_date, end_date)
-        if quotes is not None:
-            for quote in quotes:
-                quote.Features.append(Indicator(quote.Id))
-            session.add_all(quotes)
+            if quotes is not None:
+                for quote in quotes:
+                    quote.Features = Indicator(quote.Id)
+                session.add_all(quotes)
 
         session.commit()
         session.close()
@@ -130,13 +130,19 @@ class StockDBManager(object):
         """
         Updates quotes for all stocks through current day.
         """
-        session = self.db.Session()
-        for symbol in self.stocks(session):
+        for symbol in self.stocks():
             self.update_quotes(symbol)
-            indicators.update_ma_5_day(symbol, session)
-            indicators.update_ma_10_day(symbol, session)
+            session = self.db.Session()
+
+            for length in [5, 10, 20, 50, 100, 200]:
+                indicators.update_ma(symbol, length, session, False)
+            for length in [5, 10, 12, 20, 26, 50, 100, 200]:
+                indicators.update_ewma(symbol, length, session, False)
+            indicators.update_macd(symbol, session, False, True)
+
+            session.commit()
+            session.close()
             print 'Updated quotes for %s' % symbol
-        session.close()
 
     def check_stock_exists(self,ticker,session=None):
         """

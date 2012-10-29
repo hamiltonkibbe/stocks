@@ -90,7 +90,9 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
         pass
     slow_ewma = array(slow_ewma[26:])
     fast_ewma = array(fast_ewma[26:])
-    return empty(26).fill(None).append(subtract(fast_ewma, slow_ewma))
+    macd = empty(26)
+    macd[:] = None
+    return append(macd, subtract(fast_ewma, slow_ewma)).astype(float)
 
 
 def macd_signal(data=None, macd=None):
