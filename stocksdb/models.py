@@ -17,7 +17,7 @@ class Symbol(Base):
     Exchange = Column(String(50))
     Sector = Column(String(50))
     Industry = Column(String(50))
-    Quotes = relationship('Quote')
+    Quotes = relationship('Quote', cascade='all, delete, delete-orphan')
 
     def __init__(self, Ticker, Name, Exchange=None, Sector=None, Industry=None):
         self.Ticker = Ticker
@@ -47,7 +47,7 @@ class Quote(Base):
     Close = Column(Float)
     Volume = Column(Float)
     AdjClose = Column(Float)
-    Features = relationship('Indicator', uselist=False, backref='Quotes', lazy='joined')
+    Features = relationship('Indicator', uselist=False, backref='Quotes', lazy='joined',cascade='all, delete, delete-orphan')
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
         self.Date = Date
