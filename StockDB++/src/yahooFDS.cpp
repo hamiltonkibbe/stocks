@@ -33,6 +33,92 @@ YahooFDS::~YahooFDS()
 }
 
 
+
+virtual std::string
+YahooFDS::get_name(const std::string &symbol)
+{
+    std::string val = request(get_url(symbol, "n"));
+    std::string u_symbol = symbol;
+    boost::to_upper(u_symbol);
+    if (val.find(u_symbol) == 1)
+        throw TickerNameException();
+    val.erase(remove(val.begin(), val.end(), '\"'), val.end());
+    val.erase(remove(val.begin(), val.end(), '\n'), val.end());
+    return val;
+}
+
+
+virtual std::string
+YahooFDS::get_stock_exchange(const std::string &symbol)
+{
+    std::string val = request(get_url(symbol, "x"));
+    if (val.find("N/A") == 1)
+        throw TickerNameException();
+    val.erase(remove(val.begin(), val.end(), '\"'), val.end());
+    val.erase(remove(val.begin(), val.end(), '\n'), val.end());
+    if (val.find("NasdaqNM") != std::string::npos)
+        val = "Nasdaq";
+    return val;
+}
+
+
+virtual HistoricalQuote 
+YahooFDS::get_quote(const std::string &symbol)
+{
+    quoteVector_t quotes;
+    boost::gregorian::date today = boost::gregorian::day_clock::local_day();
+    get_historical_prices(symbol, today, today, quotes);
+    return quotes.at(0);
+}
+
+
+virtual void
+YahooFDS::get_historical_prices(const std::string &symbol,
+                                    date &start,
+                                    date &end,
+                                    quoteVector_t &quotes)
+{
+    std::vector<std::string> quoteStrings;
+    date::ymd_type start_d = start.year_month_day();
+    date::ymd_type end_d = end.year_month_day();
+    std::ostringstream url;
+    url << "http://ichart.yahoo.com/table.csv?s=" << symbol << "&d=" \
+                                                << end_d.month - 1 << "&e=" \
+                                                << end_d.day << "&f=" \
+                                                << end_d.year << "&a=" \
+                                                << start_d.month - 1 << "&b=" \
+                                                << start_d.day << "&c=" \
+                                                << start_d.year << "&ignore=.csv";
+    
+    // split the response into lines
+    boost:split(quoteStrings, (const std::string &)request(url.str()), boost::is_any_of("\n"),boost::token_compress_on); 
+    
+    // Remove header line
+    quoteStrings.erase(quoteStrings.begin());
+      
+    for (std::vector<std::string>::reverse_iterator it = quoteStrings.rbegin(); it < quoteStrings.rend(); ++it)
+    {
+        // Ensure we have a valid quote here. 38 is presumably the shortest possible quote. 35 is magic as fuck (MAF).
+        if ((*it)->length() > 35)
+        {
+            std::vector<std::string> temp;
+            boost::split(temp, *it, boost::is_any_of(", "));
+            HistoricalQuote quote(symbol,
+                                temp.at(0),
+                                atof(temp.at(1).c_str()),
+                                atof(temp.at(2).c_str()),
+                                atof(temp.at(3).c_str()),
+                                atof(temp.at(4).c_str()),
+                                atol(temp.at(5).c_str()),
+                                atof(temp.at(6).c_str()));
+                                
+            // Make it rain!
+            quotes.push_back(quote);
+        }
+    }
+}
+
+
 double
 YahooFDS::get_price(const std::string &symbol)
 {
@@ -228,78 +314,6 @@ YahooFDS::get_avg_daily_volume(const std::string &symbol)
         throw TickerNameException();
     return atoi(val.c_str());
 }
-
-
-std::string
-YahooFDS::get_name(const std::string &symbol)
-{
-    std::string val = request(get_url(symbol, "n"));
-    std::string u_symbol = symbol;
-    boost::to_upper(u_symbol);
-    if (val.find(u_symbol) == 1)
-        throw TickerNameException();
-    val.erase(remove(val.begin(), val.end(), '\"'), val.end());
-    val.erase(remove(val.begin(), val.end(), '\n'), val.end());
-    return val;
-}
-
-
-std::string
-YahooFDS::get_stock_exchange(const std::string &symbol)
-{
-    std::string val = request(get_url(symbol, "x"));
-    if (val.find("N/A") == 1)
-        throw TickerNameException();
-    val.erase(remove(val.begin(), val.end(), '\"'), val.end());
-    val.erase(remove(val.begin(), val.end(), '\n'), val.end());
-    if (val.find("NasdaqNM") != std::string::npos)
-        val = "Nasdaq";
-    return val;
-}
-
-
-
-
-
-void
-YahooFDS::get_historical_prices(const std::string &symbol,
-                                    date &start,
-                                    date &end,
-                                    quoteVector_t &quotes)
-{
-    std::vector<std::string> quoteStrings;
-    date::ymd_type start_d = start.year_month_day();
-    date::ymd_type end_d = end.year_month_day();
-    std::ostringstream url;
-    url << "http://ichart.yahoo.com/table.csv?s=" << symbol << "&d=" \
-                                                << end_d.month - 1 << "&e=" \
-                                                << end_d.day << "&f=" \
-                                                << end_d.year << "&a=" \
-                                                << start_d.month - 1 << "&b=" \
-                                                << start_d.day << "&c=" \
-                                                << start_d.year << "&ignore=.csv";
-    
-    boost:split(quoteStrings, (const std::string &)request(url.str()), boost::is_any_of("\n"),boost::token_compress_on); 
-    quoteStrings.erase(quoteStrings.begin());
-    quoteStrings.erase(quoteStrings.end());
-      
-    for (std::vector<std::string>::reverse_iterator it = quoteStrings.rbegin(); it < quoteStrings.rend(); it++)
-    {
-        std::vector<std::string> temp;
-        boost::split(temp, *it, boost::is_any_of(", "));
-        HistoricalQuote quote(symbol,
-                              temp.at(0),
-                              atof(temp.at(1).c_str()),
-                              atof(temp.at(2).c_str()),
-                              atof(temp.at(3).c_str()),
-                              atof(temp.at(4).c_str()),
-                              atol(temp.at(5).c_str()),
-                              atof(temp.at(6).c_str()));
-        quotes.push_back(quote);
-    }
-    std::cout << "Got " << quotes.size() << " quotes!" << endl;
-}
-
 
 
 std::string

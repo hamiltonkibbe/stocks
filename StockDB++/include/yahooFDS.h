@@ -36,6 +36,18 @@ public:
     YahooFDS();
     ~YahooFDS();
     
+    virtual std::string get_name(const std::string &symbol);
+    virtual std::string get_stock_exchange(const std::string &symbol);
+    virtual std::string get_sector(const std::string &symbol);
+    virtual std::string get_industry(const std::string &symbol);
+    virtual HistoricalQuote get_quote(const std::string &symbol);
+    virtual void get_historical_prices(const std::string &symbol,
+                                    boost::gregorian::date &start,
+                                    boost::gregorian::date &end,
+                                    quoteVector_t &quotes);
+    
+    
+    
     double get_price(const std::string &symbol);
     double get_change(const std::string &symbol);
     double get_market_cap(const std::string &symbol);
@@ -56,16 +68,7 @@ public:
     
     unsigned get_volume(const std::string &symbol);
     unsigned  get_avg_daily_volume(const std::string &symbol);
-    
-    std::string get_name(const std::string &symbol);
-    std::string get_stock_exchange(const std::string &symbol);
-    std::string get_sector(const std::string &symbol);
-    std::string get_industry(const std::string &symbol);
-    
-    void get_historical_prices(const std::string &symbol,
-                                boost::gregorian::date &start,
-                                boost::gregorian::date &end,
-                                quoteVector_t &quotes);
+
     
     
 private:

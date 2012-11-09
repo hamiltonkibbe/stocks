@@ -23,14 +23,13 @@ class HistoricalQuote
 public:
     HistoricalQuote(std::string _Ticker,
                     std::string _Date,
-                    float _Open,
-                    float _High,
-                    float _Low,
-                    float _Close,
+                    double _Open,
+                    double _High,
+                    double _Low,
+                    double _Close,
                     unsigned long _Volume,
-                    float _AdjClose)
+                    double _AdjClose)
     {
-        
         Ticker = _Ticker;
         boost::to_lower(Ticker);
         Date = boost::gregorian::date(boost::gregorian::from_string(_Date));
@@ -46,12 +45,12 @@ public:
 
     std::string Ticker;
     boost::gregorian::date Date;
-    float Open;
-    float High;
-    float Low;
-    float Close;
+    double Open;
+    double High;
+    double Low;
+    double Close;
     unsigned long Volume;
-    float AdjClose; 
+    double AdjClose; 
        
 };
 

@@ -2,7 +2,7 @@
  * @file    financialDataSource.h
  * @author  Hamilton Kibbe ham@hamiltonkibbe.com
  *
- * @brief   FinancialDataSource interface
+ * @brief   FinancialDataSource Interface
  *
  *
 */
@@ -30,7 +30,15 @@ class FinancialDataSource
     
 public:
     virtual std::string get_name(const std::string &symbol) = 0;
+    
     virtual std::string get_stock_exchange(const std::string &symbol) = 0;
+    
+    virtual std::string get_sector(const std::string &symbol) = 0;
+    
+    virtual std::string get_industry(const std::string &symbol) = 0;
+    
+    virtual HistoricalQuote get_quote(const std::string &symbol) = 0;
+    
     virtual void get_historical_prices(const std::string &symbol,
                                         boost::gregorian::date &start,
                                         boost::gregorian::date &end,
