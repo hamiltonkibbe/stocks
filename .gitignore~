@@ -37,15 +37,8 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
-#CMake
 CMakeCache.txt
 CMakeFiles
 Makefile
 cmake_install.cmake
 install_manifest.txt
-
-StockDB++/cmake.sh
-StockDB++/build
-
-

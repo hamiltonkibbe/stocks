@@ -1,1 +1,0 @@
-/opt/local/bin/g++-mp-4.7    -std=c++11 -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/StockDB.dir/main.cpp.o CMakeFiles/StockDB.dir/StockDatabase.cpp.o CMakeFiles/StockDB.dir/yahooFDS.cpp.o  -o ../../bin/StockDB  /opt/local/lib/libboost_date_time-mt.dylib /usr/local/lib/libcurl.dylib /usr/local/lib/libmysqlcppconn.dylib 

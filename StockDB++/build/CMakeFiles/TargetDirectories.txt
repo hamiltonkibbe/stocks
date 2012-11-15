@@ -1,1 +1,0 @@
-/Users/Ham/Dev/stocks/StockDB++/build/src/CMakeFiles/StockDB.dir
