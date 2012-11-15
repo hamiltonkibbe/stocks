@@ -41,10 +41,9 @@ public:
     virtual std::string get_sector(const std::string &symbol);
     virtual std::string get_industry(const std::string &symbol);
     virtual HistoricalQuote get_quote(const std::string &symbol);
-    virtual void get_historical_prices(const std::string &symbol,
+    virtual std::unique_ptr<quoteVector_t> get_historical_prices(const std::string &symbol,
                                     boost::gregorian::date &start,
-                                    boost::gregorian::date &end,
-                                    quoteVector_t &quotes);
+                                    boost::gregorian::date &end);
     
     
     

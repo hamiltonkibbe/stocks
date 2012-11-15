@@ -14,6 +14,7 @@
 #include "boost/date_time/gregorian/gregorian_types.hpp"
 
 /* Standard Header Files */
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -39,10 +40,9 @@ public:
     
     virtual HistoricalQuote get_quote(const std::string &symbol) = 0;
     
-    virtual void get_historical_prices(const std::string &symbol,
+    virtual std::unique_ptr<quoteVector_t> get_historical_prices(const std::string &symbol,
                                         boost::gregorian::date &start,
-                                        boost::gregorian::date &end,
-                                        quoteVector_t &quotes) = 0;
+                                        boost::gregorian::date &end) = 0;
 };
 
 #endif

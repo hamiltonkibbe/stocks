@@ -4,21 +4,29 @@ include_directories(../include)
 file(GLOB HEADERS ../include/*.h*)
 file(GLOB SRCS *.cpp)
 
+
 # Boost
-FIND_PACKAGE(Boost COMPONENTS date_time)
-IF (Boost_FOUND)
-    INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIR})
-    ADD_DEFINITIONS("-DHAS_BOOST")
-ENDIF()
+find_package(Boost COMPONENTS date_time)
+if (BOOST_FOUND)
+    include_directories(${BOOST_INCLUDE_DIR})
+    add_definitions("-DHAS_BOOST")
+endif()
 
 # Curl
-FIND_PACKAGE(CURL)
-IF (CURL_FOUND)
-    INCLUDE_DIRECTORIES(${Curl_INCLUDE_DIR})
-ENDIF()
+find_package(Curl)
+if(CURL_FOUND)
+    include_directories(${CURL_INCLUDE_DIR})
+endif()
 
 
-ADD_EXECUTABLE(
+# MySQL
+find_package(MySQLConnectorCPP REQUIRED)
+if(MYSQLCONNECTORCPP_FOUND)
+    include_directories(${MYSQLCONNECTORCPP_INCLUDE_DIR})
+endif()
+
+
+add_executable(
 
     StockDB
     ${SRCS}
@@ -26,4 +34,4 @@ ADD_EXECUTABLE(
     
 )
 
-TARGET_LINK_LIBRARIES( StockDB ${Boost_LIBRARIES} ${CURL_LIBRARIES})
+target_link_Libraries( StockDB ${Boost_LIBRARIES} ${CURL_LIBRARIES} ${MYSQLCONNECTORCPP_LIBRARIES})

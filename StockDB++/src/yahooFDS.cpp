@@ -34,11 +34,11 @@ YahooFDS::~YahooFDS()
 
 
 
-virtual std::string
+std::string
 YahooFDS::get_name(const std::string &symbol)
 {
-    std::string val = request(get_url(symbol, "n"));
-    std::string u_symbol = symbol;
+    auto val = request(get_url(symbol, "n"));
+    auto u_symbol = symbol;
     boost::to_upper(u_symbol);
     if (val.find(u_symbol) == 1)
         throw TickerNameException();
@@ -48,10 +48,10 @@ YahooFDS::get_name(const std::string &symbol)
 }
 
 
-virtual std::string
+std::string
 YahooFDS::get_stock_exchange(const std::string &symbol)
 {
-    std::string val = request(get_url(symbol, "x"));
+    auto val = request(get_url(symbol, "x"));
     if (val.find("N/A") == 1)
         throw TickerNameException();
     val.erase(remove(val.begin(), val.end(), '\"'), val.end());
@@ -62,25 +62,39 @@ YahooFDS::get_stock_exchange(const std::string &symbol)
 }
 
 
-virtual HistoricalQuote 
-YahooFDS::get_quote(const std::string &symbol)
+std::string
+YahooFDS::get_sector(const std::string &symbol)
 {
-    quoteVector_t quotes;
-    boost::gregorian::date today = boost::gregorian::day_clock::local_day();
-    get_historical_prices(symbol, today, today, quotes);
-    return quotes.at(0);
+    return "The Sector!";
 }
 
 
-virtual void
+std::string
+YahooFDS::get_industry(const std::string &symbol)
+{
+    return "The Industry!";
+}
+
+HistoricalQuote 
+YahooFDS::get_quote(const std::string &symbol)
+{
+    auto today = boost::gregorian::day_clock::local_day();
+    std::unique_ptr<quoteVector_t> quotes;
+    quotes = get_historical_prices(symbol, today, today);
+    return quotes->at(0);
+}
+
+
+std::unique_ptr<quoteVector_t>
 YahooFDS::get_historical_prices(const std::string &symbol,
                                     date &start,
-                                    date &end,
-                                    quoteVector_t &quotes)
+                                    date &end)
 {
+    //quoteVector_t *quotes = new quoteVector_t;
+    auto quotes = new quoteVector_t;
+    auto start_d = start.year_month_day();
+    auto end_d = end.year_month_day();
     std::vector<std::string> quoteStrings;
-    date::ymd_type start_d = start.year_month_day();
-    date::ymd_type end_d = end.year_month_day();
     std::ostringstream url;
     url << "http://ichart.yahoo.com/table.csv?s=" << symbol << "&d=" \
                                                 << end_d.month - 1 << "&e=" \
@@ -96,10 +110,10 @@ YahooFDS::get_historical_prices(const std::string &symbol,
     // Remove header line
     quoteStrings.erase(quoteStrings.begin());
       
-    for (std::vector<std::string>::reverse_iterator it = quoteStrings.rbegin(); it < quoteStrings.rend(); ++it)
+    for (auto it = quoteStrings.rbegin(); it < quoteStrings.rend(); ++it)
     {
         // Ensure we have a valid quote here. 38 is presumably the shortest possible quote. 35 is magic as fuck (MAF).
-        if ((*it)->length() > 35)
+        if ((*it).length() > 35)
         {
             std::vector<std::string> temp;
             boost::split(temp, *it, boost::is_any_of(", "));
@@ -113,16 +127,17 @@ YahooFDS::get_historical_prices(const std::string &symbol,
                                 atof(temp.at(6).c_str()));
                                 
             // Make it rain!
-            quotes.push_back(quote);
+            quotes->push_back(quote);
         }
     }
+    return std::unique_ptr<quoteVector_t>(std::move(quotes));
 }
 
 
 double
 YahooFDS::get_price(const std::string &symbol)
 {
-    std::string val = request(get_url(symbol, "l1"));
+    auto val = request(get_url(symbol, "l1"));
     if (val.find("0.00") == 0 || val.find("N/A") != std::string::npos)
         throw TickerNameException();
     return atof(val.c_str());
@@ -132,7 +147,7 @@ YahooFDS::get_price(const std::string &symbol)
 double
 YahooFDS::get_change(const std::string &symbol)
 {
-    std::string val = request(get_url(symbol, "c1"));
+    auto val = request(get_url(symbol, "c1"));
     if (val.find("0.00") == 0 || val.find("N/A") != std::string::npos)
         throw TickerNameException();
     return atof(val.c_str());
