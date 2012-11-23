@@ -74,10 +74,15 @@ class StockDBManager(object):
         else:
             print "Adding %s to database" % (ticker.upper())
             session.add(stock)
-            session.add_all(self._download_quotes(ticker, date(1900,01,01), date.today()))
-
+            q = self._download_quotes(ticker, date(1900,01,01), date.today())
+            for quote in q:
+                quote.Features = Indicator(quote.Id)
+            session.add_all(q)
         session.commit()
         session.close()
+        self.update_quotes(ticker)
+
+
 
     def _download_quotes(self, ticker, start_date, end_date):
         """ Get quotes from Yahoo Finance
@@ -90,7 +95,7 @@ class StockDBManager(object):
         data = quotes.get_historical_prices(ticker, start, end)
         data = data[len(data)-1:0:-1]
         if len(data):
-            return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5],val[6]) for val in data]
+            return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5],val[6]) for val in data if len(val) > 6]
         else:
             return
 
@@ -122,7 +127,7 @@ class StockDBManager(object):
                 for quote in quotes:
                     quote.Features = Indicator(quote.Id)
                 session.add_all(quotes)
-            indicators.update_all(ticker, session, False, check_all)
+        indicators.update_all(ticker, session, False, check_all)
         session.commit()
         session.close()
 

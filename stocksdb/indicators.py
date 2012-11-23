@@ -181,7 +181,7 @@ def update_all(ticker, session, commit=True, check_all=False):
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
         update_ma(ticker, length, session, False, check_all)
-        update_momentum(ticker, length, session, False, check_all)
+        #update_momentum(ticker, length, session, False, check_all)
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
     update_macd(ticker, session, False, check_all)

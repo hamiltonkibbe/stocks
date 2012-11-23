@@ -30,6 +30,15 @@ def exp_weighted_moving_average(data, span):
 # Moving Statistics
 # ------------------------------------------------
 
+
+def percent_change(data):
+    """ Calculate percent change in data
+
+    """
+    return array(Series(data).pct_change().values)
+
+
+
 def moving_stdev(data, span):
     """ Calculate n-point moving standard deviation
     :param data: Data to analyze

@@ -17,7 +17,7 @@ class Symbol(Base):
     Exchange = Column(String(50))
     Sector = Column(String(50))
     Industry = Column(String(50))
-    Quotes = relationship('Quote')
+    Quotes = relationship('Quote',backref='Symbols', cascade='all, delete, delete-orphan')
 
     def __init__(self, Ticker, Name, Exchange=None, Sector=None, Industry=None):
         self.Ticker = Ticker
@@ -39,7 +39,7 @@ class Quote(Base):
     __tablename__ = 'Quotes'
 
     Id = Column(Integer, primary_key=True)
-    Ticker = Column(String(5), ForeignKey('Symbols.Ticker'))
+    Ticker = Column(String(5), ForeignKey('Symbols.Ticker',ondelete='CASCADE'))
     Date = Column(Date)
     Open = Column(Float)
     High = Column(Float)
@@ -47,7 +47,7 @@ class Quote(Base):
     Close = Column(Float)
     Volume = Column(Float)
     AdjClose = Column(Float)
-    Features = relationship('Indicator', uselist=False, backref='Quotes', lazy='joined')
+    Features = relationship('Indicator', uselist=False, backref='Quotes', lazy='joined', cascade='all, delete, delete-orphan')
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
         self.Date = Date
@@ -70,7 +70,7 @@ class Indicator(Base):
     """
     __tablename__ = 'Indicators'
 
-    Id = Column(Integer, ForeignKey('Quotes.Id'), primary_key=True)
+    Id = Column(Integer, ForeignKey('Quotes.Id',ondelete='CASCADE'), primary_key=True)
 
     # --------------------------------------------
     # Averages
