@@ -116,9 +116,12 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
     if len(to_update) > 0:
         _min = min(to_update)
         _max = max(to_update)
-        calc = analysis.momentum(adj_close[_min - length:_max + 1], length)
+        calc = analysis.momentum(adj_close[_min - (length - 1):_max + 1], length)
         for idx in to_update:
-            val = calc[idx - length]
+            print "Length is: %i" % length
+            print "Length of to_update: %i Length of calc: %i" % (len(to_update), len(calc))
+            print "Index: %i:%i " % (idx + (length - (_min + 1)), len(calc)-1)
+            val = calc[idx + (length - (_min + 1))]
             session.query(Indicator).filter_by(Id=ids[idx]).update({col_name: val})
         if commit:
             session.commit()

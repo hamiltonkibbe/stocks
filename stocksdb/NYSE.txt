@@ -1,0 +1,3253 @@
+Symbol	Description
+A	Agilent Technologies
+AA	Alcoa Inc.
+AAN	Aaron's Inc.
+AAP	Advance Auto Parts Inc
+AAT	American Assets Trust
+AAV	Advantage Oil & Gas Ltd
+AB	Alliance Capital Management L.P.
+ABB	Abb Ltd
+ABC	Amerisourcebergen Corporation
+ABG	Asbury Automotive Group Inc
+ABM	Abm Industries Incorporated
+ABR	Arbor Realty Trust
+ABT	Abbott Laboratories
+ABV	Companhia De Bebidas - Ambev
+ABV.C	Companhia De Bebidas - Ambev
+ABW-A	Asbc Capital I 7.625
+ABW-B	Associated Banc-Corp Depositary
+ABX	Barrick Gold Corp.
+ACC	American Campus Communities Inc
+ACCO	Acco Brands Corp.
+ACE	Ace Limited
+ACG	Alliancebernstein Income Fund Inc
+ACH	Aluminum Corporation Of China Ltd
+ACI	Arch Coal
+ACM	Aecom Technology Corp.
+ACMP	Access Midstream Partners L.P.
+ACN	Accenture Plc.
+ACO	Amcol International Corp.
+ACP	Avenue Income Credit Strategies
+ACRE	Ares Commercial Real Estate Cor
+ACTV	Active Network Inc
+ACW	Accuride Corporation New
+ADC	Agree Realty Corp.
+ADM	Archer-Daniels-Midland Company
+ADS	Alliance Data Systems Corp.
+ADT	Adt Corporation Common Stock W
+ADX	Adams Express Company
+ADY	Feihe International
+AEB	Aegon Nv
+AEC	Associated Estates Realty Corp.
+AED	Aegon Nv
+AEE	Ameren Corp.
+AEF	Aegon Nv
+AEG	Aegon Nv
+AEH	Aegon Nv
+AEK	Aegon N.V. 8.00%
+AEL	American Equity Investment Life
+AEM	Agnico-Eagle Mines Limited
+AEO	American Eagle Outfitters
+AEP	American Electric Power Company
+AEP-A	Aep Pfd A
+AER	Aercap Holdings N.V.
+AES	The Aes Corp.
+AES-C	Aes TR III 6.75 Pfd
+AET	Aetna Inc.
+AEV	Aegon Nv
+AF	Astoria Financial Corp.
+AFA	American Financial Group Inc.
+AFB	Alliance National Municipal
+AFC	Allied Capital Corp.
+AFF	American International Group
+AFG	American Financial Group
+AFL	Aflac Incorporated
+AFM	Affiliated Managers Group Inc
+AFQ	American Financial Group
+AFSD	Aflac Incorporated
+AFT	Apollo Senior Floating Rate Fund Inc.
+AFW	American Financial Group Inc.
+AG	First Majestic Silver
+AGC	Advent Claymore Convertible Securities
+AGCO	Agco Corp.
+AGD	Alpine Global Dynamic Dividend Fund
+AGM	Federal Agricultural Mortgage Corp.
+AGM.A	Federal Agricultural Mortgage Corp.
+AGN	Allergan
+AGO	Assured Guaranty Ltd
+AGO-B	Assured Guaranty Ltd [B]
+AGO-E	Assured Guaranty Ltd [E]
+AGO-F	Assured Guaranty Ltd [F]
+AGP	Amerigroup Corp.
+AGRO	Adecoagro S.A.
+AGU	Agrium Inc.
+AH	Accretive Health
+AHC	A.H. Belo Corp.
+AHL	Aspen Insurance Holdings
+AHL-A	Aspen Insurance Pfd
+AHL-B	Aspen Insurance Holdings Limit
+AHL.P	Aspen Ins Pfd Inc
+AHS	Amn Healthcare Services Inc
+AHT	Ashford Hospitality Trust Inc
+AHT-A	Ashford Hsop TR Pfd
+AHT-D	Ashford Hosp D Pfd
+AHT-E	Ashford Hospitality Trust Inc 9
+AI	Arlington Asset Investment Corp
+AIG	American International Group
+AIG.W	American International Group
+AIN	Albany International Corp.
+AIQ	Alliance Healthcare Services
+AIR	Aar
+AIT	Applied Industrial Technologies
+AIV	Apartment Investment And Management
+AIV-Z	Apartment Inv. & Mgt. Co.
+AIZ	Assurant
+AJG	Arthur J. Gallagher & Co.
+AKO.A	Embotell Andina Sa A
+AKO.B	Embotell Andna Sa B
+AKP	Alliance California Muni
+AKR	Acadia Realty Trust
+AKS	Ak Steel Holding Corp.
+AL	Air Lease Corporation Class A C
+ALB	Albemarle Corp.
+ALC	Assisted Living Concepts Inc.
+ALE	Allete
+ALEX	Alexander And Baldwin Inc
+ALG	Alamo Group
+ALJ	Alon USA Energy
+ALK	Alaska Air Group
+ALL	Allstate Corporation
+ALL-A	Gmac Capital Trust I Fixed Rate
+ALL-B	Ally Financial Inc Fixed Rate F
+ALP-N	Alabama Pwr 5.2A Pfd
+ALP-O	Alabama Pwr 5.83A Pf
+ALP-P	Alabama Power 5.30 A
+ALR	Alere Inc.
+ALR-B	Alere Inc. Inverness Medical In
+ALSN	Allison Transmission Holdings
+ALU	Alcatel Lucent
+ALV	Autoliv
+ALX	Alexander's
+AM	American Greetings Corp.
+AMBO	Ambow Education
+AMD	Advanced Micro Devices
+AME	Amtek
+AMG	Affiliated Managers Group
+AMID	American Midstreampartners Lp
+AMP	Ameriprise Financial Services
+AMP-A	Ameriprise Financial
+AMRC	Ameresco Inc
+AMRE	Amreit Inc.
+AMT	American Tower Corp.
+AMTD	TD Ameritrade Holding Corp.
+AMTG	Apollo Residential Mortgage In
+AMX	America Movil S.A.B. De C.V.
+AN	Autonation
+ANF	Abercrombie & Fitch Company
+ANFI	Amira Nature Foods Ltd
+ANH	Anworth Mortgage Asset Corp.
+ANH-A	Anworth Mtg Pfd A
+ANH-B	Anworth 6.25 Pr S B
+ANN	Ann Inc
+ANR	Alpha Natural Resources
+ANW	Aegean Marine Petroleum Network
+AOD	Alpine Total Dynamic Dividend
+AOI	Alliance One International
+AOL	Aol Inc.
+AON	Aon Plc
+AOS	Smith [A.O.] Corp.
+AP	Ampco-Pittsburgh Corp.
+APA	Apache Corp.
+APA-D	Apache Corporation
+APB	Asia Pacific Fund Inc.
+APC	Anadarko Petroleum Corp.
+APD	Air Products And Chemicals
+APF	Morgan Stanley Asia Pacific Fund Inc.
+APH	Amphenol Corp.
+APL	Atlas Pipeline Partners L.P.
+APO	Apollo Global Management Llc C
+APU	Amerigas Partners L.P.
+ARB	Arbitron Inc.
+ARC	American Reprographics Company
+ARCO	Arcos Dorados Holdings Inc
+ARE	Alexandria Real Estate Equities
+ARE-E	Alexandria Real Estate Equitie
+ARG	Airgas
+ARH-C	Arch Capital Group Ltd. 6.75% P
+ARI	Apollo Commercial Real Estate
+ARI-A	Apollo Commercial Real Estate
+ARK	Senior High Income Portfolio
+ARL	American Realty Investors
+ARN	Ares Capital Corporation 7.00%
+ARO	Aeropostale Inc
+ARP	Atlas Resource Partners L.P. C
+ARR	Armour Residential R
+ARR-A	Armour Residential REIT Inc.
+ARSD	Arabian American Development
+ART	Artio Global Investors Inc.
+ARU	Ares Capital Corporation
+ARW	Arrow Electronics
+ARX	Aeroflex Holding
+ARY	Ares Capital Corp.
+ASA	Asa Gold And Precious Metals
+ASG	Liberty All-Star Growth Fund
+ASGN	On Assignment
+ASH	Ashland Inc.
+ASI	American Safety Insurance Holdings
+ASP	American Strategic Income Portfolio
+ASR	Grupo Aeroportuario Del Sureste
+ASX	Advanced Semiconductor Engineering
+AT	Atlantic Power Corp.
+ATE	Advantest Corporation Ads
+ATI	Allegheny Technologies Inc.
+ATK	Alliant Techsystems Inc.
+ATLS	Atlas Energy Llc
+ATO	Atmos Energy Corp.
+ATR	Aptargroup
+ATU	Actuant Corp.
+ATV	Acorn International
+ATW	Atwood Oceanics
+AU	Anglogold Ashanti Ltd
+AU-A	Anglogold Ashanti Holdings Fin
+AUO	Au Optronics Corp
+AUQ	Aurico Gold Inc
+AUY	Yamana Gold
+AV	Aviva Plc
+AVA	Avista Corp.
+AVB	Avalonbay Communities
+AVD	American Vanguard Corp.
+AVF	American International Group
+AVG	Avg Technologies N.V.
+AVK	Advent Claymore Convertible Securities
+AVP	Avon Products
+AVT	Avnet
+AVV	Aviva Plc
+AVX	Avx Corp.
+AVY	Avery Dennison Corp.
+AWC	Alumina Ltd
+AWF	Alliance World Dollar Fund II
+AWH	Allied World Assurance Company
+AWI	Armstrong World Industries Inc
+AWK	American Water Works
+AWP	Alpine Global Premier Properties
+AWR	American States Water Company
+AXE	Anixter International Inc.
+AXL	American Axle & Manufacturing
+AXP	American Express Company
+AXR	Amrep Corp.
+AXS	Axis Capital Holdings
+AXS-A	Axis Capital Pfd A
+AXS-C	Axis Capital Holdings Limited P
+AYI	Acuity Brands Inc
+AYN	Alliance New York Muni
+AYR	Aircastle Limited
+AZN	Astrazeneca Plc
+AZO	Autozone
+AZZ	Azz Inc.
+B	Barnes Group
+BA	Boeing Company
+BAC	Bank Of America Corp.
+BAC-C	Bac Capital TR Xii
+BAC-D	Bac Dep Share D
+BAC-E	Bank Amer Corp Dep R
+BAC-H	Bank Amer Corp Pfd H
+BAC-I	Bank Amer Corp Pfd
+BAC-J	Bank Of America Pfd
+BAC-L	Bank Amer Pfd Ser L
+BAC-U	Bac Cap TR IV
+BAC-V	Bac Capital Trust II
+BAC-W	Bac Capital Trust I
+BAC-X	Bac Cap TR III
+BAC-Y	Bac Cap TR V 6% Cap
+BAC-Z	Bac Cap TR ViII
+BAC.A	Bank Of America Corporation Bac
+BAC.B	Bank Of America Corporation Bac
+BAF	Blackrock Income Inv Quality Trust
+BAH	Booz Allen Hamilton Holding Corp.
+BAK	Copene-Petroquimica Do Nordeste
+BALT	Baltic Trading Limited
+BAM	Brookfield Asset Management Inc
+BAP	Credicorp Ltd
+BAS	Basic Energy Services
+BAX	Baxter International Inc.
+BBD	Banco Bradesco Sa
+BBDO	Banco Bradesco S.A.
+BBF	Blackrock Muni Income Trust
+BBG	Bill Barrett Corp.
+BBK	Blackrock Muni Trust
+BBL	Bhp Billiton Plc
+BBN	Balckrock Build America Trust
+BBT	BB&T Corp.
+BBT-D	BB&T Corporation
+BBT-E	BB&T Corporation
+BBVA	Banco Bilbao Viscaya Argentaria S.A.
+BBW	Build-A-Bear Workshop
+BBX	Bankatlantic Bancorp
+BBY	Best Buy Co.
+BC	Brunswick Corp.
+BCA	Corpbanca
+BCE	Bce
+BCEI	Bonanza Creek Energy Inc.
+BCF	Blackrock Real Asset Equity Trust
+BCH	Banco De Chile
+BCO	Brink's Company
+BCR	C.R. Bard
+BCS	Barclays Plc
+BCS-A	Barclays Ads
+BCS-C	Barclays Bank 4 Ads
+BCS-D	Barclays Bank Plc
+BCS.P	Barclays Bk ADR Sr 2
+BCX	Blackrock Resources Common Shar
+BDC	Belden Inc
+BDJ	Blackrock Enhanced Dividend Achievers
+BDN	Brandywine Realty Trust
+BDN-D	Brandywine Rly Pfd D
+BDN-E	Brandywine Realty Trust
+BDX	Becton Dickinson And Company
+BEAM	Beam Inc
+BEE	Strategic Hotels & Resorts Inc
+BEE-A	Strategic Hotels A
+BEE-B	Strategic Hotel Pf B
+BEE-C	Strategic H&R Srs C
+BEN	Franklin Resources
+BERY	Berry Plastics Group Inc.
+BF.A	Brown Forman Inc A
+BF.B	Brown Forman Inc B
+BFK	Blackrock Muni Income Trust
+BFO	Blackrock Florida Muni 2020 Trust
+BFR	Bbva Banco Frances S.A.
+BFS	Saul Centers
+BFS-A	Saul Ctrs Dep Pfd A
+BFS-B	Soul Centers Pfd Ads
+BFZ	Blackrock California Muni Trust
+BG	Bunge Limited
+BGB	Blackstone / Gso Strategic Cre
+BGC	General Cable Corp.
+BGCA	Bgc Partners Inc.
+BGE-B	Bge Capital Trust II
+BGG	Briggs & Stratton Corp.
+BGH	Buckeye GP Holdings LP
+BGR	Blackrock Energy And Resources Trust
+BGS	B&G Foods Holdings
+BGT	Blackrock Global
+BGX	Blackstone Gso Long Short Credit Fund
+BGY	Blackrock International
+BH	Biglari Holdings Inc.
+BHD	Blackrock Strategic Trust
+BHE	Benchmark Electronics
+BHI	Baker Hughes Inc.
+BHK	Blackrock Core Trust
+BHL	Blackrock Defined Opportunity Trust
+BHP	Bhp Billiton Limited
+BHY	Blackrock High Yield Trust
+BID	Sotheby's Holdings
+BIE	Blackrock Muni Bond Investment Trust
+BIF	Uslife Income Fund
+BIG	Big Lots
+BIN	Iesi-Bfc Ltd
+BIO	Bio-Rad Laboratories
+BIO.B	Bio Rad Labs Cl B
+BIP	Brookfield Infrastructure Partners Lp
+BITA	Bitauto Holdings Limited
+BJZ	Blackrock California Muni 2018 Trust
+BK	Bank Of New York Mellon Corp.
+BK-C	The Bank Of New York Mellon Co
+BK-E	BNY Cap IV 6.75 E
+BK-F	BNY Cap V TR Pfd F
+BKD	Brookdale Senior Living Inc.
+BKE	Buckle
+BKH	Black Hills Corp.
+BKI	Buckeye Technologies
+BKK	Blackrock Muni 2020 Trust
+BKN	Blackrock Investment Quality Municipal
+BKS	Barnes & Noble
+BKT	Blackrock Income Trust Inc.
+BKU	Bankunited
+BKW	Burger King Worldwide
+BLC	Belo Corp.
+BLH	Blackrock New York Muni 2018 Trust
+BLK	Blackrock
+BLL	Ball Corp.
+BLOX	Infoblox Inc.
+BLT	Blount International
+BLW	Blackrock Limited Duration Income Trust
+BLX	Banco Latinoamericano De Comercio
+BMA	Banco Macro S.A.
+BME	Blackrock Health Sciences Trust
+BMI	Badger Meter
+BML-G	Bank America Dep G
+BML-H	Bank America Dep H
+BML-I	Bank America Dep I
+BML-J	Bank America Dep J
+BML-L	Bank America Dep L
+BML-N	Bank America Dep N
+BML-O	Bank America Dep O
+BML-Q	Bank America Dep Q
+BMO	Bank Of Montreal
+BMR	Biomed Realty Trust
+BMR-A	Biomed Realty TR Pfd
+BMS	Bemis Company
+BMY	Bristol-Myers Squibb Company
+BNA	Blackrock Income Opportunity Trust Inc.
+BNJ	Blackrock New Jersey Muni Income Trust
+BNNY	Annie's Inc.
+BNS	Bank Of Nova Scotia
+BNY	Blackrock New York Muni Trust Inc.
+BOE	Blackrock Global
+BOH	Bank Of Hawaii Corp.
+BORN	China New Borun Corp.
+BOX	Seacube Container Leasing Ltd
+BOXC	Brookfield Office Properties C
+BP	Bp P.L.C.
+BPI	Bridgepoint Education
+BPK	Blackrock Muni 2018 Trust
+BPL	Buckeye Partners L.P.
+BPO	Brookfield Properties Corp.
+BPP	Blackrock Preferred Oopportunity Trust
+BPT	Bp Prudhoe Bay Royalty Trust
+BPZ	Bpz Resources Inc
+BQH	Blackrock New York Muni Trust
+BQR	Blackrock Ecosolutions Investment Trust
+BR	Broadridge Financial Solutions Llc
+BRC	Brady Corp.
+BRE	Bre Properties
+BRE-D	Bre Pptys Pfd D
+BRFS	Brf-Brasil Foods S.A.
+BRK.A	Berkshire Hath Hld A
+BRK.B	Berkshire Hath Hld B
+BRO	Brown & Brown
+BRP	Brookfield Residential Propert
+BRS	Bristow Group Inc
+BRT	Brt Realty Trust
+BRY	Berry Petroleum Company
+BSAC	Banco Santander-Chile Ads
+BSBR	Banco Santander Brasil Sa
+BSD	Blackrock Strategic Muni Trust Inc.
+BSE	Blackrock New York Muni Income Trust
+BSI	Alon Holdings - Blue Square Israel Ltd
+BSL	Blackstone Gso Senior Floating Rate
+BSMX	Grupo Financiero Santander Mxi
+BSP	American Strategic Income Portfolio II
+BSX	Boston Scientific Corp.
+BT	Bt Group Plc
+BTA	Blackrock Long-Term Muni Advantage Trust
+BTE	Baytex Energy Corp
+BTF	Boulder Total Return Fund
+BTH	Blyth
+BTO	John Hancock Bank And Thrift Fund
+BTT	Blackrock Municipal Target Term
+BTU	Peabody Energy Corp.
+BTZ	Blackrock Preferred
+BUD	Anheuser-Busch Inbev Sa
+BUI	Blackrock Utility And Infrastr
+BVN	Compania Mina Buenaventura S.A.
+BWA	Borgwarner Inc.
+BWC	Babcock & Wilcox Company
+BWF	Wells Fargo & Company
+BWG	Legg Mason Bw Global Income Op
+BWP	Boardwalk Pipeline Partners L.P.
+BWS	Brown Shoe Company
+BX	The Blackstone Group L.P.
+BXC	Bluelinx Holdings Inc.
+BXG	Bluegreen Corp.
+BXP	Boston Properties
+BXS	Bancorpsouth
+BXS-A	Bancorpsouth Cp TR I
+BYD	Boyd Gaming Corp.
+BYI	Bally Technologies
+BYM	Blackrock Muni Income Quality Trust
+BZ	Boise Inc
+BZH	Beazer Homes USA
+BZMD	Beazer Homes USA
+BZT	Beazer Homes USA Inc. 7.50% Tangible Equity
+BZU	Beazer Homes USA
+C	Citigroup Inc.
+C-E	Cg Cp Xvii 6.35 Trup
+C-G	Citigroup Cap Xx
+C-H	Citigroup Inc
+C-I	Citigroup Inc Pfd
+C-M	Citigroup Pfd F
+C-N	Citigroup Capital XiII
+C-O	Citigrp 6.875% Encha
+C-P	Citigroup Pfd Ser Aa
+C-Q	Citigrp Cap Vi Trups
+C-R	Citigroup Cap X
+C-S	Citigroup Cap Ix 6.0
+C-U	Citigroup Capital Xv
+C-V	Citigroup Cap Vii
+C-W	Citigroup Inc. 6.45%
+C-Z	Citigroup Cap ViII
+C.A	Citigroup Inc Wrnt 'A'
+C.B	Citigroup Inc Wrnt 'B'
+CAB	Cabela's Inc
+CACI	Caci International
+CAE	Cae Inc
+CAF	Morgan Stanley China A Share Fund Inc.
+CAG	Conagra Foods
+CAH	Cardinal Health
+CAJ	Canon
+CALX	Calix Inc
+CAM	Cameron International Corp.
+CAP	Cai International
+CAS	Castle [A.M.] & Co.
+CASC	Cascade Corp.
+CAT	Caterpillar
+CATO	Cato Corp.
+CB	Chubb Corp.
+CBB	Cincinnati Bell Inc
+CBB-B	Cincinnati Bell Pr B
+CBD	Companhia Brasileira De Distribuicao
+CBE	Cooper Industries Plc.
+CBG	Cbre Group Inc
+CBI	Chicago Bridge & Iron Company N.V.
+CBK	Christopher & Banks Corp.
+CBL	Cbl & Associates Properties
+CBL-C	Cbl & Associates Properties In
+CBL-D	Cbl Pfd D
+CBL-E	Cbl & Associates Properties I
+CBM	Cambrex Corp.
+CBR	Ciber
+CBS	Cbs Corp.
+CBS.A	Cbs Corp.
+CBT	Cabot Corp.
+CBU	Community Bank System
+CBZ	Cbiz
+CCC	Calgon Carbon Corp.
+CCE	Coca-Cola Enterprises
+CCG	Campus Crest Communities
+CCG-A	Campus Crest Communities Inc.
+CCH	Coca Cola Hellenic Bottling Co
+CCI	Crown Castle International Corp.
+CCJ	Cameco Corp.
+CCK	Crown Cork & Seal Company
+CCL	Carnival Corp.
+CCM	Concord Medical Services
+CCO	Clear Channel Outdoor Holdings
+CCSC	Country Style Cooking
+CCU	Compania Cervecerias Unidas S.A.
+CCZ	Comcast Corp.
+CDE	Coeur D'Alene Mines Corp.
+CDI	Cdi Corp.
+CDR	Cedar Shopping Centers Inc
+CDR-A	Cedar Shopping Pfd
+CDR-B	Cedar Realty Trust Inc.
+CE	Celanese Corp.
+CEA	China Eastern Airlines Corp Ltd
+CEB	The Corporate Executive Board Company
+CEC	Cec Entertainment
+CEE	Central Europe And Russia Fund
+CEG-A	Constellation Energy
+CEL	Cellcom Israel
+CEM	Clearbridge Energy MLP Fund Inc.
+CEO	Cnooc Limited
+CF	Cf Industries Holdings
+CFC-A	Cntrywd Cap IV New
+CFC-B	Countrywde Cap V New
+CFI	Culp
+CFN	Carefusion Corp.
+CFR	Cullen/Frost Bankers
+CFX	Colfax Corp.
+CGA	China Green Agriculture
+CGI	Celadon Group
+CGV	Compagnie Generale De Geophysique-Veritas
+CGX	Consolidated Graphics
+CHA	China Telecom Corp Ltd
+CHC	China Hydroelectric Corp.
+CHC.W	China Hydroelectric Corp
+CHD	Church & Dwight Company
+CHE	Chemed
+CHG	Ch Energy Group
+CHH	Choice Hotels International
+CHK	Chesapeake Energy Corp.
+CHK-D	Chesapeake En Cv Pfd
+CHKR	Chesapeake Granite Wash Trust
+CHL	China Mobile [Hong Kong] Ltd
+CHMT	Chemtura
+CHN	China Fund
+CHS	Chico's Fas
+CHS-A	Chesapeake Lodging Trust 7.75%
+CHSP	Chesapeake Lodging Trust
+CHT	Chunghwa Telecom Co Ltd
+CHU	China Unicom [Hong Kong] Ltd
+CI	Cigna Corp.
+CIA	Citizens
+CIB	Bancolombia S.A.
+CIE	Cobalt International Energy
+CIF	Colonial Intermediate High
+CIG	Comp En De Mn Cemig Ads
+CIG.C	Comp En De Mn Cemig Ads
+CII	Blackrock Capital And Income Strategies
+CIM	Chimera Investment Corp.
+CIR	Circor International
+CIS	Camelot Information Systems
+CIT	Cit Group Inc [Del]
+CJES	C&J Energy Services Inc.
+CKH	Seacor Smit Inc.
+CKP	Checkpoint Systms
+CL	Colgate-Palmolive Company
+CLB	Core Laboratories N.V.
+CLC	Clarcor Inc.
+CLD	Cloud Peak Energy Inc
+CLDT	Chatham Lodging Trust [Reit]
+CLF	Cliffs Natural Resources Inc.
+CLGX	Corelogic
+CLH	Clean Harbors
+CLI	Mack-Cali Realty Corp.
+CLN-A	Colony Financial Inc.
+CLNY	Colony Financial Inc
+CLP	Colonial Properties Trust
+CLR	Continental Resources
+CLS	Celestica
+CLW	Clearwater Paper Corp.
+CLX	Clorox Company
+CM	Canadian Imperial Bank Of Commerce
+CMA	Comerica Inc.
+CMA.W	Comerica
+CMC	Commercial Metals Company
+CMG	Chipotle Mexican Grill
+CMI	Cummins Inc.
+CMK	Colonial Intermarket Income Trust I
+CMLP	Crestwood Midstream Partners Lp
+CMN	Cantel Medical
+CMO	Capstead Mortgage Corp.
+CMO-A	Capstead Mtg Pfd
+CMO-B	Capstead Mortg Pfd B
+CMP	Compass Minerals Intl Inc
+CMRE	Costamare Inc.
+CMS	Cms Energy Corp.
+CMS-A	Consumers Engry 4.16
+CMS-B	Consumers Engry 4.50
+CMU	Colonial Muni Income Trust
+CNA	Cna Financial Corp.
+CNC	Centene Corp.
+CNCO	Cencosud S.A.
+CNH	Cnh Global N.V.
+CNI	Canadian National Railway Company
+CNK	Cinemark Holdings Inc
+CNL	Cleco Power Llc
+CNO	Cno Financial Group
+CNP	Centerpoint Energy Inc
+CNQ	Canadian Natural Resources
+CNS	Cohn & Steers Inc
+CNW	Con-Way Inc
+CNX	Consol Energy Inc.
+CO	China Cord Blood Corporation.
+CODE	Spansion Inc
+CODI	Compass Diversified Holdings
+COF	Capital One Financial Corp.
+COF-B	Capital One Cap II P
+COF-P	Capital One Financial Corp Pfd
+COF.W	Capital One Financial Corp
+COG	Cabot Oil & Gas Corp.
+COH	Coach
+COL	Rockwell Collins
+COO	Cooper Companies
+COP	Conocophillips
+COR	Coresite Realty Corp.
+COT	Cott Corp.
+COV	Covidien Plc.
+COY	Blackrock Corporate High Yield Fund
+CP	Canadian Pacific Railway
+CPA	Copa Holdings S.A.
+CPAC	Cementos Pacasmayo S.A.A.
+CPB	Campbell Soup Company
+CPE	Callon Petroleum Company
+CPF	Cpb Inc.
+CPK	Chesapeake Utilities Corp.
+CPL	Cpfl Energia S.A.
+CPN	Calpine Corp.
+CPP	Merrill Lynch Depositor
+CPT	Camden Property Trust
+CQB	Chiquita Brands International
+CR	Crane Company
+CRD.A	Crawford Co Cl A
+CRD.B	Crawford Co Cl B
+CRH	Crh Plc
+CRI	Carter's
+CRK	Comstock Resources
+CRL	Charles River Laboratories Intl
+CRM	Salesforce.Com Inc
+CRP	Credit Suisse Guernsey Brh
+CRR	Carbo Ceramics
+CRS	Carpenter Technology Corp.
+CRT	Cross Timbers Royalty Trust
+CRY	Cryolife
+CS	Credit Suisse Group
+CSC	Computer Sciences Corp.
+CSE	Capitalsource Inc
+CSFS	The Cash Store Financial Services
+CSH	Cash America International
+CSI	Cutwater Select Income Fund
+CSL	Carlisle Companies Inc.
+CSP	American Strategic Income Portfolio III
+CSS	Css Industries
+CSU	Capital Senior Living Corp.
+CSV	Carriage Services
+CSX	Csx Corp.
+CT	Capital Trust
+CTB	Cooper Tire & Rubber Company
+CTC	Ifm Investments Limited
+CTL	Centurylink
+CTQ	Qwest Corporation
+CTR	Clearbridge Energy MLP Fund In
+CTS	Cts Corp.
+CTU	Qwest Corporation
+CTW	Qwest Corporation
+CTX	Qwest Corporation
+CTZ-A	Citizens Funding
+CUB	Cubic Corp.
+CUB-A	Cubesmart 7.75% Series A Cumula
+CUBE	Cubesmart
+CUK	Carnival Plc Ads
+CUZ	Cousins Properties Inc.
+CUZ-A	Cousins Properties
+CUZ-B	Cousins Pptys Pfd B
+CVA	Covanta Holding Corp.
+CVB	Lehman Abs Corp.
+CVC	Cablevision Systems Corp.
+CVD	Covance Inc.
+CVE	Cenovus Energy Inc
+CVG	Convergys Corp.
+CVH	Coventry Health Care
+CVI	Cvr Energy Inc.
+CVO	Cenveo Inc
+CVS	Cvs Corp.
+CVX	Chevron Corp.
+CW	Curtiss-Wright Corp.
+CWH	Commonwealth REIT
+CWH-D	Commonwealth REIT Pfd Conv Shs
+CWH-E	Commonwealth REIT
+CWHN	Commonwealth REIT
+CWHO	Commonwealth REIT
+CWT	California Water Service Group Holding
+CWZ	Lehman Abs Corp.
+CX	Cemex S.A.B. De C.V.
+CXE	Colonial High Income Muni Trust
+CXH	Colonial Investment Grade Muni Trust
+CXO	Concho Resources Inc.
+CXS	Crexus Investment
+CXW	Corrections Corporation Of America
+CYD	China Yuchai International
+CYE	Blackrock Corporate Yield Fund III
+CYH	Community Health Systems
+CYN	City National Corp.
+CYS	Cys Investments Inc
+CYS-A	Cys Investments Inc.
+CYT	Cytec Industries Inc.
+CZZ	Cosan Limited
+D	Dominion Resources
+DAC	Danaos Corp.
+DAL	Delta Air Lines Inc.
+DAN	Dana Holding Corp.
+DANG	E-Commerce China Dangdang Inc.
+DAR	Darling International Inc.
+DB	Deutsche Bank Ag
+DBD	Diebold Inc.
+DBL	Doubleline Opportunistic Credi
+DCA	Dca Total Return Fund
+DCE	Deutsche Bk Cap Fdg TR X
+DCI	Donaldson Company
+DCM	Ntt Docomo Inc
+DCO	Ducommun Inc.
+DCT	Dct Industrial Trust Inc
+DD	E.I. Du Pont De Nemours And Company
+DD-A	Du Pont E I 3.50 Pfd
+DD-B	Du Pont E I 4.50 Pfd
+DDD	3D Systems Corp.
+DDE	Dover Downs Gaming & Entertainment Inc
+DDF	Delaware Dividend & Income
+DDR	Ddr Corp
+DDR-H	Develprs Div Rlt Dep
+DDR-J	Ddr Corp
+DDS	Dillard's
+DDT	Dillard's
+DE	Deere & Company
+DEG	Etablissements Delhaize Freres
+DEI	Douglas Emmett
+DEL	Deltic Timber Corp.
+DEO	Diageo Plc
+DEX	Delaware Enhanced Global Dividend
+DEXO	Dex One Corp.
+DF	Dean Foods Company
+DFS	Discover Financial Services
+DFS-B	Discover Financial Services
+DFT	Dupont Fabros Technology
+DFT-A	Dupont Fabros Technology Inc.
+DFT-B	Dupont Fabros Technology Inc.
+DG	Dollar General Corp.
+DGI	Digitalglobe Inc
+DGX	Quest Diagnostics Inc.
+DHF	Dreyfus High Yield Strategies Fund
+DHG	Dws High Income Opportunities Fund
+DHI	D.R. Horton
+DHR	Danaher Corp.
+DHT	Dht Holdings
+DHX	Dice Holdings
+DIN	Dineequity Inc
+DIS	Walt Disney Company
+DK	Delek US Holdings
+DKS	Dick's Sporting Goods Inc
+DKT	Deutsch Bk Contingent Cap TR V
+DL	China Distance Education Holdings
+DLB	Dolby Laboratories
+DLPH	Delphi Automotive Plc
+DLR	Digital Realty Trust
+DLR-E	Digital Realtytrust Inc.
+DLR-F	Digital Realty Trust Inc.
+DLX	Deluxe Corp.
+DM	Dolan Company
+DMD	Demand Media Inc.
+DMO	Western Asset Mortgage Defined Opp
+DNB	Dun & Bradstreet Corp.
+DNI	Chartwell Dividend & Income Fund
+DNP	Duff & Phelps Utilities Income
+DNR	Denbury Resources
+DNY	The Denali Fund
+DO	Diamond Offshore Drilling
+DOLE	Dole Food Company Inc
+DOM	Dominion Resources Black Warrior
+DOV	Dover Corp.
+DOW	DOW Chemical Company
+DOX	Amdocs Limited
+DPD	DOW 30 Premium
+DPG	Duff & Phelps Global Utility I
+DPM	Dcp Midstream Partners Lp
+DPO	DOW 30 Premium
+DPS	Dr Pepper Snapple Group Inc
+DPZ	Domino's Pizza Inc
+DQ	Daqq New Energy
+DRC	Dresser-Rand Group Inc.
+DRD	Drdgold Limited
+DRE	Duke Realty Corp.
+DRE-J	Duke Rlty Dep Pfd J
+DRE-K	Duke Realty K
+DRE-L	Duke Rlty Dep Sh
+DRE-O	Duke Rlty Pfd Ser O
+DRH	Diamondrock Hospitality Company
+DRI	Darden Restaurants
+DRL	Doral Financial Corp.
+DRQ	Dril-Quip
+DRU	Dominion Resources
+DSM	Dreyfus Strategic Muni Bond Fund
+DST	Dst Systems
+DSU	Blackrock Debt Strategies Fund
+DSW	Dsw Inc.
+DSX	Diana Shipping Inc.
+DTE	Dte Energy Company
+DTF	Duff & Phelps Utilities Tax-Free Income
+DTG	Dollar Thrifty Automotive Group
+DTK	Deutsche Bk Contingent Cap TR I
+DTQ	Dte Energy Co.
+DTT	Deutsche Bk Cap Fdg TR Ix Gua
+DTZ	Dte Energy Co.
+DUA	Deutsche Bk Cap Fdg TR ViII 6
+DUC	Duff & Phelps Utility & Corporate Trust
+DUF	Duff & Phelps Corp.
+DUK	Duke Energy Corp.
+DV	Devry Inc.
+DVA	Davita Inc.
+DVD	Dover Downs Entertainment
+DVF	Blackrock Diversified Income Strategies
+DVM	Cohen & Steers Dividend Majors Fund
+DVN	Devon Energy Corp.
+DVR	Cal Dive International
+DW	Drew Industries Inc.
+DWRE	Demandware Inc.
+DX	Dynex Capital
+DX-A	Dynex Capital Inc.
+DXB	Deutsche Bk Contingent Cap TR I
+DY	Dycom Industries
+DYN	Dynegy Inc
+DYN.W	Dynegy Inc. Warrants
+E	Eni S.P.A.
+EAA	Entergy Arkansas
+EAT	Brinker International
+EBF	Ennis
+EBR	Centrais Elc Braz Pfb B Elbras
+EBR.B	Centrais Elc Braz Pfb B Elbras
+EBS	Emergent Biosolutions
+EC	Ecopetrol S.A.
+ECA	Encana Corp.
+ECL	Ecolab Inc.
+ECT	Eca Marcellus Trust I
+ED	Consolidated Edison Company Of New York
+EDD	Emerging Markets Domestic Debt Fund
+EDE	Empire District Electric Company
+EDF	Stone Harbor Emerging Markets
+EDG	Edgen Group Inc
+EDN	Empresa Distribuidora Y Comercializadora
+EDR	Education Realty Trust Inc.
+EDT	Entergy Texas Inc
+EDU	New Oriental Education & Technology Group
+EE	El Paso Electric Company
+EEA	European Equity Fund
+EEP	Enbridge Energy L.P.
+EEQ	Enbridge Energy Management Llc
+EFC	Ellington Financial Llc
+EFM	Entergy Mississippi
+EFR	Eaton Vance Senior Floating-Rate Fund
+EFT	Eaton Vance Floating Rate Income Trust
+EFX	Equifax
+EGF	Blackrock Enhanced Government Fund
+EGL	Engility Holdings Inc. Common
+EGN	Energen Corp.
+EGO	Eldorado Gold Corp
+EGP	Eastgroup Properties
+EGY	Vaalco Energy Inc
+EHI	Western Asset Global High
+EIG	Employers Holdings Inc
+EIX	Edison International
+EJ	E-House [China] Holdings
+EL	Estee Lauder Companies
+ELA	Entergy Louisiana Llc
+ELB	Entergy Louisiana
+ELJ	Entergy Louisiana Llc
+ELLI	Ellie Mae Inc
+ELN	Elan Corporation Plc
+ELP	Companhia Paranaense De Energia
+ELS	Equity Lifestyle Properties
+ELS-A	Equity Lifestyle Properties In
+ELS-C	Eqty Lifestyle Properties Inc
+ELX	Emulex Corp.
+ELY	Callaway Golf Company
+EMC	Emc Corp.
+EMD	Western Asset Emerging Markets Fund
+EME	Emcor Group
+EMF	Templeton Emerging Markets Fund
+EMN	Eastman Chemical Company
+EMN.W	Eastman Chemical Company
+EMO	Clearbridge Energy MLP Opportu
+EMQ	Entergy Mississippi
+EMR	Emerson Electric Company
+EMZ	Entergy Mississippi Inc. First
+ENB	Enbridge Inc
+END	Endeavor International Corp.
+ENH	Endurance Specialty Holdings Ltd
+ENH-A	Endurance Spec Pfd
+ENH-B	Endurance Specialty Holdings L
+ENI	Enersis S A
+ENL	Reed Elsevier Nv
+ENR	Energizer Holdings
+ENS	Enersys
+ENV	Envestnet Inc
+ENZ	Enzo Biochem
+EOC	Empresa Nacional De Electricidad S.A.
+EOD	Wells Fargo Global Dividend Opportunity
+EOG	Eog Resources
+EOI	Eaton Vance Enhance Equity
+EOS	Eaton Vance Enhanced Equity II
+EOT	Eaton Vance Muni Income Trust
+EP-C	El Paso Egy Cap I Pr
+EPAM	Epam Systems Inc.
+EPB	El Paso Pipeline Partners Lp
+EPD	Enterprise Products Partners L.P.
+EPL	Energy Partners
+EPR	Entertainment Properties Trust
+EPR-C	Entertainment Prp Pf
+EPR-D	Entertainment Pptys
+EPR-E	Entertainment Ppty P
+EPR-F	Entertainment Properties Trust
+EQM	Eqt Midstream Partners Lp
+EQR	Equity Residential
+EQS	Equus Total Return
+EQT	Eqt Corp.
+EQU	Equal Energy Ltd
+EQY	Equity One
+ERF	Enerplus Corp.
+ERJ	Embraer-Empresa Brasileira De Aeronautica
+ES	Energysolutions Inc
+ESC	Emeritus Corp.
+ESD	Western Asset Emerging Markets Debt Fund Inc
+ESE	Esco Technologies Inc.
+ESI	Itt Educational Services
+ESL	Esterline Technologies Corp.
+ESS	Essex Property Trust
+ESS-H	Essex Property Trust Inc. 7.12
+ESV	Ensco Plc
+ET	Exacttarget Inc.
+ETB	Eaton Vance Tax-Managed Buy-Write
+ETE	Energy Transfer Equity L.P.
+ETG	Eaton Vance Tax-Advantaged Global Dividend
+ETH	Ethan Allen Interiors Inc.
+ETJ	Eaton Vance Risk-Managed Diversified Equity
+ETM	Entercom Communications Corp.
+ETN	Eaton Corp.
+ETO	Eaton Vance Tax-Advantage Global Dividend Opp
+ETP	Energy Transfer Partners
+ETR	Entergy Corp.
+ETV	Eaton Vance Corp.
+ETW	Eaton Vance Corp.
+ETY	Eaton Vance Tax-Managed Diversified Equity
+EV	Eaton Vance Corp.
+EVC	Entravision Communications Corp.
+EVER	Everbank Financial Corp.
+EVF	Eaton Vance Senior Income Trust
+EVG	Eaton Vance Short Diversified
+EVN	Eaton Vance Muni Income Trust
+EVR	Evercore Partners Inc
+EVT	Eaton Vance Tax Advantaged Dividend
+EW	Edwards Lifesciences Corp.
+EXAM	Examworks Group
+EXC	Exelon Corp.
+EXD	Eaton Vance Tax-Advantaged Bond
+EXG	Eaton Vance Tax-Managed Global Diversified Equit
+EXH	Exterran Holdings
+EXK	Endeavour Silver Corp.
+EXL	Excel Trust
+EXL-B	Excel Trust Inc.
+EXM	Excel Maritime Carriers
+EXP	Eagle Materials Inc
+EXPR	Express
+EXR	Extra Space Storage Inc
+F	Ford Motor Credit Company
+F-A	Ford Motor 7.50 Nts
+F.W	Ford Motor Co
+FAC	Liberte Investors Inc.
+FAF	First American Corp.
+FAM	First Trust/Aberdeen Global Opportunity
+FAV	Active Dividend
+FBC	Flagstar Bancorp
+FBHS	Fortune Brands Home & Security
+FBN	Furniture Brands International
+FBP	First Bancorp.
+FBR	Fibria Celulose S.A.
+FBS-A	First Pfd Cp IV 8.15
+FC	Franklin Covey Company
+FCE.A	Forest City Ent Cl A
+FCE.B	Forest City Ent Cl B
+FCF	First Commonwealth Financial Corp.
+FCH	Felcor Lodging Trust Inc.
+FCH-A	Felcor Lodg Pr A
+FCH-C	Felcor Lodging Dep S
+FCN	Fti Consulting
+FCS	Fairchild Semiconductor International
+FCT	Senior Floating Rate II
+FCX	Freeport-Mcmoran Copper & Gold
+FCY	Forest City Enterprises Inc
+FDI	Fort Dearborn Income Securities
+FDO	Family Dollar Stores
+FDP	Fresh Del Monte Produce
+FDS	Factset Research Systems Inc.
+FDX	Fedex Corp.
+FE	Firstenergy Corp.
+FENG	Phoenix New Media Limited
+FEO	First Trust/Aberdeen Emerging Opportunity Fund
+FET	Forum Energy Technologies Inc
+FF	Futurefuel Corp.
+FFA	First Trust Enhanced Equity Income Fund
+FFC	Flaherty Crumrine/Claymore Preferred Securities
+FFG	Fbl Financial Group
+FGB	Specialty Finance And Financial Fund
+FGC	Fpl Group Capital Inc
+FGP	Ferrellgas Partners L.P.
+FHN	First Tennessee National Corp.
+FHY	Strategic High II
+FICO	Fair Isaac And Company Inc.
+FIF	First Trust Energy Infrastruct
+FIG	Fortress Investment Group
+FII	Federated Investors
+FIO	Fusion-Io Inc.
+FIS	Fidelity National Information Services
+FIX	Comfort Systems USA
+FJA	Merrill Lynch Depositor
+FL	Footlocker Inc
+FLC	Flaherty & Crumrine/Claymore Total Return
+FLO	Flowers Foods
+FLR	Fluor Corp.
+FLS	Flowserve Corp.
+FLT	Fleetcor Technologies
+FLTX	Fleetmatics Group Plc
+FLY	Fly Leasing Limited
+FMC	Fmc Corp.
+FMD	First Marblehead Corp.
+FMN	Federated Premier Muni
+FMO	Fiduciary/Claymore MLP Opportunity Fund
+FMS	Fresenius Medical Care Corp.
+FMS.P	Fresenius Medcare Pr
+FMX	Fomento Economico Mexicano S.A.B. De C.V.
+FMY	First Trust/Fidac Mortgage Income Fund
+FN	Fabrinet
+FNB	F.N.B. Corp.
+FNF	Fidelity National Financial
+FNF-B	First Niagara Financial Group
+FNP	Fifth & Pacific Cos. Inc
+FNV	Franco Nev Corp
+FOE	Ferro Corp.
+FOF	Cohen & Steers Closed-End Opportunity Fund
+FOR	Forestar Group Inc
+FPC-A	Fpc Capital I 7.1 Pf
+FPO	First Potomac Realty Trust
+FPO-A	First Potomac Realty Trust Cumu
+FPT	Federated Premier Intermediate Muni
+FR	First Industrial Realty Trust
+FR-J	First Indl Dep Sh J
+FR-K	First Indl Rlty Dep
+FRA	Blackrock Floating Rate Income Fund
+FRB	Blackrock Floating Rate Income Fund II
+FRC	First Republic Bank
+FRC-A	First Republic Bank 6.70%
+FRC-B	First Republic Bank
+FRF	Fortegra Financial Corp.
+FRM	Furmanite Corp.
+FRO	Frontline Ltd
+FRT	Federal Realty Investment Trust
+FRX	Forest Laboratories
+FSD	High Income Long Short Fund
+FSL	Freescale Semiconductor Holdin
+FSM	Fortuna Silver Mines
+FSR	Flagstone Reinsurance Holdings S.A.
+FSS	Federal Signal Corp.
+FST	Forest Oil Corp.
+FT	Franklin Universal Trust
+FTE	France Telecom S.A.
+FTI	Fmc Technologies
+FTK	Flotek Industries
+FTT	Federated Enhanced Treasury Income
+FUL	H. B. Fuller Company
+FUN	Cedar Fair L.P.
+FUR	Winthrop Realty Trust
+FUR-D	Winthrop Realty Trust Preferred D Shares
+FVE	Five Star Quality Care
+FXCM	Fxcm Inc.
+G	Genpact Limited
+GA	Giant Interactive Group Inc
+GAB	Gabelli Equity Trust
+GAB-D	Gabelli Eq TR Pfd D
+GAB-F	Gabelli Equity TR
+GAB-G	The Gabelli Equity Trust Inc
+GAB-H	The Gabelli Eqty Trust Inc.
+GAM	General American Investors
+GAM-B	Genl Amer Invs Pfd
+GAS	Agl Resources
+GAT	Georgia Power Company
+GB	Greatbatch
+GBAB	Guggenheim Build America Bonds
+GBL	Gamco Investors
+GBX	Greenbrier Companies
+GCA	Global Cash Access Holdings
+GCAP	Gain Capital Holdings
+GCF	Global Income & Currency Fund Inc.
+GCH	Greater China Fund
+GCI	Gannett Co.
+GCO	Genesco Inc.
+GCV	Gabelli Convertible And Income Securities
+GCV-B	Gabelli 6.00% Pfd B
+GD	General Dynamics Corp.
+GDF	Western Asset Global Partners
+GDI	Gardner Denver
+GDL	The Gdl Fund
+GDL-B	The Gdl Fund Series B Cumulativ
+GDO	Western Asset Global Corporate Defined
+GDOT	Green Dot Corp.
+GDP	Goodrich Petroleum Corp.
+GDV	Gabelli Dividend
+GDV-A	Gabelli Dv
+GDV-D	Gabelli Pref D
+GE	General Electric Company
+GE-A	General Electric
+GEA	General Electric Capital Corp.
+GEB	General Electric Capital Corpo
+GEC	General Electric Capital Corp.
+GED	General Electric Capital Corp.
+GEF	Greif Bros. Corp.
+GEF.B	Greif Bros. Corp.
+GEG	General Electric Capital Corp.
+GEJ	General Electric Capital Corp.
+GEL	Genesis Energy L.P.
+GEN	Genon Energy
+GEO	Geo Group Inc
+GEP	General Electric Capital Corp.
+GEQ	Guggenheim Equal Weight Enhance
+GER	General Electric Capital Corp.
+GES	Guess
+GF	New Germany Fund
+GFA	Gafisa Sa
+GFF	Griffon Corp.
+GFI	Gold Fields Ltd
+GFIG	Gfi Group Inc.
+GFY	Western Asset Variable Rate Strategic
+GG	Goldcorp Inc.
+GGB	Gerdau S.A.
+GGC	Georgia Gulf Corp.
+GGE	Claymore Dividend & Income Fund
+GGG	Graco Inc.
+GGP	General Growth Properties
+GGS	Global Geophysical Services
+GGT	Gabelli Global Multi-Media Trust
+GGT-B	Gabelli Global Multi-Media Trus
+GHI	Global High Income Dollar Fund
+GHL	Greenhill
+GIB	Cgi Group
+GIL	Gildan Activewear
+GIM	Templeton Global
+GIS	General Mills
+GJD	Strats Sm Trust For Sprint Capital Corp Securiti
+GJH	Strats Sm Trust For United States Cellular Corp
+GJI	Strats Sm Trust For Ibm Corp Securities Series 2
+GJJ	Strats Sm Trust For Goldman Sachs Group Securiti
+GJK	Strats Sm Trust For JP Morgan Chase & Co Securit
+GJM	Gmac Llc
+GJO	Strats Sm Trust For Wal-Mart Stores Inc Securiti
+GJP	Strats Sm Trust For Dominion Resources Inc Secur
+GJR	Strats Sm Trust For The Procter & Gamble Co Secu
+GJS	Strats Sm Trust For Goldman Sachs Group Securiti
+GJT	Strats Sm Trust For Allstate Corp Securities Ser
+GJV	Strats Sm Trust For News Corp Securities Series
+GKK	Gramercy Capital Corp
+GKK-A	Gramercy Capital Cor
+GKM	Gmac Llc
+GLF	Gulfmark Offshore
+GLOG	Gaslog Ltd
+GLP	Global Partners Lp
+GLT	Glatfelter
+GLW	Corning Inc.
+GM	General Motors Company
+GM-B	General Motors Company
+GM.A	General Mtrs
+GM.B	General Mtrs
+GMA	Gmac Llc
+GME	Gamestop Corp.
+GMED	Globus Medical Inc.
+GMK	Gruma S.A. De C.V.
+GMT	Gatx Corp.
+GMX.P	Gmx Resources Inc. 9.25% Seri
+GMXR	Gmx Resources
+GNC	Gnc Holdings Inc.
+GNE	Genie Energy Ltd. Class B Commo
+GNI	Great Northern Iron Ore Properties
+GNK	Genco Shipping
+GNRC	Generac Holdings Inc.
+GNT	Gabelli Natural Resources Gold
+GNW	Genworth Financial Inc
+GOF	Claymore/Guggenheim Strategic Fund
+GOL	Gol Linhas Aereas Inteligentes S.A.
+GOM	Gmac Llc
+GOV	Government Properties Income Trust
+GPC	Genuine Parts Company
+GPE-A	Ga Pwr Co Cl A Pfd
+GPI	Group 1 Automotive
+GPK	Graphic Packaging Holding Company
+GPM	Guggenheim Enhanced Equity
+GPN	Global Payments Inc.
+GPS	Gap
+GPX	Gp Strategies Corp.
+GRA	W.R. Grace & Company
+GRO	Agria Corp.
+GRP	Granite Real Estate Inc
+GRR	Asia Tigers Fund
+GRT	Glimcher Realty Trust
+GRT-G	Glimcher Rlty Pfd G
+GRT-H	Glimcher Realty Trust
+GRX	The Gabelli Healthcare & Wellness Trust
+GRX-A	The Gabelli Healthcare & Welln
+GS	Goldman Sachs Group
+GS-A	Goldman Sachs Pfd
+GS-B	Goldman Dep Sh
+GS-C	Goldman Dep Sh
+GS-D	Goldman Sachs Dep Sh
+GSE	Gse Holding Inc.
+GSF	Goldman Sachs Group
+GSH	Guangshen Railway Company
+GSI	General Steel Holdings
+GSJ	Goldman Sachs Group Inc. [The]
+GSK	Glaxosmithkline Plc
+GSL	Global Ship Lease Inc
+GT	Goodyear Tire & Rubber Company
+GT-A	The Goodyear Tire & Rubber Co.
+GTI	Graftech International Ltd
+GTN	Gray Television
+GTN.A	Gray Television
+GTS	Triple-S Management Corp.
+GTY	Getty Realty Corp.
+GU	Gushan Environmental Energy
+GUA	Gulf Power Company Series 2011A
+GUL	Gulf Power Company
+GUT	Gabelli Utility Trust
+GUT-A	Gabelli Util Pfd A
+GVA	Granite Construction Inc.
+GWAY	Greenway Medical Technologies
+GWF	Wells Fargo & Company
+GWR	Genesee & Wyoming
+GWRE	Guidewire Software Inc. Common
+GWRU	Genesee & Wyoming
+GWW	W.W. Grainger
+GXP	Great Plains Energy Inc
+GXP-A	Grt Plns Energy 3.8%
+GXP-D	Great Plains 4.35%
+GXP-E	Great Plains  4.5%
+GY	Gencorp Inc.
+GYA	Corporate Asset Backed Corp Cabco
+GYB	Cabco Series 2004-101 Trust
+GYC	Corporate Asset Backed Corp Cabco
+GZT	Gazit-Globe Ltd
+H	Hyatt Hotels Corp.
+HAE	Haemonetics Corp.
+HAL	Halliburton Company
+HAR	Harman International Industries Inc.
+HAV	Helios Advantage
+HBA-D	HSBC USA Cum Pfd D
+HBA-F	HSBC USA Pfd F
+HBA-G	HSBC Dep Sh Pfd G
+HBA-H	HSBC USA Dep Sh H
+HBA-Z	HSBC USA 2.8575 Pfd
+HBC	HSBC Holdings Plc
+HBC-A	HSBC Hldgs Pfd A ADR
+HBC.P	Harris Pfd 7.375 A
+HBI	Hanesbrands Inc.
+HBM	Hudbay Minerals Inc
+HCA	Hca Holdings Inc. Common Stock
+HCC	Hcc Insurance Holdings
+HCI	Homeowners Choice
+HCLP	Hi-Crush Partners Lp
+HCN	Health Care REIT
+HCN-I	Health Care REIT Inc.
+HCN-J	Health Care REIT Inc.
+HCP	Hcp
+HCS	HSBC Holdings Plc
+HCS-B	HSBC Holdings Plc
+HD	Home Depot
+HDB	Hdfc Bank Limited
+HDY	Hyperdynamics Corp.
+HE	Hawaiian Electric Industries
+HE-U	Heco Cap III 6.50
+HEI	Heico Corp.
+HEI.A	Heico Cp Cl A
+HEK	Heckmann Corp.
+HEP	Holly Energy Partners L.P.
+HEQ	John Hancock Hedged Eqty & Inc
+HES	Hess Corp.
+HF	Hff Inc.
+HFC	Hollyfrontier Corp
+HGG	Hhgregg
+HGH	The Hartford Financial Srvcs G
+HGR	Hanger Orthopedic Group
+HGT	Hugoton Royalty Trust
+HHC	Howard Hughes Corp.
+HHS	Harte-Hanks
+HHY	Helios High Yield Fund
+HI	Hillenbrand Inc
+HIF	Western Asset High Income Fund Inc.
+HIG	Hartford Financial Services Group
+HIG-A	The Hartford Financial Service
+HIG.W	Hartford Financial Services Group
+HIH	Helios High Income Fund Inc
+HII	Huntington Ingalls Industries
+HIL	Hill International
+HIO	Western Asset High
+HIS	Cigna High Income Shares
+HIW	Highwoods Properties
+HIX	Western Asset High Income Fund II Inc.
+HJJ	Ms S.A.C. Saturns Goldman Sachs
+HJL	Ms S.A.C. Saturns Ge Series 2002-14
+HJN	Ms S.A.C. Saturns Ge Series 2002-14
+HJO	Ms S.A.C. Saturns Ge Series 2002-14
+HJR	Saturns Trust No 2005 3
+HJT	Ms S.A.C. Saturns Ge Series 2002-14
+HJV	Ms S.A.C. Saturns Ge Series 2002-14
+HK	Halcon Resources
+HL	Hecla Mining Company
+HL-B	Hecla Mining Pfd B
+HLF	Herbalife Ltd
+HLS	Healthsouth Corp.
+HLX	Helix Energy Solutions Group
+HMA	Health Management Associates
+HMC	Honda Motor Company
+HME	Home Properties
+HMH	Helios Multi-Sector High
+HMN	Horace Mann Educators Corp.
+HMY	Harmony Gold Mining Co. Ltd
+HNI	Hon Industries Inc.
+HNP	Huaneng Power Intl
+HNR	Harvest Natural Resources Inc
+HNT	Health Net Inc.
+HNZ	H.J. Heinz Company
+HOG	Harley-Davidson
+HON	Honeywell International Inc.
+HOS	Hornbeck Offshore Services
+HOT	Starwood Hotels & Resorts Worldwide
+HOV	Hovnanian Enterprises Inc
+HOVU	Hovnanian Enterprises Inc
+HP	Helmerich & Payne
+HPF	John Hancock Pfd II
+HPI	John Hancock Preferred
+HPP	Hudson Pacific Properties
+HPP-B	Hudson Pacific Properties Inc
+HPQ	Hewlett-Packard Company
+HPS	John Hancock Preferred Income Fund III
+HPT	Hospitality Properites Trust
+HPT-C	Hosp Ppty TR 7% Sr C
+HPT-D	Hospitality Properties Trust
+HPY	Heartland Payment Systems
+HQH	H&Q Healthcare Investors
+HQL	H&Q Life Sciences Investors
+HR	Healthcare Realty Trust Inc.
+HRB	H&R Block
+HRC	Hill-Rom Holdings Inc
+HRG	Harbinger Group Inc
+HRL	Hormel Foods Corp.
+HRS	Harris Corp.
+HSA	Helios Strategic Income Fd Inc
+HSB-B	HSBC Finance Corp Dep. Shares R
+HSC	Harsco Corp.
+HSH	Hillshire Brands Company
+HSP	Hospira Inc
+HST	Host Marriott Financial Trust
+HSY	Hershey Foods Corp.
+HT	Hersha Hospitality Trust
+HT-A	Hersha Hosp TR Pr A
+HT-B	Hersha Hospitality Trust
+HTA	Healthcare Trust Of America I
+HTD	John Hancock Tax Advantaged Dividend
+HTF	Horizon Technology Finance Cor
+HTGC	Hercules Technology Growth Capital
+HTGY	Hercules Technology Growth Cap
+HTGZ	Hercules Technology Growth Capi
+HTH	Hilltop Holdings Inc.
+HTR	Hyperion Brookfield Total Return Fund
+HTS	Hatteras Financial Corp
+HTS-A	Hatteras Financial Corp Cum Red
+HTSI	Ruddick Corp.
+HTY	John Hancock Tax-Advantaged Global
+HTZ	Hertz Global Holdings Inc
+HUB.A	Hubbell Inc A
+HUB.B	Hubbell Inc B
+HUM	Humana Inc.
+HUN	Huntsman Corp.
+HVB	Hudson Valley Holding Corp. Com
+HVT	Haverty Furniture Companies
+HVT.A	Haverty Furn Cl A SC
+HW	Headwaters Inc.
+HWD	Harry Winston Diamond Corp.
+HXL	Hexcel Corp.
+HXM	Desarrolladora Homex
+HY	Hyster-Yale Materials Handling
+HYB	New America High
+HYF	Managed High Yield Plus Fund
+HYH	Lehman Abs Corp.
+HYI	Western Asset High Yield Defined
+HYK	Lehman Abs Corp.
+HYL	Lehman Abs Corp.
+HYT	Blackrock High Yield Fund Vi Inc
+HYV	Blackrock High Yield Fund V Inc
+HZO	Marinemax
+IAE	ING Asia Pacific High Dividend Equity
+IAG	Iamgold Corp.
+IBA	Industrias Bachoco S.A. De C.V.
+IBM	International Business Machines Corp.
+IBN	Icici Bank Limited
+ICA	Empresas Ica Soc Contrladora
+ICB	Ms Income Securities
+ICE	Intercontinentalexchange
+IDA	Idacorp
+IDE	ING Infrastructure Industrial
+IDG	ING Group N.V.
+IDT	Idt Corp.
+IEX	Idex Corp.
+IFF	Internationa Flavors & Fragrances
+IFN	India Fund
+IFT	Imperial Holdings
+IGA	ING Global Advantage And Premium
+IGD	ING Global Equity Dividend And Premium
+IGI	Western Asset Investment Grade Defined
+IGK	ING Group N.V.
+IGR	ING Clarion Global Real Estate
+IGT	International Game Technology
+IHC	Independence Holding Company
+IHD	ING Emerging Markets High Dividend
+IHG	Intercontinental Hotels Group
+IHS	Ihs Inc.
+IID	ING International High Dividend Equity
+IIF	Morgan Stanley India Investment Fund Inc
+IIM	Invesco Insured Muni Income Trust
+IIT	Pt Indosat Tbk
+IL	Intralinks Holdings
+IM	Ingram Micro Inc.
+IMAX	Imax Corp.
+IMC	Invesco Insured Muni Trust
+IMF	Western Asset Inflation Fund Inc
+IMN	Imation Corp.
+IMPV	Imperva Inc.
+IMS	Invesco Insured Muni Securities
+IMT	Invesco Insured Muni Trust
+IN	Intermec Inc
+INB	Cohen & Steers Global Income Builder
+IND	ING Group N.V.
+INF	Brookfield Global Listed Infra
+ING	ING Group N.V.
+INGR	Ingredion Inc
+INN	Summit Hotel Properties
+INN-A	Summit Hotel Properties Inc.
+INT	World Fuel Services Corp.
+INVN	Invensense Inc.
+INXN	Interxion Holding N.V.
+INZ	ING Group N.V.
+IO	Ion Geophysical Corp.
+IOC	Interoil Corp
+IP	International Paper Company
+IPG	Interpublic Group Of Companies
+IPHI	Inphi Corp.
+IPI	Intrepid Potash Inc
+IPL-B	Interstate P&L Pfd B
+IQI	Invesco Quality Muni Income Trust
+IQM	Invesco Quality Muni Securities
+IQT	Invesco Quality Muni Investment Trust
+IR	Ingersoll-Rand Plc [Ireland]
+IRC	Inland Real Estate Corp.
+IRC-A	Inland Real Estate Corporation
+IRE	Governor And Company Of The Bank Of Ireland
+IRE-B	Investors Real Estate Trust 7.9
+IRF	International Rectifier Corp.
+IRL	Irish Investment Fund
+IRM	Iron Mountain Inc.
+IRR	ING Risk Managed Natural Resources Fund
+IRS	Irsa Inversiones Y Representaciones S.A.
+ISD	Prudential Short Duration High
+ISF	ING Group N.V.
+ISG	ING Group N.V.
+ISH	International Shipholding Corp.
+ISP	ING Group N.V.
+ISS	Isoftstone Holdings
+IT	Gartner
+ITC	Itc Holdings
+ITG	Investment Technology Group
+ITT	Itt Industries
+ITUB	Itau Unibanco Banco Holding Sa
+ITW	Illinois Tool Works Inc.
+IVC	Invacare Corp.
+IVR	Invesco Mortgage Capital Inc
+IVR-A	Invesco Mortgage Capital Inc.
+IVZ	Invesco Plc
+IX	Orix Corp Ads
+JAG	Jaguar Mining Inc
+JAH	Jarden Corp.
+JBI	Lehman Abs Cp 7.857%
+JBJ	Lehman Abs Corp.
+JBK	Lehman Abs Corp.
+JBL	Jabil Circuit
+JBN	Select Asset Inc.
+JBO	Lehman Abs Corp.
+JBR	Select Asset Inc.
+JBT	John Bean Technologies Corp.
+JCE	Nuveen Core Equity Alpha Fund
+JCI	Johnson Controls
+JCP	J.C. Penney Company Inc. Holding Company
+JDD	Nuveen Diversified Dividend And
+JE	Just Energy Group Inc
+JEC	Jacobs Engineering Group Inc.
+JEF	Jefferies Group
+JEQ	Japan Equity Fund
+JFC	Jf China Region Fund
+JFR	Nuveen Floating Rate
+JGG	Nuveen Global Government Enhanced
+JGT	Nuveen Multi-Currency Short-Term Government
+JGV	Nuveen Global Value Opportunities Fund
+JHI	John Hancock Investors Trust
+JHP	Nuveen Quality Preferred Income Fund 3
+JHS	John Hancock Income Securities Trust
+JHX	James Hardie Industries Se
+JKS	Jinkosolar Holding Company Limited
+JLA	Nuveen Equity Premium Advantage Fund
+JLL	Jones Lang Lasalle Inc.
+JLS	Nuveen Mortgage Opportunity Term Fund
+JMF	Nuveen Energy MLP Total Return Fund
+JMI	Javelin Mortgage Investment Co
+JMP	Jmp Group Inc
+JMT	Nuven Mortgage Opportunity Term Fund 2
+JNJ	Johnson & Johnson
+JNPR	Juniper Networks
+JNS	Janus Capital Group Inc
+JNY	Jones Group
+JOE	St. Joe Company
+JOF	Japan Smaller Capitalization Fund Inc
+JOY	Joy Global Inc.
+JPC	Nuveen Preferred And Convertible
+JPG	Nuveen Equity Premium And Growth Fund
+JPI	Nuveen Preferred And Income Term Fund
+JPM	J P Morgan Chase & Co
+JPM-C	Jpmorgan Chase Capital Xxix 6.7
+JPM-D	Jpmorgan Chase & Co.
+JPM-I	Jpmrgn Pfd Ser J
+JPM-J	JP Morgan Ch Cap X
+JPM-K	JP Morgan Ch Cap Xi
+JPM-O	Bank One Capital Vi
+JPM-P	Jpmorgan Chs Cap Xvi
+JPM-S	Jpmorgan Chase Cap
+JPM-W	Jpmorgan Cap Xxiv
+JPM-X	JP Morgan Ch Cap Xii
+JPM-Y	JP Morg Chase Cap Xi
+JPM.W	Jpmorgan Chase & Co
+JPS	Nuveen Quality Preferred 2
+JPZ	Nuveen Equity Premium
+JQC	Nuveen Preferred And Convertible 2
+JRI	Nuveen Real Asset Income And Gr
+JRN	Journal Communications
+JRO	Nuveen Floating Rate Income Opportuntiy
+JSD	Nuveen Short Duration Credit O
+JSN	Nuveen Equity Premium Opportunity
+JTA	Nuveen Tax-Advantaged Total Return
+JTD	Nuveen Tax-Advantaged Dividend Growth
+JTP	Nuveen Quality Preferred
+JW.A	John Wiley Sons Cl A
+JW.B	John Wiley Sons Cl B
+JWF	Wells Fargo & Company
+JWN	Nordstrom
+JZC	Lehman Abs Corp.
+JZJ	Lehman Abs Corp.
+JZK	Lehman Abs Corp.
+JZL	Lehman Abs Corp.
+JZS	Lehman Abs Corp.
+JZT	Lehman Abs Corp
+JZV	Lehman Abs Corp.
+K	Kellogg Company
+KAI	Kadant Inc
+KAMN	Kaman Corp.
+KAP	Kcap Financial Inc.
+KAR	Kar Auction Services Inc
+KB	Kb Financial Group Inc
+KBH	Kb Home
+KBR	Kbr
+KBW	KBW Inc
+KCC	Lehman Abs Corp.
+KCG	Knight Capital Group
+KDN	Kaydon Corp.
+KED	Kayne Anderson Energy Development Company
+KEF	Korea Equity Fund
+KEG	Key Energy Services
+KEM	Kemet Corp.
+KEP	Korea Electric Power Corp.
+KEX	Kirby Corp.
+KEY	Keycorp
+KEY-G	Keycorp Pfd Ser A
+KF	Korea Fund
+KFH	Kkr Financial Holdings Llc
+KFI	Kkr Financial Holdings Llc
+KFN	Kkr Financial
+KFS	Kingsway Financial Services
+KFY	Korn/Ferry International
+KGC	Kinross Gold Corp.
+KH	China Kanghui Holdings
+KHI	Scudder High Income Trust
+KID	Kid Brands
+KIM	Kimco Realty Corp.
+KIM-G	Kimco Rlty Pfd G
+KIM-H	Kimco Realty Corporation Deposi
+KIM-I	Kimco Realty Corporation Deposi
+KIM-J	Kimco Realty Corporation Class
+KKD	Krispy Kreme Doughnuts
+KKR	Kkr
+KMB	Kimberly-Clark Corp.
+KMF	Kayne Anderson Midstream Energy Fund
+KMG	Kmg Chemicals
+KMI	Kinder Morgan
+KMI.W	Kinder Morgan Inc. W/I
+KMM	Scudder Multi-Market Income Trust
+KMP	Kinder Morgan Energy Partners L.P.
+KMPR	Unitrin
+KMR	Kinder Morgan Management Llc
+KMT	Kennametal Inc.
+KMX	Carmax Inc
+KND	Kindred Healthcare
+KNL	Knoll
+KNM	Konami Corp.
+KNO	Lehman Abs Corp.
+KNR	Bristol Myers Squibb Company Co
+KNX	Knight Transportation
+KNXA	Kenexa Corp.
+KO	Coca-Cola Company
+KOF	Coca Cola Femsa S.A.B. De C.V.
+KOG	Kodiak Oil
+KOP	Koppers Holdings Inc.
+KORS	Michael Kors Holdings Limited
+KOS	Kosmos Energy Ltd.
+KR	Kroger Company
+KRA	Kraton Performance Polymers Inc
+KRC	Kilroy Realty Corp.
+KRC-G	Kilroy Realty Corporation
+KRC-H	Kilroy Realty Corporation
+KRG	Kite Realty Group Trust
+KRG-A	Kite Realty Group Trust
+KRJ	Lehman Abs Corp.
+KRO	Kronos Worldwide Inc
+KS	Kapstone Paper And Packaging Corp.
+KSA	Lehman Abs Corp.
+KSM	Scudder Strategic Municiple Income Trust
+KSS	Kohl's Corp.
+KST	Scudder Strategic Income Trust
+KSU	Kansas City Southern
+KSU.P	Kansas Cty Sthn 4%
+KT	Korea Telecom Corp.
+KTF	Scudder Municiple Income Trust
+KTH	Lehman Abs Corp.
+KTN	Lehman Abs Corp.
+KTP	Lehman Abs Corp.
+KUB	Kubota Corp.
+KW	Kennedy-Wilson Holdings Inc.
+KWK	Quicksilver Resources Inc.
+KWR	Quaker Chemical Corp.
+KYE	Kayne Anderson Energy Total Return Fund
+KYN	Kayne Anderson MLP Investment Company
+KYN-D	Kayne Anderson MLP Investment
+KYN-E	Kayne Anderson MLP Investment
+KYO	Kyocera Corp.
+L	Loews Corp.
+LAD	Lithia Motors
+LAS	Lentuo International Inc.
+LAZ	Lazard Ltd
+LBF	Scudder Global High
+LCC	US Airways Group Inc. New
+LCM	Advent/Claymore Enhanced Growth &
+LDF	Latin American Discovery Fund
+LDK	Ldk Solar Co. Ltd
+LDL	Lydall
+LDP	Cohen & Steers Limited Duration Preferred And In
+LDR	Landauer
+LEA	Lear Corp.
+LEE	Lee Enterprises Inc.
+LEG	Leggett & Platt Inc.
+LEN	Lennar Corp.
+LEN.B	Lennar Corp.
+LEO	Dreyfus Strategic Municipals
+LF	Leapfrog Enterprises Inc
+LFC	China Life Insurance Company Limited
+LFL	Lan Chile S.A.
+LG	Laclede Group
+LGF	Lions Gate Entertainment Corp.
+LGI	Lazard Global Total Return And
+LH	Laboratory Corporation Of America Holdings
+LHO	Lasalle Hotel Properties
+LHO-G	Lasalle Hotel Proper
+LHO-H	Lasalle Hotl 8.375 B
+LII	Lennox International
+LL	Lumber Liquidators Holdings Inc
+LLL	L-3 Communications Holdings
+LLY	Eli Lilly And Company
+LM	Legg Mason
+LMT	Lockheed Martin Corp.
+LNC	Lincoln National Corp.
+LNC.P	Lincoln National Corporation Pr
+LNC.W	Lincoln National Corp
+LNKD	Linkedin
+LNN	Lindsay Corp.
+LNT	Alliant Energy Corp.
+LO	Lorillard Inc
+LOCK	Lifelock Inc.
+LOR	Lazard World Dividend &
+LOW	Lowe's Companies
+LPI	Laredo Petroleum Holdings Inc
+LPL	Lg Display Co. Limited American
+LPR	Lone Pine Resources Inc.
+LPS	Lender Processing Services Inc
+LPX	Louisiana-Pacific Corp.
+LRE	Lrr Energy L.P.
+LRN	K12 Inc
+LRY	Liberty Property Trust
+LSE	Caplease Funding Inc
+LSE-A	Caplease Fndg Ser A
+LSE-B	Caplease Inc. 8.375% Series B
+LSI	Lsi Logic Corp.
+LTC	Ltc Properties
+LTD	Limited Brands
+LTM	Life Time Fitness
+LUB	Luby's
+LUK	Leucadia National Corp.
+LUV	Southwest Airlines Company
+LUX	Luxottica Group S.P.A.
+LVB	Steinway Musical Instruments
+LVLT	Level 3 Communications
+LVS	Las Vegas Sands
+LXFR	Luxfer Holdings Plc
+LXK	Lexmark International
+LXP	Lexington Realty Trust
+LXP-C	Lexington Realty Tru
+LXP-D	Lexington Rlty TR
+LXU	Lsb Industries Inc.
+LYB	Lyondellbasell Industries Nv
+LYG	Lloyds Banking Group Plc
+LYG-A	Lloyds Banking Group Plc
+LYV	Live Nation Entertainment
+LZB	La-Z-Boy Inc.
+M	Macy's Inc
+MA	Mastercard Inc.
+MAA	Mid-America Apartment Communities
+MAC	Macerich Company
+MAIN	Main Street Capital Corp.
+MAN	Manpower Inc
+MANU	Manchester United Ltd.
+MAR	Marriot International
+MAS	Masco Corp.
+MATX	Matson Inc
+MAV	Pioneer Muni High Income Advantage Trust
+MBI	Mbia
+MBT	Mobile Telesystems
+MCA	Blackrock Muniyield California Insured Fund
+MCC	Medley Capital Corp.
+MCD	Mcdonald's Corp.
+MCI	Massmutual Corporate Investors
+MCK	Mckesson Corp.
+MCN	Madison/Claymore Covered Call & Equity Strategy
+MCO	Moody's Corp.
+MCP	Molycorp Inc
+MCP-A	Molycorp Inc Pfd Conv Ser A
+MCQ	Medley Capital Corporation 7.12
+MCR	Mfs Charter Income Trust
+MCS	Marcus Corp.
+MCY	Mercury General Corp.
+MD	Mednax Inc
+MDC	M.D.C. Holdings
+MDF	Metropolitan Health Networks
+MDP	Meredith Corp.
+MDR	Mcdermott International
+MDT	Medtronic
+MDU	Mdu Res Group Inc
+MED	Medifast Inc
+MEG	Media General
+MEI	Methode Electronics
+MEN	Blackrock Munienhanced Fund
+MER-D	Merrill Lyn 7.0 Topr
+MER-E	M L Cap TR 7.12
+MER-F	Merrill Ly Cap V7.28
+MER-K	Ml 6.45% Trust Pfd
+MER-M	Ml Cap TR II 6.45% P
+MER-P	Ml Cap TR III 7.375%
+MET	Metlife
+MET-A	Metlife Pfd A Fltg
+MET-B	Metlife Inc Pfd B
+MFA	Mfa Financial Inc
+MFA-A	Mfa Finl 8.50% A
+MFB	Maidenform Brands
+MFC	Manulife Financial Corp
+MFD	Macquarie/First Trust Global
+MFG	Mizuho Financial Group
+MFL	Blackrock Muniholdings Investment Quality Fund
+MFM	Mfs Muni Income Trust
+MFO	Mfa Financial Inc.
+MFT	Blackrock Muniyield Investment Qualityfund
+MFV	Mfs Special Value Trust
+MG	Mistras Group Inc
+MGA	Magna International
+MGF	Mfs Government Markets Income Trust
+MGI	Moneygram International
+MGM	Mgm Resorts International
+MGR	Affiliated Managers Group Inc
+MGU	Macquarie Global Infrastructure Total Return Fun
+MH-A	Maiden Holdings Ltd. 8.25%
+MHD	Blackrock Muniholdings Fund
+MHF	Western Asset Muni High
+MHI	Pioneer Muni High Income Trust
+MHK	Mohawk Industries
+MHN	Blackrock Muniholdings New York Quality Fund
+MHNA	Maiden Holdings North America
+MHNB	Maiden Holdings North America
+MHO	M/I Homes
+MHO-A	M/I Homes Sr A Pf Ds
+MHP	Mcgraw-Hill Companies
+MHR	Magnum Hunter Resources Corp.
+MHY	Western Asset Managed High
+MIC	Macquarie Infrastructure Company Trust
+MIG	Meadowbrook Insurance Group
+MIL	Mfc Industrial Ltd
+MILL	Miller Petroleum
+MIN	Mfs Intermediate Income Trust
+MIT-A	Ag Mortgage Investment Trust
+MITT	Ag Mortgage Investment Trust
+MIY	Blackrock Muniyield Michigan Quality Fund
+MJI	Blackrock Muniyield New Jersey Quality Fund
+MJN	Mead Johnson Nutrition Company
+MKC	Mccormick & Company Inc.
+MKC.V	Mccormick & Company Inc.
+MKL	Markel Corp.
+MKS	Ms S.A.C. Saturns Ge Series 2002-14
+MLG	Metlife
+MLI	Mueller Industries
+MLM	Martin Marietta Materials
+MLP	Maui Land & Pineapple Company
+MLR	Miller Industries
+MLU	Metlife Inc.
+MM	Millennial Media Inc.
+MMC	Marsh & Mclennan Companies
+MMD	Mainstay Defined Muni Opp Fund
+MMM	3M Company
+MMP	Magellan Midstream Partners L.P.
+MMR	Mcmoran Exploration Company
+MMS	Maximus
+MMT	Mfs Multimarket Income Trust
+MMU	Western Asset Managed Municipals Fund
+MN	Manning & Napier Inc.
+MNE	Blackrock Muni New York Intermediate Duration Fu
+MNI	Mcclatchy Company
+MNP	Western Asset Muni Partners Fund
+MNR	Monmouth Real Estate Investment Corp.
+MNR-A	Monmouth Real Estate Inv
+MNR-B	Monmouth Real Estate Investmen
+MO	Altria Group
+MOD	Modine Manufacturing Company
+MOG.A	Moog Inc.
+MOG.B	Moog Inc.
+MOH	Molina Healthcare Inc
+MON	Monsanto Company
+MOS	Mosaic Company
+MOV	Movado Group Inc.
+MP-D	Mississippi Pr 5.25
+MPA	Blackrock Muniyield Pennsylvania Quality Fund
+MPC	Marathon Petroleum Corporation
+MPG	Mpg Office Trust
+MPG-A	Maguire Pptys Pfd A
+MPO	Midstates Petroleum Company I
+MPR	Met-Pro Corp.
+MPV	Massmutual Participation Investors
+MPW	Medical Properties Trust
+MPX	Marine Products Corp.
+MQT	Blackrock Muniyield Quality Fund II
+MQY	Blackrock Muniyield Quality Fund
+MR	Mindray Medical International Limited
+MRC	Mrc Global Inc.
+MRF	American
+MRH	Montpelier Re Holdings Ltd
+MRH-A	Montpelier Re Holdings Ltd
+MRK	Merck & Company
+MRO	Marathon Oil Corp.
+MRX	Medicis Pharmaceutical Corp.
+MS	Morgan Stanley
+MS-A	Morgan Stanley Prfd 'A'
+MSA	Mine Safety Appliances Company
+MSB	Mesabi Trust
+MSCI	MSCI Inc
+MSD	Morgan Stanley Emerging Markets Debt
+MSF	Morgan Stanley Emerging Markets Fund Inc
+MSI	Motorola Solutions
+MSJ	Morgan Stanley Cap Trust Vi Cap Securities
+MSK	Morgan Stanley Cap TR ViII Gdt Cap Securities
+MSM	Msc Industrial Direct Company
+MSO	Martha Stewart Living Omnimedia
+MSP	Madison Strategic Sector Premium Fund
+MSZ	Morgan Stanley Capital Trust Vii Cap Secs
+MT	Arcelormittal
+MTB	M&T Bank Corp.
+MTB-A	M&T Cap TR Pfd
+MTB-C	M&T Bank Corporation Fixed Rate
+MTB.P	M&T Bank Corporation Fixed Rate
+MTD	Mettler-Toledo International
+MTDR	Matador Resources Company
+MTE	Mahanagar Telephone Nigam Ltd
+MTG	Mgic Investment Corp.
+MTH	Meritage Corp.
+MTL	Mechel Steel Group Oao
+MTL.P	Mechel Steel Group Oao American
+MTN	Vail Resorts
+MTOR	Arvinmeritor
+MTR	Mesa Royalty Trust
+MTRN	Brush Wellman Inc
+MTS	Montgomery Street Income Securities
+MTT	Western Asset Muni Defined Opportunity Trust Inc
+MTU	Mitsubishi Ufj Financial Group Inc
+MTW	Manitowoc Company
+MTX	Minerals Technologies Inc.
+MTZ	Mastec
+MUA	Blackrock Muniassets Fund
+MUC	Blackrock Muniholdings California Quality Fund
+MUE	Blackrock Muniholdings Quality Fund II
+MUH	Blackrock Muniholdings Fund II
+MUI	Blackrock Muni Intermediate Duration Fund Inc
+MUJ	Blackrock Muniholdings New Jersey Insured Fund
+MUR	Murphy Oil Corp.
+MUS	Blackrock Muniholdings Quality Fund
+MUSA	Metals USA Holdings
+MUX	Mcewen Mining Inc
+MVC	Mvc Capital
+MVO	Mv Oil Trust
+MVT	Blackrock Munivest Fund II
+MW	Men's Wearhouse
+MWA	Mueller Water Products
+MWE	Markwest Energy Partners Lp
+MWG	Morgan Stanley Cap TR IV Gtd Cap Secs
+MWO	Morgan Stanley Cap TR V Gtd Cap Secs
+MWR	Morgan Stanley Cap TR III Capital Trust Securiti
+MWV	Meadwestvaco Corp.
+MWW	Monster Worldwide
+MX	Magnachip Semiconductor Corp.
+MXE	Mexico Equity And
+MXE.P	Mexico Eq And Inc Fd
+MXF	Mexico Fund
+MXL	Maxlinear Inc
+MXT	Maxcom Telecomunicaciones Sab De Cv
+MY	China Ming Yang Wind Power Group Limited
+MYC	Blackrock Muniyield California Fund
+MYD	Blackrock Muniyield Fund
+MYE	Myers Industries
+MYF	Blackrock Muniyield Investment Fund
+MYI	Blackrock Muniyield Quality Fund III
+MYJ	Blackrock Muniyield New Jersey Fund
+MYM	Blackrock Muniyield Michigan Quality Fund II
+MYN	Blackrock Muniyield New York Quality Fund
+MZF	Managed Duration Investment Grade Fund
+N	Netsuite Inc
+NAC	Nuveen California Divadv Fund
+NAD	Nuveen Divadv Fund
+NAD-C	Nuveen Div Advantage Muni Fd
+NAI	Agic International & Premium Strategy Fund
+NAN	Nuveen New York Divadv Fund
+NAN-C	Nuveen NY Div Advantage Muni F
+NAN-D	Nuveen New York Dividend Advan
+NAT	Nordic American Tanker Shipping Limited
+NAV	Navistar International Corp.
+NAV-D	Navistar Intl Pfd D
+NAZ	Nuveen Arizona Premium Fund
+NBB	Nuveen Build America Bond Fund
+NBD	Nuveen Build America Bond Opportunity Fund
+NBG	National Bank Of Greece Sa
+NBG-A	Natl Bk Of Gr Pfd Ad
+NBHC	National Bank Holdings Corp.
+NBL	Noble Energy Inc.
+NBR	Nabors Industries
+NC	Nacco Industries
+NCA	Nuveen California Muni Value Fund
+NCI	Navigant Consulting
+NCO	Nuveen California Muni Market Opportunity Fund
+NCP	Nuveen California Performance Plus Fund
+NCR	Ncr Corp.
+NCS	Nci Building Systems
+NCT	Newcastle Investment Corp.
+NCT-B	Newcastle Inv Pfd B
+NCT-C	Newcastle Inv Pfd C
+NCT-D	Newcastle Invt Corp
+NCU-C	Nuveen California Premium Inco
+NCV	Agic Convertible &
+NCZ	Agic Convertible & II
+NDP	Tortoise Energy Independence F
+NDRO	Enduro Royalty Trust
+NDZ	Nordion Inc.
+NE	Noble Corp.
+NEA-C	Nuveen Insd Tax-Free
+NED	Noah Education Holdings Ltd
+NEE	Nextera Energy
+NEE-C	Fpl Group Inc. 5 7/8% Preferre
+NEE-F	Fpl Group Inc. Fpl Group Capit
+NEE-G	Nextera Energy Capital Holding
+NEE-H	Nextera Energy Capital Holding
+NEE-O	Nextera Energy Inc.
+NEM	Newmont Mining Corp.
+NEU	Newmarket Corp.
+NEV	Nuveen Enhanced Muni Value Fund
+NFG	National Fuel Gas Company
+NFJ	Nfj Dividend Interest & Premium Strategy Fund
+NFP	National Financial Partners Corp.
+NFX	Newfield Exploration Company
+NGG	National Grid Transco Plc
+NGL	Ngl Energy Partners Lp
+NGLS	Targa Resources Partners Lp
+NGS	Natural Gas Services Group
+NGT	Eastern American Natural Gas Trust
+NGVC	Natural Grocers By Vitamin Cottage Inc
+NGX-C	Nuveen Insured Massachusetts T
+NGZ	Agic Global Equity & Convertible
+NHF	Nexpoint Credit Strategies Fund
+NHI	National Health Investors
+NI	Nisource Inc
+NIE	Agic Equity & Convertible
+NIF	Nuveen Premier Insured Muni
+NIM	Nuveen Maturities Fund
+NIO	Nuveen Insured Muni Opportunity Fund
+NJ	Nidec Corporation
+NJR	Newjersey Resources Corp.
+NKA	Niska Gas Storage Partners Llc
+NKE	Nike
+NKG-C	Nuveen Georgia Div Adv Mun Fd
+NKG-D	Nuveen Ga Div Advantage Muni F
+NKR-C	Nuveen Arizona Dividend Advanta
+NL	Nl Industries
+NLS	Nautilus Group
+NLSN	Nielsen Holdings N.V.
+NLY	Annaly Capital Management Inc
+NLY-A	Annaly Capital Manag
+NLY-C	Annaly Capital Management Inc
+NLY-D	Annaly Capital Management Inc
+NM	Navios Maritime Holdings Inc.
+NMA	Nuveen Muni Advantage Fund
+NMD	Nuveen Muni High Income Opportunity
+NMFC	New Mountain Finance Corporati
+NMI	Nuveen Muni
+NMK-B	Niagara Mohawk Holdings Inc. P
+NMK-C	Niagara Mohawk 3.60
+NMM	Navios Maritime Partners Lp
+NMO	Nuveen Muni Market Opportunity Fund
+NMP	Nuveen Michigan Premium Fund
+NMR	Nomura Holdings Inc ADR
+NMT	Nuveen Massachusetts Premium Fund
+NMT-C	Nuveen Mass Prem Inc
+NMT-D	Nuveen Massachusetts Premium In
+NMY	Nuveen Maryland Premium Fund
+NMY-C	Nuveen Maryland Premium Income
+NMY-D	Nuveen Maryland Premium Income
+NMY-E	Nuveen Maryland Premium Income
+NMY-F	Nuveen Maryland Premium Income
+NMY-G	Nuveen Maryland Premium Income
+NMY-H	Nuveen Maryland Premium Income
+NNA	Navios Maritime Acquisition Corp.
+NNA.U	Navios Maritime Acquisition Cor
+NNA.W	Navios Maritime Acquisition Corporation
+NNC	Nuveen North Carolina Premium Fund
+NNC-C	Nuveen Nc Prem Inc
+NNC-D	Nuveen North Carolina Premium
+NNC-E	Nuveen Nc Premium Income Muni
+NNC-F	Nuveen Nc Premium Income Muni
+NNC-G	Nuveen North Carolina Premium
+NNF	Nuveen Insured New York Premium Fund
+NNI	Nelnet
+NNJ	Nuveen New Jersey Premium Fund
+NNN	National Retail Properties
+NNN-D	National Retail Properties In
+NNP	Nuveen New York Performance Plus Fund
+NNY	Nuveen New York Muni Value Fund
+NOA	North American Energy Partners
+NOAH	Noah Holdings Ltd
+NOC	Northrop Grumman Corp.
+NOK	Nokia Corp.
+NOM-C	Nuveen Missouri Premium Income
+NOR	Noranda Aluminum Holding Corp.
+NOV	National-Oilwell
+NOW	Servicenow Inc.
+NP	Neenah Paper
+NPD	China Nepstar Chain Drugstore Ltd
+NPF	Nuveen Premier Muni
+NPI	Nuveen Premium Fund
+NPK	National Presto Industries
+NPM	Nuveen Premium Fund II
+NPO	Enpro Industries
+NPP	Nuveen Performance Plus Fund
+NPT	Nuveen Premium Fund IV
+NPTN	Neophotonics Corp.
+NPV	Nuveen Virginia Premium Fund
+NPV-A	Nuveen Virginia Premium Income
+NPV-C	Nuveen Virginia Premium Income
+NPV-D	Nuveen Virginia Premium Income
+NPV-E	Nuveen Virginia Premium Income
+NPX	Nuveen Insured Premium Fund II
+NPY	Nuveen Pennsylvania Premium Fund II
+NQ	Netqin Mobile Inc.
+NQC	Nuveen California Investment
+NQI	Nuveen Insured Quality Fund
+NQJ	Nuveen New Jersey Investment
+NQM	Nuveen Investment Quality Fund
+NQN	Nuveen New York Investment
+NQP	Nuveen Pennsylvania Investment
+NQS	Nuveen Quality Fund
+NQU	Nuveen Quality
+NR	Newpark Resources
+NRC	National Rural Utilities Cooperative
+NRF	Northstar Realty Finance
+NRF-A	Northstar Realty Pfd
+NRF-B	Northstar Rlty Ser B
+NRF-C	Northstar Realty Finance Corp.
+NRG	Nrg Energy
+NRGM	Inergy Midstream L.P.
+NRGY	Inergy L.P.
+NRK-C	Nuveen Insured New York Tax-Fre
+NRP	Natural Resource Partners Lp
+NRT	North European Oil Royality Trust
+NRU	National Rural Utilities Cooperative
+NS	Nustar Energy L.P.
+NSC	Norfolk Souther Corp.
+NSH	Nustar Gp Holdings Llc
+NSL	Nuveen Senior
+NSM	Nationstar Mortgage Holdngs  I
+NSP	Insperity Inc
+NSR	Neustar
+NTC	Nuveen Connecticut Premium Fund
+NTC-C	Nuveen Conn Prem Inc
+NTC-D	Nuveen Connecticut Premium Inc
+NTC-E	Nuveen Connecticut Premium Inc
+NTC-F	Nuveen Ct Premium Income Muni
+NTC-G	Nuveen Ct Premium Income Muni
+NTE	Nam Tai Electronics
+NTG	Tortoise MLP Fund
+NTI	Northern Tier Energy Lp
+NTL	Nortel Inversora Sa ADR
+NTT	Nippon Telegraph And Telephone Corp.
+NTX	Nuveen Texas Quality
+NTX-C	Nuveen Texas Quality Income Mu
+NTZ	Natuzzi S.P.A.
+NU	Northeast Utilities
+NUC	Nuveen California Quality
+NUE	Nucor Corp.
+NUJ-C	Nuveen New Jersey Dividend Adv
+NUM	Nuveen Michigan Quality
+NUN	Nuveen New York Quality
+NUO	Nuveen Ohio Quality
+NUS	Nu Skin Enterprises
+NUV	Nuveen Muni Value Fund
+NUW	Nuveen Muni Value Fund
+NVC	Nuveen California Quality Fund
+NVE	Nv Energy Inc
+NVG-C	Nuveen Insd Divid Ad
+NVN	Nuveen New York Quality Fund
+NVO	Novo Nordisk A/S
+NVR	Nvr
+NVS	Novartis Ag
+NVX-A	Nuveen California Dividend Adva
+NVX-C	Nuveen California Dividend Adv
+NVY-C	Nuveen Pennsylvania Dividend A
+NW-C	Natl Wstmst Ads 19C3
+NWE	Northwestern Corp.
+NWL	Newell Rubbermaid Inc.
+NWN	Northwest Natural Gas Company
+NWY	New York & Company
+NX	Quanex Building Products Corp.
+NXC	Nuveen California Tax-Free Income
+NXE-C	Nuveen Arizona Dividend Advant
+NXI-C	Nuveen Oh Div Adv Muni Fd Muni
+NXJ-A	Nuveen New Jersey Dividend Adva
+NXK-C	Nuveen New York Dividend Advant
+NXM-C	Nuveen Pennsylvania Dividend A
+NXN	Nuveen Insured New York Tax-Free
+NXP	Nuveen Tax Free Income Portfolio
+NXQ	Nuveen Tax Free Income Portfolio II
+NXR	Nuveen Tax Free Income Portfolio III
+NXY	Nexen
+NXY-B	Nexen Inc 7.35 Pfd
+NYB	New York Community Bancorp
+NYB-U	New York Cmty Cap V
+NYT	New York Times Company
+NYX	NYSE Euronext
+NZF-C	Nuveen Dividend Advantage Muni
+NZH-A	Nuveen California Dividend Adva
+NZH-B	Nuveen California Dividend Adv
+NZH-C	Nuveen CA Div Advantage Muni F
+O	Realty Income Corp.
+O-E	Realty Income Pfd E
+O-F	Realty Income Corporation
+OAK	Oaktree Capital Group Llc
+OAS	Oasis Petroleum Inc.
+OB	Onebeacon Insurance Group
+OC	Owens Corning Inc
+OC.B	Owens Corning
+OCN	Ocwen Financial Corp.
+OCR	Omnicare
+OCR-A	Omnicare Cap TR 1
+OCR-B	Omnicare Cap TR II
+ODC	Oil-Dri Corporation Of America
+ODP	Office Depot
+OEH	Orient-Express Hotels
+OFC	Corporate Office Properties
+OFC-H	Corp Off Pptys Pfd H
+OFC-J	Corporate Office Pfd
+OFC-L	Corp Office Properties Trust
+OFG	Oriental Financial Group
+OFG-A	Oriental Fin Mips A
+OFG-B	Oriental Finl Pfd B
+OGE	Oge Energy Corp.
+OHI	Omega Healthcare Investors
+OI	Owens-Illinois
+OIA	Invesco Muni Income Trust
+OIB.C	Oi Sa
+OIBR	Oi S.A. Ads
+OII	Oceaneering International
+OILT	Oiltanking Partners L.P.
+OIS	Oil States International
+OKE	Oneok
+OKS	Oneok Partners L.P.
+OLN	Olin Corp.
+OLP	One Liberty Properties
+OMC	Omnicom Group Inc.
+OME	Omega Protein Corp.
+OMG	Om Group
+OMI	Owens & Minor
+OMN	Omnova Solutions Inc.
+OMX	Officemax Inc.
+ONB	Old National Bancorp Capital
+ONE	Higher One Holdings
+OPK	Opko Health Inc
+OPY	Oppenheimer Holdings
+ORA	Ormat Technologies
+ORB	Orbital Sciences Corp.
+ORI	Old Republic International Corp.
+ORN	Orion Marine Group Inc
+OSG	Overseas Shipholding Group
+OSK	Oshkosh Truck Corp.
+OWW	Orbitz Worldwide
+OXF	Oxford Resource Partners Lp
+OXM	Oxford Industries
+OXY	Occidental Petroleum Corp.
+OZM	Och-Ziff Capital Management
+P	Pandora Media Inc.
+PAA	Plains All American Pipeline L.P.
+PAC	Grupo Aeroportuario Del Pacifico
+PACD	Pacific Drilling S.A.
+PAG	Penske Automotive Group
+PAI	Pacific American Income Shares
+PAM	Pampa Energia S.A.
+PANW	Palo Alto Networks Inc.
+PAR	Par Technology Corp.
+PAY	Verifone Systems
+PB	Prosperity Bancshares
+PBA	Pembina Pipeline Cor
+PBH	Prestige Brand Holdings
+PBI	Pitney Bowes Inc
+PBNY	Provident New York Bancorp
+PBR	Petroleo Brasileiro S.A.- Petrobras
+PBR.A	Petroleo Brasileiro S.A.- Petrobras
+PBT	Permian Basin Royalty Trust
+PBY	Pep Boys-Manny Moe & Jack
+PBYI	Puma Biotechnology
+PC	Panasonic Corp.
+PCF	Putnam High Income Bond Fund
+PCG	Pacific Gas & Electric Co.
+PCK	Pimco California Muni II
+PCL	Plum Creek Timber Company
+PCM	Pimco Commercial Mortgage Securities
+PCN	Pimco Corporate
+PCP	Precision Castparts Corp.
+PCQ	Pimco California Muni
+PCS	Metropcs Communications
+PDH	Petrologistics Lp
+PDI	Pimco Dynamic Income Fund
+PDM	Piedmont Office Realty Trust
+PDS	Precision Drilling Corp.
+PDT	John Hancock Premium Dividend Fund
+PE-A	Peco Energy 3.8 Pfd
+PE-B	Peco Energy 4.3 Pfd
+PE-C	Peco Energy 4.4 Pfd
+PE-D	Peco Energy 4.68 Pfd
+PEB	Pebblebrook Hotel Trust
+PEB-A	Pebblebrook Hotel Trust Pfd Ser
+PEB-B	Pebblebrook Hotel Trust
+PEG	Public Service Enterprise Group Inc.
+PEI	Pennsylvania Real Estate Investment
+PEI-A	Penn Real Estate Invest Trust
+PEI-B	Pennsylvania Real Estate Inves
+PEO	Petroleum Resources Corp.
+PEP	Pepsico
+PER	Sandridge Permian Trust
+PES	Pioneer Energy Services Corp.
+PFD	Flaherty & Crumrine Preferred Inc.
+PFE	Pfizer
+PFG	Principal Financial Group Inc
+PFG-B	Prin Fin Grp Ser B
+PFH	Cabco TR Jcp 7.625
+PFK	Prudential Financial Inflation-Linked
+PFL	Pimco Income Strategy Fund
+PFN	Pimco Income Strategy Fund II
+PFO	Flaherty & Crumrine Preferred Fund
+PFS	Provident Financial Services
+PFX	Phoenix Companies
+PG	Procter & Gamble Company
+PGH	Pengrowth Energy Corp.
+PGI	Ptek Holdings
+PGP	Pimco Global Stocksplus & Income
+PGR	Progressive Corp.
+PH	Parker-Hannifin Corp.
+PHA	Pultegroup
+PHD	Pioneer Floating Rate Trust
+PHG	Koninklijke Philips Electronics
+PHH	Phh Corp
+PHI	Philippine Long Distance Telephone
+PHK	Pimco High
+PHM	Pultegroup
+PHR	Prudential Inflation-Linked Retail
+PHT	Pioneer High Income Trust
+PHX	Panhandle Royalty Company
+PIA	Invesco Muni Premium Income Trust
+PII	Polaris Industries Inc.
+PIJ	Merrill Lynch Depositor
+PIKE	Pike Electric
+PIM	Putnam Master Intermediate Income
+PIR	Pier 1 Imports
+PIS	Merrill Lynch Depositor
+PIY	Merrill Lynch Depositor
+PJA	Preferred Plus Trust Ser Qws 2 TR Ctf
+PJC	Piper Jaffray Companies
+PJI	Pplus Trust
+PJL	Preferredplus TR
+PJS	Preferredplus Trust
+PKD	Parker Drilling Company
+PKE	Park Electrochemical Corp.
+PKG	Packaging Corporation Of America
+PKH	Preferred Plus Trust Ser Qws-1 7.75
+PKI	Perkinelmer
+PKJ	Preferredplus Trust Series Ctr-1
+PKK	Preferredplus Trust Series Lmg-2
+PKO	Pimco Income Opportunity Fund
+PKX	Pohang Iron & Steel Co.
+PKY	Parkway Properties
+PKY-D	Parkway Prop 8 Srs D
+PL	Protective Life Corp.
+PL-B	Plc Cap TR V
+PL-C	Protective Life Corporation
+PL-E	Protective Life Corporation 6.0
+PLD	Prologis Inc
+PLD-L	Prologis Inc
+PLD-M	Prologis Inc.6.75% Series M
+PLD-O	Prologis Inc. 7.0% Series O
+PLD-P	Prologis Inc 6.85% Series P Cu
+PLD-R	Prologis Inc 6.75% Series R Cu
+PLD-S	Prologis Inc. 6.75% Series S C
+PLL	Pall Corp.
+PLOW	Douglas Dynamics
+PLP	Protective Life Corp.
+PLT	Plantronics
+PM	Philip Morris International Inc
+PMC	Pharmerica Corp.
+PMF	Pimco Muni
+PML	Pimco Muni II
+PMM	Putnam Managed Muni Income Trust
+PMO	Putnam Muni Opportunities Trust
+PMT	Pennymac Mortgage Investment Trust
+PMX	Pimco Muni Income Fund III
+PNC	Pnc Bank
+PNC-L	Pnc Finl Pr L
+PNC-P	Pnc Financial Services Group I
+PNC-Q	The Pnc Financial Services Gro
+PNC.W	The Pnc Financial Services Group
+PNF	Pimco New York Muni
+PNG	Paa Natural Gas Storage L.P.
+PNI	Pimco New York Muni II
+PNK	Pinnacle Entertainment
+PNM	Pnm Resources Inc.
+PNR	Pentair
+PNW	Pinnacle West Capital Corp.
+PNX	Phoenix Companies
+PNY	Piedmont Natural Gas Company
+POL	Polyone Corp.
+POM	Potomac Electric Power Company
+POR	Portland General Electric Company
+POST	Post Holdings Inc. Common Stoc
+POT	Potash Corporation Of Saskatchewan Inc.
+PPC	Pilgrim's Pride Corp.
+PPG	Ppg Industries
+PPL	Ppl Corp.
+PPL-U	Ppl Corporation
+PPL-W	Ppl Corporation
+PPO	Polypore International Inc
+PPP	Primero Mining Corp
+PPR	ING Prime Rate Trust
+PPS	Post Properties
+PPS-A	Post Prop. 8.5 Pra
+PPT	Putnam Premier Income Trust
+PQ	Petroquest Energy Inc
+PRA	Pro-Assurance Corp.
+PRE	Partnerre Ltd
+PRE-C	Partnerre Ltd Pfd C
+PRE-D	Partnerre Ltd Pfd D
+PRE-E	Partnerre Ltd.
+PRGN	Paragon Shipping Inc.
+PRI	Primerica
+PRI.B	Primerica
+PRIS	Promotora De Informaciones Sa
+PRLB	Proto Labs Inc.
+PRO	Pros Holdings
+PRU	Prudential Financial Inflation Retail
+PRY	Prospect Capital Corporation
+PSA	Public Storage
+PSA-A	Public Storage 6.125
+PSA-D	Public Storage
+PSA-F	Public Storage Pfd F
+PSA-O	Public Storage Depositary Share
+PSA-P	Public Storage
+PSA-Q	Public Storage
+PSA-R	Depositary Shares Each Represe
+PSA-S	Public Storage-
+PSA-T	Public Storage
+PSA-U	Public Storage
+PSA-V	Public Storage
+PSA-X	Public Stg Dep Pfd X
+PSA-Z	Public Storage Srs Z
+PSB	Business Parks
+PSB-P	Ps Business Parks I
+PSB-R	Ps Business Parks Inc. 6.875%
+PSB-S	Ps Business Parks Inc.
+PSB-T	Ps Business Parks Inc
+PSB-U	Ps Business Parks Inc.
+PSE	Pioneer Southwest Energy Partners L.P.
+PSF	Cohen & Steers Preferred Fund
+PSO	Pearson Plc
+PSS	Collective Brands
+PSW	Blackrock Preferred And Corporate
+PSX	Phillips 66 Common Stock
+PSY	Blackrock Credit Allocation Trust I
+PT	Portugal Telecom Sgps S.A .
+PTGI	Primus Telecom Group
+PTP	Platinum Underwriters Holdings Ltd
+PTR	Petrochina Company Limited
+PTY	Pimco Corporate Opportunity Fund
+PUK	Prudential Public Limited Company
+PUK-A	Pru Plc Perp Sub Cap
+PUK.P	Prudential 6.75%
+PULS	Pulse Electronics Corp.
+PVA	Penn Virginia Corp.
+PVD	Administradora De Fondos De Pensiones
+PVG	Pretium Res Inc
+PVH	Phillips-Van Heusen Corp.
+PVR	Pvr Partners Lp
+PWE	Penn West Petroleum Ltd
+PWR	Quanta Services
+PX	Praxair
+PXD	Pioneer Natural Resources Company
+PXP	Plains Exploration & Production Company
+PYA	Pplus Trust
+PYB	Pplus Trust
+PYC	Pplus Trust
+PYG	Pplus Trust
+PYK	Pplus Trust
+PYL	Pplus Trust
+PYN	Pimco New York Muni Income Fund III
+PYS	Pplus Trust
+PYT	Pplus Trust
+PYV	Pplus Trust
+PYY	Merrill Lynch Depositor
+PZB	Merrill Lynch Depositor
+PZC	Pimco California Muni Income Fund III
+PZE	Petrobras Argentina S.A.
+PZN	Pzena Investment Management Inc
+QEP	Qep Resources
+QIHU	Qihoo 360 Technology Co. Ltd.
+QRE	Qr Energy Lp
+QTM	Quantum Corp.
+QUAD	Quad Graphics Inc
+R	Ryder System
+RA	Railamerica
+RAD	Rite Aid Corp.
+RAH	Ralcorp Holdings
+RAI	Reynolds American Inc
+RAS	Rait Financial Trust
+RAS-A	Rait Financial TR Pf
+RAS-B	Rait Financial TR Pf
+RAS-C	Rait Fin TR Pfd C
+RATE	Bankrate Inc.
+RAX	Rackspace Hosting Inc
+RBA	Ritchie Bros. Auctioneers Inc.
+RBC	Regal-Beloit Corp.
+RBN	Robbins & Myers
+RBS	Royal Bank Scotland Group Plc
+RBS-E	RBS Cap Fndg TR V
+RBS-F	Royal Bnk Sctlnd  F
+RBS-G	RBS Capital Trustvii
+RBS-H	Royal Bk Scot Hadssc
+RBS-I	RBS Cap Fdg  TR Vi
+RBS-L	Royal Bank Of Scotla
+RBS-M	Royal Bank Sctlnd M
+RBS-N	RBS Series N Ads Pfd
+RBS-P	Royal Bk Scotland
+RBS-Q	Royal Bank ADR
+RBS-R	Royal Bk Scotland
+RBS-S	Royal Bk Scotland
+RBS-T	Royal Bk Pfd
+RC	Grupo Radio Centro S.A. De C.V.
+RCI	Rogers Communication
+RCL	Royal Caribbean Cruises Ltd
+RCS	Rcm Strategic Global Government Fund
+RDC	Rowan Companies
+RDN	Radian Group Inc.
+RDS.A	Royal Dutch Shell Plc
+RDS.B	Royal Dutch Shell
+RDY	Dr. Reddy's Laboratories Ltd
+RE	Everest Re Group
+RE-B	Everest Re Cap TR II
+REG	Regency Centers Corp.
+REG-F	Regency Centers Corporation
+REG-G	Regency Centers Corporation Pfd
+REN	Resolute Energy Corp.
+REN.W	Resolute Energy Corp
+RENN	Renren Inc.
+RES	Rpc
+REV	Revlon
+REX	Rex Stores Corp.
+RF	Regions Financing TR I
+RF-Z	Regions Fing TR III
+RFI	Cohen & Steers Total Return Realty Fund
+RFO-A	Royce Focus TR Pfd
+RFP	Resolute Forest Products Inc
+RGA	Reinsurance Group Of America Inc.
+RGC	Regal Entertainment Group
+RGP	Ross Group Plc
+RGR	Sturm Ruger & Company
+RGS	Regis Corp.
+RHI	Robert Half International Inc.
+RHP	Gaylord Entertainment Company
+RHT	Red Hat
+RIG	Transocean Inc.
+RIO	Rio Tinto Plc
+RIT	Lmp Real Estate
+RJD	Raymond James Financial Inc.
+RJF	Raymond James Financial
+RKT	Rock-Tenn Company
+RL	Ralph Lauren Corp.
+RLD	Reald Inc
+RLGY	Realogy Holdings Corp.
+RLH	Westcoast Hospitality Corp.
+RLH-A	Red Lion Htls Cap TR
+RLI	Rli Corp.
+RLJ	Rlj Lodging Trust
+RM	Regional Managment Corp
+RMD	Resmed Inc.
+RMT	Royce Micro-Cap Trust
+RMT-A	Royce Micro Cap Pfd
+RNDY	Roundy's Inc. Common Stock
+RNE	Morgan Stanley East. Euro
+RNF	Rentech Nitrogen Partners L.P
+RNO	Rhino Resource Partners Lp
+RNP	Cohen & Steers REIT And Preferred
+RNR	Renaissancere Holdings Ltd
+RNR-C	Renaissancere 6.08 C
+RNR-D	Rena Hld 6.6% Pfd D
+ROC	Rockwood Holdings
+ROG	Rogers Corp.
+ROK	Rockwell Automation Inc
+ROL	Rollins
+ROP	Roper Industries
+ROYT	Pacific Coast Oil Trust
+RPAI	Retail Properties Of America
+RPM	Rpm
+RPT	Ramco-Gershenson Properties Trust
+RPT-D	Ramco-Gershenson Properties Tru
+RQI	Cohen & Steers Quality Income Realty Fund Inc
+RRC	Range Resources Corp.
+RRMS	Rose Rock Midstream L.P.
+RRTS	Roadrunner Transportation Systems Inc
+RS	Reliance Steel & Aluminum Company
+RSE	Rouse Properties Inc. Common S
+RSG	Republic Services
+RSH	Radioshack Corp.
+RSO	Resource Capital
+RSO-A	Resource Capital Corp.
+RSO-B	Resource Capital Corp.8.25% Se
+RST	Rosetta Stone
+RT	Ruby Tuesday
+RTI	Rti International Metals
+RTN	Raytheon Company
+RUK	Reed Elsevier Plc
+RVT	Royce Value Trust
+RVT-B	Royce Value TR Pfd
+RWT	Redwood Trust
+RXN	Rexnord Corporation
+RY	Royal Bank Of Canada
+RYL	Ryland Group
+RYN	Rayonier Inc. REIT
+RZA	Reinsurance Group Of America I
+S	Sprint Nextel Corp.
+SA	Seabridge Gold
+SAB	Grupo Casa Saba S.A. De C.V.
+SAH	Sonic Automotive
+SAI	Saic Inc
+SAM	Boston Beer Company
+SAN	Banco Santander
+SAN-A	Banco Santander S.A. 6.80% Non
+SAN-B	Santander Finance Preferred Sa
+SAN-C	Banco Santander S.A. 6.50% Non
+SAN-E	Banco Santander S.A. Santander
+SAN-I	Banco Santander Central Hispano
+SAP	Sap Ag
+SAR	Saratoga Investment Corp
+SB	Safe Bulkers Inc
+SBH	Sally Beauty Holdings
+SBR	Sabine Royalty Trust
+SBS	Companhia De Saneamento Basico Do Estado De Sao
+SBW	Western Asset Worldwide Income Fund Inc.
+SBX	Seabright Holdings
+SCCO	Southern Peru Copper Corp.
+SCD	Lmp Capital And Income Fund Inc.
+SCE-F	Sce Trust I
+SCG	Scana Corp.
+SCH-B	Schwab Charles Corporation Depo
+SCHW	The Charles Schwab Corp.
+SCI	Service Corporation International
+SCL	Stepan Company
+SCL.P	Spepan 5.5 Cvpr
+SCR	Simcere Pharmaceutical Group
+SCS	Steelcase Inc.
+SCU	Scana Corp.
+SCX	L.S. Starrett Company
+SD	Sandridge Energy Inc.
+SDLP	Seadrill Partners Llc
+SDR	Sandridge Mississippian Trust
+SDRL	Seadrill Limited
+SDT	Sandridge Mississippian Trust I
+SE	Spectra Energy Corp
+SEE	Sealed Air Corp.
+SEH	Spartech Corp.
+SEM	Select Medical Holdings Corp.
+SEM.W	Select Medical Holdings Warrent
+SEMG	Semgroup Corp.
+SEP	Spectra Energy Partners Lp
+SF	Stifel Financial Corp.
+SFB	Stifel Financial Corp.6.70% Se
+SFD	Smithfield Foods
+SFE	Safeguard Scientifics
+SFG	Stancorp Financial Group
+SFI	Istar Financial Inc.
+SFI-D	Istar Fin Pr D
+SFI-E	Istar Finl Inc Pfd E
+SFI-F	Istar Finl Inc Pfd F
+SFI-G	Istar Finl Inc
+SFI-I	Istar Fincl Inc Pfd
+SFL	Ship Finance International
+SFUN	Soufun Holdings
+SFY	Swift Energy Company
+SGF	Singapore Fund
+SGK	Schawk
+SGL	Strategic Global
+SGU	Star Gas Partners L.P.
+SGY	Stone Energy Corp.
+SGZ	Selective Insurance Group
+SHAW	Shaw Group Inc.
+SHF	Schiff Nutrition International Inc Cl A
+SHG	Shinhan Financial Group Co Ltd
+SHI	Sinopec Shangai Petrochemical Company Ltd
+SHO	Sunstone Hotel Investors
+SHO-A	Sunstone Hotel Pfd A
+SHO-D	Sunstone Hotel Investors Inc.
+SHP	Shangpharma Corp.
+SHS	Sauer-Danfoss Inc.
+SHW	Sherwin-Williams Company
+SI	Siemens Ag
+SID	National Steel Corp.
+SIG	Signet Jewelers Limited
+SIR	Select Income REIT Common Share
+SIX	Six Flags Entertainment Corporation New
+SJI	South Jersey Industries
+SJM	J.M. Smucker Company
+SJR	Shaw Communications Inc.
+SJT	San Juan Basin Royalty Trust
+SJW	Sjw Corp.
+SKH	Skilled Healthcare Group
+SKM	Sk Telecom Corporation
+SKS	Saks Inc.
+SKT	Tanger Factory Outlet Centers
+SKX	Skechers U.S.A.
+SKY	Skyline Corp.
+SLA	American Select Portfolio
+SLB	Schlumberger N.V.
+SLCA	U.S. Silica Holdings Inc.
+SLF	Sun Life Financial Inc.
+SLG	Sl Green Realty Corp.
+SLG-C	Sl Green Rlty Pfd C
+SLG-I	Sl Green Realty Corp
+SLH	Solera Holdings
+SLT	Sterlite Industries [India] Limited
+SLW	Silver Wheaton Corp
+SM	Sm Energy Company
+SMA	Symmetry Medical Inc
+SMF	Salient MLP And Energy Infrast
+SMFG	Sumitomo Mitsui Financial Group Inc
+SMG	Scotts Miracle-Gro Company
+SMI	Semiconductor Manufacturing International
+SMLP	Summit Midstream Partners Lp
+SMM	Salient Midstream & MLP Fund
+SMP	Standard Motor Products
+SMS	Sims Metal Management Limited
+SN	Sanchez Energy Corporation
+SNA	Snap-On Inc.
+SNE	Sony Corp Ord
+SNH	Senior Housing Properties Trust
+SNHN	Senior Housing Properties Trus
+SNI	Scripps Networks Interactive Inc
+SNN	Smith & Nephew Snats
+SNP	China Petroleum & Chemical Corp.
+SNV	Synovus Financial Corp.
+SNV-T	Synovus Financial Corporation T
+SNX	Synnex Corp.
+SNY	Sanofi-Aventis Sa
+SO	Southern Company
+SOL	Renesola Ltd
+SON	Sonoco Products Company
+SOR	Source Capital
+SOV-C	Sovereign Banc Dep S
+SPA	Sparton Corp.
+SPB	Spectrum Brands Holdings
+SPE	Special Opportunities Fund Inc.
+SPE.P	Special Opportunities Fund In
+SPF	Standard Pacific Lp
+SPG	Simon Property Group
+SPG-J	Simon Prop Grp Pfd J
+SPH	Suburban Propane Partners L.P.
+SPLP	Steel Partners Hldgs
+SPN	Superior Energy Services
+SPP	Sappi Limited
+SPR	Spirit Aerosystems Holdings
+SPW	Spx Corp.
+SQM	Sociedad Quimica Y Minera S.A.
+SQNS	Sequans Communications S A
+SR	Standard Register Company
+SRC	Spirit Realty Capital Inc.
+SRE	Sempra Energy
+SRF	The Cushing Royalty & Income F
+SRI	Stoneridge
+SRT	Startek
+SRV	The Cushing MLP Total Return Fund
+SRZ	Sunrise Senior Living
+SSD	Simpson Manufacturing Company
+SSI	Stage Stores
+SSL	Sasol Ltd
+SSP	E.W. Scripps Company
+SSS	Sovran Self Storage
+SSTK	Shutterstock Inc.
+SSW	Seaspan Corp.
+SSW-C	Seaspan Corporation
+ST	Sensata Technologies Holding N.V.
+STA-A	Stag Industrial Inc. Preferred
+STAG	Sti Inc
+STC	Stewart Information Services Corp.
+STE	Steris Corp.
+STI	Suntrust Banks
+STI-A	Suntrust Bks Dep Sh
+STI.A	Suntrust Banks Inc Class A
+STI.B	Suntrust Banks Inc Class B
+STJ	St. Jude Medical
+STK	Columbia Seligman Premium Technology
+STL	Sterling Bancorp
+STL-A	Sterling Bncp TR I
+STM	Stmicroelectronics N.V.
+STN	Stantec Inc
+STNG	Scorpio Tankers Inc.
+STO	Statoil Asa
+STON	Stonemor Partners L.P.
+STP	Suntech Power Holdings Co.
+STR	Questar Corp.
+STRI	Str Holdings Inc
+STT	State Street Corp
+STT-C	State Street Corporation Dep Sh
+STV	China Digital Tv Holding Co.
+STWD	Starwood Property Trust
+STZ	Constellation Brands Inc
+STZ.B	Constellation Brd B
+SU	Suncor Energy Inc.
+SUI	Sun Communities
+SUN	Sunoco
+SUP	Superior Industries International
+SUSP	Susser Petroleum Partners Lp
+SVM	Silvercorp Metals Inc
+SVN	7 Days Group Holdings
+SVU	Supervalu Inc.
+SWC	Stillwater Mining Company
+SWFT	Swift Transportation Company
+SWI	Solarwinds
+SWJ	Stanley Black & Decker Inc.
+SWK	Stanley Black & Decker Inc
+SWM	Schweitzer-Mauduit International
+SWN	Southwestern Energy Company
+SWS	Sws Group
+SWU	Stanley Black & Decker Inc
+SWX	Southwest Gas Corp.
+SWY	Safeway Inc.
+SWZ	Swiss Helvetia Fund
+SXC	Suncoke Energy Inc
+SXI	Standex International Corp.
+SXL	Sunoco Logistics Partners Lp
+SXT	Sensient Technologies Corp.
+SYA	Symetra Financial Corp.
+SYK	Stryker Corp.
+SYSW	Syswin Inc.
+SYT	Syngenta Ag
+SYX	Systemax Inc.
+SYY	Sysco Corp.
+SZC	The Cushing Renaissance Fund
+T	AT&T Inc.
+TAC	Transalta Corp.
+TAHO	Tahoe Res Inc
+TAI	Transamerica Income Shares
+TAL	Tal International Group
+TAOM	Taomee Holdings Limited
+TAP	Molson Coors Brewing Company
+TAP.A	Molson Coors Brewing Company
+TARO	Taro Pharm Inds    #
+TBI	Trueblue Inc
+TC	Thompson Creek Metals Company Inc.
+TC-T	Thompson Creek Metals Co. Inc.
+TCAP	Triangle Capital Corp.
+TCB	Tcf Financial Corp.
+TCB-B	Tcf Financial Corporation
+TCB.W	Tcf Financial Corporation
+TCC	Triangle Capital Coproration
+TCCA	Triangle Capital Corporation
+TCI	Transcontinental Realty Investors
+TCK	Teck Resources Ltd
+TCL	Tata Communications Limited
+TCO	Taubman Centers
+TCO-J	Taubman Centers Inc. Preferred
+TCP	Trident Performance Group
+TD	Toronto Dominion Bank
+TDC	Teradata Corp.
+TDE	Telephone And Data Systems
+TDF	Templeton Dragon Fund
+TDG	Transdigm Group Inc.
+TDI	Telephone And Data Systems
+TDJ	Telephone And Data Systems In
+TDS	Telephone And Data Systems
+TDW	Tidewater Inc.
+TDY	Teledyne Technologies Inc.
+TE	Teco Energy
+TEA	Teavana Holdings Inc.
+TEF	Telefonica Sa
+TEG	Integrys Energy Group
+TEI	Templeton Emerging Markets
+TEL	Te Connectivity Ltd
+TEN	Tenneco Automotive
+TEO	Telecom Argentina Stet - France Telecom S.A.
+TER	Teradyne
+TEU	Box Ships Inc.
+TEVA	Teva Pharmaceutical Industries Limited
+TEX	Terex Corp.
+TFG	Fixed Income Trust For Goldman
+TFX	Teleflex Inc.
+TG	Tredegar Corp.
+TGH	Textainer Group Holdings
+TGI	Triumph Group
+TGP	Teekay Lng Partners L.P.
+TGS	Transportadora De Gas Sa Ord B
+TGT	Target Corp.
+TGX	Theragenics Corp.
+THC	Tenet Healthcare Corp.
+THG	The Hanover Insurance Group
+THI	Tim Hortons Inc.
+THO	Thor Industries
+THR	Thermon Group Holdings Inc.
+THS	Treehouse Foods
+TI	Telecom Italia S.P.A.
+TI.A	Telecom Italia S.P.A.
+TIE	Titanium Metals Corp.
+TIF	Tiffany & Co.
+TISI	Team
+TJX	Tjx Companies
+TK	Teekay Shipping Corp.
+TKC	Turkcell Iletisim Hizmetleri As
+TKF	Turkish Investment Fund
+TKR	Timken Company
+TLI	Lmp Corporate Loan Fund Inc
+TLK	P.T. Telekomunikasi Indonesia Tbk.
+TLLP	Tesoro Logistics Lp Common Unit
+TLM	Talisman Energy Inc.
+TLP	Transmontaigne Partners L.P.
+TLYS	Tilly's Inc.
+TM	Toyota Motor Corp Ltd Ord
+TMH	Team Health Holdings
+TMK	Torchmark Corp.
+TMK-A	Torchmark Cap TR III
+TMK-B	Torchmark Corporation
+TMO	Thermo Fisher Scientific Inc
+TMS	Tms International Corp.
+TNC	Tennant Company
+TNH	Terra Nitrogen Company L.P.
+TNK	Teekay Tankers Ltd
+TNP	Tsakos Energy Navigation Ltd
+TNS	Tns
+TOL	Toll Brothers Inc.
+TOO	Teekay Offshore Partners L.P.
+TOT	Totalfinaelf S.A.
+TOWR	Tower International
+TPC	Tutor Perini Corp.
+TPL	Texas Pacific Land Trust
+TPX	Tempur-Pedic International Inc
+TPZ	Tortoise Power And Energy
+TR	Tootsie Roll Industries
+TRC	Tejon Ranch Company
+TREX	Trex Company
+TRF	Templeton Russia Fund
+TRGP	Targa Resources
+TRI	Thomson Reuters Corp
+TRK	Speedway Motorsports
+TRLA	Trulia Inc.
+TRN	Trinity Industries
+TRN-A	Terreno Realty Corporation Pref
+TRNO	Terreno Realty Corp.
+TROX	Tronox Inc
+TRP	Transcananda Pipelines
+TRQ	Turquoise Hill Resources Ltd.
+TRR	Trc Companies
+TRU	Torch Energy Royalty Trust
+TRV	The Travelers Companies Inc
+TRW	Trw Automotive Holdings Corp.
+TS	Tenaris S.A.
+TSI	Tcw Strategic
+TSL	Trina Solar Limited
+TSM	Taiwan Semiconductor Manufacturing
+TSN	Tyson Foods
+TSO	Tesoro Petroleum Corp.
+TSS	Total System Services
+TSU	Tim Participacoes S.A.
+TTC	Toro Company
+TTF	Thai Fund
+TTI	Tetra Technologies
+TTM	Tata Motors Ltd
+TTO	Tortoise Capital Resources Corp.
+TTP	Tortoise Pipeline & Energy Fund
+TU	Telus Corp.
+TUC	Mac-Gray Corp.
+TUMI	Tumi Holdings Inc.
+TUP	Tupperware Corp.
+TV	Grupo Televisa S.A.
+TVC	Tennessee Valley Authority
+TVE	Tennessee Valley Authority
+TVL	Lin Tv Corp
+TW	Towers Watson & Co
+TWC	Time Warner Cable Inc
+TWI	Titan International
+TWN	Taiwan Fund
+TWO	Two Harbors Investments Corp
+TWX	Time Warner Inc.
+TX	Ternium S.A.
+TXI	Texas Industries
+TXT	Textron Inc.
+TY	Tri Continental Corp.
+TY.P	Tri Contl Cp 2.50 Pr
+TYC	Tyco International Ltd.
+TYG	Tortoise Energy Infrastructure Corp.
+TYG-A	Tortoise Energy Infrastructure
+TYL	Tyler Technologies
+TYN	Tortoise North American Energy Corp.
+TYY	Tortoise Energy Capital Corp.
+TYY-C	Tortoise Energy Capital Copror
+TZK	Ctfs 2002 1 Bear Stearns Acting As Depositor
+UA	Under Armour
+UAL	United Continental Holdings
+UAM	Universal American Financial
+UAN	Cvr Partners Lp Common Units R
+UBA	Urstadt Biddle Properties Inc.
+UBP	Urstadt Biddle Properties Inc.
+UBP-C	Urstadt Biddle Pfd C
+UBP-D	Urstadt Biddle Prf D
+UBS	UBS Ag
+UBS-D	UBS Pfd Fndg TR IV
+UDR	United Dominion Realty Trust
+UFI	Unifi
+UFS	Domtar Corp.
+UGI	Ugi Corp.
+UGP	Ultrapar Participacoes S.A.
+UHS	Universal Health Services
+UHT	Universal Health Realty Income Trust
+UIL	Uil Holdings Corp.
+UIS	Unisys Corp.
+UIS-A	Unisys Corporation Series A Con
+UL	Unilever Plc
+UMC	United Microelectronics Corp.
+UMH	Umh Properties
+UMH-A	Umh Properties Inc. 8.25% Seri
+UN	Unilever Nv
+UNF	Unifirst Corp.
+UNH	Unitedhealth Group Inc.
+UNM	Unumprovident Corp.
+UNP	Union Pacific Corp.
+UNS	Unisource Energy Corp.
+UNT	Unit Corp.
+UPL	Ultra Petroleum
+UPS	United Parcel Service
+URI	United Rentals
+URS	Urs Corp.
+USA	Liberty All-Star Equity Fund
+USB	U.S. Bancorp
+USB-A	U.S. Bancorp Depositary Shares
+USB-H	US Bancorp Dep Sh
+USB-L	US Bancorp Pr L
+USB-M	U.S. Bancorp
+USB-N	U.S. Bancorp
+USG	Usg Corp.
+USM	United States Cellular Corp.
+USNA	Usana Health Sciences Inc.
+USPH	U.S. Physical Therapy
+USU	Usec Inc.
+UTF	Cohen & Steers Infrastructure Fund
+UTI	Universal Technical Institute Inc
+UTL	Unitil Corp.
+UTX	United Technologies Corp.
+UTX-A	United Technologies Corporatio
+UVV	Universal Corp.
+UZA	United States Cellular Corp.
+V	Visa Inc.
+VAC	Marriot Vacations Worldwide Cor
+VAL	Valspar Corp.
+VAL.P	Vale S.A.
+VALE	Vale S.A.
+VAR	Varian Medical Systems
+VBF	Invesco Van Kampen Bond Fund
+VC	Visteon Corp.
+VCI	Valassis Communications
+VCO	Vina Concha Y Toro
+VCRA	Vocera Communications  Inc.
+VCV	Invesco California Value Muni Income Trust
+VE	Veolia Environnement
+VEL-E	Virginia El 5.00 10
+VFC	V.F. Corp.
+VG	Vonage Holdings
+VGI	Virtus Global Multi-Sector Inc
+VGM	Invesco Trust For Investment Grade Municipals
+VGR	Vector Group Ltd
+VHI	Valhi
+VHS	Vanguard Health Systems Inc.
+VIM	Invesco Trust For Insured Municipals
+VIP	Open Joint Stock Company Vimpel-Communications
+VIPS	Vipshop Holdings Limited
+VIT	Vanceinfo Technologies Inc
+VIV	Telecomunicacoes De Sao Paulo S/A Ads
+VKQ	Invesco Muni Trust
+VLO	Valero Energy Corp.
+VLT	Invesco High
+VLY	Valley National Bancorp
+VLY-A	Vnb Capital Trust I
+VLY.W	Valley National Bancorp
+VMC	Vulcan Materials Company
+VMI	Valmont Industries
+VMO	Invesco Muni Opportunity Trust
+VMW	Vmware
+VNO	Vornado Realty Trust
+VNO-A	Vornado Realty Trust Preferred
+VNO-F	Vornada Realty Trust
+VNO-G	Vornado Rlty Pfd G
+VNO-H	Vornado Rt 6.75 Sr H
+VNO-I	Vornado Rlty Pfd I
+VNO-J	Vornado Realty Trust Pfd Cumula
+VNO-K	Vornado Realty Trust
+VNOD	Vornado Realty Lp
+VNR	Vanguard Natural Resources Llc
+VNTV	Vantiv Inc.
+VOC	Voc Energy Trust
+VOQ	Invesco Ohio Quality Muni Trust
+VPG	Vishay Precision Group
+VPV	Invesco Pennsylvania Muni
+VQ	Venoco
+VR	Validus Holdings
+VRS	Verso Paper
+VRX	Valeant Pharmaceuticals International
+VSH	Vishay Intertechnology
+VSI	Vitamin Shoppe Inc
+VTA	Invesco Dynamic Credit Fund
+VTJ	Invesco Trust N J Municipals
+VTN	Invesco Trust New York Muni
+VTR	Ventas
+VVC	Vectren Corp.
+VVI	Viad Corp.
+VVR	Invesco Senior Income Trust
+VZ	Verizon Communications Inc.
+WAB	Wabtec Corp.
+WAG	Walgreen Company
+WAGE	Wageworks Inc.
+WAIR	Wesco Aircraft Holdings Inc.
+WAL	Western Alliance Bancorporation
+WAT	Waters Corp.
+WBC	Wabco Holdings Inc.
+WBK	Westpac Banking Corp.
+WBS	Webster Financial Corp.
+WBS.W	Webster Financial Corporation
+WCC	Wesco International
+WCG	Wellcare Group
+WCN	Waste Connections Inc.
+WD	Walker & Dunlop
+WDAY	Workday Inc.
+WDR	Waddell & Reed Financial
+WEA	Western Asset Bond Fund
+WEC	Wisconsin Energy Corp.
+WES	Western Gas Partners Lp
+WF	Woori Finance Holdings Co Ltd
+WFC	Wells Fargo & Company
+WFC-J	Wells Fargo Pfd J
+WFC-L	Wells Fargo Pfd L
+WFC-N	Wells Fargo & Company Dep Shs R
+WFC.W	Wells Fargo And Co
+WFR	Memc Electronic Materials
+WFT	Weatherford International Ltd
+WG	Willbros Group
+WGL	Wgl Holdings Inc
+WGO	Winnebago Industries
+WH	Wsp Holdings
+WHG	Westwood Holdings Group Inc
+WHR	Whirlpool Corp.
+WHX	Whiting USA Trust I
+WHZ	Whiting USA Trust II
+WIA	U.S. Treasury Inflation Prot Secs Fd
+WIT	Wipro Limited
+WIW	U.S Treasury Inflation Prot Secs Fd 2
+WLK	Westlake Chemical Corp.
+WLL	Whiting Petroleum Corp.
+WLL-A	Whiting Petroleum
+WLP	Wellpoint Health Networks Inc.
+WLT	Walter Energy
+WM	Waste Management
+WMB	Williams Companies
+WMC	Western Asset Mortgage Capital
+WMK	Weis Markets
+WMS	Wms Industries Inc.
+WMT	Wal-Mart Stores
+WNA.P	Wachovia Fdg Pfd A
+WNC	Wabash National Corp.
+WNR	Western Refining
+WNS	Wns Limited
+WOR	Worthington Industries
+WPC	W.P. Carey & Co. Llc
+WPI	Watson Pharmaceuticals
+WPK	Wells Fargo & Company
+WPO	Washington Post Company
+WPP	Wausau-Mosinee Paper Corp.
+WPX	Wpx Energy Inc. Common Stock W
+WPZ	Williams Partners L.P.
+WR	Westar Energy
+WRB	W.R. Berkley Corp.
+WRB-A	Wr Berkley Cap TR II
+WRC	Warnaco Group Inc
+WRD	Weingarten Realty Investors
+WRE	Washington Real Estate Investment
+WRI	Weingarten Realty Investors
+WRI-D	Weingarten Rl 6.75 D
+WRI-E	Weingarten Rl Pfd E
+WRI-F	Weingarten Dep Shs
+WRT	Winthrop Realty Trust 7.75% Sen
+WSH	Willis Group Holdings
+WSM	Williams-Sonoma
+WSO	Watsco
+WSR	Whitestone REIT
+WST	West Pharmaceutical Services
+WTI	W&T Offshore
+WTM	White Mountains Insurance Group
+WTR	Aqua America
+WTS	Watts Water Technologies
+WTW	Weight Watchers International Inc
+WU	Western Union Company
+WWE	World Wrestling Entertainment
+WWW	Wolverine World Wide
+WX	Wuxi Pharmatech [Cayman] Inc.
+WXS	Wright Express Corp.
+WY	Weyerhaeuser Company
+WYN	Wyndham Worldwide Corp
+X	United States Steel Corp.
+XAA	American Muni Income Portfolio
+XCJ	Xcel Energy Inc.
+XCO	Exco Resources Nl
+XEC	Cimarex Energy Co
+XEL	Xcel Energy Inc.
+XFD	Lehman Abs Corp.
+XFH	Lehman Abs Corp.
+XFP	Lehman Abs Corp.
+XFR	Lehman Abs Corp.
+XIN	Xinyuan Real Estate Co Ltd
+XKE	Lehman Abs Corp.
+XKN	Lehman Abs Corp.
+XKO	Lehman Abs Corp.
+XL	Xl Company Switzerland Gmbh
+XLS	Exelis Inc. Common Stock New Wh
+XNY	China Xiniya Fashion
+XOM	Exxon Mobil Corp.
+XOXO	Xoxo Group Inc
+XPO	Express-1 Expedited Solutions
+XRM	Xerium Technologies
+XRS	Tal Education Group
+XRX	Xerox Corp.
+XUE	Xueda Education Group
+XVG	Lehman Abs Corp.
+XYL	Xylem Inc. Common Stock New Whe
+Y	Alleghany Corp.
+YELP	Yelp Inc.
+YGE	Yingli Green Energy Holding Company
+YOKU	Youku.Com Inc.
+YPF	Ypf Sociedad Anonima
+YUM	Yum! Brands
+YZC	Yanzhou Coal Mining Company
+ZA	Zuoan Fashion Limited American
+ZB-A	Zions Bc Dp Shs A
+ZB-B	Zions Cap TR B
+ZB-C	Zions Bancorporation
+ZB-F	Zions Bancorporation
+ZEP	Zep Inc.
+ZF	Zweig Fund
+ZLC	Zale Corporation
+ZMH	Zimmer Holdings
+ZNH	China Southern Airlines Company
+ZQK	Quiksilver
+ZTR	Zweig Total Return Fund
+ZX	China Zenix Auto International
+ZZ	Sealy Corporation
+ZZC	Sealy Corporation

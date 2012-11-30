@@ -111,7 +111,7 @@ class StockDBManager(object):
         session.commit()
         session.close()
 
-    def update_quotes(self, ticker, check_all=False):
+    def update_quotes(self, ticker, check_all=True):
         """
         Get all missing quotes through current day for the given stock
         """
