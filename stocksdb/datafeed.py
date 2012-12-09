@@ -25,5 +25,15 @@ class IntradayQuotes(object):
     
     
     
+class Dataset(object):
     
+    def __init__(self):
+        self.datafeed = IntradayQuotes()
+        
+    
+    def generate_dataset(self,ticker):
+        quotes = self.datafeed.get_quotes(ticker, date(1900,01,01), date.today())
+        return quotes
+        
+
     
