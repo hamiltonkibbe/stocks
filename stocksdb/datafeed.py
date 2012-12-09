@@ -33,7 +33,9 @@ class Dataset(object):
     
     def generate_dataset(self,ticker):
         quotes = self.datafeed.get_quotes(ticker, date(1900,01,01), date.today())
-        return quotes
+        dates = [quote.Date for quote in quotes]
+        days = [quote.Date.weekday() for quote in quotes]
+        return days
         
 
     
