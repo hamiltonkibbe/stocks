@@ -35,7 +35,11 @@ class Dataset(object):
         quotes = self.datafeed.get_quotes(ticker, date(1900,01,01), date.today())
         dates = [quote.Date for quote in quotes]
         days = [quote.Date.weekday() for quote in quotes]
-        return days
-        
+        adj_close = [quote.AdjClose for qutoe in quotes]
+        volume = [quote.Volume for quote in quotes]
+        macd = [quote.Features.macd for quote in quotes]
+        macd_signal = [quote.Features.macd_signal for quote in quotes]
+        macd_histogram = [quote.Features.macd_histogram for quote in quotes]
+        return macd_histogram
 
     
