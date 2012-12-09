@@ -2,6 +2,7 @@
 
 from database import StockDBManager 
 from datetime import date
+import numpy as np
 
 class IntradayQuotes(object):
     """
@@ -40,6 +41,7 @@ class Dataset(object):
         macd = [quote.Features.macd for quote in quotes]
         macd_signal = [quote.Features.macd_signal for quote in quotes]
         macd_histogram = [quote.Features.macd_histogram for quote in quotes]
-        return macd_histogram
+        table = np.array([[quote.Date.weekeday(),quote.AdjClose,quote.Volume,quote.Features.macd,quote.Features.macd_signal,quote.Features.macd_histogram] for quote in quotes])
+        return table
 
     
