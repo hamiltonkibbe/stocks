@@ -68,21 +68,19 @@ class Dataset(object):
         """ Clean up datasets
         """
         delrows = []
-        # Go through each row
         for i in range(len(self.data)):
             delrow = False
-            x = self.data[i]
 
             # Find incomplete rows
-            for val in x:
+            for val in self.data[i]:
                 if not isinstance(val,float) or (val is None):
                     delrow = True
             if delrow:
                 delrows.append(i)
 
         # Remove rows marked for deletion
-        self.data = np.delete(self.data, delrows, 0)
-        self.target_data = np.delete(self.target_data, delrows, 0)
+        self.data = np.delete(self.data, delrows, 0).astype(float)
+        self.target_data = np.delete(self.target_data, delrows, 0).astype(float)
 
 
 
