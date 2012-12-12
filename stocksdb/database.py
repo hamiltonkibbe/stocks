@@ -4,11 +4,11 @@ import ystockquote as quotes
 import config
 import indicators
 from datetime import date, timedelta
-from models  import Base, Symbol, Quote, Indicator
+from models import Base, Symbol, Quote, Indicator
 from numpy import array, asarray
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy.sql import and_, or_, not_
+from sqlalchemy.sql import and_
 
 
 class Database(object):
@@ -20,10 +20,13 @@ class Database(object):
         self.Base = Base
         if config.SQL_PASSWORD == '':
             engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER,
-                config.SQL_HOSTNAME, config.SQL_DATABASE)
+                                                  config.SQL_HOSTNAME,
+                                                  config.SQL_DATABASE)
         else:
             engine_config = 'mysql://%s:%s@%s/%s' % (config.SQL_USER,
-                config.SQL_PASSWORD, config.SQL_HOSTNAME, config.SQL_DATABASE)
+                                                     config.SQL_PASSWORD,
+                                                     config.SQL_HOSTNAME,
+                                                     config.SQL_DATABASE)
         self.Engine = create_engine(engine_config)
         self.Session = sessionmaker()
         self.Session.configure(bind=self.Engine)
@@ -36,14 +39,13 @@ class StockDBManager(object):
     def __init__(self):
         self.db = Database()
 
-
     def create_database(self):
         """ Create stock database tables if they do not exist already
         """
         self.db.Base.metadata.create_all(self.db.Engine)
 
-
-    def add_stock(self, ticker, name=None, exchange=None, sector=None, industry=None):
+    def add_stock(self, ticker, name=None, exchange=None,
+                  sector=None, industry=None):
         """ Add a stock to the stock database
 
         Add the stock to the symbols table and populate quotes table with all
@@ -69,20 +71,18 @@ class StockDBManager(object):
         stock = Symbol(ticker, name, exchange, sector, industry)
         session = self.db.Session()
 
-        if self.check_stock_exists(ticker,session):
+        if self.check_stock_exists(ticker, session):
             print "Stock %s already exists!" % (ticker.upper())
         else:
             print "Adding %s to database" % (ticker.upper())
             session.add(stock)
-            q = self._download_quotes(ticker, date(1900,01,01), date.today())
+            q = self._download_quotes(ticker, date(1900, 01, 01), date.today())
             for quote in q:
                 quote.Features = Indicator(quote.Id)
             session.add_all(q)
         session.commit()
         session.close()
         self.update_quotes(ticker)
-
-
 
     def _download_quotes(self, ticker, start_date, end_date):
         """ Get quotes from Yahoo Finance
@@ -93,9 +93,11 @@ class StockDBManager(object):
         start = start_date
         end = end_date
         data = quotes.get_historical_prices(ticker, start, end)
-        data = data[len(data)-1:0:-1]
+        data = data[len(data) - 1:0:-1]
         if len(data):
-            return [Quote(ticker,val[0],val[1],val[2],val[3],val[4],val[5],val[6]) for val in data if len(val) > 6]
+            return [Quote(ticker, val[0], val[1], val[2],
+                          val[3], val[4], val[5], val[6])
+                    for val in data if len(val) > 6]
         else:
             return
 
@@ -104,7 +106,10 @@ class StockDBManager(object):
         """
         ticker = ticker.lower()
         session = self.db.Session()
-        data = asarray(zip(*[(int(quote.Id), quote.AdjClose) for quote in session.query(Quote).filter_by(Ticker=ticker).order_by(Quote.Date).all()]))
+        data = asarray(zip(*[(int(quote.Id), quote.AdjClose)
+                             for quote in session.query(Quote)
+                             .filter_by(Ticker=ticker)
+                             .order_by(Quote.Date).all()]))
         for ind in indicators.calculate_all(data):
             if not self.check_indicator_exists(ind.Id, session):
                 session.add(ind)
@@ -116,17 +121,18 @@ class StockDBManager(object):
         Get all missing quotes through current day for the given stock
         """
         ticker = ticker.lower()
-        quotes = None
+        stockquotes = None
         session = self.db.Session()
-        last = session.query(Quote).filter_by(Ticker=ticker).order_by(desc(Quote.Date)).first().Date
+        last = session.query(Quote).filter_by(
+            Ticker=ticker).order_by(desc(Quote.Date)).first().Date
         start_date = last + timedelta(days=1)
         end_date = date.today()
         if end_date > start_date:
-            quotes = self._download_quotes(ticker, start_date, end_date)
-            if quotes is not None:
-                for quote in quotes:
+            stockquotes = self._download_quotes(ticker, start_date, end_date)
+            if stockquotes is not None:
+                for quote in stockquotes:
                     quote.Features = Indicator(quote.Id)
-                session.add_all(quotes)
+                session.add_all(stockquotes)
         indicators.update_all(ticker, session, False, check_all)
         session.commit()
         session.close()
@@ -139,7 +145,7 @@ class StockDBManager(object):
             self.update_quotes(symbol, check_all)
             print 'Updated quotes for %s' % symbol
 
-    def check_stock_exists(self,ticker,session=None):
+    def check_stock_exists(self, ticker, session=None):
         """
         Return true if stock is already in database
         """
@@ -147,21 +153,23 @@ class StockDBManager(object):
         if session is None:
             newsession = True
             session = self.db.Session()
-        exists = bool(session.query(Symbol).filter_by(Ticker=ticker.lower()).count())
+        exists = bool(
+            session.query(Symbol).filter_by(Ticker=ticker.lower()).count())
         if newsession:
             session.close()
         return exists
 
-    def check_quote_exists(self,ticker,date,session=None):
+    def check_quote_exists(self, ticker, q_date, session=None):
         """
-        Return true if a quote for the given symbol and date exists in the database
+        Return true if a quote for the given symbol and date exists in the
+        database
         """
         newsession = False
         if session is None:
             newsession = True
             session = self.db.Session()
         exists = bool(session.query(Symbol).filter_by(Ticker=ticker.lower(),
-                        Date=date).count())
+                                                      Date=q_date).count())
         if newsession:
             session.close()
         return exists
@@ -181,24 +189,27 @@ class StockDBManager(object):
     def get_quotes(self, ticker, quote_date, end_date=None):
         """
         Return a list of quotes between the start date and (optional) end date.
-        if no end date is specified, return a list containing the quote for the start date
+        if no end date is specified, return a list containing the quote for the
+        start date
         """
         ticker = ticker.lower()
         session = self.db.Session()
-        quotes = []
-        if not self.check_stock_exists(ticker,session):
+        stockquotes = []
+        if not self.check_stock_exists(ticker, session):
             self.add_stock(ticker)
 
         if end_date is not None:
             query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
-                Quote.Date >= quote_date, Quote.Date <= end_date)).order_by(Quote.Date)
+                                                     Quote.Date >= quote_date,
+                                                     Quote.Date <= end_date))\
+                .order_by(Quote.Date)
         else:
             query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
-                Quote.Date == quote_date))
+                                                     Quote.Date == quote_date))
 
-        quotes = [quote for quote in query.all()]
+        stockquotes = [quote for quote in query.all()]
         session.close()
-        return quotes
+        return stockquotes
 
     def stocks(self, session=None):
         newsession = False
@@ -211,7 +222,7 @@ class StockDBManager(object):
         return stocks
 
 if __name__ == '__main__':
-    from sys import argv, exit
+    from sys import argv
     if len(argv) > 1:
         db = StockDBManager()
         opt = str(argv[1])
@@ -222,10 +233,8 @@ if __name__ == '__main__':
         elif opt == 'sync':
             db.sync_quotes()
 
-        elif opt  == 'add':
+        elif opt == 'add':
             db.add_stock(str(argv[2]))
 
     else:
         exit('No command specified. Exiting.')
-
-

@@ -19,7 +19,8 @@ class Symbol(Base):
     Industry = Column(String(50))
     Quotes = relationship('Quote', cascade='all, delete, delete-orphan')
 
-    def __init__(self, Ticker, Name, Exchange=None, Sector=None, Industry=None):
+    def __init__(self, Ticker, Name, Exchange=None,
+                 Sector=None, Industry=None):
         self.Ticker = Ticker
         self.Name = Name
         self.Exchange = Exchange
@@ -27,8 +28,8 @@ class Symbol(Base):
         self.Industry = Industry
 
     def __repr__(self):
-        return "<Symbol('%s','%s','%s','%s','%s')>" % \
-            (self.Ticker, self.Name, self.Exchange, self.Sector, self.Industry)
+        return "<Symbol('%s','%s','%s','%s','%s')>" % (
+            self.Ticker, self.Name, self.Exchange, self.Sector, self.Industry)
 
 
 
@@ -47,7 +48,9 @@ class Quote(Base):
     Close = Column(Float)
     Volume = Column(Float)
     AdjClose = Column(Float)
-    Features = relationship('Indicator', uselist=False, backref='Quotes', lazy='joined',cascade='all, delete, delete-orphan')
+    Features = relationship('Indicator', uselist=False, 
+                            backref='Quotes', lazy='joined', 
+                            cascade='all, delete, delete-orphan')
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
         self.Date = Date
@@ -59,9 +62,10 @@ class Quote(Base):
         self.AdjClose = AdjClose
 
     def __repr__(self):
-        return "<Quote(Date: %s,Symbol: %s, Open: %f, High: %f, Low: %f, Close: %f, Volume: %d, Adjusted Close: %f)>" % \
-            (self.Date, self.Ticker, self.Open, self.High, self.Low,
-            self.Close, self.Volume, self.AdjClose)
+        return "<Quote(Date: %s,Symbol: %s, Open: %f, High: %f, Low: %f, \
+                Close: %f, Volume: %d, Adjusted Close: %f)>" % (self.Date, 
+                self.Ticker, self.Open, self.High, self.Low, self.Close, 
+                self.Volume, self.AdjClose)
 
 
 class Indicator(Base):
