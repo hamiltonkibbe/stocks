@@ -8,6 +8,10 @@ from datetime import date
 
 def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     """ Generate an array of quotes and indicators for the given stock
+    :param ticker: Ticker of the security to quote.
+    :param start: (Optional) Start of date range to get.
+    :param end: (Optional) End of date range to get.
+    :returns: tuple containing (raw data, ticker_and_date_info)
     """
     # Get quotes
     quotes = IntradayQuotes().get_quotes(ticker, start, end)
