@@ -24,3 +24,15 @@ class IntradayQuotes(object):
         Return a list of quotes for the given stoc from start_date to end-date
         """
         return self.stock_db.get_quotes(ticker, start_date, end_date)
+
+
+class TickQuotes(object):
+    """
+    API for retreiving tick-by-tick data from the stock database
+    """
+    def __init__(self):
+        self.stock_db = Client()
+    
+    def get_quotes(self, ticker):
+        pass
+    
