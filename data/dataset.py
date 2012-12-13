@@ -19,8 +19,14 @@ class Dataset(object:
         """ Get the number of rows in the dataset
         """
         return len(self.data)
+    
+    def __iter__(self):
+        """ Get an iterator over the dataset
+        """
+        return iter(self.data)
 
     def get_data(self):
+    
         """ Get Data from Dataset
         """
         return self.data
@@ -225,5 +231,5 @@ def get_raw_data(ticker):
          q.Features.macd,
          q.Features.macd_signal,
          q.Features.macd_histogram])
-        for q in quotes]),
+        for q in quotes]).astype(float),
         np.array([np.array([q.Ticker, q.Date]) for q in quotes]))
