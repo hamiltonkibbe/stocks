@@ -2,9 +2,8 @@
 """ indicators.py
 """
 import sys
-sys.path.append('..')
-from quant import analysis
-from models import Quote, Indicator
+from ..quant import analysis
+from .models import Quote, Indicator
 from numpy import array, asarray, isnan, where
 
 

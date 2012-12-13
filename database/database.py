@@ -32,7 +32,7 @@ class Database(object):
         self.Session.configure(bind=self.Engine)
 
 
-class StockDBManager(object):
+class Manager(object):
     """ Stock database management class
     """
 
@@ -141,7 +141,7 @@ class StockDBManager(object):
         """
         Updates quotes for all stocks through current day.
         """
-        for symbol in self.stocks():
+        for symbol in self._stocks():
             self.update_quotes(symbol, check_all)
             print 'Updated quotes for %s' % symbol
 
@@ -186,6 +186,25 @@ class StockDBManager(object):
             session.close()
         return exists
 
+
+    def _stocks(self, session=None):
+        newsession = False
+        if session is None:
+            newsession = True
+            session = self.db.Session()
+        stocks = array([stock.Ticker for stock in session.query(Symbol).all()])
+        if newsession:
+            session.close()
+        return stocks
+
+        
+class Client(object):
+    """ Stock database client
+    """
+
+    def __init__(self):
+        self.db = Database()
+        
     def get_quotes(self, ticker, quote_date, end_date=None):
         """
         Return a list of quotes between the start date and (optional) end date.
@@ -210,8 +229,11 @@ class StockDBManager(object):
         stockquotes = [quote for quote in query.all()]
         session.close()
         return stockquotes
-
+    
     def stocks(self, session=None):
+        """
+        Return a list of the stocks available in the database
+        """
         newsession = False
         if session is None:
             newsession = True
@@ -221,10 +243,11 @@ class StockDBManager(object):
             session.close()
         return stocks
 
+
 if __name__ == '__main__':
     from sys import argv
     if len(argv) > 1:
-        db = StockDBManager()
+        db = Manager()
         opt = str(argv[1])
 
         if opt == 'create':
