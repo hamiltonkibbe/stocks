@@ -47,12 +47,10 @@ class Manager(object):
     def add_stock(self, ticker, name=None, exchange=None,
                   sector=None, industry=None):
         """ Add a stock to the stock database
-
         Add the stock to the symbols table and populate quotes table with all
         available historical quotes. If any of the optional parameters are left
         out, the corresponding information will be obtained from Yahoo!
         Finance.
-
         :param ticker: Stock ticker symbol
         :param name: (optional) Company/security name
         :param exchange: (optional) Exchange on which the security is traded

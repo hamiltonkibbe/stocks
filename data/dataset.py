@@ -182,6 +182,4 @@ class MLDataset(Dataset):
         self.meta_data = np.delete(self.meta_data,
                                    delrows, 0)
                                    
-                                   
-                                   
 
