@@ -8,7 +8,7 @@ class IntradayQuotes(object):
     """
     API for retreiving intraday quotes from the stock database
     """
-    def __init__(self):
+    def __init__(self, ):
         self.stock_db = Client()
 
 

@@ -6,7 +6,39 @@ from ..quant import analysis
 from .models import Quote, Indicator
 from numpy import array, asarray, isnan, where
 
+def find_needs_updating(data, length):
+    """ Get list of missing data
+    """
+    to_update = array([x for x in where(isnan(data))[0] if x >= (length - 1)])
+    return (to_update, {'min': min(to_update), 'max': max(to_update), 'len': length})
 
+def is_up_to_date(ticker, col_name):
+    last = (session.query(Quote).filter_by(Ticker=ticker)
+                                .order_by(Quote.Date.desc())
+                                .first())
+    return getattr(last.Features, col_name) is not None
+        
+def get_column(ticker, col_name):
+    return asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
+                         for q in (session.query(Quote)
+                                          .filter_by(Ticker=ticker)
+                                          .all())]))
+
+def start(range_data):
+    """ Get starting index
+    """
+    return (range_data['min'] - (range_data['len'] - 1))
+    
+def end(range_data)
+    """ Get ending index
+    """
+    return (range_data['max'] + 1)
+                                          
+def calc_index(index, range_data):
+    """ Map calculated index
+    """
+    return index + (range_data['len'] - (range_data['min'] + 1))
+    
 def get_dataset(ticker, session, *columns):
     """ Get a numpy ndarray containing the specified columns
     TODO: Make this work
@@ -35,27 +67,37 @@ def update_ma(ticker, length, session, commit=True, check_all=False):
     """
     ticker = ticker.lower()
     col_name = 'ma_' + str(length) + '_day'
-    if not check_all:
-        last = (session.query(Quote).filter_by(Ticker=ticker)
-                                    .order_by(Quote.Date.desc())
-                                    .first())
-        if getattr(last.Features, col_name) is not None:
+    
+    if not check_all and is_up_to_date(ticker, col_name):
+        return
+        #last = (session.query(Quote).filter_by(Ticker=ticker)
+        #                            .order_by(Quote.Date.desc())
+        #                            .first())
+        #if getattr(last.Features, col_name) is not None:
+        #    return
             return
-    data = asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
-                         for q in (session.query(Quote)
-                                          .filter_by(Ticker=ticker)
-                                          .all())]))
+        
+        
+    #data = asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
+    #                     for q in (session.query(Quote)
+    #                                      .filter_by(Ticker=ticker)
+    #                                      .all())]))
+    data = get_column(ticker, col_name)
+
+     
     ids = data[0]
     adj_close = data[1].astype(float)
     ma = data[2].astype(float)
-    to_update = array([x for x in where(isnan(ma))[0] if x >= (length - 1)])
+    #to_update = array([x for x in where(isnan(ma))[0] if x >= (length - 1)])
+    to_update, range = find_needs_updating(ma, length)
     if len(to_update) > 0:
-        _min = min(to_update)
-        _max = max(to_update)
-        calc = analysis.moving_average(adj_close[_min - (length - 1):_max + 1],
+        #_min = min(to_update)
+        #_max = max(to_update)
+        calc = analysis.moving_average(adj_close[start(range):end(range)],
                                        length)
         for idx in to_update:
-            val = calc[idx + (length - (_min + 1))]
+            #val = calc[idx + (length - (_min + 1))]
+            val = calc[calc_index(idx, range)]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
@@ -81,27 +123,21 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
     """
     ticker = ticker.lower()
     col_name = 'ewma_' + str(length) + '_day'
-    if not check_all:
-        last = session.query(Quote).filter_by(Ticker=ticker) \
-                                   .order_by(Quote.Date.desc()).first()
-        if getattr(last.Features, col_name) is not None:
-            return
-    data = asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
-                         for q in (session.query(Quote)
-                                          .filter_by(Ticker=ticker)
-                                          .all())]))
+    
+    if not check_all and is_up_to_date(ticker, col_name):
+        return
+
+    data = get_column(ticker, col_name)
     ids = data[0]
     adj_close = data[1].astype(float)
     ma = data[2].astype(float)
-    to_update = array([x for x in where(isnan(ma))[0] if x >= (length - 1)])
+    
+    to_update, range = find_needs_updating(ma, length)
     if len(to_update) > 0:
-        _min = min(to_update)
-        _max = max(to_update)
-        calc = analysis.exp_weighted_moving_average(adj_close[_min -
-                                                    (length - 1):_max + 1],
+        calc = analysis.exp_weighted_moving_average(adj_close[start(range):end(range)],
                                                     length)
         for idx in to_update:
-            val = calc[idx + (length - (_min + 1))]
+            val = calc[calc_index(idx, range)]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
@@ -139,10 +175,11 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
     ids = data[0]
     adj_close = data[1].astype(float)
     mom = data[2].astype(float)
-    to_update = array([x for x in where(isnan(mom))[0] if x >= length])
+    #to_update = array([x for x in where(isnan(mom))[0] if x >= length])
+    to_update, _min, _max = find_needs_updating(mom, length)
     if len(to_update) > 0:
-        _min = min(to_update)
-        _max = max(to_update)
+        #_min = min(to_update)
+        #_max = max(to_update)
         calc = analysis.momentum(adj_close[_min - (length - 1):_max + 1],
                                  length)
         for idx in to_update:
@@ -173,6 +210,7 @@ def update_macd(ticker, session, commit=True, check_all=False):
     :type check_all: bool
     """
     ticker = ticker.lower()
+    length = 26
     if not check_all:
         last = (session.query(Quote)
                        .filter_by(Ticker=ticker)
@@ -191,10 +229,11 @@ def update_macd(ticker, session, commit=True, check_all=False):
     slow_ewma = data[2].astype(float)
     macd = data[3].astype(float)
 
-    to_update = array([x for x in where(isnan(macd))[0] if x >= 25])
+    #to_update = array([x for x in where(isnan(macd))[0] if x >= 25])
+    to_update, _min, _max = find_needs_updating(macd, length)
     if len(to_update) > 0:
-        _min = min(to_update)
-        _max = max(to_update)
+        #_min = min(to_update)
+        #_max = max(to_update)
         macd = analysis.macd(fast_ewma=fast_ewma[_min - 8:_max + 1],
                              slow_ewma=slow_ewma[_min - 8:_max + 1])
         macd_signal = analysis.macd_signal(macd=macd)
