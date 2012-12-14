@@ -230,7 +230,7 @@ def update_macd(ticker, session, commit=True, check_all=False):
     macd = data[3].astype(float)
 
     #to_update = array([x for x in where(isnan(macd))[0] if x >= 25])
-    to_update, range_d = find_needs_updating(macd, length)
+    to_update, range = find_needs_updating(macd, length)
     if len(to_update) > 0:
         _min = range_d['min']
         _max = range_d['max']
@@ -240,8 +240,8 @@ def update_macd(ticker, session, commit=True, check_all=False):
         macd = macd[8:]
         macd_signal = macd_signal[8:]
         for idx in to_update:
-            calc_macd = macd[idx - range_d['min']]
-            calc_macd_sig = macd_signal[idx - range_d['min']]
+            calc_macd = macd[idx - _min]
+            calc_macd_sig = macd_signal[idx - _min]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({'macd': calc_macd,

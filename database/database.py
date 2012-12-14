@@ -195,14 +195,15 @@ class Manager(object):
             session.close()
         return stocks
 
-        
+
 class Client(object):
     """ Stock database client
     """
 
     def __init__(self):
         self.db = Database()
-        
+        self.manager = Manager()
+
     def get_quotes(self, ticker, quote_date, end_date=None):
         """
         Return a list of quotes between the start date and (optional) end date.
@@ -212,8 +213,8 @@ class Client(object):
         ticker = ticker.lower()
         session = self.db.Session()
         stockquotes = []
-        if not self.check_stock_exists(ticker, session):
-            self.add_stock(ticker)
+        if not self.manager.check_stock_exists(ticker, session):
+            self.manager.add_stock(ticker)
 
         if end_date is not None:
             query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
@@ -227,7 +228,7 @@ class Client(object):
         stockquotes = [quote for quote in query.all()]
         session.close()
         return stockquotes
-    
+
     def stocks(self, session=None):
         """
         Return a list of the stocks available in the database

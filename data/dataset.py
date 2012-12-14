@@ -7,26 +7,26 @@ from datafeed import IntradayQuotes
 from utilities import get_raw_data
 
 
-class Dataset(object:
+class Dataset(object):
     """ Abstract Dataset
     """
     def __init__(self, symbols=None, sector=None, index=None, size=None):
-        
+
         self.data = None
-        self._initialize_dataset(self, symbols=symbols, sector=sector, index=index, size=size)
+        self._initialize_dataset(symbols, sector, index, size)
 
     def __len__(self):
         """ Get the number of rows in the dataset
         """
         return len(self.data)
-    
+
     def __iter__(self):
         """ Get an iterator over the dataset
         """
         return iter(self.data)
 
     def get_data(self):
-    
+
         """ Get Data from Dataset
         """
         return self.data
@@ -35,7 +35,7 @@ class Dataset(object:
         """ Write Dataset to CSV file
         """
         np.savetxt(filename, csv_data, delimiter=',')
-        
+
 
     def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None):
         """ Generate the acutual data
@@ -55,8 +55,8 @@ class Dataset(object:
             pass
         if size is not None:
             pass
-            
-     def _sanitize(self):
+
+    def _sanitize(self):
         """ Clean up datasets
         Removes any rows with empty fields
         """
@@ -66,33 +66,33 @@ class Dataset(object:
 
             # Find incomplete rows
             for val in self.data[i][2:]:
-                if not isinstance(val, float) or (val is None):
+                if not isinstance(val, float) or (val is None) or not np.isfinite(val):
                     delrow = True
             if delrow:
                 delrows.append(i)
 
         # Remove rows marked for deletion
         self.data = np.delete(self.data, delrows, 0).astype(float)
-                    
-    
+
+
 
 class MLDataset(Dataset):
-    """ Dataset for Machine Learning 
+    """ Dataset for Machine Learning
     """
-    def __init__(self, symbols=None, sector=None, index=None):
+    def __init__(self, symbols=None, sector=None, index=None, size=None):
         """
         """
-        
-        # Set up 
+
+        # Set up
         self.target_data = None
         self.meta_data = None
-        super(MLDataset, self).__init__()
-        
+        super(MLDataset, self).__init__(symbols, sector, index, size)
+
     def __iter__(self):
         """ Get an iterator over the dataset
         """
         return iter(zip(self.data,self.target_data))
-        
+
     def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None):
         if sector is not None:
             pass
@@ -101,10 +101,10 @@ class MLDataset(Dataset):
         for ticker in symbols:
             data, meta_data = get_raw_data(ticker)
             # Create target data
-            target_data = np.zeros(len(quotes))
-            for i in range(len(quotes) - 10):
-                target_data[i] = np.array([ 1 if (quotes[i + 10].AdjClose /
-                                       quotes[i].AdjClose > 1.1) else 0])
+            target_data = np.zeros(len(data))
+            for i in range(len(data) - 10):
+                target_data[i] = np.array([ 1 if (data[i + 10][0] /
+                                       data[i][0] > 1.1) else 0])
 
             # Add each row to datase
             if self.data is None:
@@ -128,7 +128,7 @@ class MLDataset(Dataset):
 
     def to_csv(self, filename):
         """ Write dataset to CSV file
-        
+
         :param filename: Name of the file to write.
         :type filename: str
         """
@@ -157,7 +157,7 @@ class MLDataset(Dataset):
         # Write CSV file
         np.savetxt(filename, csv_data, fmt='%.3e', delimiter=',')
 
-        
+
     def _sanitize(self):
         """ Clean up datasets
 
@@ -169,7 +169,7 @@ class MLDataset(Dataset):
 
             # Find incomplete rows
             for val in self.data[i]:
-                if not isinstance(val, float) or (val is None):
+                if not isinstance(val, float) or (val is None) or not np.isfinite(val):
                     delrow = True
             if delrow:
                 delrows.append(i)
@@ -181,5 +181,5 @@ class MLDataset(Dataset):
 
         self.meta_data = np.delete(self.meta_data,
                                    delrows, 0)
-                                   
+
 
