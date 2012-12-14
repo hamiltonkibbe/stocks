@@ -18,6 +18,8 @@ class Database(object):
         Set up database access
         """
         self.Base = Base
+        
+        # Handle edge case here
         if config.SQL_PASSWORD == '':
             engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER,
                                                   config.SQL_HOSTNAME,

@@ -14,13 +14,18 @@ def find_needs_updating(data, length):
         return (to_update, {'min': min(to_update), 'max': max(to_update), 'len': length})
     else:
         return (to_update, {'min': 0, 'max': 0, 'len': length})
+    
 def is_up_to_date(ticker, col_name, session):
+    """ Check if column is up to date
+    """
     last = (session.query(Quote).filter_by(Ticker=ticker)
                                 .order_by(Quote.Date.desc())
                                 .first())
     return getattr(last.Features, col_name) is not None
 
 def get_column(ticker, col_name, session):
+    """ Get column from database as an array
+    """
     return asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
                          for q in (session.query(Quote)
                                           .filter_by(Ticker=ticker)
@@ -28,16 +33,22 @@ def get_column(ticker, col_name, session):
 
 def start(range_data):
     """ Get starting index
+    Map the starting index for the subset of data used to generate the transform
+    to a real index in the dataset
     """
     return (range_data['min'] - (range_data['len'] - 1))
 
 def end(range_data):
     """ Get ending index
+    Map the ending index for the subset of data used to generate the transform
+    to a real index in the dataset
     """
     return (range_data['max'] + 1)
 
 def calc_index(index, range_data):
     """ Map calculated index
+    Map index from the real dataset into the subset returned from the transform
+    calculation
     """
     return index + (range_data['len'] - (range_data['min'] + 1))
 
@@ -137,7 +148,7 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
 
     :param ticker: Ticker symbol of stock to update.
     :type ticker: str
-    :param length: Length of exponentially weighted moving average to update.
+    :param length: Length of momentum calculation to update.
     :type length: int
     :param session: SQLAlchemy database session to use.
     :type session: session
@@ -167,10 +178,6 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
         calc = analysis.momentum(adj_close[start(range):end(range)],
                                  length)
         for idx in to_update:
-            print "Length is: %i" % length
-            print "Length of to_update: %i Length of calc: %i" % \
-                (len(to_update), len(calc))
-            print "Index: %i:%i " % (idx + (length - (_min + 1)), len(calc) - 1)
             val = calc[calc_index(idx, range)]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
