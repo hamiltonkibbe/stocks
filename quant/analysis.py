@@ -74,7 +74,7 @@ def momentum(data, span):
     :returns: Momentum as a numpy array.
     """
     momentum = array([100 * (cur / prev) for cur, prev in zip(data[span:], data)])
-    return append(empty(span).fill(None), momentum).astype(float)
+    return append(zeros(span), momentum).astype(float)
 
 
 def macd(data=None, fast_ewma=None, slow_ewma=None):

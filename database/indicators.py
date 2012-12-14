@@ -14,7 +14,7 @@ def find_needs_updating(data, length):
         return (to_update, {'min': min(to_update), 'max': max(to_update), 'len': length})
     else:
         return (to_update, {'min': 0, 'max': 0, 'len': length})
-    
+
 def is_up_to_date(ticker, col_name, session):
     """ Check if column is up to date
     """
@@ -88,13 +88,13 @@ def update_ma(ticker, length, session, commit=True, check_all=False):
     ids = data[0]
     adj_close = data[1].astype(float)
     ma = data[2].astype(float)
-    to_update, range = find_needs_updating(ma, length)
+    to_update, range_data = find_needs_updating(ma, length)
 
     if len(to_update) > 0:
-        calc = analysis.moving_average(adj_close[start(range):end(range)],
+        calc = analysis.moving_average(adj_close[start(range_data):end(range_data)],
                                        length)
         for idx in to_update:
-            val = calc[calc_index(idx, range)]
+            val = calc[calc_index(idx, range_data)]
 
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
@@ -130,12 +130,12 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
     adj_close = data[1].astype(float)
     ma = data[2].astype(float)
 
-    to_update, range = find_needs_updating(ma, length)
+    to_update, range_data = find_needs_updating(ma, length)
     if len(to_update) > 0:
-        calc = analysis.exp_weighted_moving_average(adj_close[start(range):end(range)],
+        calc = analysis.exp_weighted_moving_average(adj_close[start(range_data):end(range_data)],
                                                     length)
         for idx in to_update:
-            val = calc[calc_index(idx, range)]
+            val = calc[calc_index(idx, range_data)]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
@@ -170,15 +170,16 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
     ids = data[0]
     adj_close = data[1].astype(float)
     mom = data[2].astype(float)
-    to_update, range_data = find_needs_updating(mom, length)
+    to_update, range_data = find_needs_updating(mom, length + 1)
 
     if len(to_update) > 0:
         _min = range_data['min']
         _max = range_data['max']
-        calc = analysis.momentum(adj_close[start(range):end(range)],
+        calc = analysis.momentum(adj_close[_min - length:end(range_data)],
                                  length)
+
         for idx in to_update:
-            val = calc[calc_index(idx, range)]
+            val = calc[(idx - _min) + length]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
@@ -210,21 +211,19 @@ def update_macd(ticker, session, commit=True, check_all=False):
 
         if last.Features.macd is not None:
             return
-    data = asarray(zip(*[(q.Id, q.Features.ewma_12_day,
-                          q.Features.ewma_26_day, q.Features.macd)
-                         for q in (session.query(Quote)
-                                   .filter_by(Ticker=ticker)
-                                   .all())]))
+
+    data = asarray(zip(*[(q.Id, q.Features.ewma_12_day,q.Features.ewma_26_day,q.Features.macd)
+                         for q in (session.query(Quote).filter_by(Ticker=ticker).all())]))
+
     ids = data[0]
     fast_ewma = data[1].astype(float)
     slow_ewma = data[2].astype(float)
     macd = data[3].astype(float)
 
-    #to_update = array([x for x in where(isnan(macd))[0] if x >= 25])
-    to_update, range = find_needs_updating(macd, length)
+    to_update, range_data = find_needs_updating(macd, length)
     if len(to_update) > 0:
-        _min = range_d['min']
-        _max = range_d['max']
+        _min = range_data['min']
+        _max = range_data['max']
         macd = analysis.macd(fast_ewma=fast_ewma[_min - 8:_max + 1],
                              slow_ewma=slow_ewma[_min - 8:_max + 1])
         macd_signal = analysis.macd_signal(macd=macd)
@@ -259,7 +258,7 @@ def update_all(ticker, session, commit=True, check_all=False):
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
         update_ma(ticker, length, session, False, check_all)
-        # update_momentum(ticker, length, session, False, check_all)
+        update_momentum(ticker, length, session, False, check_all)
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
     update_macd(ticker, session, False, check_all)
