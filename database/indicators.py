@@ -72,32 +72,19 @@ def update_ma(ticker, length, session, commit=True, check_all=False):
 
     if not check_all and is_up_to_date(ticker, col_name, session):
         return
-        #last = (session.query(Quote).filter_by(Ticker=ticker)
-        #                            .order_by(Quote.Date.desc())
-        #                            .first())
-        #if getattr(last.Features, col_name) is not None:
-        #    return
 
-    #data = asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
-    #                     for q in (session.query(Quote)
-    #                                      .filter_by(Ticker=ticker)
-    #                                      .all())]))
     data = get_column(ticker, col_name, session)
-
-
     ids = data[0]
     adj_close = data[1].astype(float)
     ma = data[2].astype(float)
-    #to_update = array([x for x in where(isnan(ma))[0] if x >= (length - 1)])
     to_update, range = find_needs_updating(ma, length)
+
     if len(to_update) > 0:
-        #_min = min(to_update)
-        #_max = max(to_update)
         calc = analysis.moving_average(adj_close[start(range):end(range)],
                                        length)
         for idx in to_update:
-            #val = calc[idx + (length - (_min + 1))]
             val = calc[calc_index(idx, range)]
+
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
@@ -163,31 +150,28 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
     """
     ticker = ticker.lower()
     col_name = 'momentum_' + str(length) + '_day'
-    if not check_all:
-        last = session.query(Quote).filter_by(Ticker=ticker) \
-            .order_by(Quote.Date.desc()).first()
-        if getattr(last.Features, col_name) is not None:
-            return
-    data = asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
-                         for q in (session.query(Quote)
-                                          .filter_by(Ticker=ticker)
-                                          .all())]))
+
+
+    if not check_all and is_up_to_date(ticker, col_name, session):
+        return
+
+    data = get_column(ticker, col_name, session)
     ids = data[0]
     adj_close = data[1].astype(float)
     mom = data[2].astype(float)
-    #to_update = array([x for x in where(isnan(mom))[0] if x >= length])
-    to_update, _min, _max = find_needs_updating(mom, length)
+    to_update, range_data = find_needs_updating(mom, length)
+
     if len(to_update) > 0:
-        #_min = min(to_update)
-        #_max = max(to_update)
-        calc = analysis.momentum(adj_close[_min - (length - 1):_max + 1],
+        _min = range_data['min']
+        _max = range_data['max']
+        calc = analysis.momentum(adj_close[start(range):end(range)],
                                  length)
         for idx in to_update:
             print "Length is: %i" % length
             print "Length of to_update: %i Length of calc: %i" % \
                 (len(to_update), len(calc))
             print "Index: %i:%i " % (idx + (length - (_min + 1)), len(calc) - 1)
-            val = calc[idx + (length - (_min + 1))]
+            val = calc[calc_index(idx, range)]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
