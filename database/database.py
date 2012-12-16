@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import ystockquote as quotes
+from ..data import yahoofinance as quotes
 import config
 import indicators
 from datetime import date, timedelta
