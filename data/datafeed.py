@@ -46,4 +46,4 @@ class TickQuotes(object):
     
     def get_quotes(self, ticker):
         pass
-    
+

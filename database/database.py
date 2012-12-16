@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from ..data import yahoofinance as quotes
+from ..sources import yahoofinance as quotes
 import config
 import indicators
 from datetime import date, timedelta
@@ -18,7 +18,7 @@ class Database(object):
         Set up database access
         """
         self.Base = Base
-        
+
         # Handle edge case here
         if config.SQL_PASSWORD == '':
             engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER,
