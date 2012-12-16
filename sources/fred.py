@@ -9,7 +9,7 @@ from xml.etree import ElementTree
 from datetime import date
 from time import mktime, strptime
 
-indicators = {'bank_prime_loan_rate': 'WPRIME',
+indicators = {'bank_prime_loan_rate': 'DPRIME',
               'consumer_price_index': 'SOMETHING'}
 
 
