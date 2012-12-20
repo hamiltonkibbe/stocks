@@ -55,7 +55,7 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
               ('macd_histogram', float)])
               
     
-    data =  (np.array([np.array(
+    data =  np.array([np.array(
         [q.Ticker, 
          q.Date, 
          q.Date.weekday(),

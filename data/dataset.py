@@ -47,6 +47,7 @@ class Dataset(object):
 
     def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, data_callback=None):
         """ Generate the acutual data based on init
+        TODO: Implement sector, index, and size
         """
         if symbols is not None:
             for ticker in symbols:
@@ -126,9 +127,9 @@ class MLDataset(Dataset):
         return np.array(self.data[:][2:]).astype(float)
         
     @property
-    """ Target data for regression / machine learning
-    """
     def target_data(self):
+        """ Target data for regression / machine learning
+        """
         return self.target.astype(float)
         
 
@@ -157,7 +158,7 @@ class MLDataset(Dataset):
         self.target = np.delete(self.target, delrows, 0)
                                    
 
-     def _generate_callback(self, target_function):
+    def _generate_callback(self, target_function):
         """ wrap the user function that creates the target data for training
         
         Generate a function that appends the output from the user supplied 

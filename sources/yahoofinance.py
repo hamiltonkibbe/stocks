@@ -18,14 +18,13 @@ import urllib
 from datetime import date
 from bs4 import BeautifulSoup
 
-"""
-This is the "ystockquote" module.
+""" yahoofinance
 
 This module provides a Python API for retrieving stock data from Yahoo Finance.
 
 sample usage:
->>> import ystockquote
->>> print ystockquote.get_price('GOOG')
+>>> import yahoofinance
+>>> print yahoofinance.get_price('GOOG')
 529.46
 """
 
