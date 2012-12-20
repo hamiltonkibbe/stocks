@@ -38,6 +38,11 @@ Icon?
 ehthumbs.db
 Thumbs.db
 
+# Other Generated Files #
+#########################
+.COVERAGE
+
+
 #CMake
 CMakeCache.txt
 CMakeFiles
