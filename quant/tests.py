@@ -87,3 +87,15 @@ def test_moving_variance():
                      136.3333333333333, 203, 283,  376.3333333333333]
     
     np.testing.assert_array_almost_equal(result, matlab_result)
+    
+    
+# ------------------------------------------------
+# Momentum Indicators
+# ------------------------------------------------
+
+def test_momentum():
+    result = analysis.momentum(exp_ramp, 4)
+    matlab_result = [np.nan, np.nan, np.nan, np.nan, 0, 1600, 600, 400, 300, 200, 200]
+    print result
+    np.testing.assert_array_almost_equal(result, matlab_result)
+    

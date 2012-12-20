@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from numpy import array, zeros, append, subtract, empty
+from numpy import array, zeros, append, subtract, empty, nan
 from pandas import Series, stats, concat
 
 
@@ -73,8 +73,10 @@ def momentum(data, span):
     momentum ratio.
     :returns: Momentum as a numpy array.
     """
-    momentum = array([100 * (cur / prev) for cur, prev in zip(data[span:], data)])
-    return append(zeros(span), momentum).astype(float)
+    momentum = array([100 * (cur / prev) for cur, prev in zip(data[span-1:], data)])
+    blank = zeros(span)
+    blank[:] = nan
+    return append(blank, momentum).astype(float)
 
 
 def macd(data=None, fast_ewma=None, slow_ewma=None):
