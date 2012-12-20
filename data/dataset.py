@@ -8,45 +8,58 @@ from utilities import get_raw_data
 
 
 class Dataset(object):
-    """ Abstract Dataset
+    """ Dataset Class
     """
-    def __init__(self, symbols=None, sector=None, index=None, size=None):
-
+    def __init__(self, symbols=None, sector=None, 
+                 index=None, size=None, data_callback = None):
+        """ Create an instance of the Dataset class
+        
+        :param symbols: List of securities to include in dataset
+        :param sector: List of sectors to include in dataset
+        :param index: List of indicies to include in dataset
+        :param size: Maximum number of rows to include in dataset
+        :param data_callback: function called for each set of data added to the set
+        the function should take a numPy ndarray of data as an argument. the return
+        value is ignored.
+        """
         self.data = None
-        self._initialize_dataset(symbols, sector, index, size)
+        self.col_names = None
+        self._initialize_dataset(symbols, sector, index, size, stock_callback)
 
-    def __len__(self):
-        """ Get the number of rows in the dataset
+    @property
+    def pretty_data(self):
+        """ Data from dataset with column headers
         """
-        return len(self.data)
-
-    def __iter__(self):
-        """ Get an iterator over the dataset
-        """
-        return iter(self.data)
-
-    def get_data(self):
-
-        """ Get Data from Dataset
+        return np.vstack((self.col_names, self.data))
+    
+    @property
+    def raw_data(self):
+        """ Raw data from dataset 
         """
         return self.data
-
+        
+        
     def to_csv(self, filename):
         """ Write Dataset to CSV file
         """
-        np.savetxt(filename, csv_data, delimiter=',')
+        np.savetxt(filename, self.pretty_data, delimiter=',')
 
 
-    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None):
-        """ Generate the acutual data
+    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, data_callback=None):
+        """ Generate the acutual data based on init
         """
         if symbols is not None:
             for ticker in symbols:
-                data, meta_data = get_raw_data(ticker)
-                data = np.append(meta_data, data, 1)
+                data, col_names = get_raw_data(ticker)
+                
+                # Do callback
+                if data_callback:
+                    data_callback(data)
+                    
                 # Add each row to dataset
                 if self.data is None:
                     self.data = data
+                    self.col_names = col_names
                 else:
                     self.data = np.vstack((self.data, data))
         if sector is not None:
@@ -55,7 +68,7 @@ class Dataset(object):
             pass
         if size is not None:
             pass
-
+        
     def _sanitize(self):
         """ Clean up datasets
         Removes any rows with empty fields
@@ -72,91 +85,52 @@ class Dataset(object):
                 delrows.append(i)
 
         # Remove rows marked for deletion
-        self.data = np.delete(self.data, delrows, 0).astype(float)
+        self.data = np.delete(self.data, delrows, 0)
 
-
-
-class MLDataset(Dataset):
-    """ Dataset for Machine Learning
-    """
-    def __init__(self, symbols=None, sector=None, index=None, size=None):
+    def __len__(self):
+        """ Get the number of rows in the dataset
         """
-        """
-
-        # Set up
-        self.target_data = None
-        self.meta_data = None
-        super(MLDataset, self).__init__(symbols, sector, index, size)
+        return len(self.data)
 
     def __iter__(self):
         """ Get an iterator over the dataset
         """
-        return iter(zip(self.data,self.target_data))
-
-    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None):
-        if sector is not None:
-            pass
-        if index is not None:
-            pass
-        for ticker in symbols:
-            data, meta_data = get_raw_data(ticker)
-            # Create target data
-            target_data = np.zeros(len(data))
-            for i in range(len(data) - 10):
-                target_data[i] = np.array([ 1 if (data[i + 10][0] /
-                                       data[i][0] > 1.1) else 0])
-
-            # Add each row to datase
-            if self.data is None:
-                self.data = data
-                self.target_data = target_data
-                self.meta_data = meta_data
-            else:
-                self.data = np.vstack((self.data, data))
-                self.target_data = np.append(self.target_data, target_data, axis=1)
-                self.meta_data = np.vstack((self.meta_data, meta_data))
-        # Clean up
-        self._sanitize()
+        return iter(self.data)
 
 
-    def get_data(self):
-        """ Get the raw data from the dataset
-
-        :returns: Data and Labels/target data as a tuple
+class MLDataset(Dataset):
+    """ Dataset for Machine Learning
+    
+    Data set that provides training and target data for machine learning
+    """
+    def __init__(self, symbols=None, sector=None, index=None, size=None, target_function=None):
+        """ Create an instance of the MLDataset class
+        
+        :param symbols: List of securities to include in dataset
+        :param sector: List of sectors to include in dataset
+        :param index: List of indicies to include in dataset
+        :param size: Maximum number of rows to include in dataset
+        :param target_function: function that generates target data for machine 
+        learning / regression. The function should take a 2D numpy array and 
+        return a 1D numpy array.
         """
-        return zip(self.data, self.target_data)
-
-    def to_csv(self, filename):
-        """ Write dataset to CSV file
-
-        :param filename: Name of the file to write.
-        :type filename: str
+        # Initialize class
+        self.target = None
+        self.generate_target_data = self._generate_callback(target_function)
+        super(MLDataset, self).__init__(symbols, sector, index, size, self.generate_target_data)
+    
+    @property
+    def training_data(self):
+        """ Training dataset for regression / machine learning
         """
-
-        # Column Titles
-        header_info = ['Ticker', 'Date', 'Weekday', 'Adjusted Close', 'Volume',
-                       '5 Day Moving Average', '10 Day Moving Average',
-                       '20 Day Moving Average', '50 Day Moving Average',
-                       '100 Day Moving Average', '200 Day Moving Average',
-                       '5 Day EWMA', '10 Day EWMA', '12 Day EWMA',
-                       '20 Day EWMA', '26 Day EWMA', '50 Day EWMA',
-                       '100 Day EWMA', '200 Day EWMA', 'Diff 5 Day MA',
-                       'Diff 10 Day MA', 'Diff 20 Day MA', 'Diff 50 Day MA',
-                       'Diff 100 Day MA', 'Diff 200 Day MA', 'Diff 5 Day EWMA',
-                       'Diff 10 Day EWMA', 'Diff 12 Day EWMA',
-                       'Diff 20 Day EWMA', 'Diff 26 Day EWMA',
-                       'Diff 50 Day EWMA', 'Diff 100 Day EWMA',
-                       'Diff 200 Day EWMA', 'MACD', 'MACD Signal',
-                       'MACD Histogram', 'Target']
-
-        # Generate full matrix
-        csv_data = np.append(self.meta_data, self.data, axis=1)
-        csv_data = np.append(csv_data, self.target_data, axis=1)
-        csv_data = np.append(header_info, csv_data)
-
-        # Write CSV file
-        np.savetxt(filename, csv_data, fmt='%.3e', delimiter=',')
-
+        return np.array(self.data[:][2:]).astype(float)
+        
+    @property
+    """ Target data for regression / machine learning
+    """
+    def target_data(self):
+        return self.target.astype(float)
+        
 
     def _sanitize(self):
         """ Clean up datasets
@@ -169,17 +143,35 @@ class MLDataset(Dataset):
 
             # Find incomplete rows
             for val in self.data[i]:
-                if not isinstance(val, float) or (val is None) or not np.isfinite(val):
+                if (not isinstance(val, float)) or (val is None) or (not np.isfinite(val)):
                     delrow = True
+                    
+            if (self.target[i] is None) or (not np.isfinite(self.target[i])):
+                delrow = True
+                
             if delrow:
                 delrows.append(i)
 
         # Remove rows marked for deletion
-        self.data = np.delete(self.data, delrows, 0).astype(float)
-        self.target_data = np.delete(self.target_data,
-                                     delrows, 0).astype(float)
+        self.data = np.delete(self.data, delrows, 0)
+        self.target = np.delete(self.target, delrows, 0)
+                                   
 
-        self.meta_data = np.delete(self.meta_data,
-                                   delrows, 0)
+     def _generate_callback(self, target_function):
+        """ wrap the user function that creates the target data for training
+        
+        Generate a function that appends the output from the user supplied 
+        function to the target_data array.
+        """
+        def _function(data):
+            if self.target is None:
+                self.target = target_function(data)
+            else:
+                self.target = np.append(self.target, target_function(data))
+        return _function
 
-
+        
+    def __iter__(self):
+        """ Get an iterator over the dataset
+        """
+        return iter(np.append(self.data, self.target.T, axis=1))
