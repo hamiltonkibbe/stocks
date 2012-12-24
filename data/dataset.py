@@ -69,6 +69,8 @@ class Dataset(object):
             pass
         if size is not None:
             pass
+        self._sanitize()
+        self._make_records()
 
     def _sanitize(self):
         """ Clean up datasets
@@ -87,6 +89,9 @@ class Dataset(object):
 
         # Remove rows marked for deletion
         self.data = np.delete(self.data, delrows, 0)
+
+    def _make_records(self):
+        self.data = np.core.records.array(self.data, names = self.col_names)
 
     def __len__(self):
         """ Get the number of rows in the dataset
@@ -112,12 +117,14 @@ class MLDataset(Dataset):
         :param index: List of indicies to include in dataset
         :param size: Maximum number of rows to include in dataset
         :param target_function: function that generates target data for machine
-        learning / regression. The function should take a 2D numpy array and
+        learning / regression. The function should take a numpy array and
         return a 1D numpy array.
         """
         # Initialize class
         self.target = None
-        self.generate_target_data = self._generate_callback(target_function)
+        self.generate_target_data = None
+        if target_function:
+            self.generate_target_data = self._generate_callback(target_function)
         super(MLDataset, self).__init__(symbols, sector, index, size, self.generate_target_data)
 
     @property
@@ -146,9 +153,9 @@ class MLDataset(Dataset):
             for val in self.data[i]:
                 if (not isinstance(val, float)) or (val is None) or (not np.isfinite(val)):
                     delrow = True
-
-            if (self.target[i] is None) or (not np.isfinite(self.target[i])):
-                delrow = True
+            if self.target:
+                if (self.target[i] is None) or (not np.isfinite(self.target[i])):
+                    delrow = True
 
             if delrow:
                 delrows.append(i)

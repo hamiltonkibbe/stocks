@@ -16,48 +16,49 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     # Get quotes
     quotes = IntradayQuotes().get_quotes(ticker, start, end)
     # Generate matrix
-    
-    dtypes = np.dtype([('ticker', str, 5), 
-              ('date', date),
-              ('weekday', float),
-              ('adj_close', float),
-              ('Volume', float),
-              ('ma_5_day', float),
-              ('ma_10_day', float),
-              ('ma_20_day', float),
-              ('ma_50_day', float),
-              ('ma_100_day', float),
-              ('ma_200_day', float),
-              ('ewma_5_day', float),
-              ('ewma_10_day', float),
-              ('ewma_12_day', float),
-              ('ewma_20_day', float),
-              ('ewma_26_day', float),
-              ('ewma_50_day', float),
-              ('ewma_100_day', float),
-              ('ewma_200_day', float),
-              ('diff_ma_5_day', float),
-              ('diff_ma_10_day', float),
-              ('diff_ma_20_day', float),
-              ('diff_ma_50_day', float),
-              ('diff_ma_100_day', float),
-              ('diff_ma_200_day', float),
-              ('diff_ewma_5_day', float),
-              ('diff_ewma_10_day', float),
-              ('diff_ewma_12_day', float),
-              ('diff_ewma_20_day', float),
-              ('diff_ewma_26_day', float),
-              ('diff_ewma_50_day', float),
-              ('diff_ewma_100_day', float),
-              ('diff_ewma_200_day', float),
-              ('macd', float),
-              ('macd_signal', float),
-              ('macd_histogram', float)])
-              
-    
-    data =  np.array([np.array(
-        [q.Ticker, 
-         q.Date, 
+
+    col_names = (
+             'ticker',
+              'date',
+              'weekday',
+              'adj_close',
+              'Volume',
+              'ma_5_day',
+              'ma_10_day',
+              'ma_20_day',
+              'ma_50_day',
+              'ma_100_day',
+              'ma_200_day',
+              'ewma_5_day',
+              'ewma_10_day',
+              'ewma_12_day',
+              'ewma_20_day',
+              'ewma_26_day',
+              'ewma_50_day',
+              'ewma_100_day',
+              'ewma_200_day',
+              'diff_ma_5_day',
+              'diff_ma_10_day',
+              'diff_ma_20_day',
+              'diff_ma_50_day',
+              'diff_ma_100_day',
+              'diff_ma_200_day',
+              'diff_ewma_5_day',
+              'diff_ewma_10_day',
+              'diff_ewma_12_day',
+              'diff_ewma_20_day',
+              'diff_ewma_26_day',
+              'diff_ewma_50_day',
+              'diff_ewma_100_day',
+              'diff_ewma_200_day',
+              'macd',
+              'macd_signal',
+              'macd_histogram')
+
+
+    data =  np.array([
+        [q.Ticker,
+         q.Date,
          q.Date.weekday(),
          q.AdjClose,
          q.Volume,
@@ -95,6 +96,8 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
             if q.Features.ewma_12_day else None,
          (q.AdjClose - q.Features.ewma_20_day)
             if q.Features.ewma_20_day else None,
+         (q.AdjClose - q.Features.ewma_26_day)
+            if q.Features.ewma_26_day else None,
          (q.AdjClose - q.Features.ewma_50_day)
             if q.Features.ewma_50_day else None,
          (q.AdjClose - q.Features.ewma_100_day)
@@ -103,10 +106,6 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
             if q.Features.ewma_200_day else None,
          q.Features.macd,
          q.Features.macd_signal,
-         q.Features.macd_histogram])
-        for q in quotes], dtype=dtypes)
-    
-    # Column names
-    col_names = np.array([dt[0] for dt in dtypes])
-    
+         q.Features.macd_histogram] for q in quotes])
+
     return data, col_names
