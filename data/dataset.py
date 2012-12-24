@@ -25,6 +25,7 @@ class Dataset(object):
         self.data = None
         self.col_names = None
         self._initialize_dataset(symbols, sector, index, size, data_callback)
+        self._make_records()
 
     @property
     def pretty_data(self):
@@ -69,8 +70,10 @@ class Dataset(object):
             pass
         if size is not None:
             pass
-        self._sanitize()
-        self._make_records()
+
+
+    def _make_records(self):
+        self.data = np.rec.array(self.data,names=self.col_names)
 
     def _sanitize(self):
         """ Clean up datasets
@@ -90,8 +93,6 @@ class Dataset(object):
         # Remove rows marked for deletion
         self.data = np.delete(self.data, delrows, 0)
 
-    def _make_records(self):
-        self.data = np.core.records.array(self.data, names = self.col_names)
 
     def __len__(self):
         """ Get the number of rows in the dataset

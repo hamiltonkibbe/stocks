@@ -56,7 +56,7 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
               'macd_histogram')
 
 
-    data =  np.array([
+    data =  np.array([np.array(
         [q.Ticker,
          q.Date,
          q.Date.weekday(),
@@ -106,6 +106,6 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
             if q.Features.ewma_200_day else None,
          q.Features.macd,
          q.Features.macd_signal,
-         q.Features.macd_histogram] for q in quotes])
+         q.Features.macd_histogram]) for q in quotes])
 
     return data, col_names
