@@ -51,6 +51,20 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
               'diff_ewma_50_day',
               'diff_ewma_100_day',
               'diff_ewma_200_day',
+              'pct_diff_ma_5_day',
+              'pct_diff_ma_10_day',
+              'pct_diff_ma_20_day',
+              'pct_diff_ma_50_day',
+              'pct_diff_ma_100_day',
+              'pct_diff_ma_200_day',
+              'pct_diff_ewma_5_day',
+              'pct_diff_ewma_10_day',
+              'pct_diff_ewma_12_day',
+              'pct_diff_ewma_20_day',
+              'pct_diff_ewma_26_day',
+              'pct_diff_ewma_50_day',
+              'pct_diff_ewma_100_day',
+              'pct_diff_ewma_200_day',
               'macd',
               'macd_signal',
               'macd_histogram']
@@ -75,41 +89,40 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
          q.Features.ewma_50_day,
          q.Features.ewma_100_day,
          q.Features.ewma_200_day,
-         (q.AdjClose - q.Features.ma_5_day)
-            if q.Features.ma_5_day else None,
-         (q.AdjClose - q.Features.ma_10_day)
-            if q.Features.ma_10_day else None,
-         (q.AdjClose - q.Features.ma_20_day)
-            if q.Features.ma_20_day else None,
-         (q.AdjClose - q.Features.ma_50_day)
-            if q.Features.ma_50_day else None,
-         (q.AdjClose - q.Features.ma_100_day)
-            if q.Features.ma_100_day else None,
-         (q.AdjClose - q.Features.ma_200_day)
-            if q.Features.ma_200_day else None,
-         (q.AdjClose - q.Features.ewma_5_day)
-            if q.Features.ewma_5_day else None,
-         (q.AdjClose - q.Features.ewma_10_day)
-            if q.Features.ewma_10_day else None,
-         (q.AdjClose - q.Features.ewma_12_day)
-            if q.Features.ewma_12_day else None,
-         (q.AdjClose - q.Features.ewma_20_day)
-            if q.Features.ewma_20_day else None,
-         (q.AdjClose - q.Features.ewma_26_day)
-            if q.Features.ewma_26_day else None,
-         (q.AdjClose - q.Features.ewma_50_day)
-            if q.Features.ewma_50_day else None,
-         (q.AdjClose - q.Features.ewma_100_day)
-            if q.Features.ewma_100_day else None,
-         (q.AdjClose - q.Features.ewma_200_day)
-            if q.Features.ewma_200_day else None,
+         _diff_ma(5, q),
+         _diff_ma(10, q),
+         _diff_ma(20, q),
+         _diff_ma(50, q),
+         _diff_ma(100, q),
+         _diff_ma(200, q),
+         _diff_ewma(5, q),
+         _diff_ewma(10, q),
+         _diff_ewma(12, q),
+         _diff_ewma(20, q),
+         _diff_ewma(26, q),
+         _diff_ewma(50, q),
+         _diff_ewma(100, q),
+         _diff_ewma(200, q),
+         _pct_diff_ma(5, q),
+         _pct_diff_ma(10, q),
+         _pct_diff_ma(20, q),
+         _pct_diff_ma(50, q),
+         _pct_diff_ma(100, q),
+         _pct_diff_ma(200, q),
+         _pct_diff_ewma(5, q),
+         _pct_diff_ewma(10, q),
+         _pct_diff_ewma(12, q),
+         _pct_diff_ewma(20, q),
+         _pct_diff_ewma(26, q),
+         _pct_diff_ewma(50, q),
+         _pct_diff_ewma(100, q),
+         _pct_diff_ewma(200, q),
          q.Features.macd,
          q.Features.macd_signal,
          q.Features.macd_histogram] for q in quotes])
 
         data = DataFrame(raw_data[:,1:], index=raw_data[:,0], columns=col_names).dropna()
         
-
     #rows_to_delete=[]
     #for i in range(len(data)):
     #    for val in data[i,2:]:
@@ -118,3 +131,30 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     #data = np.delete(data, rows_to_delete, 0)
 
     return data
+
+    
+    
+def _diff_ma(days, quote)
+    col_name = 'ma_' + str(days) + '_day'
+    moving_average = getattr(quote.Features, col_name)
+    return ((quote.AdjClose - moving_average) 
+            if moving_average else None)
+        
+    
+def _diff_ewma(days, quote):
+    col_name = 'ewma_' + str(days) + '_day'
+    moving_average = getattr(quote.Features, col_name)
+    return ((quote.AdjClose - moving_average) 
+            if moving_average else None)
+    
+def _pct_diff_ma(days, quote):
+    col_name = 'ma_' + str(days) + '_day'
+    moving_average = getattr(quote.Features, col_name)
+    return ((quote.AdjClose - moving_average / moving_average) 
+            if moving_average else None)
+
+def _pct_diff_ewma(days, quote):
+    col_name = 'ewma_' + str(days) + '_day'
+    moving_average = getattr(quote.Features, col_name)
+    return ((quote.AdjClose - moving_average / moving_average) 
+            if moving_average else None)
