@@ -80,7 +80,7 @@ class Dataset(object):
             delrow = False
 
             # Find incomplete rows
-            for val in self.data[i][3:]:
+            for val in self.data[i,2:]:
                 if not isinstance(val, float) or (val is None) or not np.isfinite(val):
                     delrow = True
             if delrow:
@@ -146,12 +146,12 @@ class MLDataset(Dataset):
                 if self.data is None:
                     self.col_names = col_names
                     self.data = data
-                    self._training_data = normalize(data[:][2:])
-                    self._target_data = target_function(data)
+                    self._training_data = normalize(data[:,2:])
+                    self._target_data = target_function(data, col_names)
                 else:
                     self.data = np.vstack((self.data, data))
-                    self._training_data = np.vstack((self._training_data, normalize(data[:][2:])))
-                    self._target_data = np.vstack((self._target_data, target_function(data)))
+                    self._training_data = np.vstack((self._training_data, normalize(data[:,2:])))
+                    self._target_data = np.append(self._target_data, target_function(data, col_names))
                     
         if sector is not None:
                 pass
@@ -159,9 +159,8 @@ class MLDataset(Dataset):
             pass
         if size is not None:
             pass
-        
-    
         self._sanitize()
+
 
     def _sanitize(self):
         """ Clean up datasets
@@ -177,7 +176,7 @@ class MLDataset(Dataset):
                 if (not isinstance(val, float)) or (val is None) or (not np.isfinite(val)):
                     delrow = True
             if self.target:
-                if (self.target[i] is None) or (not np.isfinite(self.target[i])):
+                if (self._target_data[i] is None) or (not np.isfinite(self._target_data[i])):
                     delrow = True
 
             if delrow:
@@ -185,12 +184,6 @@ class MLDataset(Dataset):
 
         # Remove rows marked for deletion
         self.data = np.delete(self.data, delrows, 0)
-        self.target = np.delete(self.target, delrows, 0)
+        self._training_data = np.delete(self._training_data, delrows, 0)
+        self._target_data = np.delete(self._target_data, delrows, 0)
 
-
-
-
-    def __iter__(self):
-        """ Get an iterator over the dataset
-        """
-        return iter(np.append(self.data, self.target.T, axis=1))
