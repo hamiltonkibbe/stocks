@@ -4,6 +4,7 @@ Datasets
 """
 
 import numpy as np
+from pandas import concat
 from sklearn.preprocessing import normalize
 
 from .datafeed import IntradayQuotes
@@ -25,86 +26,86 @@ class Dataset(object):
         the function should take a numPy ndarray of data as an argument. the return
         value is ignored.
         """
-        self.data = None
-        self.col_names = None
+        self.symbols = symbols
+        self._data = None
         self._initialize_dataset(symbols, sector, index, size)
 
     @property
     def pretty_data(self):
         """ Data from dataset with column headers
         """
-        return np.vstack((self.col_names, self.data))
+        return self._data
 
     @property
     def raw_data(self):
         """ Raw data from dataset
         """
-        return self.data
+        return self._data.values
 
 
-    def to_csv(self, filename):
+    def to_csv(self, filename, delimiter=','):
         """ Write Dataset to CSV file
+        
+        :param filename: Output file path.
+        :param delimiter: (Optional) field delimiter to use in output file
         """
-        np.savetxt(filename, self.pretty_data, delimiter=',')
+        index_label = ('Ticker', 'Date')
+        self._data.to_csv(filename, index_label=index_label, sep=delimiter)
 
 
-    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, data_callback=None):
+    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None):
         """ Generate the acutual data based on init
         TODO: Implement sector, index, and size
         """
-        if symbols is not None:
-            for ticker in symbols:
-                data, col_names = get_raw_data(ticker)
-
-                # Add each row to dataset
-                if self.data is None:
-                    self.data = data
-                    self.col_names = col_names
-                else:
-                    self.data = np.vstack((self.data, data))
+                
         if sector is not None:
-                pass
+            # Do some function to get the list of symbols in the given sector
+            self.symbols = []
+
         if index is not None:
-            pass
+            # Do some function to get the list of symbols in the given index
+            self.symbols=[]
+            
+        if self.symbols is not None:
+            data_frames = []
+            # Generate Matricies for each symbol
+            for ticker in self.symbols:
+                data = get_raw_data(ticker)
+                data_frames.append(data)
+            # Concatenate Matricies
+            self._data = concat(data_frames, keys=self.symbols)
+                # Add each row to dataset
+                #if self.data is None:
+                #    self.data = data
+                #    
+                #else:
+                #    self.data = np.vstack((self.data, data))
+                
         if size is not None:
+            # Do something to set the max size
             pass
-
-
-
-    def _sanitize(self):
-        """ Clean up datasets
-        Removes any rows with empty fields
-        """
-        delrows = []
-        for i in range(len(self.data)):
-            delrow = False
-
-            # Find incomplete rows
-            for val in self.data[i,2:]:
-                if not isinstance(val, float) or (val is None) or not np.isfinite(val):
-                    delrow = True
-            if delrow:
-                delrows.append(i)
-
-        # Remove rows marked for deletion
-        self.data = np.delete(self.data, delrows, 0)
-
-
-    def __len__(self):
-        """ Get the number of rows in the dataset
-        """
-        return len(self.data)
 
     def __iter__(self):
         """ Get an iterator over the dataset
         """
-        return iter(self.data)
+        return iter(self._data)
+        
+    def __len__(self):
+        """ Get the number of rows in the dataset
+        """
+        return len(self._data)
 
+    def __getitem__(self, i)
+        """ Get data by index
+        """
+        return self._data[i]
+    
 
 class MLDataset(Dataset):
     """ Dataset for Machine Learning
 
-    Data set that provides training and target data for machine learning
+    Data set with training and target data for machine learning or regression 
+    analysis.
     """
     def __init__(self, symbols=None, sector=None, index=None, size=None, target_function=None):
         """ Create an instance of the MLDataset class
@@ -118,10 +119,10 @@ class MLDataset(Dataset):
         return a 1D numpy array.
         """
         # Initialize class
-        self.data = None
         self._training_data = None
         self._target_data = None
-        self._initialize_dataset(symbols, sector, index, size, target_function)
+        super(MLDataset, self).__init__(symbols, sector,index, size)
+        self._ML_init(target_function)
 
     @property
     def training_data(self):
@@ -135,56 +136,74 @@ class MLDataset(Dataset):
         """
         return self._target_data.astype(float)
 
-    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, target_function=None):
-        """ Generate the acutual data based on init
-        TODO: Implement sector, index, and size
+    #def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, target_function=None):
+        # """ Generate the acutual data based on init
+        # TODO: Implement sector, index, and size
+        # """
+        # if self.symbols is not None:
+            # data_frames = []
+            # training_frames=[]
+            # target_frames=[]
+            
+            # # Generate matricies for each symbol
+            # for ticker in self.symbols:
+                # data = get_raw_data(ticker)
+                # data_frames.append(data)
+                # training_frames.append(normalize(data.values.astype(float)))
+                # target_frames.append(target_function(data))
+            
+            # # Concatenate matricies
+            # self.data = concat(data_frames, keys=self.symbols)
+            # self._training_data = np.vstack(tuple(training_frames))
+            # self._target_data = np.vstack(tuple(target_frames))
+                
+                # # Add each row to dataset
+                # #if self.data is None:
+                # #    self.col_names = col_names
+                # #    self.data = data
+                # #    self._training_data = normalize(data[:,2:].astype(float))
+                # #    self._target_data = target_function(data, col_names)
+                # #else:
+                # #    self.data = np.vstack((self.data, data))
+                # #    self._training_data = np.vstack((self._training_data, normalize(data[:,2:].astype(float))))
+                # #    self._target_data = np.append(self._target_data, target_function(data, col_names))
+                
+                
+        # if sector is not None:
+                # pass
+        # if index is not None:
+            # pass
+        # if size is not None:
+            # pass
+        # #self._sanitize()
+        
+    def generate_target_data(self, target_function):
+        """ Create target dataset for machine learning / regression
+        
+        :param target_function: Function to use to generate the target data. 
+        target_function should take a pandas DataFrame and return a 1D numpy 
+        array of the same length as the DataFrame.
         """
-        if symbols is not None:
-            for ticker in symbols:
-                data, col_names = get_raw_data(ticker)
-
-                # Add each row to dataset
-                if self.data is None:
-                    self.col_names = col_names
-                    self.data = data
-                    self._training_data = normalize(data[:,2:].astype(float))
-                    self._target_data = target_function(data, col_names)
-                else:
-                    self.data = np.vstack((self.data, data))
-                    self._training_data = np.vstack((self._training_data, normalize(data[:,2:].astype(float))))
-                    self._target_data = np.append(self._target_data, target_function(data, col_names))
-
-        if sector is not None:
-                pass
-        if index is not None:
-            pass
-        if size is not None:
-            pass
-        #self._sanitize()
-
-
-    def _sanitize(self):
-        """ Clean up datasets
-
-        Remove any rows with empty fields or fields of incorrect type...
+        for symbol in self.symbols:
+            data = self._data[symbol]
+            target_frames.append(target_function(data))
+        self._target_data = np.vstack(tuple(target_frames))
+        
+        
+    def _ML_init(self,target_function):
+        """ Initialize Machine Learning/ Regression data
         """
-        delrows = []
-        for i in range(len(self.data)):
-            delrow = False
+        training_frames = []
+        
+        # Generate normalized training matricies
+        for symbol in self.symbols:
+            data = self._data[symbol]
+            training_frames.append(normalize(data.values.astype(float)))
+        # concatenate training matricies
+        self._training_data = np.vstack(tuple(training_frames))
+        
+        # Create target data
+        if target_function is not None:
+            self.generate_target_data(target_function)
 
-            # Find incomplete rows
-            for val in self.data[i]:
-                if (not isinstance(val, float)) or (val is None) or (not np.isfinite(val)):
-                    delrow = True
-            if self._target_data is not None:
-                if (self._target_data[i] is None) or (not np.isfinite(self._target_data[i])):
-                    delrow = True
-
-            if delrow:
-                delrows.append(i)
-
-        # Remove rows marked for deletion
-        self.data = np.delete(self.data, delrows, 0)
-        self._training_data = np.delete(self._training_data, delrows, 0)
-        self._target_data = np.delete(self._target_data, delrows, 0)
 

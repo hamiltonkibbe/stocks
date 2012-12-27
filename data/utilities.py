@@ -3,8 +3,10 @@
 Utility functions
 """
 import numpy as np
-from datafeed import IntradayQuotes
-from datetime import date
+from pandas import DataFrame
+
+from .datafeed import IntradayQuotes
+from .datetime import date
 
 def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     """ Generate an array of quotes and indicators for the given stock
@@ -15,11 +17,9 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     """
     # Get quotes
     quotes = IntradayQuotes().get_quotes(ticker, start, end)
+    
     # Generate matrix
-
-    col_names = (
-             'ticker',
-              'date',
+    col_names = [
               'weekday',
               'adj_close',
               'Volume',
@@ -53,12 +53,11 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
               'diff_ewma_200_day',
               'macd',
               'macd_signal',
-              'macd_histogram')
+              'macd_histogram']
 
 
-    data =  np.array([
-        [q.Ticker,
-         q.Date,
+    raw_data =  np.array([
+        [q.Date,
          q.Date.weekday(),
          q.AdjClose,
          q.Volume,
@@ -108,14 +107,14 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
          q.Features.macd_signal,
          q.Features.macd_histogram] for q in quotes])
 
+        data = DataFrame(raw_data[:,1:], index=raw_data[:,0], columns=col_names).dropna()
+        
 
+    #rows_to_delete=[]
+    #for i in range(len(data)):
+    #    for val in data[i,2:]:
+    #        if val is None or not np.isfinite(val):
+    #            rows_to_delete.append(i)
+    #data = np.delete(data, rows_to_delete, 0)
 
-
-    rows_to_delete=[]
-    for i in range(len(data)):
-        for val in data[i,2:]:
-            if val is None or not np.isfinite(val):
-                rows_to_delete.append(i)
-    data = np.delete(data, rows_to_delete, 0)
-
-    return data, col_names
+    return data
