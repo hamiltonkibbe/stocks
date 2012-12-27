@@ -118,9 +118,10 @@ class MLDataset(Dataset):
         return a 1D numpy array.
         """
         # Initialize class
+        self.data = None
         self._training_data = None
         self._target_data = None
-        self._initialize_dataset(symbols, sector, index, size)
+        self._initialize_dataset(symbols, sector, index, size, target_function)
 
     @property
     def training_data(self):
@@ -133,7 +134,7 @@ class MLDataset(Dataset):
         """ Target data for regression / machine learning
         """
         return self._target_data.astype(float)
-    
+
     def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, target_function=None):
         """ Generate the acutual data based on init
         TODO: Implement sector, index, and size
@@ -146,20 +147,20 @@ class MLDataset(Dataset):
                 if self.data is None:
                     self.col_names = col_names
                     self.data = data
-                    self._training_data = normalize(data[:,2:])
+                    self._training_data = normalize(data[:,2:].astype(float))
                     self._target_data = target_function(data, col_names)
                 else:
                     self.data = np.vstack((self.data, data))
-                    self._training_data = np.vstack((self._training_data, normalize(data[:,2:])))
+                    self._training_data = np.vstack((self._training_data, normalize(data[:,2:].astype(float))))
                     self._target_data = np.append(self._target_data, target_function(data, col_names))
-                    
+
         if sector is not None:
                 pass
         if index is not None:
             pass
         if size is not None:
             pass
-        self._sanitize()
+        #self._sanitize()
 
 
     def _sanitize(self):
@@ -175,7 +176,7 @@ class MLDataset(Dataset):
             for val in self.data[i]:
                 if (not isinstance(val, float)) or (val is None) or (not np.isfinite(val)):
                     delrow = True
-            if self.target:
+            if self._target_data is not None:
                 if (self._target_data[i] is None) or (not np.isfinite(self._target_data[i])):
                     delrow = True
 

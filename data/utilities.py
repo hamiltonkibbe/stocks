@@ -108,4 +108,14 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
          q.Features.macd_signal,
          q.Features.macd_histogram] for q in quotes])
 
+
+
+
+    rows_to_delete=[]
+    for i in range(len(data)):
+        for val in data[i,2:]:
+            if val is None or not np.isfinite(val):
+                rows_to_delete.append(i)
+    data = np.delete(data, rows_to_delete, 0)
+
     return data, col_names
