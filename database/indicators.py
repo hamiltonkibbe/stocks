@@ -26,10 +26,16 @@ def is_up_to_date(ticker, col_name, session):
 def get_column(ticker, col_name, session):
     """ Get column from database as an array
     """
+    # return DataFrame(array([[q.Id, q.AdjClose, getattr(q.Features, col_name)]
+                         # for q in (session.query(Quote)
+                                          # .filter_by(Ticker=ticker)
+                                          # .all())]), 
+                         # columns = ['ids', 'adj_close', col_name])     
+                         
     return asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
-                         for q in (session.query(Quote)
-                                          .filter_by(Ticker=ticker)
-                                          .all())]))
+                        for q in (session.query(Quote)
+                                         .filter_by(Ticker=ticker)
+                                         .all())]))
 
 def start(range_data):
     """ Get starting index
@@ -57,9 +63,12 @@ def get_dataset(ticker, session, *columns):
     TODO: Make this work
     """
     ticker = ticker.lower()
-    return asarray(zip(*session.query(*columns)
+    return asarray(zip(*session.query(columns)
                                .filter_by(Ticker=ticker)
                                .all()))
+    # return asarray(zip(*session.query(*columns)
+                               # .filter_by(Ticker=ticker)
+                               # .all()))
 
 
 def update_ma(ticker, length, session, commit=True, check_all=False):
@@ -142,6 +151,27 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
         if commit:
             session.commit()
 
+            
+def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_all=False):
+    if not check_all and is_up_to_date(ticker, col_name, session):
+        return
+    data = get_column(ticker, col_name, session)
+    ids = data['ids'].values
+    adj_close = data['adj_close'].values
+    column = data[col_name].values
+    
+    to_update, range_data = find_needs_updating(column, length)
+    
+    if len(to_update) > 0:
+        calc = col_fn(adj_close[start(range_data):end(range_data)], length)
+        for idx in to_update:
+            val = calc(calc_index(idx, range_data)]
+            
+            (session.query(Indicator)
+                    .filter_by(Id=ids[idx])
+                    .update({col_name: val}))
+        if commit:
+            session.commit()
 
 def update_momentum(ticker, length, session, commit=True, check_all=False):
     """ Update momentum columns in database
@@ -170,21 +200,46 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
     ids = data[0]
     adj_close = data[1].astype(float)
     mom = data[2].astype(float)
-    to_update, range_data = find_needs_updating(mom, length + 1)
+    to_update, range_data = find_needs_updating(mom, length)
 
     if len(to_update) > 0:
-        _min = range_data['min']
-        _max = range_data['max']
-        calc = analysis.momentum(adj_close[_min - length:end(range_data)],
+        calc = analysis.momentum(adj_close[start(range_data):end(range_data)],
                                  length)
-
         for idx in to_update:
-            val = calc[(idx - _min) + length]
+            val = calc[calc_index(idx,range_data)]
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
         if commit:
             session.commit()
+            
+    # ticker = ticker.lower()
+            
+    # col_name = 'momentum_' + str(length) + '_day'
+
+
+    # if not check_all and is_up_to_date(ticker, col_name, session):
+        # return
+
+    # data = get_column(ticker, col_name, session)
+    # ids = data[0]
+    # adj_close = data[1].astype(float)
+    # mom = data[2].astype(float)
+    # to_update, range_data = find_needs_updating(mom, length + 1)
+
+    # if len(to_update) > 0:
+        # _min = range_data['min']
+        # _max = range_data['max']
+        # calc = analysis.momentum(adj_close[_min - length:end(range_data)],
+                                 # length)
+
+        # for idx in to_update:
+            # val = calc[(idx - _min) + length]
+            # (session.query(Indicator)
+                    # .filter_by(Id=ids[idx])
+                    # .update({col_name: val}))
+        # if commit:
+            # session.commit()
 
 
 def update_macd(ticker, session, commit=True, check_all=False):
@@ -257,10 +312,13 @@ def update_all(ticker, session, commit=True, check_all=False):
     """
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
+        # update_simple(ticker, length, session, 'ma_' + length + '_day', analysis.moving_average)
+        # update_simple(ticker, length, session, 'momentum_'+ length + '_day', analysis.momentum)
         update_ma(ticker, length, session, False, check_all)
         update_momentum(ticker, length, session, False, check_all)
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
+        # update_simple(ticker, length, session, 'ewma_' + length + '_day', analysis.exp_weighted_moving_average)
     update_macd(ticker, session, False, check_all)
     if commit:
         session.commit()

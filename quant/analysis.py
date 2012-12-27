@@ -66,7 +66,7 @@ def momentum(data, span):
     """ Calculate Momentum
 
     Momentum is defined as 100 times the ratio of the current value to the
-    value *span* days ago
+    value *span - 1* days ago
 
     :param data: Raw data to analyze.
     :param span: number of days before to use in the calculation of the.
@@ -74,7 +74,7 @@ def momentum(data, span):
     :returns: Momentum as a numpy array.
     """
     momentum = array([100 * (cur / prev) for cur, prev in zip(data[span-1:], data)])
-    blank = zeros(span)
+    blank = zeros(span-1)
     blank[:] = nan
     return append(blank, momentum).astype(float)
 
