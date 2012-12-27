@@ -2,16 +2,19 @@
 """ dataset.py
 Datasets
 """
+
 import numpy as np
-from datafeed import IntradayQuotes
-from utilities import get_raw_data
+from sklearn.preprocessing import normalize
+
+from .datafeed import IntradayQuotes
+from .utilities import get_raw_data
 
 
 class Dataset(object):
     """ Dataset Class
     """
     def __init__(self, symbols=None, sector=None,
-                 index=None, size=None, data_callback = None):
+                 index=None, size=None):
         """ Create an instance of the Dataset class
 
         :param symbols: List of securities to include in dataset
@@ -24,8 +27,7 @@ class Dataset(object):
         """
         self.data = None
         self.col_names = None
-        self._initialize_dataset(symbols, sector, index, size, data_callback)
-        self._make_records()
+        self._initialize_dataset(symbols, sector, index, size)
 
     @property
     def pretty_data(self):
@@ -54,10 +56,6 @@ class Dataset(object):
             for ticker in symbols:
                 data, col_names = get_raw_data(ticker)
 
-                # Do callback
-                if data_callback:
-                    data_callback(data)
-
                 # Add each row to dataset
                 if self.data is None:
                     self.data = data
@@ -72,8 +70,6 @@ class Dataset(object):
             pass
 
 
-    def _make_records(self):
-        self.data = np.rec.array(self.data,names=self.col_names)
 
     def _sanitize(self):
         """ Clean up datasets
@@ -84,7 +80,7 @@ class Dataset(object):
             delrow = False
 
             # Find incomplete rows
-            for val in self.data[i][2:]:
+            for val in self.data[i][3:]:
                 if not isinstance(val, float) or (val is None) or not np.isfinite(val):
                     delrow = True
             if delrow:
@@ -122,24 +118,50 @@ class MLDataset(Dataset):
         return a 1D numpy array.
         """
         # Initialize class
-        self.target = None
-        self.generate_target_data = None
-        if target_function:
-            self.generate_target_data = self._generate_callback(target_function)
-        super(MLDataset, self).__init__(symbols, sector, index, size, self.generate_target_data)
+        self._training_data = None
+        self._target_data = None
+        self._initialize_dataset(symbols, sector, index, size)
 
     @property
     def training_data(self):
         """ Training dataset for regression / machine learning
         """
-        return np.array(self.data[:][2:]).astype(float)
+        return np.array(self._training_data).astype(float)
 
     @property
     def target_data(self):
         """ Target data for regression / machine learning
         """
-        return self.target.astype(float)
+        return self._target_data.astype(float)
+    
+    def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, target_function=None):
+        """ Generate the acutual data based on init
+        TODO: Implement sector, index, and size
+        """
+        if symbols is not None:
+            for ticker in symbols:
+                data, col_names = get_raw_data(ticker)
 
+                # Add each row to dataset
+                if self.data is None:
+                    self.col_names = col_names
+                    self.data = data
+                    self._training_data = normalize(data[:][2:])
+                    self._target_data = target_function(data)
+                else:
+                    self.data = np.vstack((self.data, data))
+                    self._training_data = np.vstack((self._training_data, normalize(data[:][2:])))
+                    self._target_data = np.vstack((self._target_data, target_function(data)))
+                    
+        if sector is not None:
+                pass
+        if index is not None:
+            pass
+        if size is not None:
+            pass
+        
+    
+        self._sanitize()
 
     def _sanitize(self):
         """ Clean up datasets
@@ -166,18 +188,6 @@ class MLDataset(Dataset):
         self.target = np.delete(self.target, delrows, 0)
 
 
-    def _generate_callback(self, target_function):
-        """ wrap the user function that creates the target data for training
-
-        Generate a function that appends the output from the user supplied
-        function to the target_data array.
-        """
-        def _function(data):
-            if self.target is None:
-                self.target = target_function(data)
-            else:
-                self.target = np.append(self.target, target_function(data))
-        return _function
 
 
     def __iter__(self):
