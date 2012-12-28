@@ -354,6 +354,6 @@ def update_all(ticker, session, commit=True, check_all=False):
 
         # update_simple(ticker, length, session, 'ewma_' + length + '_day', analysis.exp_weighted_moving_average)
     update_macd(ticker, session, False, check_all)
-    update_simple(ticker, 1, session, 'pct_change', analysis.percent_change, False, check_all)
+    #update_simple(ticker, 1, session, 'pct_change', analysis.percent_change, False, check_all)
     if commit:
         session.commit()
