@@ -48,8 +48,8 @@ class Quote(Base):
     Close = Column(Float)
     Volume = Column(Float)
     AdjClose = Column(Float)
-    Features = relationship('Indicator', uselist=False, 
-                            backref='Quotes', lazy='joined', 
+    Features = relationship('Indicator', uselist=False,
+                            backref='Quotes', lazy='joined',
                             cascade='all, delete, delete-orphan')
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
@@ -63,8 +63,8 @@ class Quote(Base):
 
     def __repr__(self):
         return "<Quote(Date: %s,Symbol: %s, Open: %f, High: %f, Low: %f, \
-                Close: %f, Volume: %d, Adjusted Close: %f)>" % (self.Date, 
-                self.Ticker, self.Open, self.High, self.Low, self.Close, 
+                Close: %f, Volume: %d, Adjusted Close: %f)>" % (self.Date,
+                self.Ticker, self.Open, self.High, self.Low, self.Close,
                 self.Volume, self.AdjClose)
 
 
@@ -125,7 +125,10 @@ class Indicator(Base):
     ma_pct_diff_200_day = Column(Float)
     ewma_pct_diff_5_day = Column(Float)
     ewma_pct_diff_10_day = Column(Float)
+    ewma_pct_diff_12_day = Column(Float)
     ewma_pct_diff_20_day = Column(Float)
+    ewma_pct_diff_26_day = Column(Float)
+    ewma_pct_diff_50_day = Column(Float)
     ewma_pct_diff_100_day = Column(Float)
     ewma_pct_diff_200_day = Column(Float)
 

@@ -45,7 +45,7 @@ class Dataset(object):
 
     def to_csv(self, filename, delimiter=','):
         """ Write Dataset to CSV file
-        
+
         :param filename: Output file path.
         :param delimiter: (Optional) field delimiter to use in output file
         """
@@ -57,7 +57,7 @@ class Dataset(object):
         """ Generate the acutual data based on init
         TODO: Implement sector, index, and size
         """
-                
+
         if sector is not None:
             # Do some function to get the list of symbols in the given sector
             self.symbols = []
@@ -65,7 +65,7 @@ class Dataset(object):
         if index is not None:
             # Do some function to get the list of symbols in the given index
             self.symbols=[]
-            
+
         if self.symbols is not None:
             data_frames = []
             # Generate Matricies for each symbol
@@ -77,10 +77,10 @@ class Dataset(object):
                 # Add each row to dataset
                 #if self.data is None:
                 #    self.data = data
-                #    
+                #
                 #else:
                 #    self.data = np.vstack((self.data, data))
-                
+
         if size is not None:
             # Do something to set the max size
             pass
@@ -89,22 +89,22 @@ class Dataset(object):
         """ Get an iterator over the dataset
         """
         return self._data.__iter__()
-        
+
     def __len__(self):
         """ Get the number of rows in the dataset
         """
         return self._data.__len__()
 
-    def __getitem__(self, i)
+    def __getitem__(self, i):
         """ Get data by index
         """
         return self._data.__getitem__(i)
-    
+
 
 class MLDataset(Dataset):
     """ Dataset for Machine Learning
 
-    Data set with training and target data for machine learning or regression 
+    Data set with training and target data for machine learning or regression
     analysis.
     """
     def __init__(self, symbols=None, sector=None, index=None, size=None, target_function=None):
@@ -144,19 +144,19 @@ class MLDataset(Dataset):
             # data_frames = []
             # training_frames=[]
             # target_frames=[]
-            
+
             # # Generate matricies for each symbol
             # for ticker in self.symbols:
                 # data = get_raw_data(ticker)
                 # data_frames.append(data)
                 # training_frames.append(normalize(data.values.astype(float)))
                 # target_frames.append(target_function(data))
-            
+
             # # Concatenate matricies
             # self.data = concat(data_frames, keys=self.symbols)
             # self._training_data = np.vstack(tuple(training_frames))
             # self._target_data = np.vstack(tuple(target_frames))
-                
+
                 # # Add each row to dataset
                 # #if self.data is None:
                 # #    self.col_names = col_names
@@ -167,8 +167,8 @@ class MLDataset(Dataset):
                 # #    self.data = np.vstack((self.data, data))
                 # #    self._training_data = np.vstack((self._training_data, normalize(data[:,2:].astype(float))))
                 # #    self._target_data = np.append(self._target_data, target_function(data, col_names))
-                
-                
+
+
         # if sector is not None:
                 # pass
         # if index is not None:
@@ -176,51 +176,51 @@ class MLDataset(Dataset):
         # if size is not None:
             # pass
         # #self._sanitize()
-        
+
     def generate_target_data(self, target_function):
         """ Create target dataset for regression / machine learning
-        
-        :param target_function: Function to use to generate the target data. 
-        target_function should take a pandas DataFrame and return a 1D numpy 
+
+        :param target_function: Function to use to generate the target data.
+        target_function should take a pandas DataFrame and return a 1D numpy
         array of the same length as the DataFrame.
         """
         # Generate target data arrays for each symbol
         for symbol in self.symbols:
             data = self._data[symbol]
             target_frames.append(target_function(data))
-        
+
         # concatenate target arrays
         self._target_data = np.vstack(tuple(target_frames))
-        
+
         # clean up
         to_delete = []
         for i in range(len(self._target_data)):
             if target_data[i] is none or not np.isfinite(target_data[i]):
                 to_delete.append(i)
-        
+
         self._target_data = np.delete(self._target_data, to_delete, 0)
         self._training_data = np.delete(self._training_data, to_delete, 0)
         self._data = self._data.drop(self._data.irow(i).name)
-        
-        
+
+
     def _ML_init(self,target_function):
         """ Initialize regression- / machine_learning- specific data.
         """
         training_frames = []
-        
+
         # Generate normalized training matricies
         for symbol in self.symbols:
             data = self._data[symbol]
             training_frames.append(normalize(data.values.astype(float)))
-            
+
         # concatenate training matricies
         self._training_data = np.vstack(tuple(training_frames))
-        
+
         # Create target data
         if target_function is not None:
             self.generate_target_data(target_function)
 
-    def __getitem__(self, i)
+    def __getitem__(self, i):
         """ Get data by index. return a tuple of training data and target
         """
         return (self._training_data[i], self._target_data[i])

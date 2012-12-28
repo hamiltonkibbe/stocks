@@ -29,9 +29,9 @@ def get_column(ticker, col_name, session):
     # return DataFrame(array([[q.Id, q.AdjClose, getattr(q.Features, col_name)]
                          # for q in (session.query(Quote)
                                           # .filter_by(Ticker=ticker)
-                                          # .all())]), 
-                         # columns = ['ids', 'adj_close', col_name])     
-                         
+                                          # .all())]),
+                         # columns = ['ids', 'adj_close', col_name])
+
     return asarray(zip(*[(q.Id, q.AdjClose, getattr(q.Features, col_name))
                         for q in (session.query(Quote)
                                          .filter_by(Ticker=ticker)
@@ -151,7 +151,36 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
         if commit:
             session.commit()
 
-            
+
+def update_pct_diff_ma(ticker, length, session, commit=True, check_all=False, exp=False):
+    ticker = ticker.lower()
+    if not exp:
+        col_name = 'ma_pct_diff_' + str(length) + '_day'
+    else:
+        col_name= 'ewma_pct_diff_' + str(length) + '_day'
+
+    if not getattr(Indicator, col_name):
+        return
+
+    if not check_all and is_up_to_date(ticker, col_name, session):
+        return
+
+
+    data = get_column(ticker, col_name, session)
+    ids = data[0]
+    adj_close = data[1].astype(float)
+    diff = data[2].astype(float)
+
+    to_update, range_data = find_needs_updating(diff, 1)
+    if len(to_update) > 0:
+        calc = analysis.percent_diff(adj_close, diff)
+
+    for idx in to_update:
+        val = calc[idx]
+        session.query(Indicator).filter_by(Id=ids[idx]).update({col_name: val})
+    if commit:
+        session.commit()
+
 def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_all=False):
     if not check_all and is_up_to_date(ticker, col_name, session):
         return
@@ -159,14 +188,14 @@ def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_
     ids = data['ids'].values
     adj_close = data['adj_close'].values
     column = data[col_name].values
-    
+
     to_update, range_data = find_needs_updating(column, length)
-    
+
     if len(to_update) > 0:
         calc = col_fn(adj_close[start(range_data):end(range_data)], length)
         for idx in to_update:
-            val = calc(calc_index(idx, range_data)]
-            
+            val = calc[calc_index(idx, range_data)]
+
             (session.query(Indicator)
                     .filter_by(Id=ids[idx])
                     .update({col_name: val}))
@@ -212,9 +241,9 @@ def update_momentum(ticker, length, session, commit=True, check_all=False):
                     .update({col_name: val}))
         if commit:
             session.commit()
-            
+
     # ticker = ticker.lower()
-            
+
     # col_name = 'momentum_' + str(length) + '_day'
 
 
@@ -316,8 +345,11 @@ def update_all(ticker, session, commit=True, check_all=False):
         # update_simple(ticker, length, session, 'momentum_'+ str(length) + '_day', analysis.momentum)
         update_ma(ticker, length, session, False, check_all)
         update_momentum(ticker, length, session, False, check_all)
+        update_pct_diff_ma(ticker, length, session, False, check_all)
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
+        update_pct_diff_ma(ticker, length, session, False, check_all, exp=True)
+
         # update_simple(ticker, length, session, 'ewma_' + length + '_day', analysis.exp_weighted_moving_average)
     update_macd(ticker, session, False, check_all)
     if commit:

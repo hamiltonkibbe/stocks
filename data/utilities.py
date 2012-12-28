@@ -17,7 +17,7 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     """
     # Get quotes
     quotes = IntradayQuotes().get_quotes(ticker, start, end)
-    
+
     # Generate matrix
     col_names = [
               'weekday',
@@ -121,8 +121,8 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
          q.Features.macd_signal,
          q.Features.macd_histogram] for q in quotes])
 
-        data = DataFrame(raw_data[:,1:], index=raw_data[:,0], columns=col_names).dropna()
-        
+    data = DataFrame(raw_data[:,1:], index=raw_data[:,0], columns=col_names).dropna()
+
     #rows_to_delete=[]
     #for i in range(len(data)):
     #    for val in data[i,2:]:
@@ -132,29 +132,29 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
 
     return data
 
-    
-    
-def _diff_ma(days, quote)
+
+
+def _diff_ma(days, quote):
     col_name = 'ma_' + str(days) + '_day'
     moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average) 
+    return ((quote.AdjClose - moving_average)
             if moving_average else None)
-        
-    
+
+
 def _diff_ewma(days, quote):
     col_name = 'ewma_' + str(days) + '_day'
     moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average) 
+    return ((quote.AdjClose - moving_average)
             if moving_average else None)
-    
+
 def _pct_diff_ma(days, quote):
     col_name = 'ma_' + str(days) + '_day'
     moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average / moving_average) 
+    return ((quote.AdjClose - moving_average / moving_average)
             if moving_average else None)
 
 def _pct_diff_ewma(days, quote):
     col_name = 'ewma_' + str(days) + '_day'
     moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average / moving_average) 
+    return ((quote.AdjClose - moving_average / moving_average)
             if moving_average else None)

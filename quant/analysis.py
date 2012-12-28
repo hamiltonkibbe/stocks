@@ -26,6 +26,11 @@ def exp_weighted_moving_average(data, span):
     return stats.moments.ewma(data, span=span)
 
 
+
+def percent_diff(data, average):
+    return np.array([np.nan if avg is None else ((cur - avg) / avg) for cur,avg in zip(data, average)])
+
+
 # ------------------------------------------------
 # Moving Statistics
 # ------------------------------------------------
@@ -78,7 +83,7 @@ def momentum(data, span):
     blank[:] = nan
     return append(blank, momentum).astype(float)
 
-    
+
 def rate_of_change(data, span):
     """ Calculate rate of change
     """
@@ -86,8 +91,8 @@ def rate_of_change(data, span):
     blank = zeros(span-1)
     blank[:] = nan
     return append(blank, roc).astype(float)
-    
-    
+
+
 def velocity(data, span):
     """ Calculate velocity
     """
@@ -95,19 +100,19 @@ def velocity(data, span):
     blank = zeros(span-1)
     blank[:] = nan
     return append(blank, velocity).astype(float)
-    
-    
+
+
 def acceleration(data, span, velocity=None):
     """ Calculate acceleration
     """
     if velocity is None:
-        velocity = velocity(data,span):
+        velocity = velocity(data,span)
     acceleration = np.array([((cur - prev) / (span - 1)) for cur, prev in zip(velocity[span-1:], velocity)])
     blank = zeros(span-1)
     blank[:] = nan
     return append(blank, acceleration).astype(float)
 
-    
+
 def macd(data=None, fast_ewma=None, slow_ewma=None):
     """ Calculate Moving Average Convergence Divergence
 
@@ -173,29 +178,29 @@ def macd_hist(data=None, macd=None, macd_signal=None):
         pass
     return subtract(macd, macd_signal)
 
-    
+
 def trix(data, span):
     """ Calculate TRIX
-    
+
     TRIX is the percent change of the triple ewma'ed value
     """
     first = (exp_weighted_moving_average(data, span))[(span-1):]
     second = (exp_weighted_moving_average(first, span))[(span-1):]
     third = (exp_weighted_moving_average(second, span))[(span-1):]
-    trix = [((cur - prev) / prev) for cur, prev in zip(third[span-1:], third)
+    trix = [((cur - prev) / prev) for cur, prev in zip(third[span-1:], third)]
     blank = zeros(4 * (span-1))
     blank[:] = nan
     return append(blank, trix).astype(float)
-    
-    
-    
+
+
+
 def relative_strength_index(data, span):
     """ Calculate RSI
     """
     pass
-    
 
-    
+
+
 def relative_momentum_index(data, span):
     """ Calculate RMI
     """
