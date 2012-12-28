@@ -345,8 +345,8 @@ def update_all(ticker, session, commit=True, check_all=False):
         update_ma(ticker, length, session, False, check_all)
         update_momentum(ticker, length, session, False, check_all)
         update_pct_diff_ma(ticker, length, session, False, check_all)
-        update_simple(ticker, length, session, 'moving_stdev_' + str(length) + '_day', analysis.moving_stdev, False, check_all)
-        update_simple(ticker, length, session, 'moving_var_' + str(length) + '_day', analysis.moving_var, False, check_all)
+        update_simple(ticker, length, session, 'moving_stdev_' + str(length) + '_day', analysis.moving_stdev, True, check_all)
+        update_simple(ticker, length, session, 'moving_var_' + str(length) + '_day', analysis.moving_var, True, check_all)
 
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
