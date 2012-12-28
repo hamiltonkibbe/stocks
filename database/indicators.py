@@ -178,6 +178,7 @@ def update_pct_diff_ma(ticker, length, session, commit=True, check_all=False, ex
     if commit:
         session.commit()
 
+
 def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_all=False):
     if not check_all and is_up_to_date(ticker, col_name, session):
         return
@@ -198,6 +199,7 @@ def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_
                     .update({col_name: val}))
         if commit:
             session.commit()
+
 
 def update_momentum(ticker, length, session, commit=True, check_all=False):
     """ Update momentum columns in database
@@ -343,11 +345,15 @@ def update_all(ticker, session, commit=True, check_all=False):
         update_ma(ticker, length, session, False, check_all)
         update_momentum(ticker, length, session, False, check_all)
         update_pct_diff_ma(ticker, length, session, False, check_all)
+        update_simple(ticker, length, session, 'moving_stdev_' + str(length) + '_day', analysis.moving_stdev, False, check_all)
+        update_simple(ticker, length, session, 'moving_var_' + str(length) + '_day', analysis.moving_var, False, check_all)
+
     for length in [5, 10, 12, 20, 26, 50, 100, 200]:
         update_ewma(ticker, length, session, False, check_all)
         update_pct_diff_ma(ticker, length, session, False, check_all, exp=True)
 
         # update_simple(ticker, length, session, 'ewma_' + length + '_day', analysis.exp_weighted_moving_average)
     update_macd(ticker, session, False, check_all)
+    update_simple(ticker, 1, session, 'pct_change', analysis.percent_change, False, check_all)
     if commit:
         session.commit()
