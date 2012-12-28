@@ -183,9 +183,9 @@ def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_
     if not check_all and is_up_to_date(ticker, col_name, session):
         return
     data = get_column(ticker, col_name, session)
-    ids = data['ids'].values
-    adj_close = data['adj_close'].values
-    column = data[col_name].values
+    ids = data[0]
+    adj_close = data[1].astype(float)
+    column = data[2].astype(float)
 
     to_update, range_data = find_needs_updating(column, length)
 
