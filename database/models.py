@@ -104,33 +104,64 @@ class Indicator(Base):
     # --------------------------------------------
 
     #Difference from Moving Averages
-    ma_diff_5_day = Column(Float)
-    ma_diff_10_day = Column(Float)
-    ma_diff_20_day = Column(Float)
-    ma_diff_50_day = Column(Float)
-    ma_diff_100_day = Column(Float)
-    ma_diff_200_day = Column(Float)
-    ewma_diff_5_day = Column(Float)
-    ewma_diff_10_day = Column(Float)
-    ewma_diff_20_day = Column(Float)
-    ewma_diff_100_day = Column(Float)
-    ewma_diff_200_day = Column(Float)
+    diff_ma_5_day = Column(Float)
+    diff_ma_10_day = Column(Float)
+    diff_ma_20_day = Column(Float)
+    diff_ma_50_day = Column(Float)
+    diff_ma_100_day = Column(Float)
+    diff_ma_200_day = Column(Float)
+
+    # Difference from EWMA
+    diff_ewma_5_day = Column(Float)
+    diff_ewma_10_day = Column(Float)
+    diff_ewma_12_day = Column(Float)
+    diff_ewma_20_day = Column(Float)
+    diff_ewma_26_day = Column(Float)
+    diff_ewma_50_day = Column(Float)
+    diff_ewma_100_day = Column(Float)
+    diff_ewma_200_day = Column(Float)
 
     # Percent Difference from Moving Averages
-    ma_pct_diff_5_day = Column(Float)
-    ma_pct_diff_10_day = Column(Float)
-    ma_pct_diff_20_day = Column(Float)
-    ma_pct_diff_50_day = Column(Float)
-    ma_pct_diff_100_day = Column(Float)
-    ma_pct_diff_200_day = Column(Float)
-    ewma_pct_diff_5_day = Column(Float)
-    ewma_pct_diff_10_day = Column(Float)
-    ewma_pct_diff_12_day = Column(Float)
-    ewma_pct_diff_20_day = Column(Float)
-    ewma_pct_diff_26_day = Column(Float)
-    ewma_pct_diff_50_day = Column(Float)
-    ewma_pct_diff_100_day = Column(Float)
-    ewma_pct_diff_200_day = Column(Float)
+    pct_diff_ma_5_day = Column(Float)
+    pct_diff_ma_10_day = Column(Float)
+    pct_diff_ma_20_day = Column(Float)
+    pct_diff_ma_50_day = Column(Float)
+    pct_diff_ma_100_day = Column(Float)
+    pct_diff_ma_200_day = Column(Float)
+
+    # Percent Difference from EWMA
+    pct_diff_ewma_5_day = Column(Float)
+    pct_diff_ewma_10_day = Column(Float)
+    pct_diff_ewma_12_day = Column(Float)
+    pct_diff_ewma_20_day = Column(Float)
+    pct_diff_ewma_26_day = Column(Float)
+    pct_diff_ewma_50_day = Column(Float)
+    pct_diff_ewma_100_day = Column(Float)
+    pct_diff_ewma_200_day = Column(Float)
+
+    # --------------------------------------------
+    # Moving stats
+    # --------------------------------------------
+
+    # Percent change
+    pct_change = Column(Float)
+
+    # Standard Deviation
+    moving_stdev_5_day = Column(Float)
+    moving_stdev_10_day = Column(Float)
+    moving_stdev_20_day = Column(Float)
+    moving_stdev_50_day = Column(Float)
+    moving_stdev_100_day = Column(Float)
+    moving_stdev_200_day = Column(Float)
+
+    # Variance
+    moving_var_5_day = Column(Float)
+    moving_var_10_day = Column(Float)
+    moving_var_20_day = Column(Float)
+    moving_var_50_day = Column(Float)
+    moving_var_100_day = Column(Float)
+    moving_var_200_day = Column(Float)
+
 
     # --------------------------------------------
     # General Momentum Indicators
@@ -143,6 +174,30 @@ class Indicator(Base):
     momentum_50_day = Column(Float)
     momentum_100_day = Column(Float)
     momentum_200_day = Column(Float)
+
+    # Rate Of Change
+    roc_5_day = Column(Float)
+    roc_10_day = Column(Float)
+    roc_20_day = Column(Float)
+    roc_50_day = Column(Float)
+    roc_100_day = Column(Float)
+    roc_200_day = Column(Float)
+
+    # Velocity
+    #velocity_5_day = Column(Float)
+    #velocity_10_day = Column(Float)
+    #velocity_20_day = Column(Float)
+    #velocity_50_day = Column(Float)
+    #velocity_100_day = Column(Float)
+    #velocity_200_day = Column(Float)
+
+    # Acceleration
+    #acceleration_5_day = Column(Float)
+    #acceleration_10_day = Column(Float)
+    #acceleration_20_day = Column(Float)
+    #acceleration_50_day = Column(Float)
+    #acceleration_100_day = Column(Float)
+    #acceleration_200_day = Column(Float)
 
     # MACD
     macd = Column(Float)

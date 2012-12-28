@@ -155,12 +155,9 @@ def update_ewma(ticker, length, session, commit=True, check_all=False):
 def update_pct_diff_ma(ticker, length, session, commit=True, check_all=False, exp=False):
     ticker = ticker.lower()
     if not exp:
-        col_name = 'ma_pct_diff_' + str(length) + '_day'
+        col_name = 'pct_diff_ma_' + str(length) + '_day'
     else:
-        col_name= 'ewma_pct_diff_' + str(length) + '_day'
-
-    if not getattr(Indicator, col_name):
-        return
+        col_name= 'pct_diff_ewma_' + str(length) + '_day'
 
     if not check_all and is_up_to_date(ticker, col_name, session):
         return
@@ -173,10 +170,10 @@ def update_pct_diff_ma(ticker, length, session, commit=True, check_all=False, ex
 
     to_update, range_data = find_needs_updating(diff, 1)
     if len(to_update) > 0:
-        calc = analysis.percent_diff(adj_close, diff)
+        calc = analysis.percent_diff(adj_close[start(range_data):end(range_data)], diff[start(range_data):end(range_data)])
 
     for idx in to_update:
-        val = calc[idx]
+        val = calc[calc_index(idx, range_data)]
         session.query(Indicator).filter_by(Id=ids[idx]).update({col_name: val})
     if commit:
         session.commit()
