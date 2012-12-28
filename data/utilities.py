@@ -6,7 +6,7 @@ import numpy as np
 from pandas import DataFrame
 
 from .datafeed import IntradayQuotes
-from .datetime import date
+from datetime import date
 
 def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     """ Generate an array of quotes and indicators for the given stock
