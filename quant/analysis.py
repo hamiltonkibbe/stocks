@@ -157,7 +157,7 @@ def macd_signal(data=None, macd=None):
         else:
             pass
         pass
-    return exp_weighted_moving_average(macd, 9)
+    return exp_weighted_moving_average(9, macd)
 
 
 def macd_hist(data=None, macd=None, macd_signal=None):
