@@ -8,7 +8,7 @@ from pandas import Series, stats, concat
 # Moving Averages
 # ------------------------------------------------
 
-def moving_average(data, span):
+def moving_average(span, data):
     """ Calculate n-point moving average
     :param data: Data to average.
     :param span: Length of moving average window.
@@ -17,7 +17,7 @@ def moving_average(data, span):
     return stats.moments.rolling_mean(data, span)
 
 
-def exp_weighted_moving_average(data, span):
+def exp_weighted_moving_average(span, data):
     """ Calculate n-point exponentially weighted moving average
     :param data: Data to average.
     :param span: Length of moving average window.
@@ -25,7 +25,8 @@ def exp_weighted_moving_average(data, span):
     """
     return stats.moments.ewma(data, span=span)
 
-
+def mag_diff(data, average):
+    return np.array([np.nan if avg is None else (cur - avg) for cur,avg in zip(data, average)])
 
 def percent_diff(data, average):
     return np.array([np.nan if avg is None else ((cur - avg) / avg) for cur,avg in zip(data, average)])
@@ -44,7 +45,7 @@ def percent_change(data):
 
 
 
-def moving_stdev(data, span):
+def moving_stdev(span, data):
     """ Calculate n-point moving standard deviation.
     :param data: Data to analyze.
     :param span: Length of moving window.
@@ -53,7 +54,7 @@ def moving_stdev(data, span):
     return stats.moments.rolling_std(data, span)
 
 
-def moving_var(data, span):
+def moving_var(span, data):
     """ Calculate n-point moving variance.
     :param data: Data to analyze.
     :param span: Length of moving window.
@@ -67,7 +68,7 @@ def moving_var(data, span):
 # ------------------------------------------------
 
 
-def momentum(data, span):
+def momentum(span, data):
     """ Calculate Momentum
 
     Momentum is defined as 100 times the ratio of the current value to the
@@ -84,7 +85,7 @@ def momentum(data, span):
     return append(blank, momentum).astype(float)
 
 
-def rate_of_change(data, span):
+def rate_of_change(span, data):
     """ Calculate rate of change
     """
     roc = array([((cur - prev) / prev) for cur, prev in zip(data[span-1:], data)])
@@ -93,7 +94,7 @@ def rate_of_change(data, span):
     return append(blank, roc).astype(float)
 
 
-def velocity(data, span):
+def velocity(span, data):
     """ Calculate velocity
     """
     velocity = np.array([((cur - prev) / (span - 1)) for cur, prev in zip(data[span-1:], data)])
@@ -102,7 +103,7 @@ def velocity(data, span):
     return append(blank, velocity).astype(float)
 
 
-def acceleration(data, span, velocity=None):
+def acceleration(span, data, velocity=None):
     """ Calculate acceleration
     """
     if velocity is None:
@@ -128,11 +129,13 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
         Either raw data or the 12 and 26 day EWMAs must be provided, all three
         are not necessary.
     """
-    if data is not None:
-        slow_ewma = exp_weighted_moving_average(data, 26)
-        fast_ewma = exp_weighted_moving_average(data, 12)
-    elif fast_ewma is None or slow_ewma is None:
-        pass
+
+    if fast_ewma is None and slow_ewma is None:
+        if data is not None:
+            slow_ewma = exp_weighted_moving_average(26, data)
+            fast_ewma = exp_weighted_moving_average(12, data)
+        else:
+            pass
     return subtract(fast_ewma, slow_ewma).astype(float)
 
 
