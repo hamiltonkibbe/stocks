@@ -93,7 +93,7 @@ calculators = {
 'momentum_20_day': indCalc(analysis.momentum, 20, 19, None),
 'momentum_50_day': indCalc(analysis.momentum, 50, 49, None),
 'momentum_100_day': indCalc(analysis.momentum, 100, 99, None),
-'momentum_200_day': indCalc(analysis.momentum, 200, 199, None)
+'momentum_200_day': indCalc(analysis.momentum, 200, 199, None),
 
 # Rate of Change
 'roc_5_day': indcalc(analysis.rate_of_change, 5, 4, None),
@@ -101,7 +101,7 @@ calculators = {
 'roc_20_day': indcalc(analysis.rate_of_change, 20, 19, None),
 'roc_50_day': indcalc(analysis.rate_of_change, 50, 49, None),
 'roc_100_day': indcalc(analysis.rate_of_change, 100, 99, None),
-'roc_200_day': indcalc(analysis.rate_of_change, 200, 199, None),
+'roc_200_day': indcalc(analysis.rate_of_change, 200, 199, None)
 }
 
 
