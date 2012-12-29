@@ -96,12 +96,12 @@ calculators = {
 'momentum_200_day': indCalc(analysis.momentum, 200, 199, None),
 
 # Rate of Change
-'roc_5_day': indcalc(analysis.rate_of_change, 5, 4, None),
-'roc_10_day': indcalc(analysis.rate_of_change, 10, 9, None),
-'roc_20_day': indcalc(analysis.rate_of_change, 20, 19, None),
-'roc_50_day': indcalc(analysis.rate_of_change, 50, 49, None),
-'roc_100_day': indcalc(analysis.rate_of_change, 100, 99, None),
-'roc_200_day': indcalc(analysis.rate_of_change, 200, 199, None)
+'roc_5_day': indCalc(analysis.rate_of_change, 5, 4, None),
+'roc_10_day': indCalc(analysis.rate_of_change, 10, 9, None),
+'roc_20_day': indCalc(analysis.rate_of_change, 20, 19, None),
+'roc_50_day': indCalc(analysis.rate_of_change, 50, 49, None),
+'roc_100_day': indCalc(analysis.rate_of_change, 100, 99, None),
+'roc_200_day': indCalc(analysis.rate_of_change, 200, 199, None)
 }
 
 
@@ -109,73 +109,73 @@ calculators = {
 def update_indicator(ticker, indicator, session, commit=True, check_all=False):
     """ Update indicator column in database
     """
-    
+
     # Grab some info
     ticker = ticker.lower()
     calc = calculators[indicator]
-    
+
     # See if there is anything to do
     if not check_all and is_up_to_date(ticker, indicator, session):
         return
-    
-    # Get the columns we need to calculate the indicator
-    cols = (indicator) if calc.columns is None else (indicator, *calc.columns)
-    data = get_columns(ticker, cols, session)
 
+    # Get the columns we need to calculate the indicator
+    cols = [indicator] if calc.columns is None else [indicator] + calc.columns
+
+    data = get_columns(ticker, cols, session)
     # Find the empty rows
-    rows_to_update, update_range = empty_rows(data[indicator], calc.nundefined)
+    rows_to_update = empty_rows(data[indicator], calc.nundefined)
 
     if len(rows_to_update) > 0:
         # generate list of arguments
-        update_range = rangeType(min(rows_to_update) - calc.nundefined, max(rows_to_update))
+        update_range = rangeType(min(rows_to_update) - calc.nundefined, max(rows_to_update) + 1)
         args = get_args(indicator, data, update_range)
-        
+
         # Calculate moving average
         calculated = calc.function(*args)
-        
+
         # Update the database
-        for row in rows_to_update:
-            value = calculated[row - min(rows_to_update) + calc.nundefined]
+        for row_index in rows_to_update:
+            value = calculated[row_index - min(rows_to_update) + calc.nundefined]
             (session.query(Indicator)
-                    .filter_by(Id=ids[idx])
-                    .update({col_name: val}))
-        
+                    .filter_by(Id=data['ids'][row_index])
+                    .update({indicator: value}))
+
         # Commit changes
         if commit:
             session.commit()
-    
-    
+
+
 def get_args(indicator, data, range_data=None):
     """ Get arguments to pass to indicator calculation function
     """
     args = []
     start = 0
     end = len(data[indicator])
-    
+
     # Get the range to work on
     if range_data is not None:
         start = range_data.min
         end = range_data.max
-        
+
     # Calculation info
-    calc = calculators(indicator)
+    calc = calculators[indicator]
 
     # Insert the length if necessary
     if calc.length is not None:
         args = args + [calc.length]
-    
+
     # tack on the column data
-    args = args + [np.array(data[indicator][start:end])]
-    
+    args = args + [np.array(data[indicator][start:end]).astype(float)]
+
     # tack on any other data if needed
     if calc.columns is not None:
-        args = args + [np.array(data[col][start:end]) for col in calc.columns]
+        args = args + [np.array(data[col][start:end]).astype(float) for col in calc.columns]
     return args
-    
-    
+
+
 def empty_rows(data, nundefined):
-    return array([x for x in where(isnan(data))[0] if x >= nundefined])
-    
+    return array([x for x in where(isnan(data.astype(float)))[0] if x >= nundefined])
+
 
 def find_needs_updating(data, length):
     """ Get list of missing data
@@ -234,213 +234,14 @@ def get_columns(ticker, column_names, session):
     TODO: Make this work
     """
     ticker = ticker.lower()
-    columns = [getattr(q.Features, name) for name in column_names]
-    
+
     return dict(zip((['ids','adj_close'] + column_names),
-                (zip(*[(q.Id, q.AdjClose, *columns)
+                np.array(zip(*[(q.Id, q.AdjClose) + tuple([getattr(q.Features, name) for name in column_names])
                         for q in (session.query(Quote)
                                          .filter_by(Ticker=ticker)
                                          .all())]))))
-                                         
 
 
-                               
-                           
-def update_ma(ticker, length, session, commit=True, check_all=False):
-    """ Update moving average columns in database
-
-    :param ticker: Ticker symbol of stock to update.
-    :type ticker: str
-    :param length: Length of moving average to update.
-    :type length: int
-    :param session: SQLAlchemy database session to use.
-    :type session: session
-    :param commit: (Optional) Whether or not database changes should be
-    committed
-    :type commit: bool
-    :param check_all: (Optional) Whether or not to check for and update holes
-    in the data
-    :type check_all: bool
-    """
-    ticker = ticker.lower()
-    col_name = 'ma_' + str(length) + '_day'
-
-    if not check_all and is_up_to_date(ticker, col_name, session):
-        return
-
-    data = get_column(ticker, col_name, session)
-    ids = data[0]
-    adj_close = data[1].astype(float)
-    ma = data[2].astype(float)
-    to_update, range_data = find_needs_updating(ma, length)
-
-    if len(to_update) > 0:
-        calc = analysis.moving_average(length, adj_close[start(range_data):end(range_data)])
-        for idx in to_update:
-            val = calc[calc_index(idx, range_data)]
-
-            (session.query(Indicator)
-                    .filter_by(Id=ids[idx])
-                    .update({col_name: val}))
-        if commit:
-            session.commit()
-
-
-def update_ewma(ticker, length, session, commit=True, check_all=False):
-    """ Update exponentially weighted moving average columns in database
-
-    :param ticker: Ticker symbol of stock to update.
-    :type ticker: str
-    :param length: Length of exponentially weighted moving average to update.
-    :type length: int
-    :param session: SQLAlchemy database session to use.
-    :type session: session
-    :param commit: (Optional) Whether or not database changes should be
-    committed
-    :type commit: bool
-    :param check_all: (Optional) Whether or not to check for and update holes
-    in the data
-    :type check_all: bool
-    """
-    ticker = ticker.lower()
-    col_name = 'ewma_' + str(length) + '_day'
-
-    if not check_all and is_up_to_date(ticker, col_name, session):
-        return
-
-    data = get_column(ticker, col_name, session)
-    ids = data[0]
-    adj_close = data[1].astype(float)
-    ma = data[2].astype(float)
-
-    to_update, range_data = find_needs_updating(ma, length)
-    if len(to_update) > 0:
-        calc = analysis.exp_weighted_moving_average(length, adj_close[start(range_data):end(range_data)])
-        for idx in to_update:
-            val = calc[calc_index(idx, range_data)]
-            (session.query(Indicator)
-                    .filter_by(Id=ids[idx])
-                    .update({col_name: val}))
-        if commit:
-            session.commit()
-
-
-def update_pct_diff_ma(ticker, length, session, commit=True, check_all=False, exp=False):
-    ticker = ticker.lower()
-    if not exp:
-        col_name = 'pct_diff_ma_' + str(length) + '_day'
-    else:
-        col_name= 'pct_diff_ewma_' + str(length) + '_day'
-
-    if not check_all and is_up_to_date(ticker, col_name, session):
-        return
-
-
-    data = get_column(ticker, col_name, session)
-    ids = data[0]
-    adj_close = data[1].astype(float)
-    diff = data[2].astype(float)
-
-    to_update, range_data = find_needs_updating(diff, 1)
-    if len(to_update) > 0:
-        calc = analysis.percent_diff(adj_close[start(range_data):end(range_data)], diff[start(range_data):end(range_data)])
-
-    for idx in to_update:
-        val = calc[calc_index(idx, range_data)]
-        session.query(Indicator).filter_by(Id=ids[idx]).update({col_name: val})
-    if commit:
-        session.commit()
-
-
-def update_simple(ticker, length, session, col_name, col_fn, commit=True, check_all=False):
-    if not check_all and is_up_to_date(ticker, col_name, session):
-        return
-    data = get_column(ticker, col_name, session)
-    ids = data[0]
-    adj_close = data[1].astype(float)
-    column = data[2].astype(float)
-
-    to_update, range_data = find_needs_updating(column, length)
-
-    if len(to_update) > 0:
-        calc = col_fn(length, adj_close[start(range_data):end(range_data)])
-        for idx in to_update:
-            val = calc[calc_index(idx, range_data)]
-
-            (session.query(Indicator)
-                    .filter_by(Id=ids[idx])
-                    .update({col_name: val}))
-        if commit:
-            session.commit()
-
-
-def update_momentum(ticker, length, session, commit=True, check_all=False):
-    """ Update momentum columns in database
-
-    :param ticker: Ticker symbol of stock to update.
-    :type ticker: str
-    :param length: Length of momentum calculation to update.
-    :type length: int
-    :param session: SQLAlchemy database session to use.
-    :type session: session
-    :param commit: (Optional) Whether or not database changes should be
-    committed
-    :type commit: bool
-    :param check_all: (Optional) Whether or not to check for and update holes
-    in the data
-    :type check_all: bool
-    """
-    ticker = ticker.lower()
-    col_name = 'momentum_' + str(length) + '_day'
-
-
-    if not check_all and is_up_to_date(ticker, col_name, session):
-        return
-
-    data = get_column(ticker, col_name, session)
-    ids = data[0]
-    adj_close = data[1].astype(float)
-    mom = data[2].astype(float)
-    to_update, range_data = find_needs_updating(mom, length)
-
-    if len(to_update) > 0:
-        calc = analysis.momentum(length, adj_close[start(range_data):end(range_data)])
-                             
-        for idx in to_update:
-            val = calc[calc_index(idx,range_data)]
-            (session.query(Indicator)
-                    .filter_by(Id=ids[idx])
-                    .update({col_name: val}))
-        if commit:
-            session.commit()
-
-    # ticker = ticker.lower()
-
-    # col_name = 'momentum_' + str(length) + '_day'
-
-
-    # if not check_all and is_up_to_date(ticker, col_name, session):
-        # return
-
-    # data = get_column(ticker, col_name, session)
-    # ids = data[0]
-    # adj_close = data[1].astype(float)
-    # mom = data[2].astype(float)
-    # to_update, range_data = find_needs_updating(mom, length + 1)
-
-    # if len(to_update) > 0:
-        # _min = range_data['min']
-        # _max = range_data['max']
-        # calc = analysis.momentum(adj_close[_min - length:end(range_data)],
-                                 # length)
-
-        # for idx in to_update:
-            # val = calc[(idx - _min) + length]
-            # (session.query(Indicator)
-                    # .filter_by(Id=ids[idx])
-                    # .update({col_name: val}))
-        # if commit:
-            # session.commit()
 
 
 def update_macd(ticker, session, commit=True, check_all=False):
@@ -514,21 +315,19 @@ def update_all(ticker, session, commit=True, check_all=False):
     ticker = ticker.lower()
     for length in [5, 10, 20, 50, 100, 200]:
         update_indicator(ticker, 'ma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'diff_ma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'pct_diff_ma_' + str(length) + '_day', session, False, check_all)
         update_indicator(ticker, 'moving_stdev_' + str(length) + '_day', session, False, check_all)
-        # update_simple(ticker, length, session, 'ma_' + str(length) + '_day', analysis.moving_average)
-        # update_simple(ticker, length, session, 'momentum_'+ str(length) + '_day', analysis.momentum)
-        #update_ma(ticker, length, session, False, check_all)
-        #update_momentum(ticker, length, session, False, check_all)
-        #update_pct_diff_ma(ticker, length, session, False, check_all)
-        #update_simple(ticker, length, session, 'moving_stdev_' + str(length) + '_day', analysis.moving_stdev, True, check_all)
-        #update_simple(ticker, length, session, 'moving_var_' + str(length) + '_day', analysis.moving_var, True, check_all)
-     
-    #for length in [5, 10, 12, 20, 26, 50, 100, 200]:
-        #update_ewma(ticker, length, session, False, check_all)
-        #update_pct_diff_ma(ticker, length, session, False, check_all, exp=True)
+        update_indicator(ticker, 'moving_var_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'momentum_' + str(length) + '_day', session, False, check_all)
 
-        # update_simple(ticker, length, session, 'ewma_' + length + '_day', analysis.exp_weighted_moving_average)
-    #update_macd(ticker, session, False, check_all)
-    #update_simple(ticker, 1, session, 'pct_change', analysis.percent_change, False, check_all)
+    for length in [5, 10, 12, 20, 26, 50, 100, 200]:
+        update_indicator(ticker, 'ewma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'diff_ewma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
+
+    update_indicator(ticker, 'pct_change', session, False, check_all)
+    update_macd(ticker, session, False, check_all)
+
     if commit:
         session.commit()
