@@ -151,9 +151,11 @@ def macd_signal(data=None, macd=None):
 
         Either raw data or the MACD must be provided, both ar not necessary
     """
-    if data is not None:
-        macd = macd(data)
-    elif macd is None:
+    if macd is None:
+        if data is not None:
+            macd = macd(data)
+        else:
+            pass
         pass
     return exp_weighted_moving_average(macd, 9)
 
@@ -174,11 +176,12 @@ def macd_hist(data=None, macd=None, macd_signal=None):
         Either raw data or the MACD and MACD signal must be provided, all three
         are not necessary.
     """
-    if data is not None:
-       macd = macd(data)
-       macd_signal = macd_signal(macd=macd)
-    elif macd is None or macd_signal is None:
-        pass
+    if macd is None and macd_signal is None:
+        if data is not None:
+            macd = macd(data)
+            macd_signal = macd_signal(macd=macd)
+        else:
+            pass
     return subtract(macd, macd_signal)
 
 

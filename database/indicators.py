@@ -101,7 +101,12 @@ calculators = {
 'roc_20_day': indCalc(analysis.rate_of_change, 20, 19, None),
 'roc_50_day': indCalc(analysis.rate_of_change, 50, 49, None),
 'roc_100_day': indCalc(analysis.rate_of_change, 100, 99, None),
-'roc_200_day': indCalc(analysis.rate_of_change, 200, 199, None)
+'roc_200_day': indCalc(analysis.rate_of_change, 200, 199, None),
+
+# MACD
+'macd': indCalc(analysis.macd, None, 25, ['ewma_12_day', 'ewma_26_day']),
+'macd_signal': indCalc(analysis.macd_signal, None, 8, ['macd']),
+'macd_histogram': indCalc(analysis.macd_hist, None, 0, ['macd', 'macd_signal'])
 }
 
 
@@ -327,7 +332,10 @@ def update_all(ticker, session, commit=True, check_all=False):
         update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
 
     update_indicator(ticker, 'pct_change', session, False, check_all)
-    update_macd(ticker, session, False, check_all)
+    update_indicator(ticker, 'macd', session, True , check_all)
+    update_indicator(ticker, 'macd_signal', session, True, check_all)
+    update_indicator(ticker, 'macd_histogram', session, True, check_all)
+    #update_macd(ticker, session, False, check_all)
 
     if commit:
         session.commit()
