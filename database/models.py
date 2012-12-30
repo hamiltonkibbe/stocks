@@ -50,7 +50,8 @@ class Quote(Base):
     AdjClose = Column(Float)
     Features = relationship('Indicator', uselist=False,
                             backref='Quotes', lazy='lazy',
-                            cascade='all, delete, delete-orphan')
+                            cascade='all, delete, delete-orphan',
+                            order_by=Date)
 
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker

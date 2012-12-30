@@ -7,7 +7,7 @@ from datetime import date, timedelta
 from models import Base, Symbol, Quote, Indicator
 from numpy import array, asarray
 from sqlalchemy import create_engine, desc
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, joinedload
 from sqlalchemy.sql import and_
 
 
