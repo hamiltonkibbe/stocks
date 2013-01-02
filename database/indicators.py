@@ -7,6 +7,7 @@ import numpy as np
 from numpy import array, asarray, isnan, where
 from pandas import DataFrame
 from sqlalchemy.orm import joinedload
+from sqlalchemy.sql.expression import case
 
 from ..quant import analysis
 from .models import Quote, Indicator
@@ -144,9 +145,9 @@ def update_indicator(ticker, indicator, session, commit=True, check_all=False):
         # Update the database
         column = data[indicator]
         ids = data['ids']
+        undef = calc.nundefined
         for row_index in rows_to_update:
-            value  = calculated[row_index - first_to_update + calc.nundefined]
-
+            value  = calculated[row_index - first_to_update + undef]
             (session.query(Indicator)
                     .filter_by(Id=ids[row_index])
                     .update({indicator: value}))
@@ -210,11 +211,6 @@ def get_columns(ticker, column_names, session):
         values.append([q.Id, q.AdjClose] + [getattr(q.Features, name) for name in column_names])
 
     return DataFrame(values, columns=keys)
-    #return dict(zip(keys,
-    #            np.array(zip(*[(q.Id, q.AdjClose) + tuple([getattr(q.Features, name) for name in column_names])
-    #                    for q in (session.query(Quote)
-    #                                     .filter_by(Ticker=ticker)
-    #                                     .all())]))))
 
 
 
@@ -233,24 +229,23 @@ def update_all(ticker, session, commit=True, check_all=False):
     :type check_all: bool
     """
     ticker = ticker.lower()
-    #for length in [5, 10, 20, 50, 100, 200]:
-    for length in [5]:
-    #update_indicator(ticker, 'ma_' + str(length) + '_day', session, False, check_all)
-       # update_indicator(ticker, 'diff_ma_' + str(length) + '_day', session, False, check_all)
-        #update_indicator(ticker, 'pct_diff_ma_' + str(length) + '_day', session, False, check_all)
+    for length in [5, 10, 20, 50, 100, 200]:
+        update_indicator(ticker, 'ma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'diff_ma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'pct_diff_ma_' + str(length) + '_day', session, False, check_all)
         update_indicator(ticker, 'moving_stdev_' + str(length) + '_day', session, False, check_all)
         update_indicator(ticker, 'moving_var_' + str(length) + '_day', session, False, check_all)
-        #update_indicator(ticker, 'momentum_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'momentum_' + str(length) + '_day', session, False, check_all)
 
-    #for length in [5, 10, 12, 20, 26, 50, 100, 200]:
-    #    update_indicator(ticker, 'ewma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'diff_ewma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
+    for length in [5, 10, 12, 20, 26, 50, 100, 200]:
+        update_indicator(ticker, 'ewma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'diff_ewma_' + str(length) + '_day', session, False, check_all)
+        update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
 
-    #update_indicator(ticker, 'pct_change', session, False, check_all)
-    #update_indicator(ticker, 'macd', session, True , check_all)
-    #update_indicator(ticker, 'macd_signal', session, True, check_all)
-    #update_indicator(ticker, 'macd_histogram', session, True, check_all)
+    update_indicator(ticker, 'pct_change', session, False, check_all)
+    update_indicator(ticker, 'macd', session, True , check_all)
+    update_indicator(ticker, 'macd_signal', session, True, check_all)
+    update_indicator(ticker, 'macd_histogram', session, True, check_all)
 
     if commit:
         session.commit()
