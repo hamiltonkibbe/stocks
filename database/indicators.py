@@ -3,8 +3,8 @@
 """
 import sys
 from collections import namedtuple
+
 import numpy as np
-from numpy import array, asarray, isnan, where
 from pandas import DataFrame
 from sqlalchemy.orm import joinedload
 from sqlalchemy.sql.expression import case
@@ -186,7 +186,7 @@ def get_args(indicator, data, range_data=None):
 
 
 def empty_rows(data, nundefined):
-    return array([x for x in where(isnan(data.astype(float)))[0] if x >= nundefined])
+    return np.array([x for x in np.where(np.isnan(data.astype(float)))[0] if x >= nundefined])
 
 
 
@@ -206,9 +206,7 @@ def get_columns(ticker, column_names, session):
     """
     ticker = ticker.lower()
     keys = ['ids', 'adj_close'] + column_names
-    values = []
-    for q in session.query(Quote).options(joinedload(Quote.Features, innerJoin=True)).filter_by(Ticker=ticker).order_by(Quote.Date).all():
-        values.append([q.Id, q.AdjClose] + [getattr(q.Features, name) for name in column_names])
+    values = [[q.Id, q.AdjClose] + [getattr(q.Features, name) for name in column_names] for q in session.query(Quote).options(joinedload(Quote.Features, innerJoin=True)).filter_by(Ticker=ticker).order_by(Quote.Date).all()]
 
     return DataFrame(values, columns=keys)
 
