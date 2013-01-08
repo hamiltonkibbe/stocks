@@ -24,10 +24,10 @@ class indicator(object):
         self.function = function
         self.length = length
         self.nundefined = nundefined
-        self.columns = columns
-    
-   
-    def update(ticker, session, commit=True, check_all=False):
+        self.columns = [self.name] if columns is None else [self.name] + columns
+
+
+    def update(self, ticker, session, commit=True, check_all=False):
 
         # Grab some info
         ticker = ticker.lower()
@@ -36,12 +36,9 @@ class indicator(object):
         if not check_all and self._is_up_to_date(ticker, session):
             return
 
-        # Get the columns we need to calculate the indicator
-        cols = [self.name] if self.columns is None else [self.name] + self.columns
-
         data = self._get_columns(ticker, session)
         # Find the empty rows
-        rows_to_update = self._empty_rows(data[self.name], self.nundefined)
+        rows_to_update = self._empty_rows(data[self.name])
 
         if len(rows_to_update) > 0:
             # generate list of arguments
@@ -65,8 +62,9 @@ class indicator(object):
             # Commit changes
             if commit:
                 session.commit()
-                
-    def _get_args(data, range_data=None):
+
+
+    def _get_args(self, data, range_data=None):
         """ Get arguments to pass to indicator calculation function
         """
         args = []
@@ -82,20 +80,17 @@ class indicator(object):
         if self.length is not None:
             args = args + [self.length]
 
-        # tack on the column data
-        args = args + [np.array(data[self.name][start:end]).astype(float)]
-
         # tack on any other data if needed
         if self.columns is not None:
             args = args + [np.array(data[col][start:end]).astype(float) for col in self.columns]
         return args
-        
-    def _empty_rows(data):
+
+    def _empty_rows(self, data):
         return np.array([x for x in np.where(np.isnan(data.astype(float)))[0] if x >= self.nundefined])
 
 
 
-    def _is_up_to_date(ticker, session):
+    def _is_up_to_date(self, ticker, session):
         """ Check if column is up to date
         """
         last = (session.query(Quote).filter_by(Ticker=ticker)
@@ -103,7 +98,7 @@ class indicator(object):
                                     .first())
         return getattr(last.Features, self.name) is not None
 
-    def _get_columns(ticker, session):
+    def _get_columns(self, ticker, session):
         """ Get a numpy ndarray containing the specified columns
         TODO: Make this work
         """
@@ -111,13 +106,13 @@ class indicator(object):
         keys = ['ids', 'adj_close'] + self.columns
         values = []
         for q in session.query(Quote).options(joinedload(Quote.Features, innerJoin=True)).filter_by(Ticker=ticker).order_by(Quote.Date).all():
-            values.append([q.Id, q.AdjClose] + [getattr(q.Features, name) for name in self.columns)
+            values.append([q.Id, q.AdjClose] + [getattr(q.Features, name) for name in self.columns])
 
         return DataFrame(values, columns=keys)
-        
-        
+
+
 indicators = [
-    # Moving average
+# Moving average
     indicator('ma_5_day', analysis.moving_average, 5, 4),
     indicator('ma_10_day', analysis.moving_average, 10, 9),
     indicator('ma_20_day', analysis.moving_average, 20, 19),
@@ -199,25 +194,25 @@ indicators = [
     indicator('momentum_200_day', analysis.momentum, 200, 199),
 
 # Rate of Change
-    indicator('roc_5_day', analysis.rate_of_change, 5, 4),
-    indicator('roc_10_day', analysis.rate_of_change, 10, 9),
-    indicator('roc_20_day', analysis.rate_of_change, 20, 19),
-    indicator('roc_50_day', analysis.rate_of_change, 50, 49),
-    indicator('roc_100_day', analysis.rate_of_change, 100, 99),
-    indicator('roc_200_day', analysis.rate_of_change, 200, 199),
+#    indicator('roc_5_day', analysis.rate_of_change, 5, 4),
+#    indicator('roc_10_day', analysis.rate_of_change, 10, 9),
+#    indicator('roc_20_day', analysis.rate_of_change, 20, 19),
+#    indicator('roc_50_day', analysis.rate_of_change, 50, 49),
+#    indicator('roc_100_day', analysis.rate_of_change, 100, 99),
+#    indicator('roc_200_day', analysis.rate_of_change, 200, 199),
 
 # MACD
     indicator('macd', analysis.macd, None, 25, ['ewma_12_day', 'ewma_26_day']),
     indicator('macd_signal', analysis.macd_signal, None, 8, ['macd']),
     indicator('macd_histogram', analysis.macd_hist, None, 0, ['macd', 'macd_signal'])
 ]
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
 calculators = {
 # Moving average
 'ma_5_day' : indCalc(analysis.moving_average, 5, 4, None),
@@ -433,23 +428,26 @@ def update_all(ticker, session, commit=True, check_all=False):
     :type check_all: bool
     """
     ticker = ticker.lower()
-    for length in [5, 10, 20, 50, 100, 200]:
-        update_indicator(ticker, 'ma_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'diff_ma_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'pct_diff_ma_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'moving_stdev_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'moving_var_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'momentum_' + str(length) + '_day', session, False, check_all)
+    for calc in indicators:
+        calc.update(ticker, session, commit, check_all)
 
-    for length in [5, 10, 12, 20, 26, 50, 100, 200]:
-        update_indicator(ticker, 'ewma_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'diff_ewma_' + str(length) + '_day', session, False, check_all)
-        update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
+    #for length in [5, 10, 20, 50, 100, 200]:
+    #    update_indicator(ticker, 'ma_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'diff_ma_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'pct_diff_ma_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'moving_stdev_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'moving_var_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'momentum_' + str(length) + '_day', session, False, check_all)
 
-    update_indicator(ticker, 'pct_change', session, False, check_all)
-    update_indicator(ticker, 'macd', session, True , check_all)
-    update_indicator(ticker, 'macd_signal', session, True, check_all)
-    update_indicator(ticker, 'macd_histogram', session, True, check_all)
+    #for length in [5, 10, 12, 20, 26, 50, 100, 200]:
+    #    update_indicator(ticker, 'ewma_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'diff_ewma_' + str(length) + '_day', session, False, check_all)
+    #    update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
+
+    #update_indicator(ticker, 'pct_change', session, False, check_all)
+    #update_indicator(ticker, 'macd', session, True , check_all)
+    #update_indicator(ticker, 'macd_signal', session, True, check_all)
+    #update_indicator(ticker, 'macd_histogram', session, True, check_all)
 
     if commit:
         session.commit()
