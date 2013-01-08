@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 
-from ..sources import yahoofinance as quotes
-import config
-import indicators
+
 from datetime import date, timedelta
 from models import Base, Symbol, Quote, Indicator
 from numpy import array, asarray
@@ -10,6 +8,10 @@ from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker, joinedload
 from sqlalchemy.sql import and_
 
+
+import .config
+import .indicators
+from ..sources import yahoofinance as quotes
 
 class Database(object):
 
@@ -35,7 +37,9 @@ class Database(object):
 
 
 class Manager(object):
-    """ Stock database management class
+    """ Stock Database Manager
+    
+    This is used to manage the stock database
     """
 
     def __init__(self):
@@ -43,6 +47,7 @@ class Manager(object):
 
     def create_database(self):
         """ Create stock database tables if they do not exist already
+
         """
         self.db.Base.metadata.create_all(self.db.Engine)
 
@@ -60,6 +65,12 @@ class Manager(object):
         :param Industry (optional) Company/security industry
         """
         ticker = ticker.lower()
+        session = self.db.Session()
+        
+        if self.check_stock_exists(ticker, session):
+            print "Stock %s already exists!" % (ticker.upper())
+            return
+        
         if name is None:
             name = quotes.get_name(ticker)
         if exchange is None:
@@ -68,21 +79,18 @@ class Manager(object):
             sector = quotes.get_sector(ticker)
         if industry is None:
             industry = quotes.get_industry(ticker)
+            
         stock = Symbol(ticker, name, exchange, sector, industry)
-        session = self.db.Session()
-
-        if self.check_stock_exists(ticker, session):
-            print "Stock %s already exists!" % (ticker.upper())
-        else:
-            print "Adding %s to database" % (ticker.upper())
-            session.add(stock)
-            q = self._download_quotes(ticker, date(1900, 01, 01), date.today())
-            for quote in q:
-                quote.Features = Indicator(quote.Id)
-            session.add_all(q)
+        
+        session.add(stock)
+        q = self._download_quotes(ticker, date(1900, 01, 01), date.today())
+        for quote in q:
+            quote.Features = Indicator(quote.Id)
+        session.add_all(q)
         session.commit()
         session.close()
         self.update_quotes(ticker)
+
 
     def _download_quotes(self, ticker, start_date, end_date):
         """ Get quotes from Yahoo Finance
@@ -200,6 +208,8 @@ class Manager(object):
 
 class Client(object):
     """ Stock database client
+    
+    The stock database client is used to access the stock database. 
     """
 
     def __init__(self):
@@ -210,7 +220,12 @@ class Client(object):
         """
         Return a list of quotes between the start date and (optional) end date.
         if no end date is specified, return a list containing the quote for the
-        start date
+        start date.
+        
+        :param ticker: Stock ticker symbol
+        :param quote_date:  Starting date for quotes to retrieve.
+        :param end_date: (optional) if more than one quote is desired, the
+        ending date for the list of quotes.
         """
         ticker = ticker.lower()
         session = self.db.Session()
@@ -243,6 +258,7 @@ class Client(object):
         if newsession:
             session.close()
         return stocks
+
 
 
 if __name__ == '__main__':

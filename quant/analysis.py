@@ -10,20 +10,20 @@ from pandas import Series, stats, concat
 
 def moving_average(span, data):
     """ Calculate n-point moving average
-    :param data: Data to average.
     :param span: Length of moving average window.
+    :param data: Data to average.
     :returns: Moving average as a numpy array.
     """
-    return stats.moments.rolling_mean(data, span)
+    return np.array(stats.moments.rolling_mean(data, span))
 
 
 def exp_weighted_moving_average(span, data):
     """ Calculate n-point exponentially weighted moving average
-    :param data: Data to average.
     :param span: Length of moving average window.
+    :param data: Data to average.
     :returns: Exponentially weighted moving average as a numpy array.
     """
-    return stats.moments.ewma(data, span=span)
+    return np.array(stats.moments.ewma(data, span=span))
 
 def mag_diff(data, average):
     return np.array([np.nan if avg is None or cur is None else (cur - avg) for cur, avg in zip(data, average)])
@@ -39,9 +39,10 @@ def percent_diff(data, average):
 
 def percent_change(data):
     """ Calculate percent change in data
-
+    :param data: Data to process
+    :returns: Percent change in data as a numpy array.
     """
-    return array(Series(data).pct_change().values)
+    return np.array(Series(data).pct_change().values)
 
 
 
@@ -51,7 +52,7 @@ def moving_stdev(span, data):
     :param span: Length of moving window.
     :returns: Moving standard deviation as a numpy array.
     """
-    return stats.moments.rolling_std(data, span)
+    return np.array(stats.moments.rolling_std(data, span))
 
 
 def moving_var(span, data):
@@ -60,7 +61,7 @@ def moving_var(span, data):
     :param span: Length of moving window.
     :returns: moving variance as a numpy array.
     """
-    return stats.moments.rolling_var(data, span)
+    return np.array(stats.moments.rolling_var(data, span))
 
 
 # ------------------------------------------------
@@ -73,24 +74,23 @@ def momentum(span, data):
 
     Momentum is defined as 100 times the ratio of the current value to the
     value *span - 1* days ago
-
+    
+    :param span: number of days before to use in the momentum calculation
     :param data: Raw data to analyze.
-    :param span: number of days before to use in the calculation of the.
-    momentum ratio.
     :returns: Momentum as a numpy array.
     """
-    momentum = array([100 * (cur / prev) for cur, prev in zip(data[span-1:], data)])
-    blank = zeros(span-1)
-    blank[:] = nan
+    momentum = np.array([100 * (cur / prev) for cur, prev in zip(data[span-1:], data)])
+    blank = np.zeros(span-1)
+    blank[:] = np.nan
     return append(blank, momentum).astype(float)
 
 
 def rate_of_change(span, data):
     """ Calculate rate of change
     """
-    roc = array([((cur - prev) / prev) for cur, prev in zip(data[span-1:], data)])
-    blank = zeros(span-1)
-    blank[:] = nan
+    roc = np.array([((cur - prev) / prev) for cur, prev in zip(data[span-1:], data)])
+    blank = np.zeros(span-1)
+    blank[:] = np.nan
     return append(blank, roc).astype(float)
 
 
@@ -98,8 +98,8 @@ def velocity(span, data):
     """ Calculate velocity
     """
     velocity = np.array([((cur - prev) / (span - 1)) for cur, prev in zip(data[span-1:], data)])
-    blank = zeros(span-1)
-    blank[:] = nan
+    blank = np.zeros(span-1)
+    blank[:] = np.nan
     return append(blank, velocity).astype(float)
 
 
@@ -109,8 +109,8 @@ def acceleration(span, data, velocity=None):
     if velocity is None:
         velocity = velocity(data,span)
     acceleration = np.array([((cur - prev) / (span - 1)) for cur, prev in zip(velocity[span-1:], velocity)])
-    blank = zeros(span-1)
-    blank[:] = nan
+    blank = np.zeros(span-1)
+    blank[:] = np.nan
     return append(blank, acceleration).astype(float)
 
 
@@ -190,11 +190,11 @@ def trix(data, span):
 
     TRIX is the percent change of the triple ewma'ed value
     """
-    first = (exp_weighted_moving_average(data, span))[(span-1):]
-    second = (exp_weighted_moving_average(first, span))[(span-1):]
-    third = (exp_weighted_moving_average(second, span))[(span-1):]
+    first = (exp_weighted_moving_average(span, data))
+    second = (exp_weighted_moving_average(span, first))
+    third = (exp_weighted_moving_average(span, second))
     trix = [((cur - prev) / prev) for cur, prev in zip(third[span-1:], third)]
-    blank = zeros(4 * (span-1))
+    blank = np.zeros(4 * (span-1))
     blank[:] = nan
     return append(blank, trix).astype(float)
 
