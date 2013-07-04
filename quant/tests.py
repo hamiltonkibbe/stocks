@@ -6,12 +6,12 @@ Unit tests for quant module
 """
 
 # arrays for testing
-zeros_array = np.zeros(10)
-ones_array = np.ones(10)
-lin_ramp = np.arange(10)
-exp_ramp = np.array([x**2 for x in lin_ramp])
+zeros_array = np.zeros(10).astype(float)
+ones_array = np.ones(10).astype(float)
+lin_ramp = np.arange(10).astype(float)
+exp_ramp = np.array([x**2 for x in lin_ramp]).astype(float)
 nan_array = np.array([np.nan, np.nan, np.nan, np.nan, np.nan,
-                      np.nan, np.nan, np.nan, np.nan, np.nan])
+                      np.nan, np.nan, np.nan, np.nan, np.nan]).astype(float)
 
 # ------------------------------------------------
 # Moving Averages
@@ -95,10 +95,26 @@ def test_moving_variance():
 
 def test_momentum():
     result = analysis.momentum(4, exp_ramp)
-    matlab_result = [np.nan, np.nan, np.nan, 0, 1600, 600, 400, 300, 200, 200]
+
+    matlab_result = [np.nan, np.nan, np.nan, np.inf, 1600, 625, 400, 306.25, 256, 225]
+    np.testing.assert_array_almost_equal(result, matlab_result)
+
+def test_rate_of_change():
+    result = analysis.rate_of_change(4, exp_ramp)
+    matlab_result = [np.nan, np.nan, np.nan, np.inf, 15, 5.25, 3, 2.0625, 1.56, 1.25 ]
     np.testing.assert_array_almost_equal(result, matlab_result)
 
 
+def test_velocity():
+    result = analysis.velocity(4, exp_ramp)
+    matlab_result = [np.nan, np.nan, np.nan, 3, 5, 7, 9, 11, 13, 15]
+    np.testing.assert_array_almost_equal(result, matlab_result)
+
+
+def test_acceleration():
+    result = analysis.acceleration(4, exp_ramp)
+    matlab_result = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 2, 2, 2, 2]
+    np.testing.assert_array_almost_equal(result, matlab_result)
 
 if __name__ == '__main__':
     test_zero_length_moving_average()
@@ -117,4 +133,7 @@ if __name__ == '__main__':
     test_moving_variance()
 
     test_momentum()
+    test_rate_of_change()
+    test_velocity()
+    test_acceleration()
 

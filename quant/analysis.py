@@ -84,11 +84,10 @@ def momentum(span, data):
     blank[:] = nan
     return append(blank, momentum).astype(float)
 
-
 def rate_of_change(span, data):
     """ Calculate rate of change
     """
-    roc = array([((cur - prev) / prev) for cur, prev in zip(data[span-1:], data)])
+    roc = array([(cur - prev) / prev  for cur, prev in zip(data[span-1:], data)])
     blank = zeros(span-1)
     blank[:] = nan
     return append(blank, roc).astype(float)
@@ -103,12 +102,12 @@ def velocity(span, data):
     return append(blank, velocity).astype(float)
 
 
-def acceleration(span, data, velocity=None):
+def acceleration(span, data, vel=None):
     """ Calculate acceleration
     """
-    if velocity is None:
-        velocity = velocity(data,span)
-    acceleration = np.array([((cur - prev) / (span - 1)) for cur, prev in zip(velocity[span-1:], velocity)])
+    if vel is None:
+        vel = velocity(span, data)
+    acceleration = np.array([((cur - prev) / (span - 1)) for cur, prev in zip(vel[span-1:], vel)])
     blank = zeros(span-1)
     blank[:] = nan
     return append(blank, acceleration).astype(float)
