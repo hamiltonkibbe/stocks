@@ -219,6 +219,11 @@ def relative_momentum_index(span, deltaspan, data):
     return array([100 - (100 / (1 + gain/loss))  for gain, loss in zip(avg_gains, avg_losses)]).astype(float)
 
 
+
+# ------------------------------------------------
+# Market Momentum Indicators
+# ------------------------------------------------
+
 def accumulation_distribution(high, low, close, volume, prev=0):
     """ Calculate Accumulation/Distribution
     """
