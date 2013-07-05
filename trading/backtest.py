@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from .account import Account
-from . import signals
+from . import actions
 
 
 class Backtester(object):
