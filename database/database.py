@@ -9,8 +9,8 @@ from sqlalchemy.orm import sessionmaker, joinedload
 from sqlalchemy.sql import and_
 
 
-import .config
-import .indicators
+from . import config
+from . import indicators
 from ..sources import yahoofinance as quotes
 
 class Database(object):
@@ -38,7 +38,7 @@ class Database(object):
 
 class Manager(object):
     """ Stock Database Manager
-    
+
     This is used to manage the stock database
     """
 
@@ -66,11 +66,11 @@ class Manager(object):
         """
         ticker = ticker.lower()
         session = self.db.Session()
-        
+
         if self.check_stock_exists(ticker, session):
             print "Stock %s already exists!" % (ticker.upper())
             return
-        
+
         if name is None:
             name = quotes.get_name(ticker)
         if exchange is None:
@@ -79,9 +79,9 @@ class Manager(object):
             sector = quotes.get_sector(ticker)
         if industry is None:
             industry = quotes.get_industry(ticker)
-            
+
         stock = Symbol(ticker, name, exchange, sector, industry)
-        
+
         session.add(stock)
         q = self._download_quotes(ticker, date(1900, 01, 01), date.today())
         for quote in q:
@@ -208,8 +208,8 @@ class Manager(object):
 
 class Client(object):
     """ Stock database client
-    
-    The stock database client is used to access the stock database. 
+
+    The stock database client is used to access the stock database.
     """
 
     def __init__(self):
@@ -221,7 +221,7 @@ class Client(object):
         Return a list of quotes between the start date and (optional) end date.
         if no end date is specified, return a list containing the quote for the
         start date.
-        
+
         :param ticker: Stock ticker symbol
         :param quote_date:  Starting date for quotes to retrieve.
         :param end_date: (optional) if more than one quote is desired, the

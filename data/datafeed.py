@@ -16,7 +16,7 @@ class IntradayQuotes(object):
         """ Get a single stock quote
         Return a quote for the given stock on the given date
         :param ticker: Ticker symbol of the security to quote.
-        :param date: Date to quote as a string or a 
+        :param date: Date to quote as a string or a
         ``Datetime.date`` object.
         :returns: Quote for the given security and date
         """
@@ -25,12 +25,12 @@ class IntradayQuotes(object):
 
     def get_quotes(self, ticker, start_date, end_date):
         """ Get a series of quotes
-        Return a list of quotes for the given security from start_date to 
+        Return a list of quotes for the given security from start_date to
         end-date
         :param ticker: Ticker symbol of the security to quote.
-        :param start_date: Starting date of quote list as a string or a 
+        :param start_date: Starting date of quote list as a string or a
         ``Datetime.date`` object.
-        :param end_date: Ending date of qoute list as a string or a 
+        :param end_date: Ending date of qoute list as a string or a
         ``Datetime.date`` object.
         :returns: List of quotes for the given security and date range
         """
@@ -43,7 +43,7 @@ class TickQuotes(object):
     """
     def __init__(self):
         self.stock_db = Client()
-    
+
     def get_quotes(self, ticker):
         pass
 
