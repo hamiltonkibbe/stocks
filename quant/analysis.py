@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import numpy as np
+from itertools import izip
 from numpy import array, zeros, append, subtract, empty, nan
 from pandas import Series, stats, concat
 
@@ -184,7 +185,7 @@ def macd_hist(data=None, macd=None, macd_signal=None):
     return subtract(macd, macd_signal)
 
 
-def trix(data, span):
+def trix(span, data):
     """ Calculate TRIX
 
     TRIX is the percent change of the triple ewma'ed value
@@ -193,20 +194,42 @@ def trix(data, span):
     second = (exp_weighted_moving_average(span, first))
     third = (exp_weighted_moving_average(span, second))
     trix = [((cur - prev) / prev) for cur, prev in zip(third[span-1:], third)]
-    blank = np.zeros(4 * (span-1))
+    blank = np.zeros(span - 1)
     blank[:] = nan
     return append(blank, trix).astype(float)
 
 
 
-def relative_strength_index(data, span):
+def relative_strength_index(span, data):
     """ Calculate RSI
     """
-    pass
+    return relative_momentum_index(span, 1, data)
 
 
-
-def relative_momentum_index(data, span):
+def relative_momentum_index(span, deltaspan, data):
     """ Calculate RMI
     """
-    pass
+    blank = np.zeros(deltaspan)
+    blank[:] = nan
+    deltas = append(blank, [cur - prev for cur, prev in zip(data[deltaspan:], data)]).astype(float)
+    gains = array([x if x > 0 else 0 for x in deltas]).astype(float)
+    losses = array([-x if x < 0 else 0 for x in deltas]).astype(float)
+    avg_gains = moving_average(span, gains)
+    avg_losses = moving_average(span, losses)
+    return array([100 - (100 / (1 + gain/loss))  for gain, loss in zip(avg_gains, avg_losses)]).astype(float)
+
+
+def accumulation_distribution(high, low, close, volume, prev=0):
+    """ Calculate Accumulation/Distribution
+    """
+    money_flow_volume = array([v *  (((c - l) - (h - c)) / (h - l)) for h, l, c, v in izip(high, low, close, volume)]).astype(float)
+    adl = zeros(len(money_flow_volume))
+    for i in range(len(money_flow_volume)):
+        adl[i] = prev + money_flow_volume[i]
+        prev = adl[i]
+    return adl.astype(float)
+
+
+
+
+

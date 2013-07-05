@@ -10,6 +10,7 @@ zeros_array = np.zeros(10).astype(float)
 ones_array = np.ones(10).astype(float)
 lin_ramp = np.arange(10).astype(float)
 exp_ramp = np.array([x**2 for x in lin_ramp]).astype(float)
+sin_signal = 10 * np.sin(lin_ramp) + 20
 nan_array = np.array([np.nan, np.nan, np.nan, np.nan, np.nan,
                       np.nan, np.nan, np.nan, np.nan, np.nan]).astype(float)
 
@@ -37,7 +38,6 @@ def test_moving_average_with_ones():
 def test_moving_average_with_ramp():
     result = analysis.moving_average(3, lin_ramp)
     np.testing.assert_array_equal(result, [np.nan, np.nan, 1, 2, 3, 4, 5, 6, 7, 8])
-
 
 
 def test_unit_length_exp_weighted_moving_average():
@@ -116,7 +116,21 @@ def test_acceleration():
     matlab_result = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 2, 2, 2, 2]
     np.testing.assert_array_almost_equal(result, matlab_result)
 
-if __name__ == '__main__':
+
+
+def test_trix():
+    result = analysis.trix(4, exp_ramp)
+
+
+def test_relative_strength_index():
+    result = analysis.relative_strength_index(4, sin_signal)
+
+def test_relative_momentum_index():
+    result = analysis.relative_momentum_index(4,2, sin_signal)
+    print result
+
+
+if  __name__ == '__main__':
     test_zero_length_moving_average()
     test_unit_length_exp_weighted_moving_average()
     test_moving_average_with_zeros()
@@ -136,4 +150,8 @@ if __name__ == '__main__':
     test_rate_of_change()
     test_velocity()
     test_acceleration()
+    test_trix()
+    test_relative_strength_index()
+    test_relative_momentum_index()
+
 
