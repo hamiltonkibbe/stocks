@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import numpy as np
 from itertools import izip
-from numpy import array, zeros, append, subtract, empty, nan
+from numpy import array, zeros, append, sum, subtract, empty, nan
 from pandas import Series, stats, concat
 
 
@@ -129,14 +129,14 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
         Either raw data or the 12 and 26 day EWMAs must be provided, all three
         are not necessary.
     """
-
-    if fast_ewma is None and slow_ewma is None:
-        if data is not None:
-            slow_ewma = exp_weighted_moving_average(26, data)
-            fast_ewma = exp_weighted_moving_average(12, data)
-        else:
-            pass
-    return subtract(fast_ewma, slow_ewma).astype(float)
+    return exp_weighted_value_oscillator(12, 26, data, fast_ewma, slow_ewma)
+    #if fast_ewma is None and slow_ewma is None:
+    #    if data is not None:
+    #        slow_ewma = exp_weighted_moving_average(26, data)
+    #        fast_ewma = exp_weighted_moving_average(12, data)
+    #    else:
+    #        pass
+    #return subtract(fast_ewma, slow_ewma).astype(float)
 
 
 def macd_signal(data=None, macd=None):
@@ -185,6 +185,31 @@ def macd_hist(data=None, macd=None, macd_signal=None):
     return subtract(macd, macd_signal)
 
 
+def value_oscillator(fast_ma_len=5,slow_ma_len=20, data=None, fast_ma=None, slow_ma=None):
+    """ Calculate value oscillator
+    """
+    if fast_ma is None and slow_ma is None:
+        if data is not None:
+            slow_ma = moving_average(slow_ma_len, data)
+            fast_ma = moving_average(fast_ma_len, data)
+        else:
+            pass
+    return subtract(fast_ma, slow_ma).astype(float)
+
+
+def exp_weighted_value_oscillator(fast_ma_len=5, slow_ma_len=20, data=None, fast_ma=None, slow_ma=None):
+    """ Calculate exponentially weighted value oscillator
+    """
+    if fast_ma is None and slow_ma is None:
+        if data is not None:
+            slow_ma = exp_weighted_moving_average(slow_ma_len, data)
+            fast_ma = exp_weighted_moving_average(fast_ma_len, data)
+        else:
+            # Error
+            pass
+        return subtract(fast_ma, slow_ma).astype(float)
+
+
 def trix(span, data):
     """ Calculate TRIX
 
@@ -198,6 +223,10 @@ def trix(span, data):
     blank[:] = nan
     return append(blank, trix).astype(float)
 
+def chandes_momentum_oscillator(span, data):
+    blank = np.zeros(span)
+    blank[:] = nan
+    deltas = append(blank, [cur - prev for cur, prev in zip(data[span:], data)]).astype(float)
 
 
 def relative_strength_index(span, data):
@@ -233,6 +262,18 @@ def accumulation_distribution(high, low, close, volume, prev=0):
         adl[i] = prev + money_flow_volume[i]
         prev = adl[i]
     return adl.astype(float)
+
+
+def chaikin_oscillator(high=None, low=None, close=None, volume=None, prev=0,adl=None):
+    if adl is None:
+        if high is not None and low is not None and close is not None and volume is not None:
+            adl = accumulation_distribution(high, low, close, volume, prev)
+            fast_ma = exp_weighted_moving_average(3, adl)
+            slow_ma = exp_weighted_moving_average(10, adl)
+        else:
+            # Error
+            pass
+        return subtract(fast_ma, slow_ma).astype(float)
 
 
 

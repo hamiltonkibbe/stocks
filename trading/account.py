@@ -1,14 +1,20 @@
 #!/usr/bin/env python
 
+from datetime import date
+
 from . import actions
+from ..data import datafeed
+
 
 class Account(object):
     def __init__(self, initial_value=100000, commission=0.00):
+        self.quotes = datafeed.IntradayQuotes()
         self.cash_value = initial_value
         self.commission = commission
         self.positions = {}
         self.transactions = []
-
+        self.value = []
+        self.percent_change= []
 
     def account_value(self):
         securities_value = 0
@@ -38,7 +44,7 @@ class Account(object):
             self.positions[security] = position
 
         # Update account value
-        self.cash_value -= position.cost_basis
+        self.cash_value -= (n_shares * share_price + self.commission)
 
 
     def sell(self, security, n_shares, share_price):
@@ -64,6 +70,13 @@ class Account(object):
         # Update account value
         self.cash_value += share_price * n_shares - self.commission
 
+    def tick(self, tick_date):
+        for k in self.positions.keys():
+            self.positions[k].tick(self.quotes.get_quote(self.positions[k].security, tick_date).Close)
+
+        self.value.append((tick_date, self.account_value()))
+
+
 
 
 class Position(object):
@@ -79,3 +92,11 @@ class Position(object):
         return self.share_price * self.n_shares
 
 
+if __name__ == '__main__':
+    from datetime import date
+    account = Account()
+    account.buy('aapl', 50, 530.00)
+    account.tick(date(2013,01,02))
+    account.tick(date(2013,01,03))
+    account.tick(date(2013,01,04))
+    print account.value
