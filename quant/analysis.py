@@ -129,14 +129,14 @@ def macd(data=None, fast_ewma=None, slow_ewma=None):
         Either raw data or the 12 and 26 day EWMAs must be provided, all three
         are not necessary.
     """
-    return exp_weighted_value_oscillator(12, 26, data, fast_ewma, slow_ewma)
-    #if fast_ewma is None and slow_ewma is None:
-    #    if data is not None:
-    #        slow_ewma = exp_weighted_moving_average(26, data)
-    #        fast_ewma = exp_weighted_moving_average(12, data)
-    #    else:
-    #        pass
-    #return subtract(fast_ewma, slow_ewma).astype(float)
+  #  return exp_weighted_value_oscillator(12, 26, data, fast_ewma, slow_ewma)
+    if fast_ewma is None and slow_ewma is None:
+        if data is not None:
+            slow_ewma = exp_weighted_moving_average(26, data)
+            fast_ewma = exp_weighted_moving_average(12, data)
+        else:
+            pass
+    return subtract(fast_ewma, slow_ewma).astype(float)
 
 
 def macd_signal(data=None, macd=None):
