@@ -4,6 +4,7 @@
 Python interface to the St.Louis Fed's Federal Reserve Economic Data
 """
 
+from .config import FRED_API_KEY
 import urllib
 from xml.etree import ElementTree
 from datetime import date
@@ -63,8 +64,6 @@ indicators = {'bank_prime_loan_rate': 'DPRIME',
               'wilshire_us_resi_tmi': 'WILLRESIND'
               }
 
-
-FRED_API_KEY = '34a7386da77efa763957d30a167376aa'
 
 
 def _get_url(fname):

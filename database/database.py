@@ -23,14 +23,14 @@ class Database(object):
 
         # Handle edge case here
         if config.SQL_PASSWORD == '':
-            engine_config = 'mysql://%s@%s/%s' % (config.SQL_USER,
-                                                  config.SQL_HOSTNAME,
-                                                  config.SQL_DATABASE)
+            engine_config = 'mysql://%s@%s/%s' % (config.STOCKS_SQL_USER,
+                                                  config.STOCKS_SQL_HOSTNAME,
+                                                  config.STOCKS_SQL_DATABASE)
         else:
-            engine_config = 'mysql://%s:%s@%s/%s' % (config.SQL_USER,
-                                                     config.SQL_PASSWORD,
-                                                     config.SQL_HOSTNAME,
-                                                     config.SQL_DATABASE)
+            engine_config = 'mysql://%s:%s@%s/%s' % (config.STOCKS_SQL_USER,
+                                                     config.STOCKS_SQL_PASSWORD,
+                                                     config.STOCKS_SQL_HOSTNAME,
+                                                     config.STOCKS_SQL_DATABASE)
         self.Engine = create_engine(engine_config)
         self.Session = sessionmaker()
         self.Session.configure(bind=self.Engine)

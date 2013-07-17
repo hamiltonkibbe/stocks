@@ -17,16 +17,17 @@ class Symbol(Base):
     Exchange = Column(String(50))
     Sector = Column(String(50))
     Industry = Column(String(50))
+    TwitterHandle = Column(String(20))
     Quotes = relationship('Quote', cascade='all, delete, delete-orphan')
 
     def __init__(self, Ticker, Name, Exchange=None,
-                 Sector=None, Industry=None):
+                 Sector=None, Industry=None, TwitterHandle=None):
         self.Ticker = Ticker
         self.Name = Name
         self.Exchange = Exchange
         self.Sector = Sector
         self.Industry = Industry
-
+        self.TwitterHandle = TwitterHandle
     def __repr__(self):
         return "<Symbol('%s','%s','%s','%s','%s')>" % (
             self.Ticker, self.Name, self.Exchange, self.Sector, self.Industry)
@@ -211,4 +212,16 @@ class Indicator(Base):
         self.ma_5_day = ma_5_day
         self.ewma_5_day = ewma_5_day
 
+class EconomicIndicators(Base):
+    """
+    Economic Indicators Table Model
+    """
+    __tablename__ = 'EconomicIndicators'
 
+    Date = Column(Date, ForeignKey('Quotes.Date'),primary_key=True)
+
+    def __init__(self, Date):
+        self.Date = Date
+
+    def __repr__(self):
+        return "<Economic Indicators on %s>" % self.Date
