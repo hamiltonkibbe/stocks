@@ -41,7 +41,7 @@ Thumbs.db
 # Other Generated Files #
 #########################
 .COVERAGE
-
+.env
 
 #CMake
 CMakeCache.txt

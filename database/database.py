@@ -22,7 +22,7 @@ class Database(object):
         self.Base = Base
 
         # Handle edge case here
-        if config.SQL_PASSWORD == '':
+        if config.STOCKS_SQL_PASSWORD == '':
             engine_config = 'mysql://%s@%s/%s' % (config.STOCKS_SQL_USER,
                                                   config.STOCKS_SQL_HOSTNAME,
                                                   config.STOCKS_SQL_DATABASE)
