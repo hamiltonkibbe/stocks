@@ -9,14 +9,17 @@ Local stock quote storage for backtesting and algorithm training. The database
 serves as a local cache for stock data.  When data is requested from the 
 ``StockDBManager`` it will be served from the local database if available, or
 rom an external source otherwise. All requested data is stored locally for 
-faster retrieval during subsequent requests. 
-database.py
+faster retrieval during subsequent requests. The quant module is used to calculate
+lots of common indicators and stores them to the database. This is useful for generating
+large datasets for testing/ML applications, as well as for speeding up backtesting
 
 
-database.py
+
+database
 ===========
-database.py contains definitions for all database-access related functionality
-it may be run as a script to perform several database administration functions
+the database module contains definitions for all database-access related 
+functionalityit may be run as a script to perform several database 
+administration functions
 
 
 **Getting started:**
