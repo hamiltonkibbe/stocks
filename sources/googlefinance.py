@@ -23,7 +23,7 @@ def get_historical_prices(symbol, start_date, end_date):
     """
     Get historical prices for the given ticker symbol.
 
-    Returns a nested list.
+    Returns a nested list. fields are Date, Open, High, Low, Close, Volume.
     """
     return [data.split() for data in __request(symbol).split('\n')]
 
