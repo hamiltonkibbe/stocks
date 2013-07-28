@@ -12,7 +12,7 @@ Unit tests for trading module
 # Test Account
 # ------------------------------------------------
 def test_initial_account_value():
-    """ [Account] Test value calculation
+    """ [trading.account] Test value calculation
     """
     theAccount = account.Account()
     value =  theAccount.account_value()
@@ -20,7 +20,7 @@ def test_initial_account_value():
 
 
 def test_cash_value():
-    """ [Account] Test cash value calculation
+    """ [trading.account] Test cash value calculation
     """
     theAccount = account.Account()
     theAccount._buy('test_security', 100, 1)
@@ -28,7 +28,7 @@ def test_cash_value():
     np.testing.assert_equal(value, 99900.0)
 
 def test_position_security():
-    """ [Account] Test position security name assignment
+    """ [trading.account] Test position security name assignment
     """
     theAccount = account.Account()
     theAccount._buy('test_security', 100, 1)
@@ -37,7 +37,7 @@ def test_position_security():
 
 
 def test_position_n_shares():
-    """ [Account] Test position number of shares assignment
+    """ [trading.account] Test position number of shares assignment
     """
     theAccount = account.Account()
     theAccount._buy('test_security', 100, 1)
@@ -45,7 +45,7 @@ def test_position_n_shares():
     np.testing.assert_equal(value, 100)
 
 def test_position_share_price():
-    """ [Account] Test position share price assignment
+    """ [trading.account] Test position share price assignment
     """
     theAccount = account.Account()
     theAccount._buy('test_security', 100, 1)
@@ -54,7 +54,7 @@ def test_position_share_price():
 
 
 def test_commission():
-    """ [Account] Test commission calculation
+    """ [trading.account] Test commission calculation
     """
     theAccount = account.Account(commission=10.0)
     theAccount._buy('test_security', 100, 1)
@@ -64,7 +64,7 @@ def test_commission():
 
 
 def test_trade():
-    """ [Account] Test buy using trade method
+    """ [trading.account] Test buy using trade method
     """
     theAccount = account.Account(commission=10.0)
     theAccount.trade(actions.BUY_LONG, 'test_security', 100, 1)

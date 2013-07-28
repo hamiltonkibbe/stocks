@@ -53,6 +53,10 @@ class Quote(Base):
                             backref='Quotes', lazy='lazy',
                             cascade='all, delete, delete-orphan',
                             order_by=Date)
+    EconomicIndicators = relationship('EconomicIndicator', uselist=False,
+                                    backref='Quotes', lazy='lazy',
+                                    cascade='all, delete, delete-orphan',
+                                    order_by=Date)
 
     def __init__(self, Ticker, Date, Open, High, Low, Close, Volume, AdjClose):
         self.Ticker = Ticker
@@ -212,13 +216,32 @@ class Indicator(Base):
         self.ma_5_day = ma_5_day
         self.ewma_5_day = ewma_5_day
 
-class EconomicIndicators(Base):
+class EconomicIndicator(Base):
     """
     Economic Indicators Table Model
     """
     __tablename__ = 'EconomicIndicators'
 
     Date = Column(Date, ForeignKey('Quotes.Date'),primary_key=True)
+    bank_prime_loan_rate = Column(Float)
+    primary_credit_rate = Column(Float)
+    consumer_price_index = Column(Float)
+    real_gdp = Column(Float)
+    civillian_unemployment_rate = Column(Float)
+    m2_money_stock = Column(Float)
+    dow_jones_industrial = Column(Float)
+    dow_jones_composite = Column(Float)
+    dow_jones_transportation = Column(Float)
+    dow_jones_utility = Column(Float)
+    sp_500 = Column(Float)
+    sp_500_volatility = Column(Float)
+    libor_overnight = Column(Float)
+    libor_1wk = Column(Float)
+    libor_1mo = Column(Float)
+    libor_3mo = Column(Float)
+    libor_6mo = Column(Float)
+    libor_12mo = Column(Float)
+
 
     def __init__(self, Date):
         self.Date = Date
