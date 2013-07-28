@@ -42,7 +42,7 @@ class Quote(Base):
 
     Id = Column(Integer, primary_key=True)
     Ticker = Column(String(5), ForeignKey('Symbols.Ticker'))
-    Date = Column(Date)
+    Date = Column(Date, index=True)
     Open = Column(Float)
     High = Column(Float)
     Low = Column(Float)
