@@ -3,18 +3,22 @@
 from datetime import date
 
 from . import actions
-from ..data import datafeed
 
 
 class Account(object):
     def __init__(self, initial_value=100000, commission=0.00):
-        self.quotes = datafeed.IntradayQuotes()
         self.cash_value = initial_value
         self.commission = commission
         self.positions = {}
         self.transactions = []
         self.value = []
         self.percent_change= []
+        self.trade_types = {
+                actions.BUY_LONG: self._buy,
+                actions.SELL_LONG: self._sell,
+                actions.SHORT: self._short,
+                actions.COVER: self._cover}
+
 
     def account_value(self):
         securities_value = 0
@@ -22,7 +26,12 @@ class Account(object):
             securities_value += self.positions[k].value()
         return self.cash_value + securities_value
 
-    def buy(self, security, n_shares, share_price):
+
+    def trade(self, action, security, n_shares, share_price):
+        self.trade_types[action](security, n_shares, share_price)
+
+
+    def _buy(self, security, n_shares, share_price):
         # Create transaction record
         transaction = {
             'action': actions.BUY_LONG,
@@ -47,7 +56,8 @@ class Account(object):
         self.cash_value -= (n_shares * share_price + self.commission)
 
 
-    def sell(self, security, n_shares, share_price):
+    def _sell(self, security, n_shares, share_price):
+
         # Create transaction record
         transaction = {
             'action': actions.SELL_LONG,
@@ -70,10 +80,21 @@ class Account(object):
         # Update account value
         self.cash_value += share_price * n_shares - self.commission
 
-    def tick(self, tick_date):
-        for k in self.positions.keys():
-            self.positions[k].tick(self.quotes.get_quote(self.positions[k].security, tick_date).Close)
 
+    def _short(self, security, n_shares, share_price):
+        pass
+
+    def _cover(self, security, n_shares, share_price):
+        pass
+
+    def tick(self, timestamp, quotes):
+        """ Update position prices
+
+        :param timestamp:   The timestamp for the tick.
+        :param quotes:      A dict of quotes with ticker symbols as keys
+        """
+        for k in self.positions.keys():
+            self.positions[k].tick(tick_quotes[k].Close)
         self.value.append((tick_date, self.account_value()))
 
 

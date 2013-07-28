@@ -20,39 +20,57 @@ nan_array = np.array([np.nan, np.nan, np.nan, np.nan, np.nan,
 
 
 def test_zero_length_moving_average():
+    """ [Analysis] Test zero-length moving average
+    """
     result = analysis.moving_average(0, lin_ramp)
     np.testing.assert_array_equal(result, nan_array)
 
 def test_unit_length_moving_average():
+    """ [Analysis] Test unit-length moving average
+    """
     result = analysis.moving_average(1, lin_ramp)
     np.testing.assert_array_equal(result, lin_ramp)
 
 def test_moving_average_with_zeros():
+    """ [Analysis] Test moving average with zeros
+    """
     result = analysis.moving_average(3, zeros_array)
     np.testing.assert_array_equal(result, [np.nan, np.nan, 0, 0, 0, 0, 0, 0, 0, 0])
 
 def test_moving_average_with_ones():
+    """ [Analysis] Test moving average with ones
+    """
     result = analysis.moving_average(3, ones_array)
     np.testing.assert_array_equal(result, [np.nan, np.nan, 1, 1, 1, 1, 1, 1, 1, 1])
 
 def test_moving_average_with_ramp():
+    """ [Analysis] Test moving average with ramp
+    """
     result = analysis.moving_average(3, lin_ramp)
     np.testing.assert_array_equal(result, [np.nan, np.nan, 1, 2, 3, 4, 5, 6, 7, 8])
 
 
 def test_unit_length_exp_weighted_moving_average():
+    """ [Analysis] Test unit-length EWMA
+    """
     result = analysis.exp_weighted_moving_average(1, lin_ramp)
     np.testing.assert_array_equal(result, lin_ramp)
 
 def test_exp_weighted_moving_average_with_zeros():
+    """ [Analysis] Test EWMA with zeros
+    """
     result = analysis.exp_weighted_moving_average(3, zeros_array)
     np.testing.assert_array_equal(result, zeros_array)
 
 def test_exp_weighted_moving_average_with_ones():
+    """ [Analysis] Test EWMA with ones
+    """
     result = analysis.exp_weighted_moving_average(3, ones_array)
     np.testing.assert_array_equal(result, ones_array)
 
 def test_exp_weighted_moving_average_with_ramp():
+    """ [Analysis] Test EWMA with ramp
+    """
     result = analysis.exp_weighted_moving_average(3, lin_ramp)
     matlab_result = [0, 0.66666667, 1.42857143, 2.26666667, 3.16129032,
                      4.0952381, 5.05511811, 6.03137255, 7.01761252, 8.00977517]
@@ -65,14 +83,17 @@ def test_exp_weighted_moving_average_with_ramp():
 # ------------------------------------------------
 
 def test_percent_change():
+    """ [Analysis] Test percent change calculation against Matlab
+    """
     result = analysis.percent_change(lin_ramp)
     matlab_result = [np.nan, np.inf, 1, 0.5, 0.333333333333333, 0.25, 0.2,
                      0.166666666666667, 0.142857142857143, 0.125]
-
     np.testing.assert_array_almost_equal(np.nan_to_num(result),
                                          np.nan_to_num(matlab_result))
 
 def test_moving_stdev():
+    """ [Analysis] Test moving standard deviation calculation against Matlab
+    """
     result = analysis.moving_stdev(4, exp_ramp)
     matlab_result = [np.nan, np.nan, np.nan, 4.041451884327381,
                      6.557438524302000, 9.110433579144299, 11.676186592091330,
@@ -82,6 +103,8 @@ def test_moving_stdev():
 
 
 def test_moving_variance():
+    """ [Analysis] Test moving variance calculation against Matlab
+    """
     result = analysis.moving_var(4, exp_ramp)
     matlab_result = [np.nan, np.nan, np.nan,  16.333333333333332, 43, 83,
                      136.3333333333333, 203, 283,  376.3333333333333]
@@ -94,24 +117,31 @@ def test_moving_variance():
 # ------------------------------------------------
 
 def test_momentum():
+    """ [Analysis] Test momentum calculation against Matlab
+    """
     result = analysis.momentum(4, exp_ramp)
-
-    matlab_result = [np.nan, np.nan, np.nan, np.inf, 1600, 625, 400, 306.25, 256, 225]
+    matlab_result = np.array([np.nan, np.nan, np.nan, np.inf, 1600., 625., 400., 306.25, 256., 225.])
     np.testing.assert_array_almost_equal(result, matlab_result)
 
 def test_rate_of_change():
+    """ [Analysis] Test rate of change calculation against Matlab
+    """
     result = analysis.rate_of_change(4, exp_ramp)
     matlab_result = [np.nan, np.nan, np.nan, np.inf, 15, 5.25, 3, 2.0625, 1.56, 1.25 ]
     np.testing.assert_array_almost_equal(result, matlab_result)
 
 
 def test_velocity():
+    """ [Analysis] Test velocity calculation against Matlab
+    """
     result = analysis.velocity(4, exp_ramp)
     matlab_result = [np.nan, np.nan, np.nan, 3, 5, 7, 9, 11, 13, 15]
     np.testing.assert_array_almost_equal(result, matlab_result)
 
 
 def test_acceleration():
+    """ [Analysis] Test acceleration calculation against Matlab
+    """
     result = analysis.acceleration(4, exp_ramp)
     matlab_result = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 2, 2, 2, 2]
     np.testing.assert_array_almost_equal(result, matlab_result)
@@ -119,15 +149,20 @@ def test_acceleration():
 
 
 def test_trix():
+    """ [Analysis] Test TRIX calculation against Matlab
+    """
     result = analysis.trix(4, exp_ramp)
 
 
 def test_relative_strength_index():
+    """ [Analysis] Test RSI calculation against Matlab
+    """
     result = analysis.relative_strength_index(4, sin_signal)
 
 def test_relative_momentum_index():
+    """ [Analysis] Test RMI calculation against Matlab
+    """
     result = analysis.relative_momentum_index(4,2, sin_signal)
-    print result
 
 
 if  __name__ == '__main__':

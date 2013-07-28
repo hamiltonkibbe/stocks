@@ -83,7 +83,7 @@ def momentum(span, data):
     momentum = np.array([100 * (cur / prev) for cur, prev in zip(data[span-1:], data)])
     blank = np.zeros(span-1)
     blank[:] = np.nan
-    return append(blank, momentum).astype(float)
+    return append(blank, momentum) #.astype(float)
 
 def rate_of_change(span, data):
     """ Calculate rate of change
