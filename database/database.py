@@ -135,13 +135,13 @@ class Manager(object):
         last = session.query(Quote).filter_by(
             Ticker=ticker).order_by(desc(Quote.Date)).first().Date
         start_date = last + timedelta(days=1)
+        # Ignore missing quotes for today unless it's after 7, this keeps
+        # us from hitting the yahoo API when we know the data isn't there yet
         end_date = (date.today() if datetime.datetime.now().time() >
                 datetime.time(19) else date.today() - timedelta(days=1))
         if end_date > start_date:
             stockquotes = self._download_quotes(ticker, start_date, end_date)
-            # Yahoo seems to be rate limiting TODO: LOOK AT THIS LATER
-            # We should check to see if it's after 7PM(or whenever they post it)
-            # to hit the API if the only quote we're missing is today's....
+            # Appease the API rate limit gods????
             time.sleep(10)
             if stockquotes is not None:
                 for quote in stockquotes:
