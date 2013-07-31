@@ -81,9 +81,13 @@ def _get_raw(fname):
     for i in range(len(values)):
         if values[i] == '.':
             values[i] = values[i-1]
-    # Return dates and values in a dict
-    return {'dates': dates,
-            'values': [float(value) for value in values]}
+
+    # Return dates and values in a nested list
+    data = []
+    for i in range(len(dates)):
+        data.append[dates[i], float(values[i])]
+
+    return data
 
 def get(indicator):
     return _get_raw(indicators[indicator])

@@ -12,7 +12,12 @@ class EconomicIndicator(object):
         self.column_name = name
         self.frequency = frequency_hint
 
-    def update
+    def update(self, session):
+        data = fred.get(self.column_name)
+        for row in data:
+            if not self._row_exists(session, row[0]):
+                pass
+
 
     def _row_exists(self, session, fordate):
         """ Return true if a row exists for the specified date
@@ -29,7 +34,7 @@ class EconomicIndicator(object):
         """
         available = False
         data = fred.get(self.column_name)
-        newest_available = data['dates'][0]
+        newest_available = data[0][0]
         last = self._get_most_recent_row(session)
 
         # Here we check for the whole row's existance in case this is the first column we're updating
@@ -46,5 +51,7 @@ class EconomicIndicator(object):
             if getattr(last, self.column_name) is None:
                 available = True
         return available
+
+
 
 
