@@ -26,7 +26,7 @@ class Dataset(object):
         the function should take a numPy ndarray of data as an argument. the return
         value is ignored.
         """
-        self.symbols = symbols
+        self.symbols = symbols if hasattr(symbols,'__iter__') else (symbols,)
         self._data = None
         self._initialize_dataset(symbols, sector, index, size)
 
@@ -74,12 +74,6 @@ class Dataset(object):
                 data_frames.append(data)
             # Concatenate Matricies
             self._data = concat(data_frames, keys=self.symbols)
-                # Add each row to dataset
-                #if self.data is None:
-                #    self.data = data
-                #
-                #else:
-                #    self.data = np.vstack((self.data, data))
 
         if size is not None:
             # Do something to set the max size
@@ -124,6 +118,8 @@ class MLDataset(Dataset):
         super(MLDataset, self).__init__(symbols, sector,index, size)
         self._ML_init(target_function)
 
+
+
     @property
     def training_data(self):
         """ Training dataset for regression / machine learning
@@ -136,46 +132,6 @@ class MLDataset(Dataset):
         """
         return self._target_data.astype(float)
 
-    #def _initialize_dataset(self, symbols=None, sector=None, index=None, size=None, target_function=None):
-        # """ Generate the acutual data based on init
-        # TODO: Implement sector, index, and size
-        # """
-        # if self.symbols is not None:
-            # data_frames = []
-            # training_frames=[]
-            # target_frames=[]
-
-            # # Generate matricies for each symbol
-            # for ticker in self.symbols:
-                # data = get_raw_data(ticker)
-                # data_frames.append(data)
-                # training_frames.append(normalize(data.values.astype(float)))
-                # target_frames.append(target_function(data))
-
-            # # Concatenate matricies
-            # self.data = concat(data_frames, keys=self.symbols)
-            # self._training_data = np.vstack(tuple(training_frames))
-            # self._target_data = np.vstack(tuple(target_frames))
-
-                # # Add each row to dataset
-                # #if self.data is None:
-                # #    self.col_names = col_names
-                # #    self.data = data
-                # #    self._training_data = normalize(data[:,2:].astype(float))
-                # #    self._target_data = target_function(data, col_names)
-                # #else:
-                # #    self.data = np.vstack((self.data, data))
-                # #    self._training_data = np.vstack((self._training_data, normalize(data[:,2:].astype(float))))
-                # #    self._target_data = np.append(self._target_data, target_function(data, col_names))
-
-
-        # if sector is not None:
-                # pass
-        # if index is not None:
-            # pass
-        # if size is not None:
-            # pass
-        # #self._sanitize()
 
     def generate_target_data(self, target_function):
         """ Create target dataset for regression / machine learning
@@ -209,10 +165,12 @@ class MLDataset(Dataset):
         training_frames = []
 
         # Generate normalized training matricies
-        for symbol in self.symbols:
-            data = self._data[symbol]
-            training_frames.append(normalize(data.values.astype(float)))
-
+        if len(self.symbols) > 1:
+            for symbol in self.symbols:
+                data = self._data[symbol]
+                training_frames.append(normalize(data.values.astype(float)))
+        else:
+            training_frames.append(normalize(self._data.values.astype(float)))
         # concatenate training matricies
         self._training_data = np.vstack(tuple(training_frames))
 
@@ -224,3 +182,7 @@ class MLDataset(Dataset):
         """ Get data by index. return a tuple of training data and target
         """
         return (self._training_data[i], self._target_data[i])
+
+
+
+

@@ -77,6 +77,18 @@ def test_exp_weighted_moving_average_with_ramp():
 
     np.testing.assert_array_almost_equal(result, matlab_result)
 
+def test_mag_diff():
+    """ [quant.analysis] Test Magnitude Difference with ramp
+    """
+    result = analysis.mag_diff(lin_ramp, zeros_array)
+    np.testing.assert_array_almost_equal(result,lin_ramp)
+
+def test_percent_diff():
+   """ [quant.analysis] Test Percent Difference with ramp
+   """
+   result = analysis.percent_diff(lin_ramp,ones_array)
+   np.testing.assert_array_almost_equal(result,lin_ramp-1.0)
+
 
 # ------------------------------------------------
 # Moving Statistics
@@ -176,7 +188,8 @@ if  __name__ == '__main__':
     test_exp_weighted_moving_average_with_zeros()
     test_exp_weighted_moving_average_with_ones()
     test_exp_weighted_moving_average_with_ramp()
-
+    test_mag_diff()
+    test_percent_diff()
     test_percent_change()
     test_moving_stdev()
     test_moving_variance()

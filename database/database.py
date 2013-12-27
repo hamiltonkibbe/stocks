@@ -6,7 +6,7 @@ from datetime import  date, timedelta
 from models import Base, Symbol, Quote, Indicator
 from numpy import array, asarray
 from sqlalchemy import create_engine, desc
-from sqlalchemy.orm import sessionmaker, joinedload
+from sqlalchemy.orm import sessionmaker, joinedload, eagerload
 from sqlalchemy.sql import and_
 
 
@@ -147,7 +147,8 @@ class Manager(object):
                 for quote in stockquotes:
                     quote.Features = Indicator(quote.Id)
                 session.add_all(stockquotes)
-        indicators.update_all(ticker, session, False, check_all)
+        #indicators.update_all(ticker, session, False, check_all)
+        indicators.update_all(ticker, session, True, check_all)
         session.commit()
         session.close()
 
@@ -222,7 +223,7 @@ class Client(object):
         self.db = Database()
         self.manager = Manager()
 
-    def get_quotes(self, ticker, quote_date, end_date=None):
+    def get_quotes(self, ticker, quote_date, end_date=None, eager_load=False):
         """
         Return a list of quotes between the start date and (optional) end date.
         if no end date is specified, return a list containing the quote for the
@@ -238,14 +239,18 @@ class Client(object):
         stockquotes = []
         if not self.manager.check_stock_exists(ticker, session):
             self.manager.add_stock(ticker)
+        if eager_load:
+            loader = eagerload
+        else:
+            loader = lazyload
 
         if end_date is not None:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
+            query = session.query(Quote).options(loader('Features')).filter(and_(Quote.Ticker == ticker,
                                                      Quote.Date >= quote_date,
                                                      Quote.Date <= end_date))\
                 .order_by(Quote.Date)
         else:
-            query = session.query(Quote).filter(and_(Quote.Ticker == ticker,
+            query = session.query(Quote).options(loader('Features')).filter(and_(Quote.Ticker == ticker,
                                                      Quote.Date == quote_date))
 
         stockquotes = [quote for quote in query.all()]
@@ -273,14 +278,19 @@ if __name__ == '__main__':
         db = Manager()
         opt = str(argv[1])
 
+
         if opt == 'create':
             db.create_database()
 
         elif opt == 'sync':
-            db.sync_quotes()
+            check_all = len(argv) > 2
+            db.sync_quotes(check_all)
 
         elif opt == 'add':
             db.add_stock(str(argv[2]))
+
+        elif opt == 'update':
+            db.update_quotes(str(argv[2]))
 
     else:
         exit('No command specified. Exiting.')

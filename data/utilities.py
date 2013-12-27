@@ -14,7 +14,7 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
     :param start: (Optional) Start of date range to get.
     :param end: (Optional) End of date range to get.
     :returns: tuple containing (raw data, ticker_and_date_info)
-    """
+   """
     # Get quotes
     quotes = IntradayQuotes().get_quotes(ticker, start, end)
 
@@ -65,6 +65,25 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
               'pct_diff_ewma_50_day',
               'pct_diff_ewma_100_day',
               'pct_diff_ewma_200_day',
+              'pct_change',
+              'moving_stdev_5_day',
+              'moving_stdev_10_day',
+              'moving_stdev_20_day',
+              'moving_stdev_50_day',
+              'moving_stdev_100_day',
+              'moving_stdev_200_day',
+              'moving_var_5_day',
+              'moving_var_10_day',
+              'moving_var_20_day',
+              'moving_var_50_day',
+              'moving_var_100_day',
+              'moving_var_200_day',
+              'momentum_5_day',
+              'momentum_10_day',
+              'momentum_20_day',
+              'momentum_50_day',
+              'momentum_100_day',
+              'momentum_200_day',
               'macd',
               'macd_signal',
               'macd_histogram']
@@ -89,72 +108,58 @@ def get_raw_data(ticker, start=date(1900, 01, 01), end=date.today()):
          q.Features.ewma_50_day,
          q.Features.ewma_100_day,
          q.Features.ewma_200_day,
-         _diff_ma(5, q),
-         _diff_ma(10, q),
-         _diff_ma(20, q),
-         _diff_ma(50, q),
-         _diff_ma(100, q),
-         _diff_ma(200, q),
-         _diff_ewma(5, q),
-         _diff_ewma(10, q),
-         _diff_ewma(12, q),
-         _diff_ewma(20, q),
-         _diff_ewma(26, q),
-         _diff_ewma(50, q),
-         _diff_ewma(100, q),
-         _diff_ewma(200, q),
-         _pct_diff_ma(5, q),
-         _pct_diff_ma(10, q),
-         _pct_diff_ma(20, q),
-         _pct_diff_ma(50, q),
-         _pct_diff_ma(100, q),
-         _pct_diff_ma(200, q),
-         _pct_diff_ewma(5, q),
-         _pct_diff_ewma(10, q),
-         _pct_diff_ewma(12, q),
-         _pct_diff_ewma(20, q),
-         _pct_diff_ewma(26, q),
-         _pct_diff_ewma(50, q),
-         _pct_diff_ewma(100, q),
-         _pct_diff_ewma(200, q),
+         q.Features.diff_ma_5_day,
+         q.Features.diff_ma_10_day,
+         q.Features.diff_ma_20_day,
+         q.Features.diff_ma_50_day,
+         q.Features.diff_ma_100_day,
+         q.Features.diff_ma_200_day,
+         q.Features.diff_ewma_5_day,
+         q.Features.diff_ewma_10_day,
+         q.Features.diff_ewma_12_day,
+         q.Features.diff_ewma_20_day,
+         q.Features.diff_ewma_26_day,
+         q.Features.diff_ewma_50_day,
+         q.Features.diff_ewma_100_day,
+         q.Featuers.diff_ewma_200_day,
+         q.Features.pct_diff_ma_5_day,
+         q.Features.pct_diff_ma_10_day,
+         q.Features.pct_diff_ma_20_day,
+         q.Features.pct_diff_ma_50_day,
+         q.Features.pct_diff_ma_100_day,
+         q.Features.pct_diff_ma_200_day,
+         q.Features.pct_diff_ewma_5_day,
+         q.Features.pct_diff_ewma_10_day,
+         q.Features.pct_diff_ewma_12_day,
+         q.Features.pct_diff_ewma_20_day,
+         q.Features.pct_diff_ewma_26_day,
+         q.Features.pct_diff_ewma_50_day,
+         q.Features.pct_diff_ewma_100_day,
+         q.Features.pct_diff_ewma_200_day,
+         q.Features.pct_change,
+         q.Features.moving_stdev_5_day,
+         q.Features.moving_stdev_10_day,
+         q.Features.moving_stdev_20_day,
+         q.Features.moving_stdev_50_day,
+         q.Features.moving_stdev_100_day,
+         q.Features.moving_stdev_200_day,
+         q.Features.moving_var_5_day,
+         q.Features.moving_var_10_day,
+         q.Features.moving_var_20_day,
+         q.Features.moving_var_50_day,
+         q.Features.moving_var_100_day,
+         q.Features.moving_var_200_day,
+         q.Features.momentum_5_day,
+         q.Features.momentum_10_day,
+         q.Features.momentum_20_day,
+         q.Features.momentum_50_day,
+         q.Features.momentum_100_day,
+         q.Features.momentum_200_day,
          q.Features.macd,
          q.Features.macd_signal,
          q.Features.macd_histogram] for q in quotes])
 
     data = DataFrame(raw_data[:,1:], index=raw_data[:,0], columns=col_names).dropna()
 
-    #rows_to_delete=[]
-    #for i in range(len(data)):
-    #    for val in data[i,2:]:
-    #        if val is None or not np.isfinite(val):
-    #            rows_to_delete.append(i)
-    #data = np.delete(data, rows_to_delete, 0)
-
     return data
 
-
-
-def _diff_ma(days, quote):
-    col_name = 'ma_' + str(days) + '_day'
-    moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average)
-            if moving_average else None)
-
-
-def _diff_ewma(days, quote):
-    col_name = 'ewma_' + str(days) + '_day'
-    moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average)
-            if moving_average else None)
-
-def _pct_diff_ma(days, quote):
-    col_name = 'ma_' + str(days) + '_day'
-    moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average / moving_average)
-            if moving_average else None)
-
-def _pct_diff_ewma(days, quote):
-    col_name = 'ewma_' + str(days) + '_day'
-    moving_average = getattr(quote.Features, col_name)
-    return ((quote.AdjClose - moving_average / moving_average)
-            if moving_average else None)

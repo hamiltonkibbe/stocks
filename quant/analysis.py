@@ -27,10 +27,10 @@ def exp_weighted_moving_average(span, data):
     return np.array(stats.moments.ewma(data, span=span))
 
 def mag_diff(data, average):
-    return np.array([np.nan if avg is None or cur is None else (cur - avg) for cur, avg in zip(data, average)])
+    return np.array([np.nan if (avg is None or cur is None) else (cur - avg) for cur, avg in zip(data, average)])
 
 def percent_diff(data, average):
-    return np.array([np.nan if avg is None or cur is None else ((cur - avg) / avg) for cur,avg in zip(data, average)])
+    return np.array([np.nan if (avg is None or avg == 0.0 or cur is None) else ((cur - avg) / (avg + 1e-1000)) for cur,avg in zip(data, average)])
 
 
 # ------------------------------------------------

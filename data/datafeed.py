@@ -34,7 +34,7 @@ class IntradayQuotes(object):
         ``Datetime.date`` object.
         :returns: List of quotes for the given security and date range
         """
-        return self.stock_db.get_quotes(ticker, start_date, end_date)
+        return self.stock_db.get_quotes(ticker, start_date, end_date, eager_load=True)
 
 
 class TickQuotes(object):

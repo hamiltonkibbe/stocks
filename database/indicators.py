@@ -24,7 +24,7 @@ class indicator(object):
         self.length = length
         self.nundefined = nundefined
         self.columns = [self.name] if columns is None else [self.name] + columns
-
+        self.columns_to_pass = ['adj_close'] if columns is None else ['adj_close'] + columns
 
     def update(self, ticker, session, commit=True, check_all=False):
 
@@ -35,32 +35,46 @@ class indicator(object):
         if not check_all and self._is_up_to_date(ticker, session):
             return
 
+        # Commit the changes if the calculation relies on another column in the dataset
+        if len(self.columns_to_pass) > 1:
+            session.commit()
+
         data = self._get_columns(ticker, session)
+
         # Find the empty rows
-        rows_to_update = self._empty_rows(data[self.name])
+        if not check_all:
+            rows_to_update = self._empty_rows(data[self.name])
 
-        if len(rows_to_update) > 0:
-            # generate list of arguments
-            first_to_update = min(rows_to_update)
-            update_range = rangeType(first_to_update - self.nundefined, max(rows_to_update) + 1)
-            args = self._get_args(data, update_range)
+            if len(rows_to_update) > 0:
+                # generate list of arguments
+                first_to_update = min(rows_to_update)
+                update_range = rangeType(first_to_update - self.nundefined, max(rows_to_update) + 1)
+                args = self._get_args(data, update_range)
 
-            # Calculate moving average
+                # Calculate moving average
+                calculated = self.function(*args)
+
+                # Update the database
+                column = data[self.name]
+                ids = data['ids']
+                undef = self.nundefined
+                for row_index in rows_to_update:
+                    value  = calculated[row_index - first_to_update + undef]
+                    (session.query(Indicator)
+                            .filter_by(Id=ids[row_index])
+                            .update({self.name: value}))
+        else:
+            args = self._get_args(data)
+            #print("Calling "+str(self.function)+" with arguments: "+str(args))
             calculated = self.function(*args)
-
-            # Update the database
-            column = data[self.name]
             ids = data['ids']
-            undef = self.nundefined
-            for row_index in rows_to_update:
-                value  = calculated[row_index - first_to_update + undef]
-                (session.query(Indicator)
-                        .filter_by(Id=ids[row_index])
-                        .update({self.name: value}))
+            for row_index in range(len(data['ids'])):
+                value = calculated[row_index]
+                session.query(Indicator).filter_by(Id=ids[row_index]).update({self.name:value})
 
-            # Commit changes
-            if commit:
-                session.commit()
+        # Commit changes
+        if commit:
+            session.commit()
 
 
     def _get_args(self, data, range_data=None):
@@ -81,7 +95,7 @@ class indicator(object):
 
         # tack on any other data if needed
         if self.columns is not None:
-            args = args + [np.array(data[col][start:end]).astype(float) for col in self.columns]
+            args = args + [np.array(data[col][start:end]).astype(float) for col in self.columns_to_pass]
         return args
 
     def _empty_rows(self, data):
@@ -223,7 +237,7 @@ def update_all(ticker, session, commit=True, check_all=False):
     :param commit: (Optional) Whether or not database changes should be
     committed
     :type commit: bool
-    :param check_all: (Optional) Whether or not to check for and update holes
+    :param check_all: (Optional) Whether or not to check for and u   pdate holes
     in the data
     :type check_all: bool
     """
@@ -231,23 +245,7 @@ def update_all(ticker, session, commit=True, check_all=False):
     for calc in indicators:
         calc.update(ticker, session, commit, check_all)
 
-    #for length in [5, 10, 20, 50, 100, 200]:
-    #    update_indicator(ticker, 'ma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'diff_ma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'pct_diff_ma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'moving_stdev_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'moving_var_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'momentum_' + str(length) + '_day', session, False, check_all)
-
-    #for length in [5, 10, 12, 20, 26, 50, 100, 200]:
-    #    update_indicator(ticker, 'ewma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'diff_ewma_' + str(length) + '_day', session, False, check_all)
-    #    update_indicator(ticker, 'pct_diff_ewma_' + str(length) + '_day', session, False, check_all)
-
-    #update_indicator(ticker, 'pct_change', session, False, check_all)
-    #update_indicator(ticker, 'macd', session, True , check_all)
-    #update_indicator(ticker, 'macd_signal', session, True, check_all)
-    #update_indicator(ticker, 'macd_histogram', session, True, check_all)
-
     if commit:
         session.commit()
+
+
