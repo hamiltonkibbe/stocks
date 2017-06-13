@@ -8,7 +8,7 @@ Stock Data DB
 Local stock quote storage for backtesting and algorithm training. The database
 serves as a local cache for stock data.  When data is requested from the 
 ``StockDBManager`` it will be served from the local database if available, or
-rom an external source otherwise. All requested data is stored locally for 
+from an external source otherwise. All requested data is stored locally for 
 faster retrieval during subsequent requests. The quant module is used to calculate
 lots of common indicators and stores them to the database. This is useful for generating
 large datasets for testing/ML applications, as well as for speeding up backtesting
